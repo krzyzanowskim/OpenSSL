@@ -1,11 +1,11 @@
 Pod::Spec.new do |s|
   s.name         = "OpenSSL-Universal"
-  s.version      = "1.0.1.l"
+  s.version      = "1.0.1.l2"
   s.summary      = "OpenSSL for iOS and OS X"
   s.description  = "OpenSSL is an SSL/TLS and Crypto toolkit. Deprecated in Mac OS and gone in iOS, this spec gives your project non-deprecated OpenSSL support. Supports OSX and iOS including Simulator (armv7,armv7s,arm64,i386,x86_64)."
   s.homepage     = "http://krzyzanowskim.github.io/OpenSSL/"
   s.license	     = { :type => 'OpenSSL (OpenSSL/SSLeay)', :file => 'LICENSE.txt' }
-  s.source       = { :git => "https://github.com/krzyzanowskim/OpenSSL.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/v0l0d/OpenSSL.git", :tag => "#{s.version}" }
 
   s.authors       =  {'Mark J. Cox' => 'mark@openssl.org',
                      'Ralf S. Engelschall' => 'rse@openssl.org',
@@ -22,7 +22,8 @@ Pod::Spec.new do |s|
                      'Paul C. Sutton' => 'geoff@openssl.org',
                      'Eric A. Young' => 'eay@cryptsoft.com',
                      'Tim Hudson' => 'tjh@cryptsoft.com',
-                     'Justin Plouffe' => 'plouffe.justin@gmail.com'}
+                     'Justin Plouffe' => 'plouffe.justin@gmail.com',
+                     'Vladimir Bilyov' => 'vladimir.bilyov@gmail.com'}
   
   s.ios.platform          = :ios, '6.0'
   s.ios.deployment_target = '6.0'
