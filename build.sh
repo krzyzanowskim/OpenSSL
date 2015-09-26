@@ -38,7 +38,7 @@ build()
    TYPE=$3
 
    export BUILD_TOOLS="${DEVELOPER}"
-   export CC="${BUILD_TOOLS}/usr/bin/gcc -arch ${ARCH}"
+   export CC="${BUILD_TOOLS}/usr/bin/gcc -fembed-bitcode -arch ${ARCH}"
 
    mkdir -p "lib-${TYPE}"
 
