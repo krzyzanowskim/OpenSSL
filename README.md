@@ -24,7 +24,7 @@ pod 'OpenSSL-Universal', '1.0.1.l2'
 Or always latest version
 
 ````
-pod 'OpenSSL-Universal', :git => 'https://github.com/krzyzanowskim/OpenSSL/OpenSSL.git', :branch => :master
+pod 'OpenSSL-Universal', :git => 'https://github.com/krzyzanowskim/OpenSSL.git', :branch => :master
 ````
 
 **Authors**
