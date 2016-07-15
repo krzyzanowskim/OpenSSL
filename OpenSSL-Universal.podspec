@@ -30,18 +30,18 @@ Pod::Spec.new do |s|
 
   s.subspec 'Static' do |ss|
     ss.ios.deployment_target = '6.0'
-    ss.ios.source_files        = 'OpenSSL-iOS/include-ios/openssl/**/*.h'
-    ss.ios.public_header_files = 'OpenSSL-iOS/include-ios/openssl/**/*.h'
+    ss.ios.source_files        = 'OpenSSL-iOS/include/openssl/**/*.h'
+    ss.ios.public_header_files = 'OpenSSL-iOS/include/openssl/**/*.h'
     ss.ios.header_dir          = 'openssl'
-    ss.ios.preserve_paths      = 'OpenSSL-iOS/lib-ios/libcrypto.a', 'OpenSSL-iOS/lib-ios/libssl.a'
-    ss.ios.vendored_libraries  = 'OpenSSL-iOS/lib-ios/libcrypto.a', 'OpenSSL-iOS/lib-ios/libssl.a'
+    ss.ios.preserve_paths      = 'OpenSSL-iOS/lib/libcrypto.a', 'OpenSSL-iOS/lib/libssl.a'
+    ss.ios.vendored_libraries  = 'OpenSSL-iOS/lib/libcrypto.a', 'OpenSSL-iOS/lib/libssl.a'
 
     ss.osx.deployment_target = '10.8'
-    ss.osx.source_files        = 'OpenSSL-macOS/include-macos/openssl/**/*.h'
-    ss.osx.public_header_files = 'OpenSSL-macOS/include-macos/openssl/**/*.h'
+    ss.osx.source_files        = 'OpenSSL-macOS/include/openssl/**/*.h'
+    ss.osx.public_header_files = 'OpenSSL-macOS/include/openssl/**/*.h'
     ss.osx.header_dir          = 'openssl'
-    ss.osx.preserve_paths      = 'OpenSSL-macOS/lib-macos/libcrypto.a', 'OpenSSL-macOS/lib-macos/libssl.a'
-    ss.osx.vendored_libraries  = 'OpenSSL-macOS/lib-macos/libcrypto.a', 'OpenSSL-macOS/lib-macos/libssl.a'
+    ss.osx.preserve_paths      = 'OpenSSL-macOS/lib/libcrypto.a', 'OpenSSL-macOS/lib/libssl.a'
+    ss.osx.vendored_libraries  = 'OpenSSL-macOS/lib/libcrypto.a', 'OpenSSL-macOS/lib/libssl.a'
 
     ss.libraries = 'ssl', 'crypto'
   end
