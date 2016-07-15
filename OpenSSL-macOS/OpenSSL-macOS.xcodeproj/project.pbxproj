@@ -406,6 +406,7 @@
 				C71BFA121D395FEC006DBF18 /* Frameworks */,
 				C71BFA131D395FEC006DBF18 /* Headers */,
 				C71BFA141D395FEC006DBF18 /* Resources */,
+				C71BFB5D1D397594006DBF18 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -456,6 +457,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C71BFB5D1D397594006DBF18 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "ditto \"${BUILT_PRODUCTS_DIR}\" \"${SRCROOT}/bin\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C71BFA111D395FEC006DBF18 /* Sources */ = {
