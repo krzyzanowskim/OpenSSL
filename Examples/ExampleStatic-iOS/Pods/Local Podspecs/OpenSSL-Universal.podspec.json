@@ -1,0 +1,90 @@
+{
+  "name": "OpenSSL-Universal",
+  "version": "1.0.1.19",
+  "summary": "OpenSSL for iOS and OS X",
+  "description": "OpenSSL is an SSL/TLS and Crypto toolkit. Deprecated in Mac OS and gone in iOS, this spec gives your project non-deprecated OpenSSL support. Supports OSX and iOS including Simulator (armv7,armv7s,arm64,i386,x86_64).",
+  "homepage": "http://krzyzanowskim.github.io/OpenSSL/",
+  "license": {
+    "type": "OpenSSL (OpenSSL/SSLeay)",
+    "file": "LICENSE.txt"
+  },
+  "source": {
+    "git": "https://github.com/jcavar/OpenSSL.git"
+  },
+  "authors": {
+    "Mark J. Cox": "mark@openssl.org",
+    "Ralf S. Engelschall": "rse@openssl.org",
+    "Dr. Stephen Henson": "steve@openssl.org",
+    "Ben Laurie": "ben@openssl.org",
+    "Lutz Jänicke": "jaenicke@openssl.org",
+    "Nils Larsch": "nils@openssl.org",
+    "Richard Levitte": "nils@openssl.org",
+    "Bodo Möller": "bodo@openssl.org",
+    "Ulf Möller": "ulf@openssl.org",
+    "Andy Polyakov": "appro@openssl.org",
+    "Geoff Thorpe": "geoff@openssl.org",
+    "Holger Reif": "holger@openssl.org",
+    "Paul C. Sutton": "geoff@openssl.org",
+    "Eric A. Young": "eay@cryptsoft.com",
+    "Tim Hudson": "tjh@cryptsoft.com",
+    "Justin Plouffe": "plouffe.justin@gmail.com"
+  },
+  "default_subspecs": "Static",
+  "platforms": {
+    "ios": "6.0",
+    "osx": "10.8"
+  },
+  "requires_arc": false,
+  "subspecs": [
+    {
+      "name": "Static",
+      "platforms": {
+        "ios": "6.0",
+        "osx": "10.8"
+      },
+      "ios": {
+        "source_files": "OpenSSL-iOS/include/openssl/**/*.h",
+        "public_header_files": "OpenSSL-iOS/include/openssl/**/*.h",
+        "header_dir": "openssl",
+        "preserve_paths": [
+          "OpenSSL-iOS/lib/libcrypto.a",
+          "OpenSSL-iOS/lib/libssl.a"
+        ],
+        "vendored_libraries": [
+          "OpenSSL-iOS/lib/libcrypto.a",
+          "OpenSSL-iOS/lib/libssl.a"
+        ]
+      },
+      "osx": {
+        "source_files": "OpenSSL-macOS/include/openssl/**/*.h",
+        "public_header_files": "OpenSSL-macOS/include/openssl/**/*.h",
+        "header_dir": "openssl",
+        "preserve_paths": [
+          "OpenSSL-macOS/lib/libcrypto.a",
+          "OpenSSL-macOS/lib/libssl.a"
+        ],
+        "vendored_libraries": [
+          "OpenSSL-macOS/lib/libcrypto.a",
+          "OpenSSL-macOS/lib/libssl.a"
+        ]
+      },
+      "libraries": [
+        "ssl",
+        "crypto"
+      ]
+    },
+    {
+      "name": "Dynamic",
+      "platforms": {
+        "ios": "8.0",
+        "osx": "10.8"
+      },
+      "ios": {
+        "vendored_frameworks": "OpenSSL-iOS/bin/openssl.framework"
+      },
+      "osx": {
+        "vendored_frameworks": "OpenSSL-macOS/bin/openssl.framework"
+      }
+    }
+  ]
+}

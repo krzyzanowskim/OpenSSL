@@ -1,0 +1,9 @@
+platform :ios, '8.0'
+
+use_frameworks!
+
+source 'https://github.com/CocoaPods/Specs.git'
+
+target 'ExampleDynamic-iOS' do
+    pod 'OpenSSL-Universal/Dynamic', :git => 'https://github.com/jcavar/OpenSSL.git'
+end
