@@ -10,7 +10,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   OpenSSL-Universal:
-    :commit: ab971bb434260547780703ac0f5e54401e0b296b
+    :commit: 5689beda69217f28899163d43109734760782643
     :git: https://github.com/jcavar/OpenSSL.git
 
 SPEC CHECKSUMS:
