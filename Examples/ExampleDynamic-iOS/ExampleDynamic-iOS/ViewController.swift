@@ -14,7 +14,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        MD5(nil, 3, nil);
+        let input = "asdf"
+        MD5(input, input.characters.count, nil);
     }
 
     override func didReceiveMemoryWarning() {
