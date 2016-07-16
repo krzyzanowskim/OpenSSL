@@ -26,7 +26,7 @@ OSX_SDK=$(xcrun --sdk macosx --show-sdk-path)
 
 # Clean up whatever was left from our previous build
 
-rm -rf include-ios include-macos lib-ios lib-macos
+rm -rf OpenSSL-iOS/include OpenSSL-macOS/include OpenSSL-iOS/lib OpenSSL-macOS/lib
 rm -rf /tmp/openssl-${OPENSSL_VERSION}*
 
 configure() {
@@ -57,7 +57,7 @@ build()
    export BUILD_TOOLS="${DEVELOPER}"
    export CC="${BUILD_TOOLS}/usr/bin/gcc -fembed-bitcode -arch ${ARCH}"
 
-   mkdir -p "lib-${TYPE}"
+   mkdir -p "OpenSSL-${TYPE}/lib"
    
    rm -rf openssl-${OPENSSL_VERSION}
    tar xfz openssl-${OPENSSL_VERSION}.tar.gz
@@ -68,14 +68,14 @@ build()
 
    sed -ie "s/BIGNUM \*I,/BIGNUM \*i,/g" crypto/rsa/rsa.h
 
-   if [ "$TYPE" == "ios" ]; then
+   if [ "$TYPE" == "iOS" ]; then
       # IOS
       if [ "$ARCH" == "x86_64" ] || [ "$ARCH" == "i386" ]; then
          configure "iPhoneSimulator" $ARCH ${IPHONESIMULATOR_PLATFORM} ${IPHONEOS_SDK_VERSION} ${IPHONEOS_DEPLOYMENT_VERSION}
       else
          configure "iPhoneOS" $ARCH ${IPHONEOS_PLATFORM} ${IPHONEOS_SDK_VERSION} ${IPHONEOS_DEPLOYMENT_VERSION}
       fi
-   elif [ "$TYPE" == "macos" ]; then    
+   elif [ "$TYPE" == "macOS" ]; then    
       #OSX
       if [ "$ARCH" == "x86_64" ]; then
          ./Configure darwin64-x86_64-cc --openssldir="/tmp/openssl-${OPENSSL_VERSION}-${ARCH}" &> "/tmp/openssl-${OPENSSL_VERSION}-${ARCH}.log"
@@ -95,28 +95,28 @@ build()
       xcrun lipo "lib-${TYPE}/libcrypto.a" "/tmp/openssl-${OPENSSL_VERSION}-${ARCH}/lib/libcrypto.a" -create -output "lib-${TYPE}/libcrypto.a"
       xcrun lipo "lib-${TYPE}/libssl.a" "/tmp/openssl-${OPENSSL_VERSION}-${ARCH}/lib/libssl.a" -create -output "lib-${TYPE}/libssl.a"
    else
-      cp "/tmp/openssl-${OPENSSL_VERSION}-${ARCH}/lib/libcrypto.a" "lib-${TYPE}/libcrypto.a"
-      cp "/tmp/openssl-${OPENSSL_VERSION}-${ARCH}/lib/libssl.a" "lib-${TYPE}/libssl.a"
+      cp "/tmp/openssl-${OPENSSL_VERSION}-${ARCH}/lib/libcrypto.a" "OpenSSL-${TYPE}/lib/libcrypto.a"
+      cp "/tmp/openssl-${OPENSSL_VERSION}-${ARCH}/lib/libssl.a" "OpenSSL-${TYPE}/lib/libssl.a"
    fi
 
    rm -rf "openssl-${OPENSSL_VERSION}"
 }
 
-build "i386" "${IPHONESIMULATOR_SDK}" "ios"
-build "x86_64" "${IPHONESIMULATOR_SDK}" "ios"
-build "armv7" "${IPHONEOS_SDK}" "ios"
-build "armv7s" "${IPHONEOS_SDK}" "ios"
-build "arm64" "${IPHONEOS_SDK}" "ios"
+build "i386" "${IPHONESIMULATOR_SDK}" "iOS"
+build "x86_64" "${IPHONESIMULATOR_SDK}" "iOS"
+build "armv7" "${IPHONEOS_SDK}" "iOS"
+build "armv7s" "${IPHONEOS_SDK}" "iOS"
+build "arm64" "${IPHONEOS_SDK}" "iOS"
 
-mkdir -p include-ios
-cp -r /tmp/openssl-${OPENSSL_VERSION}-arm64/include/openssl include-ios/
+mkdir -p OpenSSL-iOS/include
+cp -r /tmp/openssl-${OPENSSL_VERSION}-arm64/include/openssl OpenSSL-iOS/include/
 
 rm -rf /tmp/openssl-${OPENSSL_VERSION}*
 
-build "i386" "${OSX_SDK}" "macos"
-build "x86_64" "${OSX_SDK}" "macos"
+build "i386" "${OSX_SDK}" "macOS"
+build "x86_64" "${OSX_SDK}" "macOS"
 
-mkdir -p include-macos
-cp -r /tmp/openssl-${OPENSSL_VERSION}-x86_64/include/openssl include-macos/
+mkdir -p OpenSSL-macOS/include
+cp -r /tmp/openssl-${OPENSSL_VERSION}-x86_64/include/openssl OpenSSL-macOS/include/
 
 rm -rf /tmp/openssl-${OPENSSL_VERSION}*

@@ -1,0 +1,21 @@
+PODS:
+  - OpenSSL-Universal/Dynamic (1.0.1.19)
+
+DEPENDENCIES:
+  - OpenSSL-Universal/Dynamic (from `https://github.com/jcavar/OpenSSL.git`)
+
+EXTERNAL SOURCES:
+  OpenSSL-Universal:
+    :git: https://github.com/jcavar/OpenSSL.git
+
+CHECKOUT OPTIONS:
+  OpenSSL-Universal:
+    :commit: 5689beda69217f28899163d43109734760782643
+    :git: https://github.com/jcavar/OpenSSL.git
+
+SPEC CHECKSUMS:
+  OpenSSL-Universal: 20d003f4ac546e84955bb36400cc740be8e77dcd
+
+PODFILE CHECKSUM: 79116648ad5c134b3d6cc6db521b53659829b973
+
+COCOAPODS: 1.0.1

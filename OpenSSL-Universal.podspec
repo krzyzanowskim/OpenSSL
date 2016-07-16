@@ -4,8 +4,8 @@ Pod::Spec.new do |s|
   s.summary      = "OpenSSL for iOS and OS X"
   s.description  = "OpenSSL is an SSL/TLS and Crypto toolkit. Deprecated in Mac OS and gone in iOS, this spec gives your project non-deprecated OpenSSL support. Supports OSX and iOS including Simulator (armv7,armv7s,arm64,i386,x86_64)."
   s.homepage     = "http://krzyzanowskim.github.io/OpenSSL/"
-  s.license	     = { :type => 'OpenSSL (OpenSSL/SSLeay)', :file => 'LICENSE.txt' }
-  s.source       = { :git => "https://github.com/krzyzanowskim/OpenSSL.git", :tag => "#{s.version}" }
+  s.license      = { :type => 'OpenSSL (OpenSSL/SSLeay)', :file => 'LICENSE.txt' }
+  s.source       = { :git => "https://github.com/jcavar/OpenSSL.git" }
 
   s.authors       =  {'Mark J. Cox' => 'mark@openssl.org',
                      'Ralf S. Engelschall' => 'rse@openssl.org',
@@ -24,22 +24,36 @@ Pod::Spec.new do |s|
                      'Tim Hudson' => 'tjh@cryptsoft.com',
                      'Justin Plouffe' => 'plouffe.justin@gmail.com'}
   
-  s.ios.platform          = :ios, '6.0'
+  s.default_subspec   = 'Static'
   s.ios.deployment_target = '6.0'
-  s.ios.source_files        = 'include-ios/openssl/**/*.h'
-  s.ios.public_header_files = 'include-ios/openssl/**/*.h'
-  s.ios.header_dir          = 'openssl'
-  s.ios.preserve_paths      = 'lib-ios/libcrypto.a', 'lib-ios/libssl.a'
-  s.ios.vendored_libraries  = 'lib-ios/libcrypto.a', 'lib-ios/libssl.a'
-
-  s.osx.platform          = :osx, '10.9'
   s.osx.deployment_target = '10.8'
-  s.osx.source_files        = 'include-macos/openssl/**/*.h'
-  s.osx.public_header_files = 'include-macos/openssl/**/*.h'
-  s.osx.header_dir          = 'openssl'
-  s.osx.preserve_paths      = 'lib-macos/libcrypto.a', 'lib-macos/libssl.a'
-  s.osx.vendored_libraries  = 'lib-macos/libcrypto.a', 'lib-macos/libssl.a'
 
-  s.libraries = 'ssl', 'crypto'
+  s.subspec 'Static' do |ss|
+    ss.ios.deployment_target = '6.0'
+    ss.ios.source_files        = 'OpenSSL-iOS/include/openssl/**/*.h'
+    ss.ios.public_header_files = 'OpenSSL-iOS/include/openssl/**/*.h'
+    ss.ios.header_dir          = 'openssl'
+    ss.ios.preserve_paths      = 'OpenSSL-iOS/lib/libcrypto.a', 'OpenSSL-iOS/lib/libssl.a'
+    ss.ios.vendored_libraries  = 'OpenSSL-iOS/lib/libcrypto.a', 'OpenSSL-iOS/lib/libssl.a'
+
+    ss.osx.deployment_target = '10.8'
+    ss.osx.source_files        = 'OpenSSL-macOS/include/openssl/**/*.h'
+    ss.osx.public_header_files = 'OpenSSL-macOS/include/openssl/**/*.h'
+    ss.osx.header_dir          = 'openssl'
+    ss.osx.preserve_paths      = 'OpenSSL-macOS/lib/libcrypto.a', 'OpenSSL-macOS/lib/libssl.a'
+    ss.osx.vendored_libraries  = 'OpenSSL-macOS/lib/libcrypto.a', 'OpenSSL-macOS/lib/libssl.a'
+
+    ss.libraries = 'ssl', 'crypto'
+  end
+
+  s.subspec 'Dynamic' do |ss|
+
+    ss.ios.deployment_target = '8.0'
+    ss.ios.vendored_frameworks  = 'OpenSSL-iOS/bin/openssl.framework'
+
+    ss.osx.deployment_target = '10.8'
+    ss.osx.vendored_frameworks  = 'OpenSSL-macOS/bin/openssl.framework'
+  end
+
   s.requires_arc = false
 end

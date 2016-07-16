@@ -1,0 +1,21 @@
+PODS:
+  - OpenSSL-Universal/Static (1.0.1.19)
+
+DEPENDENCIES:
+  - OpenSSL-Universal/Static (from `https://github.com/jcavar/OpenSSL.git`)
+
+EXTERNAL SOURCES:
+  OpenSSL-Universal:
+    :git: https://github.com/jcavar/OpenSSL.git
+
+CHECKOUT OPTIONS:
+  OpenSSL-Universal:
+    :commit: ab971bb434260547780703ac0f5e54401e0b296b
+    :git: https://github.com/jcavar/OpenSSL.git
+
+SPEC CHECKSUMS:
+  OpenSSL-Universal: 20d003f4ac546e84955bb36400cc740be8e77dcd
+
+PODFILE CHECKSUM: 501bcd99d436e6b22d9e4abdff11a1ff1d605595
+
+COCOAPODS: 1.0.1

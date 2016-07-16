@@ -1,0 +1,7 @@
+platform :ios, '8.0'
+
+source 'https://github.com/CocoaPods/Specs.git'
+
+target 'ExampleStatic-iOS' do
+    pod 'OpenSSL-Universal/Static', :git => 'https://github.com/jcavar/OpenSSL.git'
+end
