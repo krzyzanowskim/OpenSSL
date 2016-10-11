@@ -24,7 +24,6 @@ Pod::Spec.new do |s|
                      'Tim Hudson' => 'tjh@cryptsoft.com',
                      'Justin Plouffe' => 'plouffe.justin@gmail.com'}
   
-  s.ios.platform          = :ios, '6.0'
   s.ios.deployment_target = '6.0'
   s.ios.source_files        = 'include-ios/openssl/**/*.h'
   s.ios.public_header_files = 'include-ios/openssl/**/*.h'
@@ -32,7 +31,6 @@ Pod::Spec.new do |s|
   s.ios.preserve_paths      = 'lib-ios/libcrypto.a', 'lib-ios/libssl.a'
   s.ios.vendored_libraries  = 'lib-ios/libcrypto.a', 'lib-ios/libssl.a'
 
-  s.osx.platform          = :osx, '10.9'
   s.osx.deployment_target = '10.8'
   s.osx.source_files        = 'include-macos/openssl/**/*.h'
   s.osx.public_header_files = 'include-macos/openssl/**/*.h'
