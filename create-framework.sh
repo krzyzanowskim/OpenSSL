@@ -23,14 +23,24 @@ xcrun --sdk iphoneos libtool -dynamic -no_warning_for_no_symbols -undefined dyna
 xcrun --sdk macosx   libtool -dynamic -no_warning_for_no_symbols -undefined dynamic_lookup -macosx_version_min $OSX_MIN -o Frameworks/macos/$FWNAME.framework/$FWNAME lib-macos/libcrypto.a lib-macos/libssl.a
 
 cp -r include-ios/$FWNAME/* Frameworks/ios/$FWNAME.framework/Headers/
-sed -i '' 's/openssl/OpenSSL/' Frameworks/ios/$FWNAME.framework/Headers/*.h
+sed -i '' 's/include <openssl/include <OpenSSL/' Frameworks/ios/$FWNAME.framework/Headers/*.h
 
 cp -r include-macos/$FWNAME/* Frameworks/macos/$FWNAME.framework/Headers/
-sed -i '' 's/openssl/OpenSSL/' Frameworks/macos/$FWNAME.framework/Headers/*.h
+sed -i '' 's/include <openssl/include <OpenSSL/' Frameworks/macos/$FWNAME.framework/Headers/*.h
 
 echo "Create module OpenSSL"
 mkdir -p Frameworks/ios/$FWNAME.framework/Modules
 mkdir -p Frameworks/macos/$FWNAME.framework/Modules
+
+# Umbrella header
+
+for entry in `find Frameworks/ios/OpenSSL.framework/Headers -mindepth 1 -maxdepth 1 -type f -exec basename {} \;`; do
+    echo "#include \"$entry\"" >> Frameworks/ios/$FWNAME.framework/Headers/OpenSSL.h
+done
+
+for entry in `find Frameworks/macos/OpenSSL.framework/Headers -mindepth 1 -maxdepth 1 -type f -exec basename {} \;`; do
+    echo "#include \"$entry\"" >> Frameworks/macos/$FWNAME.framework/Headers/OpenSSL.h
+done
 
 echo "framework module OpenSSL {
     umbrella header \"OpenSSL.h\"
