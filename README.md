@@ -34,11 +34,11 @@ pod 'OpenSSL-Universal', :git => 'https://github.com/krzyzanowskim/OpenSSL.git',
 **This tutorial assumes you want to:** <br>
   - Write a C application.<br>
   - Use OpenSSL libraries for some crypto operation.<br>
-  - Use a Mac and xCode 8+.<br>
+  - Use a Mac and Xcode 8+.<br>
   - Use CocoaPods and the OpenSSL-Universal pod as an elegant way to stay updated with the latest libraries and headers.<br>
 
 #### Step 1 - Create your macOS HelloWorld C app
-If you have not done this before with xCode, select  `File / New Project / macOS / Command Line Tool`.  Hit build and run.  You just successfully build the default Hello World C project.
+If you have not done this before with Xcode, select  `File / New Project / macOS / Command Line Tool`.  Hit build and run.  You just successfully build the default Hello World C project.
 
 #### Step 2 - Setup Cocoa Pods
 Make sure your machine is setup for CocoaPods.
@@ -64,7 +64,7 @@ These libraries work for both iOS and MacOS.  There are two OpenSSL static libra
 The OpenSSL-Universal Framework is a Fat Binary. That means it supports multiple CPU architectures in a single file.    To understand this, return to `Terminal`.  Navigate to your OpenSSL-Universal macOS files and run the command `file libcrypto.a`  This will tell you architecture the file is compiled against `x86_64` and `x386`.  If you tried the iOS OpenSSL-Universal files it would have said `armv7`, `armv7s`, `arm64` + Simulators (`i386, x86_64`).  
 
 #### Xcode Setup
-You want to ensure xCode knows; 
+You want to ensure Xcode knows; 
 
 1. Where the OpenSSL static libraries are located.
 2. Where the OpenSSL header files are located for the C include statements. 
