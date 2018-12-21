@@ -1,0 +1,10 @@
+
+target 'Crypto' do
+  use_frameworks!
+  pod 'OpenSSL-Universal', :podspec => 'https://raw.github.com/krzyzanowskim/OpenSSL/master/OpenSSL-Universal.podspec'
+end
+
+target 'CryptoIOS' do
+  use_frameworks!
+  pod 'OpenSSL-Universal', :podspec => 'https://raw.github.com/krzyzanowskim/OpenSSL/master/OpenSSL-Universal.podspec'
+end
