@@ -1,1 +1,5 @@
 *.DS_Store
+
+/Carthage/
+/OpenSSL.xcodeproj/project.xcworkspace/xcuserdata/
+/OpenSSL.xcodeproj/xcuserdata/
