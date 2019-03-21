@@ -288,19 +288,17 @@ void ECDSA_METHOD_set_verify(ECDSA_METHOD *ecdsa_method,
                                                      const ECDSA_SIG *sig,
                                                      EC_KEY *eckey));
 
-void ECDSA_METHOD_set_flags(ECDSA_METHOD *ecdsa_method, int flags);
-
 /**  Set the flags field in the ECDSA_METHOD
  *   \param  ecdsa_method  pointer to existing ECDSA_METHOD
  *   \param  flags flags value to set
  */
-
-void ECDSA_METHOD_set_name(ECDSA_METHOD *ecdsa_method, char *name);
+void ECDSA_METHOD_set_flags(ECDSA_METHOD *ecdsa_method, int flags);
 
 /**  Set the name field in the ECDSA_METHOD
  *   \param  ecdsa_method  pointer to existing ECDSA_METHOD
  *   \param  name name to set
  */
+void ECDSA_METHOD_set_name(ECDSA_METHOD *ecdsa_method, char *name);
 
 /* BEGIN ERROR CODES */
 /*
