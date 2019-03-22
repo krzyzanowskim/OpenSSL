@@ -33,28 +33,40 @@ sed -i '' 's/include <openssl/include <OpenSSL/' Frameworks/macos/$FWNAME.framew
 
 echo "Create module"
 
-# Umbrella header
+create_module() {
+    local fw_path=$1
+    local fw_name
 
-for entry in `find Frameworks/ios/OpenSSL.framework/Headers -mindepth 1 -maxdepth 1 -type f -exec basename {} \;`; do
-    echo "#include \"$entry\"" >> Frameworks/ios/$FWNAME.framework/Headers/OpenSSL.h
-done
+    fw_name=$(basename $fw_path)
+    fw_name=${fw_name%.framework}
 
-for entry in `find Frameworks/macos/OpenSSL.framework/Headers -mindepth 1 -maxdepth 1 -type f -exec basename {} \;`; do
-    echo "#include \"$entry\"" >> Frameworks/macos/$FWNAME.framework/Headers/OpenSSL.h
-done
+    # Special case because of OpenSSL reasons
+    if [ -f $fw_path/Headers/ssl.h ]
+    then
+        echo "#include \"ssl.h\"" >> $fw_path/Headers/$fw_name.h
+    fi
 
-echo "framework module OpenSSL {
-    umbrella header \"OpenSSL.h\"
+    # Create umbrella header
+    for header in $fw_path/Headers/*
+    do
+        header=$(basename $header)
+        [ "$header" = "$fw_name.h" ] && continue
+        [ "$header" = "ssl.h" ] && continue
+        echo "#include \"$header\"" >> $fw_path/Headers/$fw_name.h
+    done
+
+    # Create module map
+    cat << EOF > $fw_path/Modules/module.modulemap
+framework module $fw_name {
+    umbrella header "$fw_name.h"
 
     export *
-    module * { export *}
-}" > Frameworks/ios/$FWNAME.framework/Modules/module.modulemap
+    module * { export * }
+}
+EOF
+}
 
-echo "framework module OpenSSL {
-    umbrella header \"OpenSSL.h\"
-
-    export *
-    module * { export *}
-}" > Frameworks/macos/$FWNAME.framework/Modules/module.modulemap
+create_module Frameworks/ios/$FWNAME.framework
+create_module Frameworks/macos/$FWNAME.framework
 
 echo "Created $FWNAME.framework"
