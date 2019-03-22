@@ -1,6 +1,6 @@
 # OpenSSL-Universal
 
-OpenSSL CocoaPod for iOS and OSX. Complete solution to OpenSSL on iOS and OSX. Package came with precompiled libraries, and include script to build newer version if necessary.
+OpenSSL CocoaPod and Carthage for iOS and OSX. Complete solution to OpenSSL on iOS and OSX. Package came with precompiled libraries, and include script to build newer version if necessary.
 
 Current version contains binaries build with SDK iOS 8.0 (target 6.0), and SDK OSX 10.9 (target 10.8) for all supported architectures.
 
@@ -25,6 +25,20 @@ Or always latest version
 ````
 pod 'OpenSSL-Universal', :git => 'https://github.com/krzyzanowskim/OpenSSL.git', :branch => :master
 ````
+
+#### Carthage
+
+Latest stable version:
+
+```
+github "krzyzanowskim/OpenSSL"
+```
+
+Latest development version:
+
+```
+github "krzyzanowskim/OpenSSL" "master"
+```
 
 ### Authors
 
