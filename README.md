@@ -16,6 +16,8 @@ Current version contains binaries build with SDK iOS 8.0 (target 6.0), and SDK O
 
 ### Installation
 
+#### CocoaPods
+
 ````
 pod 'OpenSSL-Universal'
 ````
