@@ -1,5 +1,23 @@
 *.DS_Store
 
-/Carthage/
-/OpenSSL.xcodeproj/project.xcworkspace/xcuserdata/
-/OpenSSL.xcodeproj/xcuserdata/
+build/
+DerivedData/
+xcuserdata/
+*.moved-aside
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+!*.xcworkspace/contents.xcworkspacedata
+/*.gcno
+**/xcshareddata/WorkspaceSettings.xcsettings
+
+Carthage/
