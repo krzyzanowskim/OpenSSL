@@ -38,6 +38,5 @@ Pod::Spec.new do |s|
   s.osx.preserve_paths      = 'lib-macos/libcrypto.a', 'lib-macos/libssl.a'
   s.osx.vendored_libraries  = 'lib-macos/libcrypto.a', 'lib-macos/libssl.a'
 
-  s.libraries = 'ssl', 'crypto'
   s.requires_arc = false
 end
