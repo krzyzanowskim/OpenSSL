@@ -3,6 +3,7 @@
 # Bitcode is not working for a dynamic framework
 
 set -e
+# set -x
 
 BASE_PWD="$PWD"
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
@@ -11,59 +12,65 @@ FWNAME="OpenSSL"
 OSX_MIN="10.9"
 IOS_MIN="8.0"
 
-rm -rf Frameworks/ios/$FWNAME.framework
-rm -rf Frameworks/macos/$FWNAME.framework
+export IPHONEOS_DEPLOYMENT_TARGET=${IOS_MIN}
+export CODESIGN_ALLOCATE=$( xcrun -f codesign_allocate )
 
-echo "Creating $FWNAME.framework"
-mkdir -p ${SCRIPT_DIR}/Frameworks/ios/$FWNAME.framework/Headers
-mkdir -p ${SCRIPT_DIR}/Frameworks/ios/$FWNAME.framework/Modules
-mkdir -p ${SCRIPT_DIR}/Frameworks/macos/$FWNAME.framework/Headers
-mkdir -p ${SCRIPT_DIR}/Frameworks/macos/$FWNAME.framework/Modules
+create_dynamiclib() {
+    local ARCH=$1
+    local SDK=$2
+    local PLATFORM_DIR_NAME=$( echo $3 | sed -E 's/^.*\/(.*)\/'"${FWNAME}.framework"'/\1/g')
 
-# xcrun --sdk iphoneos ld -dylib -arch armv7  -bitcode_bundle -ios_version_min $IOS_MIN lib-ios/libcrypto.a -o Frameworks/ios/$FWNAME.framework/$FWNAME-armv7
-# xcrun --sdk iphoneos ld -dylib -arch armv7s -bitcode_bundle -ios_version_min $IOS_MIN lib-ios/libcrypto.a -o Frameworks/ios/$FWNAME.framework/$FWNAME-armv7s
-# xcrun --sdk iphoneos ld -dylib -arch arm64  -bitcode_bundle -ios_version_min $IOS_MIN lib-ios/libcrypto.a -o Frameworks/ios/$FWNAME.framework/$FWNAME-arm64
-# xcrun --sdk iphoneos lipo -create Frameworks/ios/$FWNAME.framework/$FWNAME-* -output Frameworks/ios/$FWNAME.framework/$FWNAME
-# rm -rf Frameworks/ios/$FWNAME.framework/$FWNAME-*
+    if [ ${SDK} == "macosx" ]; then
+        local PLATFORM_MIN_VERSION_ARG="-mmacosx-version-min=${OSX_MIN}"
+    fi
+    
+    if [ ${PLATFORM_DIR_NAME} == "iphonesimulator" ]; then
+        local PLATFORM_MIN_VERSION_ARG="-mios-simulator-version-min=${IOS_MIN}"
+    fi
 
-xcrun -n --sdk iphoneos libtool -dynamic -no_warning_for_no_symbols -undefined dynamic_lookup -ios_version_min $IOS_MIN -o ${SCRIPT_DIR}/Frameworks/ios/$FWNAME.framework/$FWNAME ${SCRIPT_DIR}/ios/lib/libcrypto.a ${SCRIPT_DIR}/ios/lib/libssl.a
-# rdar://41396876 - macosx fails randomly
-xcrun -n --sdk macosx   libtool -dynamic -no_warning_for_no_symbols -undefined dynamic_lookup -macosx_version_min $OSX_MIN -o ${SCRIPT_DIR}/Frameworks/macos/$FWNAME.framework/$FWNAME ${SCRIPT_DIR}/macos/lib/libcrypto.a ${SCRIPT_DIR}/macos/lib/libssl.a
+    if [ ${PLATFORM_DIR_NAME} == "iphoneos" ]; then
+        local PLATFORM_MIN_VERSION_ARG="-mios-version-min=${IOS_MIN}"
+    fi
 
-cp -r ${SCRIPT_DIR}/ios/include/$FWNAME/* ${SCRIPT_DIR}/Frameworks/ios/$FWNAME.framework/Headers/
-sed -i '' 's/include <openssl/include <OpenSSL/' ${SCRIPT_DIR}/Frameworks/ios/$FWNAME.framework/Headers/*.h
+    xcrun clang -arch ${ARCH} \
+        -L${SCRIPT_DIR}/${PLATFORM_DIR_NAME}/lib \
+        -isysroot $(xcrun --sdk ${SDK} --show-sdk-path) \
+        -Xlinker -no_deduplicate \
+        -Xlinker -all_load -lssl -lcrypto -compatibility_version 1 -current_version 1 \
+        -Xlinker -export_dynamic \
+        -dynamiclib \
+        -install_name @rpath/$FWNAME.framework/Versions/A/$FWNAME \
+        -Xlinker -rpath -Xlinker @executable_path/../Frameworks \
+        -Xlinker -rpath -Xlinker @loader_path/Frameworks ${PLATFORM_MIN_VERSION_ARG} \
+        -o ${SCRIPT_DIR}/Frameworks/${PLATFORM_DIR_NAME}/$FWNAME.framework/Versions/A/$FWNAME-${ARCH}
 
-cp -r ${SCRIPT_DIR}/macos/include/$FWNAME/* ${SCRIPT_DIR}/Frameworks/macos/$FWNAME.framework/Headers/
-sed -i '' 's/include <openssl/include <OpenSSL/' ${SCRIPT_DIR}/Frameworks/macos/$FWNAME.framework/Headers/*.h
-
-echo "Create module"
+        cp -r ${SCRIPT_DIR}/${PLATFORM_DIR_NAME}/include/openssl/* ${SCRIPT_DIR}/Frameworks/${PLATFORM_DIR_NAME}/$FWNAME.framework/Versions/A/Headers/
+        sed -i '' 's/include <openssl/include <'"${FWNAME}"'/' ${SCRIPT_DIR}/Frameworks/${PLATFORM_DIR_NAME}/$FWNAME.framework/Versions/A/Headers/*.h
+        # cp -f ${SCRIPT_DIR}/Frameworks/ios/Info.plist ${SCRIPT_DIR}/Frameworks/ios/$FWNAME.framework/Resources
+}
 
 create_module() {
     local fw_path=$1
-    local fw_name
-
-    fw_name=$(basename $fw_path)
-    fw_name=${fw_name%.framework}
 
     # Special case because of OpenSSL reasons
     if [ -f $fw_path/Headers/ssl.h ]
     then
-        echo "#include \"ssl.h\"" >> $fw_path/Headers/$fw_name.h
+        echo "#include \"ssl.h\"" >> $fw_path/Headers/$FWNAME.h
     fi
 
     # Create umbrella header
     for header in $fw_path/Headers/*
     do
         header=$(basename $header)
-        [ "$header" = "$fw_name.h" ] && continue
+        [ "$header" = "$FWNAME.h" ] && continue
         [ "$header" = "ssl.h" ] && continue
-        echo "#include \"$header\"" >> $fw_path/Headers/$fw_name.h
+        echo "#include \"$header\"" >> $fw_path/Headers/$FWNAME.h
     done
 
     # Create module map
     cat << EOF > $fw_path/Modules/module.modulemap
-framework module $fw_name {
-    umbrella header "$fw_name.h"
+framework module $FWNAME {
+    umbrella header "$FWNAME.h"
 
     export *
     module * { export * }
@@ -71,7 +78,46 @@ framework module $fw_name {
 EOF
 }
 
+echo "Creating $FWNAME.framework"
+
+rm -rf ${SCRIPT_DIR}/Frameworks/{ios,macos}/$FWNAME.framework
+
+mkdir -p ${SCRIPT_DIR}/Frameworks/{ios,macos}/$FWNAME.framework/Versions/A/{Headers,Modules,Resources}
+ln -s Versions/A/Headers ${SCRIPT_DIR}/Frameworks/ios/$FWNAME.framework/Headers
+ln -s Versions/A/Modules ${SCRIPT_DIR}/Frameworks/ios/$FWNAME.framework/Modules
+ln -s Versions/A/Resources ${SCRIPT_DIR}/Frameworks/ios/$FWNAME.framework/Resources
+# ln -s Versions/A/$FWNAME ${SCRIPT_DIR}/Frameworks/ios/$FWNAME.framework/$FWNAME
+ln -s Versions/A/Headers ${SCRIPT_DIR}/Frameworks/macos/$FWNAME.framework/Headers
+ln -s Versions/A/Modules ${SCRIPT_DIR}/Frameworks/macos/$FWNAME.framework/Modules
+ln -s Versions/A/Resources ${SCRIPT_DIR}/Frameworks/macos/$FWNAME.framework/Resources
+# ln -s Versions/A/$FWNAME ${SCRIPT_DIR}/Frameworks/macos/$FWNAME.framework/$FWNAME
+
+create_dynamiclib x86_64 "macosx" ${SCRIPT_DIR}/Frameworks/macos/$FWNAME.framework
+create_dynamiclib x86_64 "iphonesimulator" ${SCRIPT_DIR}/Frameworks/ios/$FWNAME.framework
+create_dynamiclib arm64 "iphoneos" ${SCRIPT_DIR}/Frameworks/ios/$FWNAME.framework
+create_dynamiclib armv7 "iphoneos" ${SCRIPT_DIR}/Frameworks/ios/$FWNAME.framework
+create_dynamiclib armv7s "iphoneos" ${SCRIPT_DIR}/Frameworks/ios/$FWNAME.framework
+
+# Fat binary macos
+xcrun lipo -create ${SCRIPT_DIR}/Frameworks/macos/$FWNAME.framework/Versions/A/$FWNAME-* -output ${SCRIPT_DIR}/Frameworks/macos/$FWNAME.framework/$FWNAME
+rm ${SCRIPT_DIR}/Frameworks/macos/$FWNAME.framework/Versions/A/$FWNAME-*
+
+# Fat binary ios
+xcrun lipo -create ${SCRIPT_DIR}/Frameworks/ios/$FWNAME.framework/Versions/A/$FWNAME-* -output ${SCRIPT_DIR}/Frameworks/ios/$FWNAME.framework/$FWNAME
+rm ${SCRIPT_DIR}/Frameworks/ios/$FWNAME.framework/Versions/A/$FWNAME-*
+
+# OpenSSL.modulemap
+
 create_module ${SCRIPT_DIR}/Frameworks/ios/$FWNAME.framework
 create_module ${SCRIPT_DIR}/Frameworks/macos/$FWNAME.framework
+
+# Info.plist
+
+# builtin-infoPlistUtility /Users/marcinkrzyzanowski/Devel/OpenSSL/Frameworks/ios/Info.plist -producttype com.apple.product-type.framework -expandbuildsettings -format binary -platform iphonesimulator -o /Users/marcinkrzyzanowski/Devel/OpenSSL/DerivedData/OpenSSL/Build/Products/Debug-iphonesimulator/openssl.framework/Info.plist
+
+# Codesign
+
+/usr/bin/codesign --force --sign - --timestamp=none ${SCRIPT_DIR}/Frameworks/macos/$FWNAME.framework
+/usr/bin/codesign --force --sign - --timestamp=none ${SCRIPT_DIR}/Frameworks/ios/$FWNAME.framework
 
 echo "Created $FWNAME.framework"
