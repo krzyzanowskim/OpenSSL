@@ -113,18 +113,10 @@ build()
       cp "${BUILD_DIR}/${OPENSSL_VERSION}-${ARCH}/lib/libssl.a" "${SCRIPT_DIR}/lib-${TYPE}/libssl.a"
    fi
 
+   mv ${BUILD_DIR}/${OPENSSL_VERSION}-${ARCH}/include/openssl/opensslconf.h ${BUILD_DIR}/${OPENSSL_VERSION}-${ARCH}/include/openssl/opensslconf-${ARCH}.h
+
    rm -rf "${SRC_DIR}"
 }
-
-# Start
-
-if [ ! -f "${SCRIPT_DIR}/openssl-${OPENSSL_VERSION}.tar.gz" ]; then
-   curl -fL "https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz" -o ${SCRIPT_DIR}/openssl-${OPENSSL_VERSION}.tar.gz
-   curl -fL "https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz.sha256" -o ${SCRIPT_DIR}/openssl-${OPENSSL_VERSION}.tar.gz.sha256
-   DIGEST=$( cat ${SCRIPT_DIR}/openssl-${OPENSSL_VERSION}.tar.gz.sha256 )
-   echo "${DIGEST} ${SCRIPT_DIR}/openssl-${OPENSSL_VERSION}.tar.gz" | sha256sum --check --strict
-   rm -f ${SCRIPT_DIR}/openssl-${OPENSSL_VERSION}.tar.gz.sha256
-fi
 
 build_ios() {
    local TMP_DIR=$( mktemp -d )
@@ -133,7 +125,7 @@ build_ios() {
    rm -rf ${SCRIPT_DIR}/{include-ios,lib-ios}
    mkdir -p ${SCRIPT_DIR}/{include-ios,lib-ios}
 
-   # build "i386" ${IPHONESIMULATOR_SDK} ${TMP_DIR} "ios"
+   build "i386" ${IPHONESIMULATOR_SDK} ${TMP_DIR} "ios"
    build "x86_64" ${IPHONESIMULATOR_SDK} ${TMP_DIR} "ios"
    build "armv7"  ${IPHONEOS_SDK} ${TMP_DIR} "ios"
    build "armv7s" ${IPHONEOS_SDK} ${TMP_DIR} "ios"
@@ -141,6 +133,30 @@ build_ios() {
    
    # Copy headers
    cp -r ${TMP_DIR}/${OPENSSL_VERSION}-arm64/include/openssl ${SCRIPT_DIR}/include-ios/
+
+   # opensslconf.h
+   echo "
+/* opensslconf.h */
+#if defined(__APPLE__) && defined (__i386__)
+# include <openssl/opensslconf-i386.h>
+#endif
+
+#if defined(__APPLE__) && defined (__x86_64__)
+# include <openssl/opensslconf-x86_64.h>
+#endif
+
+#if defined(__APPLE__) && defined (__arm__) && defined (__ARM_ARCH_7A__)
+# include <openssl/opensslconf-armv7.h>
+#endif
+
+#if defined(__APPLE__) && defined (__arm__) && defined (__ARM_ARCH_7S__)
+# include <openssl/opensslconf-armv7s.h>
+#endif
+
+#if defined(__APPLE__) && (defined (__arm64__) || defined (__aarch64__))
+# include <openssl/opensslconf-arm64.h>
+#endif
+" > ${SCRIPT_DIR}/include-ios/openssl/opensslconf.h
 
    rm -rf ${TMP_DIR}
 }
@@ -161,7 +177,15 @@ build_macos() {
    rm -rf ${TMP_DIR}
 }
 
+# Start
 
+if [ ! -f "${SCRIPT_DIR}/openssl-${OPENSSL_VERSION}.tar.gz" ]; then
+   curl -fL "https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz" -o ${SCRIPT_DIR}/openssl-${OPENSSL_VERSION}.tar.gz
+   curl -fL "https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz.sha256" -o ${SCRIPT_DIR}/openssl-${OPENSSL_VERSION}.tar.gz.sha256
+   DIGEST=$( cat ${SCRIPT_DIR}/openssl-${OPENSSL_VERSION}.tar.gz.sha256 )
+   echo "${DIGEST} ${SCRIPT_DIR}/openssl-${OPENSSL_VERSION}.tar.gz" | sha256sum --check --strict
+   rm -f ${SCRIPT_DIR}/openssl-${OPENSSL_VERSION}.tar.gz.sha256
+fi
 
 build_ios
 build_macos
