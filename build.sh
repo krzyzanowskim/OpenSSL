@@ -105,12 +105,12 @@ build()
    cd ${BASE_PWD}
 
    # Add arch to library
-   if [ -f "${SCRIPT_DIR}/lib-${TYPE}/libcrypto.a" ]; then
-      xcrun lipo "${SCRIPT_DIR}/lib-${TYPE}/libcrypto.a" "${BUILD_DIR}/${OPENSSL_VERSION}-${ARCH}/lib/libcrypto.a" -create -output "${SCRIPT_DIR}/lib-${TYPE}/libcrypto.a"
-      xcrun lipo "${SCRIPT_DIR}/lib-${TYPE}/libssl.a" "${BUILD_DIR}/${OPENSSL_VERSION}-${ARCH}/lib/libssl.a" -create -output "${SCRIPT_DIR}/lib-${TYPE}/libssl.a"
+   if [ -f "${SCRIPT_DIR}/${TYPE}/lib/libcrypto.a" ]; then
+      xcrun lipo "${SCRIPT_DIR}/${TYPE}/lib/libcrypto.a" "${BUILD_DIR}/${OPENSSL_VERSION}-${ARCH}/lib/libcrypto.a" -create -output "${SCRIPT_DIR}/${TYPE}/lib/libcrypto.a"
+      xcrun lipo "${SCRIPT_DIR}/${TYPE}/lib/libssl.a" "${BUILD_DIR}/${OPENSSL_VERSION}-${ARCH}/lib/libssl.a" -create -output "${SCRIPT_DIR}/${TYPE}/lib/libssl.a"
    else
-      cp "${BUILD_DIR}/${OPENSSL_VERSION}-${ARCH}/lib/libcrypto.a" "${SCRIPT_DIR}/lib-${TYPE}/libcrypto.a"
-      cp "${BUILD_DIR}/${OPENSSL_VERSION}-${ARCH}/lib/libssl.a" "${SCRIPT_DIR}/lib-${TYPE}/libssl.a"
+      cp "${BUILD_DIR}/${OPENSSL_VERSION}-${ARCH}/lib/libcrypto.a" "${SCRIPT_DIR}/${TYPE}/lib/libcrypto.a"
+      cp "${BUILD_DIR}/${OPENSSL_VERSION}-${ARCH}/lib/libssl.a" "${SCRIPT_DIR}/${TYPE}/lib/libssl.a"
    fi
 
    mv ${BUILD_DIR}/${OPENSSL_VERSION}-${ARCH}/include/openssl/opensslconf.h ${BUILD_DIR}/${OPENSSL_VERSION}-${ARCH}/include/openssl/opensslconf-${ARCH}.h
@@ -149,19 +149,19 @@ build_ios() {
    local TMP_DIR=$( mktemp -d )
 
    # Clean up whatever was left from our previous build
-   rm -rf ${SCRIPT_DIR}/{include-ios,lib-ios}
-   mkdir -p ${SCRIPT_DIR}/{include-ios,lib-ios}
+   rm -rf ${SCRIPT_DIR}/{ios/include,ios/lib}
+   mkdir -p ${SCRIPT_DIR}/{ios/include,ios/lib}
 
-   build "i386" ${IPHONESIMULATOR_SDK} ${TMP_DIR} "ios"
+   # build "i386" ${IPHONESIMULATOR_SDK} ${TMP_DIR} "ios"
    build "x86_64" ${IPHONESIMULATOR_SDK} ${TMP_DIR} "ios"
    build "armv7"  ${IPHONEOS_SDK} ${TMP_DIR} "ios"
    build "armv7s" ${IPHONEOS_SDK} ${TMP_DIR} "ios"
    build "arm64"  ${IPHONEOS_SDK} ${TMP_DIR} "ios"
    
    # Copy headers
-   cp -r ${TMP_DIR}/${OPENSSL_VERSION}-arm64/include/openssl ${SCRIPT_DIR}/include-ios/
+   cp -r ${TMP_DIR}/${OPENSSL_VERSION}-arm64/include/openssl ${SCRIPT_DIR}/ios/include
 
-   generate_opensslconfh ${SCRIPT_DIR}/include-ios/openssl/opensslconf.h
+   generate_opensslconfh ${SCRIPT_DIR}/ios/include/openssl/opensslconf.h
 
    rm -rf ${TMP_DIR}
 }
@@ -170,16 +170,16 @@ build_macos() {
    local TMP_DIR=$( mktemp -d )
 
    # Clean up whatever was left from our previous build
-   rm -rf ${SCRIPT_DIR}/{include-macos,lib-macos}
-   mkdir -p ${SCRIPT_DIR}/{include-macos,lib-macos}
+   rm -rf ${SCRIPT_DIR}/{macos/include,macos/lib}
+   mkdir -p ${SCRIPT_DIR}/{macos/include,macos/lib}
 
    # build "i386" ${OSX_SDK} ${TMP_DIR} "macos"
    build "x86_64" ${OSX_SDK} ${TMP_DIR} "macos"
 
    # Copy headers
-   cp -r ${TMP_DIR}/${OPENSSL_VERSION}-x86_64/include/openssl ${SCRIPT_DIR}/include-macos/
+   cp -r ${TMP_DIR}/${OPENSSL_VERSION}-x86_64/include/openssl ${SCRIPT_DIR}/macos/include
 
-   generate_opensslconfh ${SCRIPT_DIR}/include-macos/openssl/opensslconf.h
+   generate_opensslconfh ${SCRIPT_DIR}/macos/include/openssl/opensslconf.h
 
    rm -rf ${TMP_DIR}
 }

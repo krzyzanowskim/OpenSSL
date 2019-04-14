@@ -26,14 +26,14 @@ mkdir -p ${SCRIPT_DIR}/Frameworks/macos/$FWNAME.framework/Modules
 # xcrun --sdk iphoneos lipo -create Frameworks/ios/$FWNAME.framework/$FWNAME-* -output Frameworks/ios/$FWNAME.framework/$FWNAME
 # rm -rf Frameworks/ios/$FWNAME.framework/$FWNAME-*
 
-xcrun -n --sdk iphoneos libtool -dynamic -no_warning_for_no_symbols -undefined dynamic_lookup -ios_version_min $IOS_MIN -o ${SCRIPT_DIR}/Frameworks/ios/$FWNAME.framework/$FWNAME ${SCRIPT_DIR}/lib-ios/libcrypto.a ${SCRIPT_DIR}/lib-ios/libssl.a
+xcrun -n --sdk iphoneos libtool -dynamic -no_warning_for_no_symbols -undefined dynamic_lookup -ios_version_min $IOS_MIN -o ${SCRIPT_DIR}/Frameworks/ios/$FWNAME.framework/$FWNAME ${SCRIPT_DIR}/ios/lib/libcrypto.a ${SCRIPT_DIR}/ios/lib/libssl.a
 # rdar://41396876 - macosx fails randomly
-xcrun -n --sdk macosx   libtool -dynamic -no_warning_for_no_symbols -undefined dynamic_lookup -macosx_version_min $OSX_MIN -o ${SCRIPT_DIR}/Frameworks/macos/$FWNAME.framework/$FWNAME ${SCRIPT_DIR}/lib-macos/libcrypto.a ${SCRIPT_DIR}/lib-macos/libssl.a
+xcrun -n --sdk macosx   libtool -dynamic -no_warning_for_no_symbols -undefined dynamic_lookup -macosx_version_min $OSX_MIN -o ${SCRIPT_DIR}/Frameworks/macos/$FWNAME.framework/$FWNAME ${SCRIPT_DIR}/macos/lib/libcrypto.a ${SCRIPT_DIR}/macos/lib/libssl.a
 
-cp -r ${SCRIPT_DIR}/include-ios/$FWNAME/* ${SCRIPT_DIR}/Frameworks/ios/$FWNAME.framework/Headers/
+cp -r ${SCRIPT_DIR}/ios/include/$FWNAME/* ${SCRIPT_DIR}/Frameworks/ios/$FWNAME.framework/Headers/
 sed -i '' 's/include <openssl/include <OpenSSL/' ${SCRIPT_DIR}/Frameworks/ios/$FWNAME.framework/Headers/*.h
 
-cp -r ${SCRIPT_DIR}/include-macos/$FWNAME/* ${SCRIPT_DIR}/Frameworks/macos/$FWNAME.framework/Headers/
+cp -r ${SCRIPT_DIR}/macos/include/$FWNAME/* ${SCRIPT_DIR}/Frameworks/macos/$FWNAME.framework/Headers/
 sed -i '' 's/include <openssl/include <OpenSSL/' ${SCRIPT_DIR}/Frameworks/macos/$FWNAME.framework/Headers/*.h
 
 echo "Create module"

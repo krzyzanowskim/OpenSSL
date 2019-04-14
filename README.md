@@ -2,12 +2,12 @@
 
 OpenSSL CocoaPod and Carthage for iOS and OSX. Complete solution to OpenSSL on iOS and OSX. Package came with precompiled libraries, and include script to build newer version if necessary.
 
-Current version contains binaries build with SDK iOS 8.0 (target 6.0), and SDK OSX 10.9 (target 10.8) for all supported architectures.
+Current version contains binaries build with latest iOS SDK iOS (target 6.0), and latest OSX SDK (target 10.8) for all supported architectures.
 
 ### Architectures
 
-- iOS with architectures: armv7, armv7s, arm64 + simulator (i386, x86_64)
-- OSX with architectures: i386, x86_64
+- iOS with architectures: armv7, armv7s, arm64 + simulator (x86_64)
+- OSX with architectures: x86_64
 
 ### Why?
 
@@ -22,7 +22,7 @@ Current version contains binaries build with SDK iOS 8.0 (target 6.0), and SDK O
 pod 'OpenSSL-Universal'
 ````
 
-Or always latest version
+Latest development version:
 
 ````
 pod 'OpenSSL-Universal', :git => 'https://github.com/krzyzanowskim/OpenSSL.git', :branch => :master
@@ -83,7 +83,5 @@ The OpenSSL-Universal Framework is a Fat Binary. That means it supports multiple
 You want to ensure Xcode knows; 
 
 1. Where the OpenSSL static libraries are located.
-2. Where the OpenSSL header files are located for the C include statements. 
-Inside your workspace, go to the Target (not the Project).  The Target is the C app that is produced after a successful build.  Select `Build Phases` and `Link Binary With Libraries`.    Select `+` and navigate to the static OpenSSL libraries that was included in the framework.  The magical result was, your `Target` and `Building Settings` `Library Search Paths` were populated without you typing anything.  Now go to the  Target.  In `Build Settings` set the `Always Search User Paths` to `Yes`.  Then add a new entry to the `User Header Search Paths`. This should be the location of the OpenSSL header files that were included in OpenSSLUniversal.
-
-##### Test your app builds: include OpenSSL Header file
+2. Where the OpenSSL header files are located for the C include statements.
+Inside your workspace, go to the Target (not the Project).  The Target is the C app that is produced after a successful build. Select `Build Phases` and `Link Binary With Libraries`.  Select `+` and navigate to the static OpenSSL libraries that was included in the framework.  The magical result was, your `Target` and `Building Settings` `Library Search Paths` were populated without you typing anything. Now go to the  Target.  In `Build Settings` set the `Always Search User Paths` to `Yes`. Then add a new entry to the `User Header Search Paths`. This should be the location of the OpenSSL header files that were included in OpenSSLUniversal.
