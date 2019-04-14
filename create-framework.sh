@@ -62,6 +62,7 @@ create_module() {
     for header in $fw_path/Headers/*
     do
         header=$(basename $header)
+        [[ "$header" = opensslconf-* ]] && continue
         [ "$header" = "$FWNAME.h" ] && continue
         [ "$header" = "ssl.h" ] && continue
         echo "#include \"$header\"" >> $fw_path/Headers/$FWNAME.h

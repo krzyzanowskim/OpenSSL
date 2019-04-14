@@ -41,7 +41,6 @@
 #include "obj_mac.h"
 #include "objects.h"
 #include "ocsp.h"
-#include "opensslconf-x86_64.h"
 #include "opensslconf.h"
 #include "opensslv.h"
 #include "ossl_typ.h"
