@@ -122,8 +122,8 @@ extern "C" {
 
 #if !(defined(VMS) || defined(__VMS)) /* VMS uses logical names instead */
 #if defined(HEADER_CRYPTLIB_H) && !defined(OPENSSLDIR)
-#define ENGINESDIR "/var/folders/hl/5lwrrzrx20d2h38qww1kr9x80000gn/T/tmp.lpnvYG4C/1.0.2r-arm64/lib/engines"
-#define OPENSSLDIR "/var/folders/hl/5lwrrzrx20d2h38qww1kr9x80000gn/T/tmp.lpnvYG4C/1.0.2r-arm64/ssl"
+#define ENGINESDIR "/var/folders/hl/5lwrrzrx20d2h38qww1kr9x80000gn/T/tmp.HZIYk6Ri/1.0.2r-arm64/lib/engines"
+#define OPENSSLDIR "/var/folders/hl/5lwrrzrx20d2h38qww1kr9x80000gn/T/tmp.HZIYk6Ri/1.0.2r-arm64/ssl"
 #endif
 #endif
 

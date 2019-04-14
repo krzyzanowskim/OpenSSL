@@ -25,11 +25,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Gzq5jVkd6weMu0CV+uU5NciIjXw=
+			gwccyKiXRvgSa2ngpGWKCDC75R4=
 			</data>
 			<key>hash2</key>
 			<data>
-			dUW2GcSlZ6ViZtkswKbh0A7nGTWTN69eOpTQdS11LoI=
+			a/+BK+zQnRFWMkDZUqHzfmQ87PiUj+uXjySLWGHfjvo=
 			</data>
 		</dict>
 		<key>Versions/A/Headers/aes.h</key>
@@ -498,11 +498,44 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			FjHuQj7quKYMGgFcLvwi9tCcT+8=
+			AOgtd3y8CDOb6q+FwmqkHIiPbiQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			VvkEVyBD90txVAZFcBhH6bhS/2cePKk4DosWfKvBaho=
+			dx4EPlzjTaHzGezo8M+rC/dFbybcwJOpIhMQdA+7BSs=
+			</data>
+		</dict>
+		<key>Versions/A/Headers/opensslconf-armv7.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			MK1GE2mL04pr9hnI8ZrI9Iup4i8=
+			</data>
+			<key>hash2</key>
+			<data>
+			ReKxLpgn2YDTQ23RH20xo+Cx4fpJP5C7WkwHhfFqfOQ=
+			</data>
+		</dict>
+		<key>Versions/A/Headers/opensslconf-armv7s.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			ZYUou5zU1pWKb1yrtZWSl58OL8I=
+			</data>
+			<key>hash2</key>
+			<data>
+			bMxyJWY8g7KEtW+/qiZi2cupoPVD7gOIDIVEJdo9ODU=
+			</data>
+		</dict>
+		<key>Versions/A/Headers/opensslconf-x86_64.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			2Cf7pBeiHe8+0WgrI+cC5olkY3Q=
+			</data>
+			<key>hash2</key>
+			<data>
+			2j8I5TmErSW4+CNKpNHu/dwReFTcfmh3wchpdZAtZj0=
 			</data>
 		</dict>
 		<key>Versions/A/Headers/opensslconf.h</key>
