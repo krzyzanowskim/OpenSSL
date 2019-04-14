@@ -118,22 +118,8 @@ build()
    rm -rf "${SRC_DIR}"
 }
 
-build_ios() {
-   local TMP_DIR=$( mktemp -d )
-
-   # Clean up whatever was left from our previous build
-   rm -rf ${SCRIPT_DIR}/{include-ios,lib-ios}
-   mkdir -p ${SCRIPT_DIR}/{include-ios,lib-ios}
-
-   build "i386" ${IPHONESIMULATOR_SDK} ${TMP_DIR} "ios"
-   build "x86_64" ${IPHONESIMULATOR_SDK} ${TMP_DIR} "ios"
-   build "armv7"  ${IPHONEOS_SDK} ${TMP_DIR} "ios"
-   build "armv7s" ${IPHONEOS_SDK} ${TMP_DIR} "ios"
-   build "arm64"  ${IPHONEOS_SDK} ${TMP_DIR} "ios"
-   
-   # Copy headers
-   cp -r ${TMP_DIR}/${OPENSSL_VERSION}-arm64/include/openssl ${SCRIPT_DIR}/include-ios/
-
+generate_opensslconfh() {
+   local OPENSSLCONF_PATH=$1
    # opensslconf.h
    echo "
 /* opensslconf.h */
@@ -156,7 +142,26 @@ build_ios() {
 #if defined(__APPLE__) && (defined (__arm64__) || defined (__aarch64__))
 # include <openssl/opensslconf-arm64.h>
 #endif
-" > ${SCRIPT_DIR}/include-ios/openssl/opensslconf.h
+" > ${OPENSSLCONF_PATH}
+}
+
+build_ios() {
+   local TMP_DIR=$( mktemp -d )
+
+   # Clean up whatever was left from our previous build
+   rm -rf ${SCRIPT_DIR}/{include-ios,lib-ios}
+   mkdir -p ${SCRIPT_DIR}/{include-ios,lib-ios}
+
+   build "i386" ${IPHONESIMULATOR_SDK} ${TMP_DIR} "ios"
+   build "x86_64" ${IPHONESIMULATOR_SDK} ${TMP_DIR} "ios"
+   build "armv7"  ${IPHONEOS_SDK} ${TMP_DIR} "ios"
+   build "armv7s" ${IPHONEOS_SDK} ${TMP_DIR} "ios"
+   build "arm64"  ${IPHONEOS_SDK} ${TMP_DIR} "ios"
+   
+   # Copy headers
+   cp -r ${TMP_DIR}/${OPENSSL_VERSION}-arm64/include/openssl ${SCRIPT_DIR}/include-ios/
+
+   generate_opensslconfh ${SCRIPT_DIR}/include-ios/openssl/opensslconf.h
 
    rm -rf ${TMP_DIR}
 }
@@ -171,8 +176,10 @@ build_macos() {
    # build "i386" ${OSX_SDK} ${TMP_DIR} "macos"
    build "x86_64" ${OSX_SDK} ${TMP_DIR} "macos"
 
-   mkdir -p ${SCRIPT_DIR}/include-macos
+   # Copy headers
    cp -r ${TMP_DIR}/${OPENSSL_VERSION}-x86_64/include/openssl ${SCRIPT_DIR}/include-macos/
+
+   generate_opensslconfh ${SCRIPT_DIR}/include-macos/openssl/opensslconf.h
 
    rm -rf ${TMP_DIR}
 }
@@ -189,5 +196,7 @@ fi
 
 build_ios
 build_macos
+
+${SCRIPT_DIR}/create-framework.sh
 
 echo "all done"
