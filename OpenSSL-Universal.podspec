@@ -25,18 +25,18 @@ Pod::Spec.new do |s|
                      'Justin Plouffe' => 'plouffe.justin@gmail.com'}
   
   s.ios.deployment_target = '6.0'
-  s.ios.source_files        = 'include-ios/openssl/**/*.h'
-  s.ios.public_header_files = 'include-ios/openssl/**/*.h'
+  s.ios.source_files        = 'ios/include/openssl/**/*.h'
+  s.ios.public_header_files = 'ios/include/openssl/**/*.h'
   s.ios.header_dir          = 'openssl'
-  s.ios.preserve_paths      = 'lib-ios/libcrypto.a', 'lib-ios/libssl.a'
-  s.ios.vendored_libraries  = 'lib-ios/libcrypto.a', 'lib-ios/libssl.a'
+  s.ios.preserve_paths      = 'ios/lib/libcrypto.a', 'ios/lib/libssl.a'
+  s.ios.vendored_libraries  = 'ios/lib/libcrypto.a', 'ios/lib/libssl.a'
 
   s.osx.deployment_target = '10.8'
-  s.osx.source_files        = 'include-macos/openssl/**/*.h'
-  s.osx.public_header_files = 'include-macos/openssl/**/*.h'
+  s.osx.source_files        = 'macos/include/openssl/**/*.h'
+  s.osx.public_header_files = 'macos/include/openssl/**/*.h'
   s.osx.header_dir          = 'openssl'
-  s.osx.preserve_paths      = 'lib-macos/libcrypto.a', 'lib-macos/libssl.a'
-  s.osx.vendored_libraries  = 'lib-macos/libcrypto.a', 'lib-macos/libssl.a'
+  s.osx.preserve_paths      = 'macos/lib/libcrypto.a', 'macos/lib/libssl.a'
+  s.osx.vendored_libraries  = 'macos/lib/libcrypto.a', 'macos/lib/libssl.a'
 
   s.requires_arc = false
 end
