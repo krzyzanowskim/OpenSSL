@@ -39,7 +39,7 @@ create_dynamiclib() {
         -Xlinker -all_load -lssl -lcrypto -compatibility_version 1 -current_version 1 \
         -Xlinker -export_dynamic \
         -dynamiclib \
-        -install_name @rpath/$FWNAME.framework/Versions/A/$FWNAME \
+        -install_name @rpath/$FWNAME.framework/$FWNAME \
         -Xlinker -rpath -Xlinker @executable_path/../Frameworks \
         -Xlinker -rpath -Xlinker @loader_path/Frameworks ${PLATFORM_MIN_VERSION_ARG} \
         -o ${SCRIPT_DIR}/Frameworks/${PLATFORM_DIR_NAME}/$FWNAME.framework/Versions/A/$FWNAME-${ARCH}
