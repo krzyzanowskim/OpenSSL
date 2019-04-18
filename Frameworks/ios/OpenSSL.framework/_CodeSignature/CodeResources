@@ -714,6 +714,17 @@
 			zPaE9OtWwsqqAdrNSjeP4Gh6P93s0VeqHzZHl37/G1w=
 			</data>
 		</dict>
+		<key>Versions/A/Headers/shim.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			Mp/6ZM3CWM+GvJQnlGPKdwU6b+E=
+			</data>
+			<key>hash2</key>
+			<data>
+			ft/JivmUD9EpzRzEeggX2XSwd14JdhWCkQaQrnGdniw=
+			</data>
+		</dict>
 		<key>Versions/A/Headers/srp.h</key>
 		<dict>
 			<key>hash</key>
@@ -905,11 +916,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			cfNJgyFCbQFyfoJ8h3O8yMkXB7U=
+			1JbUjhL9/ZSLUuewT2Fo2UPsg+A=
 			</data>
 			<key>hash2</key>
 			<data>
-			CBV0TMwKgxUfZa5W+/nOwa6urXKlxUOiuw/WXeSWHbg=
+			vuB5bszxHoyhm6RUOx78r1sE6LRXIMh/Za93G3VgN0U=
 			</data>
 		</dict>
 	</dict>

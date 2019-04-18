@@ -72,10 +72,20 @@ create_module() {
     cat << EOF > $fw_path/Modules/module.modulemap
 framework module $FWNAME {
     umbrella header "$FWNAME.h"
+    header "shim.h"
 
     export *
     module * { export * }
 }
+EOF
+
+    cat << EOF > $fw_path/Headers/shim.h
+#ifndef OpenSSLShim_h
+#define OpenSSLShim_h
+
+// helpers goes here
+
+#endif
 EOF
 }
 
