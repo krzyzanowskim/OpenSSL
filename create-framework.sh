@@ -79,14 +79,8 @@ framework module $FWNAME {
 }
 EOF
 
-    cat << EOF > $fw_path/Headers/shim.h
-#ifndef OpenSSLShim_h
-#define OpenSSLShim_h
-
-// helpers goes here
-
-#endif
-EOF
+    # Copy shim
+    cp -f ${SCRIPT_DIR}/shim/shim.h $fw_path/Headers/shim.h
 }
 
 echo "Creating $FWNAME.framework"
@@ -97,11 +91,9 @@ mkdir -p ${SCRIPT_DIR}/Frameworks/{ios,macos}/$FWNAME.framework/Versions/A/{Head
 ln -s Versions/A/Headers ${SCRIPT_DIR}/Frameworks/ios/$FWNAME.framework/Headers
 ln -s Versions/A/Modules ${SCRIPT_DIR}/Frameworks/ios/$FWNAME.framework/Modules
 ln -s Versions/A/Resources ${SCRIPT_DIR}/Frameworks/ios/$FWNAME.framework/Resources
-# ln -s Versions/A/$FWNAME ${SCRIPT_DIR}/Frameworks/ios/$FWNAME.framework/$FWNAME
 ln -s Versions/A/Headers ${SCRIPT_DIR}/Frameworks/macos/$FWNAME.framework/Headers
 ln -s Versions/A/Modules ${SCRIPT_DIR}/Frameworks/macos/$FWNAME.framework/Modules
 ln -s Versions/A/Resources ${SCRIPT_DIR}/Frameworks/macos/$FWNAME.framework/Resources
-# ln -s Versions/A/$FWNAME ${SCRIPT_DIR}/Frameworks/macos/$FWNAME.framework/$FWNAME
 
 create_dynamiclib x86_64 "macosx" ${SCRIPT_DIR}/Frameworks/macos/$FWNAME.framework
 create_dynamiclib x86_64 "iphonesimulator" ${SCRIPT_DIR}/Frameworks/ios/$FWNAME.framework

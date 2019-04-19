@@ -160,6 +160,7 @@ build_ios() {
    
    # Copy headers
    cp -r ${TMP_DIR}/${OPENSSL_VERSION}-arm64/include/openssl ${SCRIPT_DIR}/ios/include
+   cp -f ${SCRIPT_DIR}/shim/shim.h ${SCRIPT_DIR}/ios/include/openssl/shim.h
 
    # cp -f ${TMP_DIR}/${OPENSSL_VERSION}-i386/include/openssl/opensslconf-i386.h ${SCRIPT_DIR}/ios/include/openssl
    cp -f ${TMP_DIR}/${OPENSSL_VERSION}-x86_64/include/openssl/opensslconf-x86_64.h ${SCRIPT_DIR}/ios/include/openssl
@@ -184,6 +185,7 @@ build_macos() {
 
    # Copy headers
    cp -r ${TMP_DIR}/${OPENSSL_VERSION}-x86_64/include/openssl ${SCRIPT_DIR}/macos/include
+   cp -f ${SCRIPT_DIR}/shim/shim.h ${SCRIPT_DIR}/macos/include/openssl/shim.h
 
    # cp -f ${TMP_DIR}/${OPENSSL_VERSION}-i386/include/openssl/opensslconf-i386.h ${SCRIPT_DIR}/macos/include/openssl
    cp -f ${TMP_DIR}/${OPENSSL_VERSION}-x86_64/include/openssl/opensslconf-x86_64.h ${SCRIPT_DIR}/macos/include/openssl
