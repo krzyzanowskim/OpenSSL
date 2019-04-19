@@ -62,7 +62,7 @@ create_module() {
     for header in $fw_path/Headers/*
     do
         header=$(basename $header)
-        [[ "$header" = opensslconf-* ]] && continue
+        # [[ "$header" = opensslconf-* ]] && continue
         [ "$header" = "$FWNAME.h" ] && continue
         [ "$header" = "ssl.h" ] && continue
         echo "#include \"$header\"" >> $fw_path/Headers/$FWNAME.h
@@ -96,7 +96,9 @@ ln -s Versions/A/Modules ${SCRIPT_DIR}/Frameworks/macos/$FWNAME.framework/Module
 ln -s Versions/A/Resources ${SCRIPT_DIR}/Frameworks/macos/$FWNAME.framework/Resources
 
 create_dynamiclib x86_64 "macosx" ${SCRIPT_DIR}/Frameworks/macos/$FWNAME.framework
+
 create_dynamiclib x86_64 "iphonesimulator" ${SCRIPT_DIR}/Frameworks/ios/$FWNAME.framework
+
 create_dynamiclib arm64 "iphoneos" ${SCRIPT_DIR}/Frameworks/ios/$FWNAME.framework
 create_dynamiclib armv7 "iphoneos" ${SCRIPT_DIR}/Frameworks/ios/$FWNAME.framework
 create_dynamiclib armv7s "iphoneos" ${SCRIPT_DIR}/Frameworks/ios/$FWNAME.framework

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Yay shell scripting! This script builds a static version of
-# OpenSSL ${OPENSSL_VERSION} for iOS and OSX that contains code for armv6, armv7, armv7s, arm64, i386 and x86_64.
+# OpenSSL ${OPENSSL_VERSION} for iOS and OSX that contains code for armv6, armv7, armv7s, arm64, x86_64.
 
 set -e
 # set -x
@@ -80,7 +80,7 @@ build()
 
    if [ "$TYPE" == "ios" ]; then
       # IOS
-      if [ "$ARCH" == "x86_64" ] || [ "$ARCH" == "i386" ]; then
+      if [ "$ARCH" == "x86_64" ]; then
          configure "iPhoneSimulator" $ARCH ${IPHONESIMULATOR_PLATFORM} ${IPHONEOS_SDK_VERSION} ${IPHONEOS_DEPLOYMENT_VERSION} ${BUILD_DIR} ${SRC_DIR}
       else
          configure "iPhoneOS" $ARCH ${IPHONEOS_PLATFORM} ${IPHONEOS_SDK_VERSION} ${IPHONEOS_DEPLOYMENT_VERSION} ${BUILD_DIR} ${SRC_DIR}
@@ -89,10 +89,6 @@ build()
       #OSX
       if [ "$ARCH" == "x86_64" ]; then
          ${SRC_DIR}/Configure darwin64-x86_64-cc --prefix="${BUILD_DIR}/${OPENSSL_VERSION}-${ARCH}" &> "${BUILD_DIR}/${OPENSSL_VERSION}-${ARCH}.log"
-         sed -ie "s!^CFLAG=!CFLAG=-isysroot ${SDK} -arch $ARCH -mmacosx-version-min=${OSX_DEPLOYMENT_VERSION} !" "${SRC_DIR}/Makefile"
-         sed -ie "s!^CFLAGS=!CFLAGS=-isysroot ${SDK} -arch $ARCH -mmacosx-version-min=${OSX_DEPLOYMENT_VERSION} !" "${SRC_DIR}/Makefile"
-      elif [ "$ARCH" == "i386" ]; then
-         ${SRC_DIR}/Configure darwin-i386-cc --prefix="${BUILD_DIR}/${OPENSSL_VERSION}-${ARCH}" &> "${BUILD_DIR}/${OPENSSL_VERSION}-${ARCH}.log"
          sed -ie "s!^CFLAG=!CFLAG=-isysroot ${SDK} -arch $ARCH -mmacosx-version-min=${OSX_DEPLOYMENT_VERSION} !" "${SRC_DIR}/Makefile"
          sed -ie "s!^CFLAGS=!CFLAGS=-isysroot ${SDK} -arch $ARCH -mmacosx-version-min=${OSX_DEPLOYMENT_VERSION} !" "${SRC_DIR}/Makefile"
       fi
@@ -123,10 +119,6 @@ generate_opensslconfh() {
    # opensslconf.h
    echo "
 /* opensslconf.h */
-#if defined(__APPLE__) && defined (__i386__)
-# include <openssl/opensslconf-i386.h>
-#endif
-
 #if defined(__APPLE__) && defined (__x86_64__)
 # include <openssl/opensslconf-x86_64.h>
 #endif
@@ -152,7 +144,6 @@ build_ios() {
    rm -rf ${SCRIPT_DIR}/{ios/include,ios/lib}
    mkdir -p ${SCRIPT_DIR}/{ios/include,ios/lib}
 
-   # build "i386" ${IPHONESIMULATOR_SDK} ${TMP_DIR} "ios"
    build "x86_64" ${IPHONESIMULATOR_SDK} ${TMP_DIR} "ios"
    build "armv7"  ${IPHONEOS_SDK} ${TMP_DIR} "ios"
    build "armv7s" ${IPHONEOS_SDK} ${TMP_DIR} "ios"
@@ -162,7 +153,6 @@ build_ios() {
    cp -r ${TMP_DIR}/${OPENSSL_VERSION}-arm64/include/openssl ${SCRIPT_DIR}/ios/include
    cp -f ${SCRIPT_DIR}/shim/shim.h ${SCRIPT_DIR}/ios/include/openssl/shim.h
 
-   # cp -f ${TMP_DIR}/${OPENSSL_VERSION}-i386/include/openssl/opensslconf-i386.h ${SCRIPT_DIR}/ios/include/openssl
    cp -f ${TMP_DIR}/${OPENSSL_VERSION}-x86_64/include/openssl/opensslconf-x86_64.h ${SCRIPT_DIR}/ios/include/openssl
    cp -f ${TMP_DIR}/${OPENSSL_VERSION}-armv7/include/openssl/opensslconf-armv7.h ${SCRIPT_DIR}/ios/include/openssl
    cp -f ${TMP_DIR}/${OPENSSL_VERSION}-armv7s/include/openssl/opensslconf-armv7s.h ${SCRIPT_DIR}/ios/include/openssl
@@ -180,14 +170,12 @@ build_macos() {
    rm -rf ${SCRIPT_DIR}/{macos/include,macos/lib}
    mkdir -p ${SCRIPT_DIR}/{macos/include,macos/lib}
 
-   # build "i386" ${OSX_SDK} ${TMP_DIR} "macos"
    build "x86_64" ${OSX_SDK} ${TMP_DIR} "macos"
 
    # Copy headers
    cp -r ${TMP_DIR}/${OPENSSL_VERSION}-x86_64/include/openssl ${SCRIPT_DIR}/macos/include
    cp -f ${SCRIPT_DIR}/shim/shim.h ${SCRIPT_DIR}/macos/include/openssl/shim.h
 
-   # cp -f ${TMP_DIR}/${OPENSSL_VERSION}-i386/include/openssl/opensslconf-i386.h ${SCRIPT_DIR}/macos/include/openssl
    cp -f ${TMP_DIR}/${OPENSSL_VERSION}-x86_64/include/openssl/opensslconf-x86_64.h ${SCRIPT_DIR}/macos/include/openssl
 
    generate_opensslconfh ${SCRIPT_DIR}/macos/include/openssl/opensslconf.h

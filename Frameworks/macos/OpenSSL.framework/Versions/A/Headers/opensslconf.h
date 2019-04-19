@@ -1,9 +1,5 @@
 
 /* opensslconf.h */
-#if defined(__APPLE__) && defined (__i386__)
-# include <OpenSSL/opensslconf-i386.h>
-#endif
-
 #if defined(__APPLE__) && defined (__x86_64__)
 # include <OpenSSL/opensslconf-x86_64.h>
 #endif
