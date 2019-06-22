@@ -23,7 +23,7 @@ create_dynamiclib() {
     if [ ${SDK} == "macosx" ]; then
         local PLATFORM_MIN_VERSION_ARG="-mmacosx-version-min=${OSX_MIN}"
     fi
-    
+
     if [ ${PLATFORM_DIR_NAME} == "iphonesimulator" ]; then
         local PLATFORM_MIN_VERSION_ARG="-mios-simulator-version-min=${IOS_MIN}"
     fi
@@ -46,7 +46,7 @@ create_dynamiclib() {
 
         cp -r ${SCRIPT_DIR}/${PLATFORM_DIR_NAME}/include/openssl/* ${SCRIPT_DIR}/Frameworks/${PLATFORM_DIR_NAME}/$FWNAME.framework/Versions/A/Headers/
         sed -i '' 's/include <openssl/include <'"${FWNAME}"'/' ${SCRIPT_DIR}/Frameworks/${PLATFORM_DIR_NAME}/$FWNAME.framework/Versions/A/Headers/*.h
-        # cp -f ${SCRIPT_DIR}/Frameworks/ios/Info.plist ${SCRIPT_DIR}/Frameworks/ios/$FWNAME.framework/Resources
+        cp -f ${SCRIPT_DIR}/Frameworks/ios/Info-preprocessed.plist ${SCRIPT_DIR}/Frameworks/ios/$FWNAME.framework/Resources/Info.plist
 }
 
 create_module() {
@@ -122,7 +122,7 @@ create_module ${SCRIPT_DIR}/Frameworks/macos/$FWNAME.framework
 
 # Codesign
 
-/usr/bin/codesign --force --sign - --timestamp=none ${SCRIPT_DIR}/Frameworks/macos/$FWNAME.framework
-/usr/bin/codesign --force --sign - --timestamp=none ${SCRIPT_DIR}/Frameworks/ios/$FWNAME.framework
+/usr/bin/codesign --force --deep --sign - --timestamp=none ${SCRIPT_DIR}/Frameworks/macos/$FWNAME.framework
+/usr/bin/codesign --force --deep --sign - --timestamp=none ${SCRIPT_DIR}/Frameworks/ios/$FWNAME.framework
 
 echo "Created $FWNAME.framework"

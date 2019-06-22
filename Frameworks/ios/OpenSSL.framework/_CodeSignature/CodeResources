@@ -16,6 +16,15 @@
 			<key>symlink</key>
 			<string>Versions/A/Modules</string>
 		</dict>
+		<key>OpenSSL</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			m0RH/junKxu5Rjhp8Iq1y92+u6o=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"e26eee0edb142b7f1c825a0cca093c14b94fff97" or cdhash H"9b4447fe3ba72b1bb9463869f08ab5cbddbebbaa" or cdhash H"83bce551c20e14f36adcc5d9d8d1fd644e8e2a9a" or cdhash H"448e114976f0390b0fcfe7c17381b6334d8ca3b7" or cdhash H"1f8d210d3a2f7fcb30f9391a23bb85675421bd18" or cdhash H"b11908a4f55a6800438464d12b3c2c40538f9d82" or cdhash H"7b38801e9bc1c6d5dbaafe3fc3d18dc12c03259f" or cdhash H"258bc013a440c95e5adb1beee90cf3e82191a8b7"</string>
+		</dict>
 		<key>Resources</key>
 		<dict>
 			<key>symlink</key>
@@ -921,6 +930,17 @@
 			<key>hash2</key>
 			<data>
 			vuB5bszxHoyhm6RUOx78r1sE6LRXIMh/Za93G3VgN0U=
+			</data>
+		</dict>
+		<key>Versions/A/Resources/Info.plist</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			lkXuUG/5I4dTL0mb16lLRQ5Mv8s=
+			</data>
+			<key>hash2</key>
+			<data>
+			Jc/bUKSKn1B1KCdVKwEvLOrzIPC/qE8//ED5MNC5L8k=
 			</data>
 		</dict>
 	</dict>
