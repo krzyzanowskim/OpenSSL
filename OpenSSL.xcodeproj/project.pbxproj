@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		757359FA22BEBE2C00BC52E8 /* opensslconf-arm64.h in Headers */ = {isa = PBXBuildFile; fileRef = 757359F622BEBE2B00BC52E8 /* opensslconf-arm64.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		757359FB22BEBE2C00BC52E8 /* opensslconf-armv7s.h in Headers */ = {isa = PBXBuildFile; fileRef = 757359F722BEBE2B00BC52E8 /* opensslconf-armv7s.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		757359FC22BEBE2C00BC52E8 /* opensslconf-x86_64.h in Headers */ = {isa = PBXBuildFile; fileRef = 757359F822BEBE2C00BC52E8 /* opensslconf-x86_64.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		757359FD22BEBE2C00BC52E8 /* opensslconf-armv7.h in Headers */ = {isa = PBXBuildFile; fileRef = 757359F922BEBE2C00BC52E8 /* opensslconf-armv7.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		757359FF22BEBE5800BC52E8 /* opensslconf-x86_64.h in Headers */ = {isa = PBXBuildFile; fileRef = 757359FE22BEBE5800BC52E8 /* opensslconf-x86_64.h */; };
 		75F1C98D22BE87FB00F44E23 /* shim.h in Headers */ = {isa = PBXBuildFile; fileRef = 75F1C98B22BE87E600F44E23 /* shim.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75F1C98F22BE881300F44E23 /* shim.h in Headers */ = {isa = PBXBuildFile; fileRef = 75F1C98E22BE881200F44E23 /* shim.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9F4A26B9223BD8DB005CB63A /* mdc2.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F4A266E223BD8D5005CB63A /* mdc2.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -168,9 +173,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		757359F622BEBE2B00BC52E8 /* opensslconf-arm64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "opensslconf-arm64.h"; path = "ios/include/openssl/opensslconf-arm64.h"; sourceTree = "<group>"; };
+		757359F722BEBE2B00BC52E8 /* opensslconf-armv7s.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "opensslconf-armv7s.h"; path = "ios/include/openssl/opensslconf-armv7s.h"; sourceTree = "<group>"; };
+		757359F822BEBE2C00BC52E8 /* opensslconf-x86_64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "opensslconf-x86_64.h"; path = "ios/include/openssl/opensslconf-x86_64.h"; sourceTree = "<group>"; };
+		757359F922BEBE2C00BC52E8 /* opensslconf-armv7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "opensslconf-armv7.h"; path = "ios/include/openssl/opensslconf-armv7.h"; sourceTree = "<group>"; };
+		757359FE22BEBE5800BC52E8 /* opensslconf-x86_64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "opensslconf-x86_64.h"; path = "macos/include/openssl/opensslconf-x86_64.h"; sourceTree = "<group>"; };
 		75F1C98B22BE87E600F44E23 /* shim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = shim.h; path = macos/include/openssl/shim.h; sourceTree = "<group>"; };
 		75F1C98E22BE881200F44E23 /* shim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = shim.h; path = ios/include/openssl/shim.h; sourceTree = "<group>"; };
-		9F4A265C223BD82B005CB63A /* openssl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = openssl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F4A265C223BD82B005CB63A /* OpenSSL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OpenSSL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F4A266E223BD8D5005CB63A /* mdc2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mdc2.h; path = ios/include/openssl/mdc2.h; sourceTree = "<group>"; };
 		9F4A266F223BD8D5005CB63A /* aes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aes.h; path = ios/include/openssl/aes.h; sourceTree = "<group>"; };
 		9F4A2670223BD8D5005CB63A /* blowfish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = blowfish.h; path = ios/include/openssl/blowfish.h; sourceTree = "<group>"; };
@@ -250,7 +260,7 @@
 		9F4A2706223BD900005CB63A /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = ios/lib/libcrypto.a; sourceTree = "<group>"; };
 		9F4A270A223BD99D005CB63A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Frameworks/ios/Info.plist; sourceTree = "<group>"; };
 		9F4A270D223BD9EB005CB63A /* openssl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = openssl.h; path = Frameworks/ios/openssl.h; sourceTree = "<group>"; };
-		9F4A2716223BE476005CB63A /* openssl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = openssl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F4A2716223BE476005CB63A /* OpenSSL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OpenSSL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F4A271F223BE4E6005CB63A /* openssl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = openssl.h; path = Frameworks/macos/openssl.h; sourceTree = "<group>"; };
 		9F4A2720223BE4E7005CB63A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Frameworks/macos/Info.plist; sourceTree = "<group>"; };
 		9F4A2726223BE554005CB63A /* seed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = seed.h; path = macos/include/openssl/seed.h; sourceTree = "<group>"; };
@@ -366,8 +376,8 @@
 		9F4A264F223BD6C6005CB63A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9F4A265C223BD82B005CB63A /* openssl.framework */,
-				9F4A2716223BE476005CB63A /* openssl.framework */,
+				9F4A265C223BD82B005CB63A /* OpenSSL.framework */,
+				9F4A2716223BE476005CB63A /* OpenSSL.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -430,6 +440,10 @@
 				9F4A268C223BD8D7005CB63A /* objects.h */,
 				9F4A2675223BD8D5005CB63A /* ocsp.h */,
 				9F4A269E223BD8D8005CB63A /* opensslconf.h */,
+				757359F622BEBE2B00BC52E8 /* opensslconf-arm64.h */,
+				757359F922BEBE2C00BC52E8 /* opensslconf-armv7.h */,
+				757359F722BEBE2B00BC52E8 /* opensslconf-armv7s.h */,
+				757359F822BEBE2C00BC52E8 /* opensslconf-x86_64.h */,
 				9F4A269C223BD8D8005CB63A /* opensslv.h */,
 				9F4A2683223BD8D6005CB63A /* ossl_typ.h */,
 				9F4A26A9223BD8D9005CB63A /* pem.h */,
@@ -542,6 +556,7 @@
 				9F4A2757223BE558005CB63A /* objects.h */,
 				9F4A2744223BE556005CB63A /* ocsp.h */,
 				9F4A2736223BE555005CB63A /* opensslconf.h */,
+				757359FE22BEBE5800BC52E8 /* opensslconf-x86_64.h */,
 				9F4A276E223BE55A005CB63A /* opensslv.h */,
 				9F4A276D223BE55A005CB63A /* ossl_typ.h */,
 				9F4A2760223BE559005CB63A /* pem.h */,
@@ -601,6 +616,7 @@
 				9F4A26D3223BD8DB005CB63A /* sha.h in Headers */,
 				9F4A26F2223BD8DB005CB63A /* ssl23.h in Headers */,
 				9F4A26ED223BD8DB005CB63A /* pem2.h in Headers */,
+				757359FC22BEBE2C00BC52E8 /* opensslconf-x86_64.h in Headers */,
 				9F4A26BC223BD8DB005CB63A /* stack.h in Headers */,
 				9F4A26E5223BD8DB005CB63A /* ui_compat.h in Headers */,
 				9F4A26D7223BD8DB005CB63A /* objects.h in Headers */,
@@ -612,6 +628,8 @@
 				9F4A26DF223BD8DB005CB63A /* dtls1.h in Headers */,
 				9F4A26DA223BD8DB005CB63A /* dsa.h in Headers */,
 				9F4A26D8223BD8DB005CB63A /* conf_api.h in Headers */,
+				757359FB22BEBE2C00BC52E8 /* opensslconf-armv7s.h in Headers */,
+				757359FD22BEBE2C00BC52E8 /* opensslconf-armv7.h in Headers */,
 				9F4A26C0223BD8DB005CB63A /* ocsp.h in Headers */,
 				9F4A2700223BD8DB005CB63A /* kssl.h in Headers */,
 				9F4A26C6223BD8DB005CB63A /* cms.h in Headers */,
@@ -635,6 +653,7 @@
 				9F4A26CF223BD8DB005CB63A /* ripemd.h in Headers */,
 				9F4A26F5223BD8DB005CB63A /* crypto.h in Headers */,
 				9F4A26FE223BD8DB005CB63A /* des.h in Headers */,
+				757359FA22BEBE2C00BC52E8 /* opensslconf-arm64.h in Headers */,
 				9F4A26D9223BD8DB005CB63A /* camellia.h in Headers */,
 				9F4A2702223BD8DB005CB63A /* bn.h in Headers */,
 				9F4A26C9223BD8DB005CB63A /* seed.h in Headers */,
@@ -687,6 +706,7 @@
 				9F4A2799223BE55A005CB63A /* camellia.h in Headers */,
 				9F4A2776223BE55A005CB63A /* x509.h in Headers */,
 				9F4A278C223BE55A005CB63A /* ripemd.h in Headers */,
+				757359FF22BEBE5800BC52E8 /* opensslconf-x86_64.h in Headers */,
 				9F4A27AE223BE55B005CB63A /* des_old.h in Headers */,
 				9F4A27A1223BE55A005CB63A /* md4.h in Headers */,
 				9F4A279D223BE55A005CB63A /* dso.h in Headers */,
@@ -767,7 +787,7 @@
 			);
 			name = "OpenSSL (iOS)";
 			productName = "OpenSSL (iOS)";
-			productReference = 9F4A265C223BD82B005CB63A /* openssl.framework */;
+			productReference = 9F4A265C223BD82B005CB63A /* OpenSSL.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		9F4A2715223BE476005CB63A /* OpenSSL (macOS) */ = {
@@ -785,7 +805,7 @@
 			);
 			name = "OpenSSL (macOS)";
 			productName = OpenSSL;
-			productReference = 9F4A2716223BE476005CB63A /* openssl.framework */;
+			productReference = 9F4A2716223BE476005CB63A /* OpenSSL.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -948,7 +968,7 @@
 					"-all_load",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.krzyzanowskim.OpenSSL;
-				PRODUCT_NAME = openssl;
+				PRODUCT_NAME = OpenSSL;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -1032,7 +1052,7 @@
 					"-all_load",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.krzyzanowskim.OpenSSL;
-				PRODUCT_NAME = openssl;
+				PRODUCT_NAME = OpenSSL;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -1126,7 +1146,7 @@
 					"-all_load",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.krzyzanowskim.OpenSSL;
-				PRODUCT_NAME = openssl;
+				PRODUCT_NAME = OpenSSL;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -1211,7 +1231,7 @@
 					"-all_load",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.krzyzanowskim.OpenSSL;
-				PRODUCT_NAME = openssl;
+				PRODUCT_NAME = OpenSSL;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
