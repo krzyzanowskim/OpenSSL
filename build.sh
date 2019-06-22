@@ -11,7 +11,7 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
 # Setup paths to stuff we need
 
-OPENSSL_VERSION="1.0.2r"
+OPENSSL_VERSION="1.0.2s"
 
 DEVELOPER=$(xcode-select --print-path)
 
@@ -70,7 +70,7 @@ build()
 
    export BUILD_TOOLS="${DEVELOPER}"
    export CC="${BUILD_TOOLS}/usr/bin/gcc -fembed-bitcode -arch ${ARCH}"
-   
+
    # Change dir
    cd "${SRC_DIR}"
 
@@ -85,7 +85,7 @@ build()
       else
          configure "iPhoneOS" $ARCH ${IPHONEOS_PLATFORM} ${IPHONEOS_SDK_VERSION} ${IPHONEOS_DEPLOYMENT_VERSION} ${BUILD_DIR} ${SRC_DIR}
       fi
-   elif [ "$TYPE" == "macos" ]; then    
+   elif [ "$TYPE" == "macos" ]; then
       #OSX
       if [ "$ARCH" == "x86_64" ]; then
          ${SRC_DIR}/Configure darwin64-x86_64-cc --prefix="${BUILD_DIR}/${OPENSSL_VERSION}-${ARCH}" &> "${BUILD_DIR}/${OPENSSL_VERSION}-${ARCH}.log"
@@ -148,7 +148,7 @@ build_ios() {
    build "armv7"  ${IPHONEOS_SDK} ${TMP_DIR} "ios"
    build "armv7s" ${IPHONEOS_SDK} ${TMP_DIR} "ios"
    build "arm64"  ${IPHONEOS_SDK} ${TMP_DIR} "ios"
-   
+
    # Copy headers
    cp -r ${TMP_DIR}/${OPENSSL_VERSION}-arm64/include/openssl ${SCRIPT_DIR}/ios/include
    cp -f ${SCRIPT_DIR}/shim/shim.h ${SCRIPT_DIR}/ios/include/openssl/shim.h
