@@ -75,3 +75,4 @@
 #include "x509.h"
 #include "x509_vfy.h"
 #include "x509v3.h"
+#include "shim.h"
