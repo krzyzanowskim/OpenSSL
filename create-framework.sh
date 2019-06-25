@@ -46,7 +46,7 @@ create_dynamiclib() {
 
         cp -r ${SCRIPT_DIR}/${PLATFORM_DIR_NAME}/include/openssl/* ${SCRIPT_DIR}/Frameworks/${PLATFORM_DIR_NAME}/$FWNAME.framework/Versions/A/Headers/
         sed -i '' 's/include <openssl/include <'"${FWNAME}"'/' ${SCRIPT_DIR}/Frameworks/${PLATFORM_DIR_NAME}/$FWNAME.framework/Versions/A/Headers/*.h
-        cp -f ${SCRIPT_DIR}/Frameworks/ios/Info-preprocessed.plist ${SCRIPT_DIR}/Frameworks/ios/$FWNAME.framework/Resources/Info.plist
+        # cp -f ${SCRIPT_DIR}/Frameworks/ios/Info-preprocessed.plist ${SCRIPT_DIR}/Frameworks/ios/$FWNAME.framework/Resources/Info.plist
 }
 
 create_module() {
