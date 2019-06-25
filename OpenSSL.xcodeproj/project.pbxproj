@@ -91,8 +91,8 @@
 		9F4A2703223BD8DB005CB63A /* krb5_asn.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F4A26B8223BD8DB005CB63A /* krb5_asn.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9F4A2707223BD900005CB63A /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F4A2705223BD900005CB63A /* libssl.a */; };
 		9F4A2708223BD900005CB63A /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F4A2706223BD900005CB63A /* libcrypto.a */; };
-		9F4A270E223BD9EB005CB63A /* openssl.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F4A270D223BD9EB005CB63A /* openssl.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9F4A2723223BE516005CB63A /* openssl.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F4A271F223BE4E6005CB63A /* openssl.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9F4A270E223BD9EB005CB63A /* OpenSSL.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F4A270D223BD9EB005CB63A /* OpenSSL.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9F4A2723223BE516005CB63A /* OpenSSL.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F4A271F223BE4E6005CB63A /* OpenSSL.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9F4A2771223BE55A005CB63A /* seed.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F4A2726223BE554005CB63A /* seed.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9F4A2772223BE55A005CB63A /* dtls1.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F4A2727223BE554005CB63A /* dtls1.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9F4A2773223BE55A005CB63A /* tls1.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F4A2728223BE554005CB63A /* tls1.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -259,9 +259,9 @@
 		9F4A2705223BD900005CB63A /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = ios/lib/libssl.a; sourceTree = "<group>"; };
 		9F4A2706223BD900005CB63A /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = ios/lib/libcrypto.a; sourceTree = "<group>"; };
 		9F4A270A223BD99D005CB63A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Frameworks/ios/Info.plist; sourceTree = "<group>"; };
-		9F4A270D223BD9EB005CB63A /* openssl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = openssl.h; path = Frameworks/ios/openssl.h; sourceTree = "<group>"; };
+		9F4A270D223BD9EB005CB63A /* OpenSSL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OpenSSL.h; path = Frameworks/ios/OpenSSL.h; sourceTree = "<group>"; };
 		9F4A2716223BE476005CB63A /* OpenSSL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OpenSSL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9F4A271F223BE4E6005CB63A /* openssl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = openssl.h; path = Frameworks/macos/openssl.h; sourceTree = "<group>"; };
+		9F4A271F223BE4E6005CB63A /* OpenSSL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OpenSSL.h; path = Frameworks/macos/OpenSSL.h; sourceTree = "<group>"; };
 		9F4A2720223BE4E7005CB63A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Frameworks/macos/Info.plist; sourceTree = "<group>"; };
 		9F4A2726223BE554005CB63A /* seed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = seed.h; path = macos/include/openssl/seed.h; sourceTree = "<group>"; };
 		9F4A2727223BE554005CB63A /* dtls1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dtls1.h; path = macos/include/openssl/dtls1.h; sourceTree = "<group>"; };
@@ -388,7 +388,7 @@
 				9F4A266D223BD8C7005CB63A /* Headers */,
 				9F4A2704223BD8E4005CB63A /* Libraries */,
 				9F4A270A223BD99D005CB63A /* Info.plist */,
-				9F4A270D223BD9EB005CB63A /* openssl.h */,
+				9F4A270D223BD9EB005CB63A /* OpenSSL.h */,
 			);
 			name = "OpenSSL (iOS)";
 			sourceTree = "<group>";
@@ -495,7 +495,7 @@
 				9F4A2725223BE53E005CB63A /* Headers */,
 				9F4A2724223BE537005CB63A /* Libraries */,
 				9F4A2720223BE4E7005CB63A /* Info.plist */,
-				9F4A271F223BE4E6005CB63A /* openssl.h */,
+				9F4A271F223BE4E6005CB63A /* OpenSSL.h */,
 			);
 			name = "OpenSSL (macOS)";
 			sourceTree = "<group>";
@@ -679,7 +679,7 @@
 				9F4A26C1223BD8DB005CB63A /* bio.h in Headers */,
 				9F4A26E0223BD8DB005CB63A /* pqueue.h in Headers */,
 				9F4A26D6223BD8DB005CB63A /* des_old.h in Headers */,
-				9F4A270E223BD9EB005CB63A /* openssl.h in Headers */,
+				9F4A270E223BD9EB005CB63A /* OpenSSL.h in Headers */,
 				9F4A26D1223BD8DB005CB63A /* ts.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -710,7 +710,7 @@
 				9F4A27AE223BE55B005CB63A /* des_old.h in Headers */,
 				9F4A27A1223BE55A005CB63A /* md4.h in Headers */,
 				9F4A279D223BE55A005CB63A /* dso.h in Headers */,
-				9F4A2723223BE516005CB63A /* openssl.h in Headers */,
+				9F4A2723223BE516005CB63A /* OpenSSL.h in Headers */,
 				9F4A2774223BE55A005CB63A /* buffer.h in Headers */,
 				9F4A277F223BE55A005CB63A /* safestack.h in Headers */,
 				9F4A27A7223BE55A005CB63A /* engine.h in Headers */,
