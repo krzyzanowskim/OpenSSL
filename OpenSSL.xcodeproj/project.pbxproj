@@ -11,7 +11,7 @@
 		757359FB22BEBE2C00BC52E8 /* opensslconf-armv7s.h in Headers */ = {isa = PBXBuildFile; fileRef = 757359F722BEBE2B00BC52E8 /* opensslconf-armv7s.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		757359FC22BEBE2C00BC52E8 /* opensslconf-x86_64.h in Headers */ = {isa = PBXBuildFile; fileRef = 757359F822BEBE2C00BC52E8 /* opensslconf-x86_64.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		757359FD22BEBE2C00BC52E8 /* opensslconf-armv7.h in Headers */ = {isa = PBXBuildFile; fileRef = 757359F922BEBE2C00BC52E8 /* opensslconf-armv7.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		757359FF22BEBE5800BC52E8 /* opensslconf-x86_64.h in Headers */ = {isa = PBXBuildFile; fileRef = 757359FE22BEBE5800BC52E8 /* opensslconf-x86_64.h */; };
+		757359FF22BEBE5800BC52E8 /* opensslconf-x86_64.h in Headers */ = {isa = PBXBuildFile; fileRef = 757359FE22BEBE5800BC52E8 /* opensslconf-x86_64.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75F1C98D22BE87FB00F44E23 /* shim.h in Headers */ = {isa = PBXBuildFile; fileRef = 75F1C98B22BE87E600F44E23 /* shim.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75F1C98F22BE881300F44E23 /* shim.h in Headers */ = {isa = PBXBuildFile; fileRef = 75F1C98E22BE881200F44E23 /* shim.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9F4A26B9223BD8DB005CB63A /* mdc2.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F4A266E223BD8D5005CB63A /* mdc2.h */; settings = {ATTRIBUTES = (Public, ); }; };
