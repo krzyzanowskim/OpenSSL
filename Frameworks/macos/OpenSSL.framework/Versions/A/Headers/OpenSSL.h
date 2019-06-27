@@ -1,4 +1,6 @@
+// Include before others:
 #include "ssl.h"
+
 #include "aes.h"
 #include "asn1.h"
 #include "asn1_mac.h"
@@ -41,8 +43,8 @@
 #include "obj_mac.h"
 #include "objects.h"
 #include "ocsp.h"
-#include "opensslconf-x86_64.h"
 #include "opensslconf.h"
+#include "opensslconf-x86_64.h"
 #include "opensslv.h"
 #include "ossl_typ.h"
 #include "pem.h"
@@ -58,7 +60,6 @@
 #include "safestack.h"
 #include "seed.h"
 #include "sha.h"
-#include "shim.h"
 #include "srp.h"
 #include "srtp.h"
 #include "ssl2.h"
@@ -75,3 +76,4 @@
 #include "x509.h"
 #include "x509_vfy.h"
 #include "x509v3.h"
+#include "shim.h"
