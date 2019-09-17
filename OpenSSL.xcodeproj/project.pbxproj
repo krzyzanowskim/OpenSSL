@@ -14,6 +14,7 @@
 		757359FF22BEBE5800BC52E8 /* opensslconf-x86_64.h in Headers */ = {isa = PBXBuildFile; fileRef = 757359FE22BEBE5800BC52E8 /* opensslconf-x86_64.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75F1C98D22BE87FB00F44E23 /* shim.h in Headers */ = {isa = PBXBuildFile; fileRef = 75F1C98B22BE87E600F44E23 /* shim.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75F1C98F22BE881300F44E23 /* shim.h in Headers */ = {isa = PBXBuildFile; fileRef = 75F1C98E22BE881200F44E23 /* shim.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		84BBFB582331B8D300DD11C1 /* opensslconf-i386.h in Headers */ = {isa = PBXBuildFile; fileRef = 84BBFB572331B8D200DD11C1 /* opensslconf-i386.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9F4A26B9223BD8DB005CB63A /* mdc2.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F4A266E223BD8D5005CB63A /* mdc2.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9F4A26BA223BD8DB005CB63A /* aes.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F4A266F223BD8D5005CB63A /* aes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9F4A26BB223BD8DB005CB63A /* blowfish.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F4A2670223BD8D5005CB63A /* blowfish.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -180,6 +181,7 @@
 		757359FE22BEBE5800BC52E8 /* opensslconf-x86_64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "opensslconf-x86_64.h"; path = "macos/include/openssl/opensslconf-x86_64.h"; sourceTree = "<group>"; };
 		75F1C98B22BE87E600F44E23 /* shim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = shim.h; path = macos/include/openssl/shim.h; sourceTree = "<group>"; };
 		75F1C98E22BE881200F44E23 /* shim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = shim.h; path = ios/include/openssl/shim.h; sourceTree = "<group>"; };
+		84BBFB572331B8D200DD11C1 /* opensslconf-i386.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "opensslconf-i386.h"; path = "ios/include/openssl/opensslconf-i386.h"; sourceTree = "<group>"; };
 		9F4A265C223BD82B005CB63A /* OpenSSL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OpenSSL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F4A266E223BD8D5005CB63A /* mdc2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mdc2.h; path = ios/include/openssl/mdc2.h; sourceTree = "<group>"; };
 		9F4A266F223BD8D5005CB63A /* aes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aes.h; path = ios/include/openssl/aes.h; sourceTree = "<group>"; };
@@ -443,6 +445,7 @@
 				757359F622BEBE2B00BC52E8 /* opensslconf-arm64.h */,
 				757359F922BEBE2C00BC52E8 /* opensslconf-armv7.h */,
 				757359F722BEBE2B00BC52E8 /* opensslconf-armv7s.h */,
+				84BBFB572331B8D200DD11C1 /* opensslconf-i386.h */,
 				757359F822BEBE2C00BC52E8 /* opensslconf-x86_64.h */,
 				9F4A269C223BD8D8005CB63A /* opensslv.h */,
 				9F4A2683223BD8D6005CB63A /* ossl_typ.h */,
@@ -680,6 +683,7 @@
 				9F4A26E0223BD8DB005CB63A /* pqueue.h in Headers */,
 				9F4A26D6223BD8DB005CB63A /* des_old.h in Headers */,
 				9F4A270E223BD9EB005CB63A /* OpenSSL.h in Headers */,
+				84BBFB582331B8D300DD11C1 /* opensslconf-i386.h in Headers */,
 				9F4A26D1223BD8DB005CB63A /* ts.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
