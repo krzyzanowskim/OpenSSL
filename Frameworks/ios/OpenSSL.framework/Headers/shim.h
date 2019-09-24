@@ -21,6 +21,22 @@ static inline void EVP_PKEY_assign_wrapper(EVP_PKEY *pkey, RSA *rsakey) {
     EVP_PKEY_assign(pkey, EVP_PKEY_RSA, rsakey);
 }
 
+static inline STACK_OF(CMS_SignerInfo) *STACK_CMS_SignerInfo_new_null() {
+  return SKM_sk_new_null(CMS_SignerInfo);
+}
+
+static inline void STACK_CMS_SignerInfo_free(STACK_OF(CMS_SignerInfo) *stack) {
+  SKM_sk_free(CMS_SignerInfo, stack);
+}
+
+static inline int STACK_CMS_SignerInfo_push(STACK_OF(CMS_SignerInfo) *stack, void *data) {
+  return SKM_sk_push(CMS_SignerInfo, stack, data);
+}
+
+static inline void *STACK_CMS_SignerInfo_pop(STACK_OF(CMS_SignerInfo) *stack) {
+  return SKM_sk_pop(CMS_SignerInfo, stack);
+}
+
 static inline STACK_OF(X509) *STACK_X509_new_null() {
     return SKM_sk_new_null(X509);
 }

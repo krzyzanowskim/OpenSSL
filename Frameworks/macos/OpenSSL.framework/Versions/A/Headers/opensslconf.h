@@ -4,6 +4,10 @@
 # include <openssl/opensslconf-x86_64.h>
 #endif
 
+#if defined(__APPLE__) && defined (__i386__)
+# include <openssl/opensslconf-i386.h>
+#endif
+
 #if defined(__APPLE__) && defined (__arm__) && defined (__ARM_ARCH_7A__)
 # include <openssl/opensslconf-armv7.h>
 #endif
