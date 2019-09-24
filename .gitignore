@@ -21,3 +21,6 @@ xcuserdata/
 **/xcshareddata/WorkspaceSettings.xcsettings
 
 Carthage/
+
+*.tar.gz
+*.tar.gz.sha256
