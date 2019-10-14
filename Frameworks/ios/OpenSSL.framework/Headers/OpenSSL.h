@@ -48,6 +48,7 @@
 #include "opensslconf-armv7.h"
 #include "opensslconf-armv7s.h"
 #include "opensslconf-x86_64.h"
+#include "opensslconf-i386.h"
 #include "opensslv.h"
 #include "ossl_typ.h"
 #include "pem.h"
