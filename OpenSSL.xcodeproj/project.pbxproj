@@ -965,6 +965,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ios/lib",
 				);
+				MARKETING_VERSION = 1.0.220;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1051,6 +1052,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ios/lib",
 				);
+				MARKETING_VERSION = 1.0.220;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = (
@@ -1144,6 +1146,7 @@
 					"$(PROJECT_DIR)/macos/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MARKETING_VERSION = 1.0.220;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1230,6 +1233,7 @@
 					"$(PROJECT_DIR)/macos/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MARKETING_VERSION = 1.0.220;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = (

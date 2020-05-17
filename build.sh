@@ -11,7 +11,7 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
 # Setup paths to stuff we need
 
-OPENSSL_VERSION="1.0.2t"
+OPENSSL_VERSION="1.0.2u"
 
 DEVELOPER=$(xcode-select --print-path)
 
