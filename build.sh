@@ -28,6 +28,21 @@ OSX_DEPLOYMENT_VERSION="10.8"
 OSX_PLATFORM=$(xcrun --sdk macosx --show-sdk-platform-path)
 OSX_SDK=$(xcrun --sdk macosx --show-sdk-path)
 
+# Turn versions like 1.2.3 into numbers that can be compare by bash.
+version()
+{
+   printf "%03d%03d%03d%03d" $(tr '.' ' ' <<<"$1");
+}
+
+BUILD_MACOS_ARM64=
+BUILD_IPHONESIMULATOR_ARM64=
+if [ $(version $OSX_SDK_VERSION) -ge $(version 11.0) ]; then
+   BUILD_MACOS_ARM64=YES
+   # 2020-07-10: The Xcode 12 beta SDK does not support iPhoneSimulator ARM64 builds.
+   # Once it does, uncomment the next line and edit or remove `OpenSSL.xcconfig`
+   # BUILD_IPHONESIMULATOR_ARM64=YES
+fi
+
 configure() {
    local OS=$1
    local ARCH=$2
@@ -42,35 +57,49 @@ configure() {
    export CROSS_TOP="${PLATFORM}/Developer"
    export CROSS_SDK="${OS}${SDK_VERSION}.sdk"
 
+   local PREFIX="${BUILD_DIR}/${OPENSSL_VERSION}-${OS}-${ARCH}"
+
    if [ "$ARCH" == "x86_64" ]; then
-       ${SRC_DIR}/Configure darwin64-x86_64-cc --prefix="${BUILD_DIR}/${OPENSSL_VERSION}-${ARCH}" &> "${BUILD_DIR}/${OPENSSL_VERSION}-${ARCH}.log"
-       sed -ie "s!^CFLAG=!CFLAG=-isysroot ${CROSS_TOP}/SDKs/${CROSS_SDK} -fembed-bitcode -arch $ARCH -mios-simulator-version-min=${DEPLOYMENT_VERSION} -miphoneos-version-min=${DEPLOYMENT_VERSION} !" "${SRC_DIR}/Makefile"
-       sed -ie "s!^CFLAGS=!CFLAGS=-isysroot ${CROSS_TOP}/SDKs/${CROSS_SDK} -fembed-bitcode -arch $ARCH -mios-simulator-version-min=${DEPLOYMENT_VERSION} -miphoneos-version-min=${DEPLOYMENT_VERSION} !" "${SRC_DIR}/Makefile"
+      if [ "$OS" == "MacOSX" ]; then
+         ${SRC_DIR}/Configure darwin64-x86_64-cc --prefix="${PREFIX}" &> "${PREFIX}.config.log"
+         sed -ie "s!^CFLAG=!CFLAG=-isysroot ${CROSS_TOP}/SDKs/${CROSS_SDK} -arch $ARCH -mmacosx-version-min=${DEPLOYMENT_VERSION} !" "${SRC_DIR}/Makefile"
+         sed -ie "s!^CFLAGS=!CFLAGS=-isysroot ${CROSS_TOP}/SDKs/${CROSS_SDK} -arch $ARCH -mmacosx-version-min=${DEPLOYMENT_VERSION} !" "${SRC_DIR}/Makefile"
+      else
+	 ${SRC_DIR}/Configure darwin64-x86_64-cc --prefix="${PREFIX}" &> "${PREFIX}.config.log"
+	 sed -ie "s!^CFLAG=!CFLAG=-isysroot ${CROSS_TOP}/SDKs/${CROSS_SDK} -fembed-bitcode -arch $ARCH -mios-simulator-version-min=${DEPLOYMENT_VERSION} -miphoneos-version-min=${DEPLOYMENT_VERSION} !" "${SRC_DIR}/Makefile"
+	 sed -ie "s!^CFLAGS=!CFLAGS=-isysroot ${CROSS_TOP}/SDKs/${CROSS_SDK} -fembed-bitcode -arch $ARCH -mios-simulator-version-min=${DEPLOYMENT_VERSION} -miphoneos-version-min=${DEPLOYMENT_VERSION} !" "${SRC_DIR}/Makefile"
+      fi
    elif [ "$ARCH" == "i386" ]; then
-       ${SRC_DIR}/Configure darwin-i386-cc --prefix="${BUILD_DIR}/${OPENSSL_VERSION}-${ARCH}" &> "${BUILD_DIR}/${OPENSSL_VERSION}-${ARCH}-conf.log"
-       sed -ie "s!^CFLAG=!CFLAG=-isysroot ${CROSS_TOP}/SDKs/${CROSS_SDK} -fembed-bitcode -arch $ARCH -mios-simulator-version-min=${DEPLOYMENT_VERSION} -miphoneos-version-min=${DEPLOYMENT_VERSION} !" "${SRC_DIR}/Makefile"
-       sed -ie "s!^CFLAGS=!CFLAGS=-isysroot ${CROSS_TOP}/SDKs/${CROSS_SDK} -fembed-bitcode -arch $ARCH -mios-simulator-version-min=${DEPLOYMENT_VERSION} -miphoneos-version-min=${DEPLOYMENT_VERSION} !" "${SRC_DIR}/Makefile"
+      ${SRC_DIR}/Configure darwin-i386-cc --prefix="${PREFIX}" &> "${PREFIX}.config.log"
+      sed -ie "s!^CFLAG=!CFLAG=-isysroot ${CROSS_TOP}/SDKs/${CROSS_SDK} -fembed-bitcode -arch $ARCH -mios-simulator-version-min=${DEPLOYMENT_VERSION} -miphoneos-version-min=${DEPLOYMENT_VERSION} !" "${SRC_DIR}/Makefile"
+      sed -ie "s!^CFLAGS=!CFLAGS=-isysroot ${CROSS_TOP}/SDKs/${CROSS_SDK} -fembed-bitcode -arch $ARCH -mios-simulator-version-min=${DEPLOYMENT_VERSION} -miphoneos-version-min=${DEPLOYMENT_VERSION} !" "${SRC_DIR}/Makefile"
+   elif [ "$ARCH" == "arm64" -a "$OS" == "MacOSX" ]; then
+      # 2020-07-09: No target darwin64-arm64-cc yet, but iphoneos-cross seems to work fine here.
+      ${SRC_DIR}/Configure iphoneos-cross -no-asm --prefix="${PREFIX}" &> "${PREFIX}.config.log"
+      sed -ie "s!^CFLAG=!CFLAG=-isysroot ${CROSS_TOP}/SDKs/${CROSS_SDK} -arch $ARCH -mmacosx-version-min=${DEPLOYMENT_VERSION} !" "${SRC_DIR}/Makefile"
+      sed -ie "s!^CFLAGS=!CFLAGS=-isysroot ${CROSS_TOP}/SDKs/${CROSS_SDK} -arch $ARCH -mmacosx-version-min=${DEPLOYMENT_VERSION} !" "${SRC_DIR}/Makefile"
    else
-       ${SRC_DIR}/Configure iphoneos-cross -no-asm --prefix="${BUILD_DIR}/${OPENSSL_VERSION}-${ARCH}" &> "${BUILD_DIR}/${OPENSSL_VERSION}-${ARCH}.log"
-       sed -ie "s!^CFLAG=!CFLAG=-mios-simulator-version-min=${DEPLOYMENT_VERSION} -fembed-bitcode -miphoneos-version-min=${DEPLOYMENT_VERSION} -arch ${ARCH} !" "${SRC_DIR}/Makefile"
-       sed -ie "s!^CFLAGS=!CFLAGS=-mios-simulator-version-min=${DEPLOYMENT_VERSION} -fembed-bitcode -miphoneos-version-min=${DEPLOYMENT_VERSION} -arch ${ARCH} !" "${SRC_DIR}/Makefile"
-       perl -i -pe 's|static volatile sig_atomic_t intr_signal|static volatile int intr_signal|' ${SRC_DIR}/crypto/ui/ui_openssl.c
+      ${SRC_DIR}/Configure iphoneos-cross -no-asm --prefix="${PREFIX}" &> "${PREFIX}.config.log"
+      sed -ie "s!^CFLAG=!CFLAG=-mios-simulator-version-min=${DEPLOYMENT_VERSION} -fembed-bitcode -miphoneos-version-min=${DEPLOYMENT_VERSION} -arch ${ARCH} !" "${SRC_DIR}/Makefile"
+      sed -ie "s!^CFLAGS=!CFLAGS=-mios-simulator-version-min=${DEPLOYMENT_VERSION} -fembed-bitcode -miphoneos-version-min=${DEPLOYMENT_VERSION} -arch ${ARCH} !" "${SRC_DIR}/Makefile"
+      perl -i -pe 's|static volatile sig_atomic_t intr_signal|static volatile int intr_signal|' ${SRC_DIR}/crypto/ui/ui_openssl.c
    fi
 }
 
 build()
 {
    local ARCH=$1
-   local SDK=$2
+   local OS=$2
    local BUILD_DIR=$3
    local TYPE=$4
 
    local SRC_DIR="${BUILD_DIR}/openssl-${OPENSSL_VERSION}-${TYPE}"
+   local PREFIX="${BUILD_DIR}/${OPENSSL_VERSION}-${OS}-${ARCH}"
 
    mkdir -p "${SRC_DIR}"
    tar xzf "${SCRIPT_DIR}/openssl-${OPENSSL_VERSION}.tar.gz" -C "${SRC_DIR}" --strip-components=1
 
-   echo "Building for ${SDK##*/} ${ARCH}"
+   echo "Building for ${OS} ${ARCH}"
 
    export BUILD_TOOLS="${DEVELOPER}"
    export CC="${BUILD_TOOLS}/usr/bin/gcc"
@@ -83,23 +112,17 @@ build()
 
    sed -ie "s/BIGNUM \*I,/BIGNUM \*i,/g" ${SRC_DIR}/crypto/rsa/rsa.h
 
-   if [ "$TYPE" == "ios" ]; then
-      # IOS
-      if [ "$ARCH" == "x86_64" ] || [ "$ARCH" == "i386" ]; then
-         configure "iPhoneSimulator" $ARCH ${IPHONESIMULATOR_PLATFORM} ${IPHONEOS_SDK_VERSION} ${IPHONEOS_DEPLOYMENT_VERSION} ${BUILD_DIR} ${SRC_DIR}
-      else
-         configure "iPhoneOS" $ARCH ${IPHONEOS_PLATFORM} ${IPHONEOS_SDK_VERSION} ${IPHONEOS_DEPLOYMENT_VERSION} ${BUILD_DIR} ${SRC_DIR}
-      fi
-   elif [ "$TYPE" == "macos" ]; then
-      #OSX
-      if [ "$ARCH" == "x86_64" ]; then
-         ${SRC_DIR}/Configure darwin64-x86_64-cc --prefix="${BUILD_DIR}/${OPENSSL_VERSION}-${ARCH}" &> "${BUILD_DIR}/${OPENSSL_VERSION}-${ARCH}.log"
-         sed -ie "s!^CFLAG=!CFLAG=-isysroot ${SDK} -arch $ARCH -mmacosx-version-min=${OSX_DEPLOYMENT_VERSION} !" "${SRC_DIR}/Makefile"
-         sed -ie "s!^CFLAGS=!CFLAGS=-isysroot ${SDK} -arch $ARCH -mmacosx-version-min=${OSX_DEPLOYMENT_VERSION} !" "${SRC_DIR}/Makefile"
-      fi
+   if [ "$OS" == "iPhoneSimulator" ]; then
+      configure "${OS}" $ARCH ${IPHONESIMULATOR_PLATFORM} ${IPHONEOS_SDK_VERSION} ${IPHONEOS_DEPLOYMENT_VERSION} ${BUILD_DIR} ${SRC_DIR}
+   elif [ "$OS" == "iPhoneOS" ]; then
+      configure "${OS}" $ARCH ${IPHONEOS_PLATFORM} ${IPHONEOS_SDK_VERSION} ${IPHONEOS_DEPLOYMENT_VERSION} ${BUILD_DIR} ${SRC_DIR}
+   elif [ "$OS" == "MacOSX" ]; then
+      configure "${OS}" $ARCH ${OSX_PLATFORM} ${OSX_SDK_VERSION} ${OSX_DEPLOYMENT_VERSION} ${BUILD_DIR} ${SRC_DIR}
+   else
+      exit 1
    fi
 
-   LOG_PATH="${BUILD_DIR}/${OPENSSL_VERSION}-${ARCH}.log"
+   LOG_PATH="${PREFIX}.build.log"
    echo "Building ${LOG_PATH}"
    make &> ${LOG_PATH}
    make install &> ${LOG_PATH}
@@ -107,14 +130,14 @@ build()
 
    # Add arch to library
    if [ -f "${SCRIPT_DIR}/${TYPE}/lib/libcrypto.a" ]; then
-      xcrun lipo "${SCRIPT_DIR}/${TYPE}/lib/libcrypto.a" "${BUILD_DIR}/${OPENSSL_VERSION}-${ARCH}/lib/libcrypto.a" -create -output "${SCRIPT_DIR}/${TYPE}/lib/libcrypto.a"
-      xcrun lipo "${SCRIPT_DIR}/${TYPE}/lib/libssl.a" "${BUILD_DIR}/${OPENSSL_VERSION}-${ARCH}/lib/libssl.a" -create -output "${SCRIPT_DIR}/${TYPE}/lib/libssl.a"
+      xcrun lipo "${SCRIPT_DIR}/${TYPE}/lib/libcrypto.a" "${PREFIX}/lib/libcrypto.a" -create -output "${SCRIPT_DIR}/${TYPE}/lib/libcrypto.a"
+      xcrun lipo "${SCRIPT_DIR}/${TYPE}/lib/libssl.a" "${PREFIX}/lib/libssl.a" -create -output "${SCRIPT_DIR}/${TYPE}/lib/libssl.a"
    else
-      cp "${BUILD_DIR}/${OPENSSL_VERSION}-${ARCH}/lib/libcrypto.a" "${SCRIPT_DIR}/${TYPE}/lib/libcrypto.a"
-      cp "${BUILD_DIR}/${OPENSSL_VERSION}-${ARCH}/lib/libssl.a" "${SCRIPT_DIR}/${TYPE}/lib/libssl.a"
+      cp "${PREFIX}/lib/libcrypto.a" "${SCRIPT_DIR}/${TYPE}/lib/libcrypto.a"
+      cp "${PREFIX}/lib/libssl.a" "${SCRIPT_DIR}/${TYPE}/lib/libssl.a"
    fi
 
-   mv ${BUILD_DIR}/${OPENSSL_VERSION}-${ARCH}/include/openssl/opensslconf.h ${BUILD_DIR}/${OPENSSL_VERSION}-${ARCH}/include/openssl/opensslconf-${ARCH}.h
+   mv ${PREFIX}/include/openssl/opensslconf.h ${PREFIX}/include/openssl/opensslconf-${ARCH}.h
 
    rm -rf "${SRC_DIR}"
 }
@@ -153,21 +176,23 @@ build_ios() {
    rm -rf ${SCRIPT_DIR}/{ios/include,ios/lib}
    mkdir -p ${SCRIPT_DIR}/{ios/include,ios/lib}
 
-   build "i386" ${IPHONESIMULATOR_SDK} ${TMP_DIR} "ios"
-   build "x86_64" ${IPHONESIMULATOR_SDK} ${TMP_DIR} "ios"
-   build "armv7"  ${IPHONEOS_SDK} ${TMP_DIR} "ios"
-   build "armv7s" ${IPHONEOS_SDK} ${TMP_DIR} "ios"
-   build "arm64"  ${IPHONEOS_SDK} ${TMP_DIR} "ios"
+   build "i386" "iPhoneSimulator" ${TMP_DIR} "ios"
+   build "x86_64" "iPhoneSimulator" ${TMP_DIR} "ios"
+   [ -n "$BUILD_IPHONESIMULATOR_ARM64" ] && build "arm64" "iPhoneSimulator" ${TMP_DIR} "ios"
+   build "armv7" "iPhoneOS" ${TMP_DIR} "ios"
+   build "armv7s" "iPhoneOS" ${TMP_DIR} "ios"
+   build "arm64" "iPhoneOS" ${TMP_DIR} "ios"
 
    # Copy headers
-   cp -r ${TMP_DIR}/${OPENSSL_VERSION}-arm64/include/openssl ${SCRIPT_DIR}/ios/include
+   cp -r ${TMP_DIR}/${OPENSSL_VERSION}-iPhoneOS-arm64/include/openssl ${SCRIPT_DIR}/ios/include
    cp -f ${SCRIPT_DIR}/shim/shim.h ${SCRIPT_DIR}/ios/include/openssl/shim.h
 
-   cp -f ${TMP_DIR}/${OPENSSL_VERSION}-x86_64/include/openssl/opensslconf-x86_64.h ${SCRIPT_DIR}/ios/include/openssl
-   cp -f ${TMP_DIR}/${OPENSSL_VERSION}-i386/include/openssl/opensslconf-i386.h ${SCRIPT_DIR}/ios/include/openssl
-   cp -f ${TMP_DIR}/${OPENSSL_VERSION}-armv7/include/openssl/opensslconf-armv7.h ${SCRIPT_DIR}/ios/include/openssl
-   cp -f ${TMP_DIR}/${OPENSSL_VERSION}-armv7s/include/openssl/opensslconf-armv7s.h ${SCRIPT_DIR}/ios/include/openssl
-   cp -f ${TMP_DIR}/${OPENSSL_VERSION}-arm64/include/openssl/opensslconf-arm64.h ${SCRIPT_DIR}/ios/include/openssl
+   cp -f ${TMP_DIR}/${OPENSSL_VERSION}-iPhoneSimulator-x86_64/include/openssl/opensslconf-x86_64.h ${SCRIPT_DIR}/ios/include/openssl
+   cp -f ${TMP_DIR}/${OPENSSL_VERSION}-iPhoneSimulator-i386/include/openssl/opensslconf-i386.h ${SCRIPT_DIR}/ios/include/openssl
+   [ -n "$BUILD_IPHONESIMULATOR_ARM64" ] && cp -f ${TMP_DIR}/${OPENSSL_VERSION}-iPhoneSimulator-arm64/include/openssl/opensslconf-arm64.h ${SCRIPT_DIR}/ios/include/openssl
+   cp -f ${TMP_DIR}/${OPENSSL_VERSION}-iPhoneOS-armv7/include/openssl/opensslconf-armv7.h ${SCRIPT_DIR}/ios/include/openssl
+   cp -f ${TMP_DIR}/${OPENSSL_VERSION}-iPhoneOS-armv7s/include/openssl/opensslconf-armv7s.h ${SCRIPT_DIR}/ios/include/openssl
+   cp -f ${TMP_DIR}/${OPENSSL_VERSION}-iPhoneOS-arm64/include/openssl/opensslconf-arm64.h ${SCRIPT_DIR}/ios/include/openssl
 
    generate_opensslconfh ${SCRIPT_DIR}/ios/include/openssl/opensslconf.h
 
@@ -181,13 +206,15 @@ build_macos() {
    rm -rf ${SCRIPT_DIR}/{macos/include,macos/lib}
    mkdir -p ${SCRIPT_DIR}/{macos/include,macos/lib}
 
-   build "x86_64" ${OSX_SDK} ${TMP_DIR} "macos"
+   build "x86_64" "MacOSX" ${TMP_DIR} "macos"
+   [ -n "$BUILD_MACOS_ARM64" ] && build "arm64" "MacOSX" ${TMP_DIR} "macos"
 
    # Copy headers
-   cp -r ${TMP_DIR}/${OPENSSL_VERSION}-x86_64/include/openssl ${SCRIPT_DIR}/macos/include
+   cp -r ${TMP_DIR}/${OPENSSL_VERSION}-MacOSX-x86_64/include/openssl ${SCRIPT_DIR}/macos/include
    cp -f ${SCRIPT_DIR}/shim/shim.h ${SCRIPT_DIR}/macos/include/openssl/shim.h
 
-   cp -f ${TMP_DIR}/${OPENSSL_VERSION}-x86_64/include/openssl/opensslconf-x86_64.h ${SCRIPT_DIR}/macos/include/openssl
+   cp -f ${TMP_DIR}/${OPENSSL_VERSION}-MacOSX-x86_64/include/openssl/opensslconf-x86_64.h ${SCRIPT_DIR}/macos/include/openssl
+   [ -n "$BUILD_MACOS_ARM64" ] && cp -f ${TMP_DIR}/${OPENSSL_VERSION}-MacOSX-arm64/include/openssl/opensslconf-arm64.h ${SCRIPT_DIR}/macos/include/openssl
 
    generate_opensslconfh ${SCRIPT_DIR}/macos/include/openssl/opensslconf.h
 
