@@ -15,17 +15,13 @@ OPENSSL_VERSION="1.0.2u"
 
 DEVELOPER=$(xcode-select --print-path)
 
-IPHONEOS_SDK_VERSION=$(xcrun --sdk iphoneos --show-sdk-version)
 IPHONEOS_DEPLOYMENT_VERSION="6.0"
-IPHONEOS_PLATFORM=$(xcrun --sdk iphoneos --show-sdk-platform-path)
 IPHONEOS_SDK=$(xcrun --sdk iphoneos --show-sdk-path)
 
-IPHONESIMULATOR_PLATFORM=$(xcrun --sdk iphonesimulator --show-sdk-platform-path)
 IPHONESIMULATOR_SDK=$(xcrun --sdk iphonesimulator --show-sdk-path)
 
 OSX_SDK_VERSION=$(xcrun --sdk macosx --show-sdk-version)
 OSX_DEPLOYMENT_VERSION="10.8"
-OSX_PLATFORM=$(xcrun --sdk macosx --show-sdk-platform-path)
 OSX_SDK=$(xcrun --sdk macosx --show-sdk-path)
 
 # Turn versions like 1.2.3 into numbers that can be compare by bash.
@@ -46,38 +42,57 @@ fi
 configure() {
    local OS=$1
    local ARCH=$2
-   local PLATFORM=$3
-   local SDK_VERSION=$4
-   local DEPLOYMENT_VERSION=$5
-   local BUILD_DIR=$6
-   local SRC_DIR=$7
+   local DEPLOYMENT_VERSION=$3
+   local BUILD_DIR=$4
+   local SRC_DIR=$5
 
-   echo "Configuring for ${PLATFORM##*/} ${ARCH}"
+   echo "Configuring for ${OS} ${ARCH}"
 
-   export CROSS_TOP="${PLATFORM}/Developer"
-   export CROSS_SDK="${OS}${SDK_VERSION}.sdk"
-
+   local SDK=
+   case "$OS" in
+      iPhoneOS)
+	 SDK="${IPHONEOS_SDK}"
+	 ;;
+      iPhoneSimulator)
+	 SDK="${IPHONESIMULATOR_SDK}"
+	 ;;
+      MacOSX)
+	 SDK="${OSX_SDK}"
+	 ;;
+      *)
+	 echo "Unsupported OS '${OS}'!" >&1
+	 exit 1
+	 ;;
+   esac
    local PREFIX="${BUILD_DIR}/${OPENSSL_VERSION}-${OS}-${ARCH}"
+
+   export CROSS_TOP="${SDK%%/SDKs/*}"
+   export CROSS_SDK="${SDK##*/SDKs/}"
+   if [ -z "$CROSS_TOP" -o -z "$CROSS_SDK" ]; then
+      echo "Failed to parse SDK path '${SDK}'!" >&1
+      exit 2
+   fi
+   
 
    if [ "$ARCH" == "x86_64" ]; then
       if [ "$OS" == "MacOSX" ]; then
          ${SRC_DIR}/Configure darwin64-x86_64-cc --prefix="${PREFIX}" &> "${PREFIX}.config.log"
-         sed -ie "s!^CFLAG=!CFLAG=-isysroot ${CROSS_TOP}/SDKs/${CROSS_SDK} -arch $ARCH -mmacosx-version-min=${DEPLOYMENT_VERSION} !" "${SRC_DIR}/Makefile"
-         sed -ie "s!^CFLAGS=!CFLAGS=-isysroot ${CROSS_TOP}/SDKs/${CROSS_SDK} -arch $ARCH -mmacosx-version-min=${DEPLOYMENT_VERSION} !" "${SRC_DIR}/Makefile"
+         sed -ie "s!^CFLAG=!CFLAG=-isysroot ${SDK} -arch $ARCH -mmacosx-version-min=${DEPLOYMENT_VERSION} !" "${SRC_DIR}/Makefile"
+         sed -ie "s!^CFLAGS=!CFLAGS=-isysroot ${SDK} -arch $ARCH -mmacosx-version-min=${DEPLOYMENT_VERSION} !" "${SRC_DIR}/Makefile"
       else
 	 ${SRC_DIR}/Configure darwin64-x86_64-cc --prefix="${PREFIX}" &> "${PREFIX}.config.log"
-	 sed -ie "s!^CFLAG=!CFLAG=-isysroot ${CROSS_TOP}/SDKs/${CROSS_SDK} -fembed-bitcode -arch $ARCH -mios-simulator-version-min=${DEPLOYMENT_VERSION} -miphoneos-version-min=${DEPLOYMENT_VERSION} !" "${SRC_DIR}/Makefile"
-	 sed -ie "s!^CFLAGS=!CFLAGS=-isysroot ${CROSS_TOP}/SDKs/${CROSS_SDK} -fembed-bitcode -arch $ARCH -mios-simulator-version-min=${DEPLOYMENT_VERSION} -miphoneos-version-min=${DEPLOYMENT_VERSION} !" "${SRC_DIR}/Makefile"
+	 sed -ie "s!^CFLAG=!CFLAG=-isysroot ${SDK} -fembed-bitcode -arch $ARCH -mios-simulator-version-min=${DEPLOYMENT_VERSION} -miphoneos-version-min=${DEPLOYMENT_VERSION} !" "${SRC_DIR}/Makefile"
+	 sed -ie "s!^CFLAGS=!CFLAGS=-isysroot ${SDK} -fembed-bitcode -arch $ARCH -mios-simulator-version-min=${DEPLOYMENT_VERSION} -miphoneos-version-min=${DEPLOYMENT_VERSION} !" "${SRC_DIR}/Makefile"
       fi
    elif [ "$ARCH" == "i386" ]; then
       ${SRC_DIR}/Configure darwin-i386-cc --prefix="${PREFIX}" &> "${PREFIX}.config.log"
-      sed -ie "s!^CFLAG=!CFLAG=-isysroot ${CROSS_TOP}/SDKs/${CROSS_SDK} -fembed-bitcode -arch $ARCH -mios-simulator-version-min=${DEPLOYMENT_VERSION} -miphoneos-version-min=${DEPLOYMENT_VERSION} !" "${SRC_DIR}/Makefile"
-      sed -ie "s!^CFLAGS=!CFLAGS=-isysroot ${CROSS_TOP}/SDKs/${CROSS_SDK} -fembed-bitcode -arch $ARCH -mios-simulator-version-min=${DEPLOYMENT_VERSION} -miphoneos-version-min=${DEPLOYMENT_VERSION} !" "${SRC_DIR}/Makefile"
+      sed -ie "s!^CFLAG=!CFLAG=-isysroot ${SDK} -fembed-bitcode -arch $ARCH -mios-simulator-version-min=${DEPLOYMENT_VERSION} -miphoneos-version-min=${DEPLOYMENT_VERSION} !" "${SRC_DIR}/Makefile"
+      sed -ie "s!^CFLAGS=!CFLAGS=-isysroot ${SDK} -fembed-bitcode -arch $ARCH -mios-simulator-version-min=${DEPLOYMENT_VERSION} -miphoneos-version-min=${DEPLOYMENT_VERSION} !" "${SRC_DIR}/Makefile"
    elif [ "$ARCH" == "arm64" -a "$OS" == "MacOSX" ]; then
       # 2020-07-09: No target darwin64-arm64-cc yet, but iphoneos-cross seems to work fine here.
       ${SRC_DIR}/Configure iphoneos-cross -no-asm --prefix="${PREFIX}" &> "${PREFIX}.config.log"
-      sed -ie "s!^CFLAG=!CFLAG=-isysroot ${CROSS_TOP}/SDKs/${CROSS_SDK} -arch $ARCH -mmacosx-version-min=${DEPLOYMENT_VERSION} !" "${SRC_DIR}/Makefile"
-      sed -ie "s!^CFLAGS=!CFLAGS=-isysroot ${CROSS_TOP}/SDKs/${CROSS_SDK} -arch $ARCH -mmacosx-version-min=${DEPLOYMENT_VERSION} !" "${SRC_DIR}/Makefile"
+      sed -ie "s!^CFLAG=!CFLAG=-isysroot ${SDK} -arch $ARCH -mmacosx-version-min=${DEPLOYMENT_VERSION} !" "${SRC_DIR}/Makefile"
+      sed -ie "s!^CFLAGS=!CFLAGS=-isysroot ${SDK} -arch $ARCH -mmacosx-version-min=${DEPLOYMENT_VERSION} !" "${SRC_DIR}/Makefile"
    else
       ${SRC_DIR}/Configure iphoneos-cross -no-asm --prefix="${PREFIX}" &> "${PREFIX}.config.log"
       sed -ie "s!^CFLAG=!CFLAG=-mios-simulator-version-min=${DEPLOYMENT_VERSION} -fembed-bitcode -miphoneos-version-min=${DEPLOYMENT_VERSION} -arch ${ARCH} !" "${SRC_DIR}/Makefile"
@@ -113,11 +128,11 @@ build()
    sed -ie "s/BIGNUM \*I,/BIGNUM \*i,/g" ${SRC_DIR}/crypto/rsa/rsa.h
 
    if [ "$OS" == "iPhoneSimulator" ]; then
-      configure "${OS}" $ARCH ${IPHONESIMULATOR_PLATFORM} ${IPHONEOS_SDK_VERSION} ${IPHONEOS_DEPLOYMENT_VERSION} ${BUILD_DIR} ${SRC_DIR}
+      configure "${OS}" $ARCH ${IPHONEOS_DEPLOYMENT_VERSION} ${BUILD_DIR} ${SRC_DIR}
    elif [ "$OS" == "iPhoneOS" ]; then
-      configure "${OS}" $ARCH ${IPHONEOS_PLATFORM} ${IPHONEOS_SDK_VERSION} ${IPHONEOS_DEPLOYMENT_VERSION} ${BUILD_DIR} ${SRC_DIR}
+      configure "${OS}" $ARCH ${IPHONEOS_DEPLOYMENT_VERSION} ${BUILD_DIR} ${SRC_DIR}
    elif [ "$OS" == "MacOSX" ]; then
-      configure "${OS}" $ARCH ${OSX_PLATFORM} ${OSX_SDK_VERSION} ${OSX_DEPLOYMENT_VERSION} ${BUILD_DIR} ${SRC_DIR}
+      configure "${OS}" $ARCH ${OSX_DEPLOYMENT_VERSION} ${BUILD_DIR} ${SRC_DIR}
    else
       exit 1
    fi
