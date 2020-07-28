@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Yay shell scripting! This script builds a static version of
-# OpenSSL ${OPENSSL_VERSION} for iOS and OSX that contains code for armv6, armv7, armv7s, arm64, x86_64.
+# OpenSSL for iOS and OSX that contains code for armv6, armv7, armv7s, arm64, x86_64.
 
 set -e
 # set -x
@@ -11,17 +11,18 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
 # Setup paths to stuff we need
 
-OPENSSL_VERSION="1.0.2u"
+OPENSSL_VERSION="1.1.1g"
+export OPENSSL_LOCAL_CONFIG_DIR="${SCRIPT_DIR}/config"
 
 DEVELOPER=$(xcode-select --print-path)
 
-IPHONEOS_DEPLOYMENT_VERSION="6.0"
+export IPHONEOS_DEPLOYMENT_VERSION="7.0"
 IPHONEOS_SDK=$(xcrun --sdk iphoneos --show-sdk-path)
 
 IPHONESIMULATOR_SDK=$(xcrun --sdk iphonesimulator --show-sdk-path)
 
 OSX_SDK_VERSION=$(xcrun --sdk macosx --show-sdk-version)
-OSX_DEPLOYMENT_VERSION="10.8"
+export OSX_DEPLOYMENT_VERSION="10.10"
 OSX_SDK=$(xcrun --sdk macosx --show-sdk-path)
 
 # Turn versions like 1.2.3 into numbers that can be compare by bash.
@@ -42,9 +43,8 @@ fi
 configure() {
    local OS=$1
    local ARCH=$2
-   local DEPLOYMENT_VERSION=$3
-   local BUILD_DIR=$4
-   local SRC_DIR=$5
+   local BUILD_DIR=$3
+   local SRC_DIR=$4
 
    echo "Configuring for ${OS} ${ARCH}"
 
@@ -64,6 +64,7 @@ configure() {
 	 exit 1
 	 ;;
    esac
+
    local PREFIX="${BUILD_DIR}/${OPENSSL_VERSION}-${OS}-${ARCH}"
 
    export CROSS_TOP="${SDK%%/SDKs/*}"
@@ -76,28 +77,17 @@ configure() {
 
    if [ "$ARCH" == "x86_64" ]; then
       if [ "$OS" == "MacOSX" ]; then
-         ${SRC_DIR}/Configure darwin64-x86_64-cc --prefix="${PREFIX}" &> "${PREFIX}.config.log"
-         sed -ie "s!^CFLAG=!CFLAG=-isysroot ${SDK} -arch $ARCH -mmacosx-version-min=${DEPLOYMENT_VERSION} !" "${SRC_DIR}/Makefile"
-         sed -ie "s!^CFLAGS=!CFLAGS=-isysroot ${SDK} -arch $ARCH -mmacosx-version-min=${DEPLOYMENT_VERSION} !" "${SRC_DIR}/Makefile"
+         ${SRC_DIR}/Configure darwin64-x86_64-cc no-asm no-shared no-async --prefix="${PREFIX}" &> "${PREFIX}.config.log"
       else
-	 ${SRC_DIR}/Configure darwin64-x86_64-cc --prefix="${PREFIX}" &> "${PREFIX}.config.log"
-	 sed -ie "s!^CFLAG=!CFLAG=-isysroot ${SDK} -fembed-bitcode -arch $ARCH -mios-simulator-version-min=${DEPLOYMENT_VERSION} -miphoneos-version-min=${DEPLOYMENT_VERSION} !" "${SRC_DIR}/Makefile"
-	 sed -ie "s!^CFLAGS=!CFLAGS=-isysroot ${SDK} -fembed-bitcode -arch $ARCH -mios-simulator-version-min=${DEPLOYMENT_VERSION} -miphoneos-version-min=${DEPLOYMENT_VERSION} !" "${SRC_DIR}/Makefile"
+         ${SRC_DIR}/Configure ios-sim-cross-$ARCH no-asm no-shared no-async --prefix="${PREFIX}" &> "${PREFIX}.config.log"
       fi
    elif [ "$ARCH" == "i386" ]; then
-      ${SRC_DIR}/Configure darwin-i386-cc --prefix="${PREFIX}" &> "${PREFIX}.config.log"
-      sed -ie "s!^CFLAG=!CFLAG=-isysroot ${SDK} -fembed-bitcode -arch $ARCH -mios-simulator-version-min=${DEPLOYMENT_VERSION} -miphoneos-version-min=${DEPLOYMENT_VERSION} !" "${SRC_DIR}/Makefile"
-      sed -ie "s!^CFLAGS=!CFLAGS=-isysroot ${SDK} -fembed-bitcode -arch $ARCH -mios-simulator-version-min=${DEPLOYMENT_VERSION} -miphoneos-version-min=${DEPLOYMENT_VERSION} !" "${SRC_DIR}/Makefile"
+      ${SRC_DIR}/Configure ios-sim-cross-$ARCH no-asm no-shared no-async --prefix="${PREFIX}" &> "${PREFIX}.config.log"
    elif [ "$ARCH" == "arm64" -a "$OS" == "MacOSX" ]; then
       # 2020-07-09: No target darwin64-arm64-cc yet, but iphoneos-cross seems to work fine here.
-      ${SRC_DIR}/Configure iphoneos-cross -no-asm --prefix="${PREFIX}" &> "${PREFIX}.config.log"
-      sed -ie "s!^CFLAG=!CFLAG=-isysroot ${SDK} -arch $ARCH -mmacosx-version-min=${DEPLOYMENT_VERSION} !" "${SRC_DIR}/Makefile"
-      sed -ie "s!^CFLAGS=!CFLAGS=-isysroot ${SDK} -arch $ARCH -mmacosx-version-min=${DEPLOYMENT_VERSION} !" "${SRC_DIR}/Makefile"
+      ${SRC_DIR}/Configure iphoneos-cross no-asm no-shared no-async --prefix="${PREFIX}" &> "${PREFIX}.config.log"
    else
-      ${SRC_DIR}/Configure iphoneos-cross -no-asm --prefix="${PREFIX}" &> "${PREFIX}.config.log"
-      sed -ie "s!^CFLAG=!CFLAG=-mios-simulator-version-min=${DEPLOYMENT_VERSION} -fembed-bitcode -miphoneos-version-min=${DEPLOYMENT_VERSION} -arch ${ARCH} !" "${SRC_DIR}/Makefile"
-      sed -ie "s!^CFLAGS=!CFLAGS=-mios-simulator-version-min=${DEPLOYMENT_VERSION} -fembed-bitcode -miphoneos-version-min=${DEPLOYMENT_VERSION} -arch ${ARCH} !" "${SRC_DIR}/Makefile"
-      perl -i -pe 's|static volatile sig_atomic_t intr_signal|static volatile int intr_signal|' ${SRC_DIR}/crypto/ui/ui_openssl.c
+      ${SRC_DIR}/Configure ios-cross-$ARCH no-asm no-shared no-async --prefix="${PREFIX}" &> "${PREFIX}.config.log"
    fi
 }
 
@@ -116,23 +106,25 @@ build()
 
    echo "Building for ${OS} ${ARCH}"
 
-   export BUILD_TOOLS="${DEVELOPER}"
-   export CC="${BUILD_TOOLS}/usr/bin/gcc"
-   export CFLAGS="-fembed-bitcode -arch ${ARCH}"
+   # export BUILD_TOOLS="${DEVELOPER}"
 
    # Change dir
    cd "${SRC_DIR}"
 
    # fix headers for Swift
 
-   sed -ie "s/BIGNUM \*I,/BIGNUM \*i,/g" ${SRC_DIR}/crypto/rsa/rsa.h
+   sed -ie "s/BIGNUM \*I,/BIGNUM \*i,/g" ${SRC_DIR}/crypto/rsa/rsa_local.h
+
+   # -bundle and -bitcode_bundle (Xcode setting ENABLE_BITCODE=YES) cannot be used together 
+   # sed -ie "s/'-bundle'/''/g" ${SRC_DIR}/Configurations/shared-info.pl
 
    if [ "$OS" == "iPhoneSimulator" ]; then
-      configure "${OS}" $ARCH ${IPHONEOS_DEPLOYMENT_VERSION} ${BUILD_DIR} ${SRC_DIR}
+      configure "${OS}" $ARCH ${BUILD_DIR} ${SRC_DIR}
    elif [ "$OS" == "iPhoneOS" ]; then
-      configure "${OS}" $ARCH ${IPHONEOS_DEPLOYMENT_VERSION} ${BUILD_DIR} ${SRC_DIR}
+   
+      configure "${OS}" $ARCH ${BUILD_DIR} ${SRC_DIR}
    elif [ "$OS" == "MacOSX" ]; then
-      configure "${OS}" $ARCH ${OSX_DEPLOYMENT_VERSION} ${BUILD_DIR} ${SRC_DIR}
+      configure "${OS}" $ARCH ${BUILD_DIR} ${SRC_DIR}
    else
       exit 1
    fi
@@ -178,8 +170,12 @@ generate_opensslconfh() {
 # include <openssl/opensslconf-armv7s.h>
 #endif
 
-#if defined(__APPLE__) && (defined (__arm64__) || defined (__aarch64__))
+#if defined(__APPLE__) && defined (__arm64__)
 # include <openssl/opensslconf-arm64.h>
+#endif
+
+#if defined(__APPLE__) && defined (__arm64e__)
+# include <openssl/opensslconf-arm64e.h>
 #endif
 " > ${OPENSSLCONF_PATH}
 }
@@ -197,6 +193,7 @@ build_ios() {
    build "armv7" "iPhoneOS" ${TMP_DIR} "ios"
    build "armv7s" "iPhoneOS" ${TMP_DIR} "ios"
    build "arm64" "iPhoneOS" ${TMP_DIR} "ios"
+   build "arm64e" "iPhoneOS" ${TMP_DIR} "ios"
 
    # Copy headers
    cp -r ${TMP_DIR}/${OPENSSL_VERSION}-iPhoneOS-arm64/include/openssl ${SCRIPT_DIR}/ios/include
@@ -208,6 +205,7 @@ build_ios() {
    cp -f ${TMP_DIR}/${OPENSSL_VERSION}-iPhoneOS-armv7/include/openssl/opensslconf-armv7.h ${SCRIPT_DIR}/ios/include/openssl
    cp -f ${TMP_DIR}/${OPENSSL_VERSION}-iPhoneOS-armv7s/include/openssl/opensslconf-armv7s.h ${SCRIPT_DIR}/ios/include/openssl
    cp -f ${TMP_DIR}/${OPENSSL_VERSION}-iPhoneOS-arm64/include/openssl/opensslconf-arm64.h ${SCRIPT_DIR}/ios/include/openssl
+   cp -f ${TMP_DIR}/${OPENSSL_VERSION}-iPhoneOS-arm64e/include/openssl/opensslconf-arm64e.h ${SCRIPT_DIR}/ios/include/openssl
 
    generate_opensslconfh ${SCRIPT_DIR}/ios/include/openssl/opensslconf.h
 
