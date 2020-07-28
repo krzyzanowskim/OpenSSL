@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -90,8 +90,8 @@
 		9F4A2701223BD8DB005CB63A /* ebcdic.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F4A26B6223BD8DB005CB63A /* ebcdic.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9F4A2702223BD8DB005CB63A /* bn.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F4A26B7223BD8DB005CB63A /* bn.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9F4A2703223BD8DB005CB63A /* krb5_asn.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F4A26B8223BD8DB005CB63A /* krb5_asn.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9F4A2707223BD900005CB63A /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F4A2705223BD900005CB63A /* libssl.a */; };
-		9F4A2708223BD900005CB63A /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F4A2706223BD900005CB63A /* libcrypto.a */; };
+		9F4A2707223BD900005CB63A /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F4A2705223BD900005CB63A /* libssl.a */; platformFilter = ios; };
+		9F4A2708223BD900005CB63A /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F4A2706223BD900005CB63A /* libcrypto.a */; platformFilter = ios; };
 		9F4A270E223BD9EB005CB63A /* OpenSSL.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F4A270D223BD9EB005CB63A /* OpenSSL.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9F4A2723223BE516005CB63A /* OpenSSL.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F4A271F223BE4E6005CB63A /* OpenSSL.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9F4A2771223BE55A005CB63A /* seed.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F4A2726223BE554005CB63A /* seed.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -182,6 +182,7 @@
 		75F1C98B22BE87E600F44E23 /* shim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = shim.h; path = macos/include/openssl/shim.h; sourceTree = "<group>"; };
 		75F1C98E22BE881200F44E23 /* shim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = shim.h; path = ios/include/openssl/shim.h; sourceTree = "<group>"; };
 		84BBFB572331B8D200DD11C1 /* opensslconf-i386.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "opensslconf-i386.h"; path = "ios/include/openssl/opensslconf-i386.h"; sourceTree = "<group>"; };
+		863B6DD424B83C2D002E03CC /* OpenSSL.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = OpenSSL.xcconfig; sourceTree = "<group>"; };
 		9F4A265C223BD82B005CB63A /* OpenSSL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OpenSSL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F4A266E223BD8D5005CB63A /* mdc2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mdc2.h; path = ios/include/openssl/mdc2.h; sourceTree = "<group>"; };
 		9F4A266F223BD8D5005CB63A /* aes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aes.h; path = ios/include/openssl/aes.h; sourceTree = "<group>"; };
@@ -369,6 +370,7 @@
 		9F4A2626223BCE31005CB63A = {
 			isa = PBXGroup;
 			children = (
+				863B6DD424B83C2D002E03CC /* OpenSSL.xcconfig */,
 				9F4A266C223BD8BD005CB63A /* OpenSSL (iOS) */,
 				9F4A271E223BE4D3005CB63A /* OpenSSL (macOS) */,
 				9F4A264F223BD6C6005CB63A /* Products */,
@@ -883,12 +885,14 @@
 /* Begin XCBuildConfiguration section */
 		9F4A262B223BCE31005CB63A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 863B6DD424B83C2D002E03CC /* OpenSSL.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
 		};
 		9F4A262C223BCE31005CB63A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 863B6DD424B83C2D002E03CC /* OpenSSL.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;
