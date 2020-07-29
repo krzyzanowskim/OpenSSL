@@ -16,7 +16,11 @@
 # include <openssl/opensslconf-armv7s.h>
 #endif
 
-#if defined(__APPLE__) && (defined (__arm64__) || defined (__aarch64__))
+#if defined(__APPLE__) && defined (__arm64__)
 # include <openssl/opensslconf-arm64.h>
+#endif
+
+#if defined(__APPLE__) && defined (__arm64e__)
+# include <openssl/opensslconf-arm64e.h>
 #endif
 
