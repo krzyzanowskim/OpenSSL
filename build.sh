@@ -23,7 +23,7 @@ IPHONESIMULATOR_SDK=$(xcrun --sdk iphonesimulator --show-sdk-path)
 
 OSX_SDK_VERSION=$(xcrun --sdk macosx --show-sdk-version)
 export OSX_DEPLOYMENT_VERSION="10.10"
-OSX_SDK=$(xcrun --sdk macosx --show-sdk-path)
+export OSX_SDK=$(xcrun --sdk macosx --show-sdk-path)
 
 # Turn versions like 1.2.3 into numbers that can be compare by bash.
 version()
@@ -35,9 +35,7 @@ BUILD_MACOS_ARM64=
 BUILD_IPHONESIMULATOR_ARM64=
 if [ $(version $OSX_SDK_VERSION) -ge $(version 11.0) ]; then
    BUILD_MACOS_ARM64=YES
-   # 2020-07-10: The Xcode 12 beta SDK does not support iPhoneSimulator ARM64 builds.
-   # Once it does, uncomment the next line and edit or remove `OpenSSL.xcconfig`
-   # BUILD_IPHONESIMULATOR_ARM64=YES
+   BUILD_IPHONESIMULATOR_ARM64=YES
 fi
 
 configure() {
@@ -84,8 +82,7 @@ configure() {
    elif [ "$ARCH" == "i386" ]; then
       ${SRC_DIR}/Configure ios-sim-cross-$ARCH no-asm no-shared no-async --prefix="${PREFIX}" &> "${PREFIX}.config.log"
    elif [ "$ARCH" == "arm64" -a "$OS" == "MacOSX" ]; then
-      # 2020-07-09: No target darwin64-arm64-cc yet, but iphoneos-cross seems to work fine here.
-      ${SRC_DIR}/Configure iphoneos-cross no-asm no-shared no-async --prefix="${PREFIX}" &> "${PREFIX}.config.log"
+      ${SRC_DIR}/Configure darwin64-arm64-cc no-asm no-shared no-async zlib enable-rc5 --prefix="${PREFIX}" &> "${PREFIX}.config.log"
    else
       ${SRC_DIR}/Configure ios-cross-$ARCH no-asm no-shared no-async --prefix="${PREFIX}" &> "${PREFIX}.config.log"
    fi
@@ -155,27 +152,27 @@ generate_opensslconfh() {
    echo "
 /* opensslconf.h */
 #if defined(__APPLE__) && defined (__x86_64__)
-# include <openssl/opensslconf-x86_64.h>
+#include <openssl/opensslconf-x86_64.h>
 #endif
 
 #if defined(__APPLE__) && defined (__i386__)
-# include <openssl/opensslconf-i386.h>
+#include <openssl/opensslconf-i386.h>
 #endif
 
 #if defined(__APPLE__) && defined (__arm__) && defined (__ARM_ARCH_7A__)
-# include <openssl/opensslconf-armv7.h>
+#include <openssl/opensslconf-armv7.h>
 #endif
 
 #if defined(__APPLE__) && defined (__arm__) && defined (__ARM_ARCH_7S__)
-# include <openssl/opensslconf-armv7s.h>
+#include <openssl/opensslconf-armv7s.h>
 #endif
 
 #if defined(__APPLE__) && defined (__arm64__)
-# include <openssl/opensslconf-arm64.h>
+#include <openssl/opensslconf-arm64.h>
 #endif
 
 #if defined(__APPLE__) && defined (__arm64e__)
-# include <openssl/opensslconf-arm64e.h>
+#include <openssl/opensslconf-arm64e.h>
 #endif
 " > ${OPENSSLCONF_PATH}
 }
