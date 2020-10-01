@@ -66,6 +66,7 @@
 #include "ocsp.h"
 #include "ocsperr.h"
 #include "opensslconf-x86_64.h"
+#include "opensslconf-arm64.h"
 #include "opensslconf.h"
 #include "opensslv.h"
 #include "ossl_typ.h"

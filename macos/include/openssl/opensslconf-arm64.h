@@ -30,6 +30,9 @@ extern "C" {
 #ifndef OPENSSL_NO_MD2
 # define OPENSSL_NO_MD2
 #endif
+#ifndef OPENSSL_NO_RC5
+# define OPENSSL_NO_RC5
+#endif
 #ifndef OPENSSL_THREADS
 # define OPENSSL_THREADS
 #endif
