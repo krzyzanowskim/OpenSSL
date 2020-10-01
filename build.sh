@@ -82,7 +82,7 @@ configure() {
    elif [ "$ARCH" == "i386" ]; then
       ${SRC_DIR}/Configure ios-sim-cross-$ARCH no-asm no-shared no-async --prefix="${PREFIX}" &> "${PREFIX}.config.log"
    elif [ "$ARCH" == "arm64" -a "$OS" == "MacOSX" ]; then
-      ${SRC_DIR}/Configure darwin64-arm64-cc no-asm no-shared no-async zlib enable-rc5 --prefix="${PREFIX}" &> "${PREFIX}.config.log"
+      ${SRC_DIR}/Configure darwin64-arm64-cc no-asm no-shared no-async --prefix="${PREFIX}" &> "${PREFIX}.config.log"
    else
       ${SRC_DIR}/Configure ios-cross-$ARCH no-asm no-shared no-async --prefix="${PREFIX}" &> "${PREFIX}.config.log"
    fi
