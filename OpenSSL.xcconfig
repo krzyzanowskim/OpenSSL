@@ -1,3 +1,4 @@
 // 2020-07-09: Xcode 12 beta does not support ARM64 simulator yet.
 ARCHS[sdk=iphonesimulator*]=i386 x86_64
-VALID_ARCHS[sdk=iphonesimulator*]=i386 x86_64
+// VALID_ARCHS[sdk=iphonesimulator*]=i386 x86_64
+EXCLUDED_ARCHS[sdk=iphonesimulator*]=arm64
