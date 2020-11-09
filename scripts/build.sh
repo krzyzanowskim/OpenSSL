@@ -12,7 +12,7 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 # Setup paths to stuff we need
 
 OPENSSL_VERSION="1.1.1h"
-export OPENSSL_LOCAL_CONFIG_DIR="${SCRIPT_DIR}/config"
+export OPENSSL_LOCAL_CONFIG_DIR="${SCRIPT_DIR}/../config"
 
 DEVELOPER=$(xcode-select --print-path)
 
@@ -99,7 +99,7 @@ build()
    local PREFIX="${BUILD_DIR}/${OPENSSL_VERSION}-${OS}-${ARCH}"
 
    mkdir -p "${SRC_DIR}"
-   tar xzf "${SCRIPT_DIR}/openssl-${OPENSSL_VERSION}.tar.gz" -C "${SRC_DIR}" --strip-components=1
+   tar xzf "${SCRIPT_DIR}/../openssl-${OPENSSL_VERSION}.tar.gz" -C "${SRC_DIR}" --strip-components=1
 
    echo "Building for ${OS} ${ARCH}"
 
@@ -133,15 +133,15 @@ build()
    cd ${BASE_PWD}
 
    # Add arch to library
-   if [ -f "${SCRIPT_DIR}/${TYPE}/lib/libcrypto.a" ]; then
-      xcrun lipo "${SCRIPT_DIR}/${TYPE}/lib/libcrypto.a" "${PREFIX}/lib/libcrypto.a" -create -output "${SCRIPT_DIR}/${TYPE}/lib/libcrypto.a"
-      xcrun lipo "${SCRIPT_DIR}/${TYPE}/lib/libssl.a" "${PREFIX}/lib/libssl.a" -create -output "${SCRIPT_DIR}/${TYPE}/lib/libssl.a"
+   if [ -f "${SCRIPT_DIR}/../${TYPE}/lib/libcrypto.a" ]; then
+      xcrun lipo "${SCRIPT_DIR}/../${TYPE}/lib/libcrypto.a" "${PREFIX}/lib/libcrypto.a" -create -output "${SCRIPT_DIR}/../${TYPE}/lib/libcrypto.a"
+      xcrun lipo "${SCRIPT_DIR}/../${TYPE}/lib/libssl.a" "${PREFIX}/lib/libssl.a" -create -output "${SCRIPT_DIR}/../${TYPE}/lib/libssl.a"
    else
-      cp "${PREFIX}/lib/libcrypto.a" "${SCRIPT_DIR}/${TYPE}/lib/libcrypto.a"
-      cp "${PREFIX}/lib/libssl.a" "${SCRIPT_DIR}/${TYPE}/lib/libssl.a"
+      cp "${PREFIX}/lib/libcrypto.a" "${SCRIPT_DIR}/../${TYPE}/lib/libcrypto.a"
+      cp "${PREFIX}/lib/libssl.a" "${SCRIPT_DIR}/../${TYPE}/lib/libssl.a"
    fi
 
-   mv ${PREFIX}/include/openssl/opensslconf.h ${PREFIX}/include/openssl/opensslconf-${ARCH}.h
+   mv "${PREFIX}/include/openssl/opensslconf.h" "${PREFIX}/include/openssl/opensslconf-${ARCH}.h"
 
    rm -rf "${SRC_DIR}"
 }
@@ -178,72 +178,68 @@ generate_opensslconfh() {
 }
 
 build_ios() {
-   local TMP_DIR=$( mktemp -d )
+   local TMP_BUILD_DIR=$( mktemp -d )
 
    # Clean up whatever was left from our previous build
-   rm -rf ${SCRIPT_DIR}/{ios/include,ios/lib}
-   mkdir -p ${SCRIPT_DIR}/{ios/include,ios/lib}
+   rm -rf "${SCRIPT_DIR}"/../{ios/include,ios/lib}
+   mkdir -p "${SCRIPT_DIR}"/../{ios/include,ios/lib}
 
-   build "i386" "iPhoneSimulator" ${TMP_DIR} "ios"
-   build "x86_64" "iPhoneSimulator" ${TMP_DIR} "ios"
-   [ -n "$BUILD_IPHONESIMULATOR_ARM64" ] && build "arm64" "iPhoneSimulator" ${TMP_DIR} "ios"
-   build "armv7" "iPhoneOS" ${TMP_DIR} "ios"
-   build "armv7s" "iPhoneOS" ${TMP_DIR} "ios"
-   build "arm64" "iPhoneOS" ${TMP_DIR} "ios"
-   build "arm64e" "iPhoneOS" ${TMP_DIR} "ios"
+   build "i386" "iPhoneSimulator" ${TMP_BUILD_DIR} "ios"
+   build "x86_64" "iPhoneSimulator" ${TMP_BUILD_DIR} "ios"
+   [ -n "$BUILD_IPHONESIMULATOR_ARM64" ] && build "arm64" "iPhoneSimulator" ${TMP_BUILD_DIR} "ios"
+   build "armv7" "iPhoneOS" ${TMP_BUILD_DIR} "ios"
+   build "armv7s" "iPhoneOS" ${TMP_BUILD_DIR} "ios"
+   build "arm64" "iPhoneOS" ${TMP_BUILD_DIR} "ios"
+   build "arm64e" "iPhoneOS" ${TMP_BUILD_DIR} "ios"
 
    # Copy headers
-   cp -r ${TMP_DIR}/${OPENSSL_VERSION}-iPhoneOS-arm64/include/openssl ${SCRIPT_DIR}/ios/include
-   cp -f ${SCRIPT_DIR}/shim/shim.h ${SCRIPT_DIR}/ios/include/openssl/shim.h
+   cp -r "${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneOS-arm64/include/openssl" "${SCRIPT_DIR}/../ios/include"
+   cp -f "${SCRIPT_DIR}/../shim/shim.h" "${SCRIPT_DIR}/../ios/include/openssl/shim.h"
 
-   cp -f ${TMP_DIR}/${OPENSSL_VERSION}-iPhoneSimulator-x86_64/include/openssl/opensslconf-x86_64.h ${SCRIPT_DIR}/ios/include/openssl
-   cp -f ${TMP_DIR}/${OPENSSL_VERSION}-iPhoneSimulator-i386/include/openssl/opensslconf-i386.h ${SCRIPT_DIR}/ios/include/openssl
-   [ -n "$BUILD_IPHONESIMULATOR_ARM64" ] && cp -f ${TMP_DIR}/${OPENSSL_VERSION}-iPhoneSimulator-arm64/include/openssl/opensslconf-arm64.h ${SCRIPT_DIR}/ios/include/openssl
-   cp -f ${TMP_DIR}/${OPENSSL_VERSION}-iPhoneOS-armv7/include/openssl/opensslconf-armv7.h ${SCRIPT_DIR}/ios/include/openssl
-   cp -f ${TMP_DIR}/${OPENSSL_VERSION}-iPhoneOS-armv7s/include/openssl/opensslconf-armv7s.h ${SCRIPT_DIR}/ios/include/openssl
-   cp -f ${TMP_DIR}/${OPENSSL_VERSION}-iPhoneOS-arm64/include/openssl/opensslconf-arm64.h ${SCRIPT_DIR}/ios/include/openssl
-   cp -f ${TMP_DIR}/${OPENSSL_VERSION}-iPhoneOS-arm64e/include/openssl/opensslconf-arm64e.h ${SCRIPT_DIR}/ios/include/openssl
+   cp -f ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneSimulator-x86_64/include/openssl/opensslconf-x86_64.h "${SCRIPT_DIR}/../ios/include/openssl"
+   cp -f ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneSimulator-i386/include/openssl/opensslconf-i386.h "${SCRIPT_DIR}/../ios/include/openssl"
+   [ -n "$BUILD_IPHONESIMULATOR_ARM64" ] && cp -f ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneSimulator-arm64/include/openssl/opensslconf-arm64.h "${SCRIPT_DIR}/../ios/include/openssl"
+   cp -f ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneOS-armv7/include/openssl/opensslconf-armv7.h "${SCRIPT_DIR}/../ios/include/openssl"
+   cp -f ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneOS-armv7s/include/openssl/opensslconf-armv7s.h "${SCRIPT_DIR}/../ios/include/openssl"
+   cp -f ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneOS-arm64/include/openssl/opensslconf-arm64.h "${SCRIPT_DIR}/../ios/include/openssl"
+   cp -f ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneOS-arm64e/include/openssl/opensslconf-arm64e.h "${SCRIPT_DIR}/../ios/include/openssl"
 
-   generate_opensslconfh ${SCRIPT_DIR}/ios/include/openssl/opensslconf.h
+   generate_opensslconfh "${SCRIPT_DIR}/../ios/include/openssl/opensslconf.h"
 
-   rm -rf ${TMP_DIR}
+   rm -rf ${TMP_BUILD_DIR}
 }
 
 build_macos() {
-   local TMP_DIR=$( mktemp -d )
+   local TMP_BUILD_DIR=$( mktemp -d )
 
    # Clean up whatever was left from our previous build
-   rm -rf ${SCRIPT_DIR}/{macos/include,macos/lib}
-   mkdir -p ${SCRIPT_DIR}/{macos/include,macos/lib}
+   rm -rf "${SCRIPT_DIR}"/../{macos/include,macos/lib}
+   mkdir -p "${SCRIPT_DIR}"/../{macos/include,macos/lib}
 
-   build "x86_64" "MacOSX" ${TMP_DIR} "macos"
-   [ -n "$BUILD_MACOS_ARM64" ] && build "arm64" "MacOSX" ${TMP_DIR} "macos"
+   build "x86_64" "MacOSX" ${TMP_BUILD_DIR} "macos"
+   [ -n "$BUILD_MACOS_ARM64" ] && build "arm64" "MacOSX" ${TMP_BUILD_DIR} "macos"
 
    # Copy headers
-   cp -r ${TMP_DIR}/${OPENSSL_VERSION}-MacOSX-x86_64/include/openssl ${SCRIPT_DIR}/macos/include
-   cp -f ${SCRIPT_DIR}/shim/shim.h ${SCRIPT_DIR}/macos/include/openssl/shim.h
+   cp -r ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-MacOSX-x86_64/include/openssl "${SCRIPT_DIR}/../macos/include"
+   cp -f "${SCRIPT_DIR}/../shim/shim.h" "${SCRIPT_DIR}/../macos/include/openssl/shim.h"
 
-   cp -f ${TMP_DIR}/${OPENSSL_VERSION}-MacOSX-x86_64/include/openssl/opensslconf-x86_64.h ${SCRIPT_DIR}/macos/include/openssl
-   [ -n "$BUILD_MACOS_ARM64" ] && cp -f ${TMP_DIR}/${OPENSSL_VERSION}-MacOSX-arm64/include/openssl/opensslconf-arm64.h ${SCRIPT_DIR}/macos/include/openssl
+   cp -f ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-MacOSX-x86_64/include/openssl/opensslconf-x86_64.h "${SCRIPT_DIR}/../macos/include/openssl"
+   [ -n "$BUILD_MACOS_ARM64" ] && cp -f ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-MacOSX-arm64/include/openssl/opensslconf-arm64.h "${SCRIPT_DIR}/../macos/include/openssl"
 
-   generate_opensslconfh ${SCRIPT_DIR}/macos/include/openssl/opensslconf.h
+   generate_opensslconfh "${SCRIPT_DIR}/../macos/include/openssl/opensslconf.h"
 
-   rm -rf ${TMP_DIR}
+   rm -rf ${TMP_BUILD_DIR}
 }
 
 # Start
 
-if [ ! -f "${SCRIPT_DIR}/openssl-${OPENSSL_VERSION}.tar.gz" ]; then
-   curl -fL "https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz" -o ${SCRIPT_DIR}/openssl-${OPENSSL_VERSION}.tar.gz
-   curl -fL "https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz.sha256" -o ${SCRIPT_DIR}/openssl-${OPENSSL_VERSION}.tar.gz.sha256
-   DIGEST=$( cat ${SCRIPT_DIR}/openssl-${OPENSSL_VERSION}.tar.gz.sha256 )
-   echo "${DIGEST} ${SCRIPT_DIR}/openssl-${OPENSSL_VERSION}.tar.gz" | sha256sum --check --strict
-   rm -f ${SCRIPT_DIR}/openssl-${OPENSSL_VERSION}.tar.gz.sha256
+if [ ! -f "${SCRIPT_DIR}/../openssl-${OPENSSL_VERSION}.tar.gz" ]; then
+   curl -fL "https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz" -o "${SCRIPT_DIR}/../openssl-${OPENSSL_VERSION}.tar.gz"
+   curl -fL "https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz.sha256" -o "${SCRIPT_DIR}/../openssl-${OPENSSL_VERSION}.tar.gz.sha256"
+   DIGEST=$( cat ${SCRIPT_DIR}/../openssl-${OPENSSL_VERSION}.tar.gz.sha256 )
+   echo "${DIGEST} ${SCRIPT_DIR}/../openssl-${OPENSSL_VERSION}.tar.gz" | sha256sum --check --strict
+   rm -f "${SCRIPT_DIR}/../openssl-${OPENSSL_VERSION}.tar.gz.sha256"
 fi
 
 build_ios
 build_macos
-
-${SCRIPT_DIR}/create-framework.sh
-
-echo "all done"
