@@ -9,6 +9,12 @@ Current version contains binaries build with latest iOS SDK iOS (target 7.0), an
 - iOS with architectures: armv7, armv7s, arm64 + simulator (x86_64, arm64)
 - macOS with architectures: x86_64, arm64
 
+#### Output Formats
+
+- Static library
+- OpenSSL.framework
+- OpenSSL.xcframework
+
 ### Why?
 
 [Apple says](https://developer.apple.com/library/mac/documentation/security/Conceptual/cryptoservices/GeneralPurposeCrypto/GeneralPurposeCrypto.html):
@@ -24,7 +30,7 @@ cd OpenSSL
 make
 ```
 
-The result of build process is put inside [ios](ios/) and [macos](macos/) directory respectively. 
+The result of build process is put inside [Frameworks](Frameworks/) directory.
 
 #### CocoaPods
 

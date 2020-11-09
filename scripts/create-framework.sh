@@ -15,7 +15,7 @@ echo ${BUILD_DIR}
 # Build
 
 cd ${BUILD_DIR}
-carthage build --configuration Release --no-use-binaries --no-skip-current --derived-data ${BUILD_DIR}/DerivedData --project-directory ${SCRIPT_DIR}
+carthage build --configuration Release --no-use-binaries --no-skip-current --derived-data "${BUILD_DIR}/DerivedData" --project-directory "${SCRIPT_DIR}/.."
 rm -rf ${BUILD_DIR}
 cd ${BASE_PWD}
 

@@ -1,10 +1,14 @@
-.PHONY: build_script
-.PHONY: create_framework
+.PHONY: build
+.PHONY: frameworks
+.PHONY: xcframework
 
-build_script:
+build:
 	./scripts/build.sh
 
-create_framework: build_script
-	./scripts/create_framework
+framework: build
+	./scripts/create-framework.sh
 
-all: build_script create_framework
+xcframework: framework
+	./scripts/create-xcframework.sh
+
+all: build framework xcframework
