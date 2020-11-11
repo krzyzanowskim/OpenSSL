@@ -196,6 +196,9 @@ build_ios() {
    cp -r "${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneOS-arm64/include/openssl" "${SCRIPT_DIR}/../ios/include"
    cp -f "${SCRIPT_DIR}/../shim/shim.h" "${SCRIPT_DIR}/../ios/include/openssl/shim.h"
 
+   # fix inttypes.h
+   find "${SCRIPT_DIR}/../ios/include/openssl" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <sys\/types\.h>/g" {} \;
+
    cp -f ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneSimulator-x86_64/include/openssl/opensslconf-x86_64.h "${SCRIPT_DIR}/../ios/include/openssl"
    cp -f ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneSimulator-i386/include/openssl/opensslconf-i386.h "${SCRIPT_DIR}/../ios/include/openssl"
    [ -n "$BUILD_IPHONESIMULATOR_ARM64" ] && cp -f ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneSimulator-arm64/include/openssl/opensslconf-arm64.h "${SCRIPT_DIR}/../ios/include/openssl"
@@ -222,6 +225,9 @@ build_macos() {
    # Copy headers
    cp -r ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-MacOSX-x86_64/include/openssl "${SCRIPT_DIR}/../macos/include"
    cp -f "${SCRIPT_DIR}/../shim/shim.h" "${SCRIPT_DIR}/../macos/include/openssl/shim.h"
+
+   # fix inttypes.h
+   find "${SCRIPT_DIR}/../macos/include/openssl" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <sys\/types\.h>/g" {} \;
 
    cp -f ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-MacOSX-x86_64/include/openssl/opensslconf-x86_64.h "${SCRIPT_DIR}/../macos/include/openssl"
    [ -n "$BUILD_MACOS_ARM64" ] && cp -f ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-MacOSX-arm64/include/openssl/opensslconf-arm64.h "${SCRIPT_DIR}/../macos/include/openssl"
