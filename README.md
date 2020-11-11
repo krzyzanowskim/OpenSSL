@@ -1,6 +1,6 @@
 # OpenSSL-Universal
 
-OpenSSL CocoaPod and Carthage for iOS and macOS. Complete solution to OpenSSL on iOS and macOS. Package came with precompiled libraries, and include script to build newer version if necessary.
+OpenSSL [CocoaPods](https://cocoapods.org/), [Carthage](https://github.com/Carthage/Carthage) and [Swift Package Manager](https://swift.org/package-manager/) package for iOS and macOS. Complete solution to OpenSSL on iOS and macOS. Package came with precompiled libraries, and include script to build newer version if necessary.
 
 Current version contains binaries build with latest iOS SDK iOS (target 7.0), and latest MacOSX SDK (target 10.10) for all supported architectures.
 
@@ -11,9 +11,9 @@ Current version contains binaries build with latest iOS SDK iOS (target 7.0), an
 
 #### Output Formats
 
-- Static library
-- OpenSSL.framework
-- OpenSSL.xcframework
+- Static library [libcrypto.a, libssl.a](ios/lib/)
+- [OpenSSL.framework](Frameworks/)
+- [OpenSSL.xcframework](Frameworks/)
 
 ### Why?
 
@@ -32,15 +32,23 @@ make
 
 The result of build process is put inside [Frameworks](Frameworks/) directory.
 
-#### CocoaPods
+#### Installation
+
+### Swift Package Manager
+
+```
+dependencies: [
+    .package(url: "https://github.com/krzyzanowskim/OpenSSL.git", .upToNextMinor(from: "1.1.17"))
+]
+```
+
+### CocoaPods
 
 ````
 pod 'OpenSSL-Universal'
 ````
 
-#### Carthage
-
-Latest stable version:
+### Carthage
 
 ```
 github "krzyzanowskim/OpenSSL"
