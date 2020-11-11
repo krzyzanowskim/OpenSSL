@@ -103,7 +103,6 @@
 		7538BA7924D1F074007C13A2 /* ecerr.h in Headers */ = {isa = PBXBuildFile; fileRef = 7538BA0A24D1F072007C13A2 /* ecerr.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7538BA7A24D1F074007C13A2 /* bioerr.h in Headers */ = {isa = PBXBuildFile; fileRef = 7538BA0B24D1F072007C13A2 /* bioerr.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7538BA7B24D1F074007C13A2 /* buffererr.h in Headers */ = {isa = PBXBuildFile; fileRef = 7538BA0C24D1F072007C13A2 /* buffererr.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7538BA7C24D1F074007C13A2 /* asn1_mac.h in Headers */ = {isa = PBXBuildFile; fileRef = 7538BA0D24D1F072007C13A2 /* asn1_mac.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7538BA7D24D1F074007C13A2 /* rsaerr.h in Headers */ = {isa = PBXBuildFile; fileRef = 7538BA0E24D1F072007C13A2 /* rsaerr.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7538BA7E24D1F074007C13A2 /* rand.h in Headers */ = {isa = PBXBuildFile; fileRef = 7538BA0F24D1F072007C13A2 /* rand.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7538BA7F24D1F074007C13A2 /* ocsp.h in Headers */ = {isa = PBXBuildFile; fileRef = 7538BA1024D1F072007C13A2 /* ocsp.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -123,7 +122,6 @@
 		7538BAF724D1F16C007C13A2 /* buffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7538BA8D24D1F164007C13A2 /* buffer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7538BAF824D1F16C007C13A2 /* e_os2.h in Headers */ = {isa = PBXBuildFile; fileRef = 7538BA8E24D1F164007C13A2 /* e_os2.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7538BAF924D1F16C007C13A2 /* randerr.h in Headers */ = {isa = PBXBuildFile; fileRef = 7538BA8F24D1F164007C13A2 /* randerr.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7538BAFA24D1F16C007C13A2 /* asn1_mac.h in Headers */ = {isa = PBXBuildFile; fileRef = 7538BA9024D1F164007C13A2 /* asn1_mac.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7538BAFB24D1F16C007C13A2 /* dsa.h in Headers */ = {isa = PBXBuildFile; fileRef = 7538BA9124D1F165007C13A2 /* dsa.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7538BAFC24D1F16C007C13A2 /* dherr.h in Headers */ = {isa = PBXBuildFile; fileRef = 7538BA9224D1F165007C13A2 /* dherr.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7538BAFD24D1F16C007C13A2 /* safestack.h in Headers */ = {isa = PBXBuildFile; fileRef = 7538BA9324D1F165007C13A2 /* safestack.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -330,7 +328,6 @@
 		7538BA0A24D1F072007C13A2 /* ecerr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ecerr.h; path = ios/include/openssl/ecerr.h; sourceTree = "<group>"; };
 		7538BA0B24D1F072007C13A2 /* bioerr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bioerr.h; path = ios/include/openssl/bioerr.h; sourceTree = "<group>"; };
 		7538BA0C24D1F072007C13A2 /* buffererr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = buffererr.h; path = ios/include/openssl/buffererr.h; sourceTree = "<group>"; };
-		7538BA0D24D1F072007C13A2 /* asn1_mac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = asn1_mac.h; path = ios/include/openssl/asn1_mac.h; sourceTree = "<group>"; };
 		7538BA0E24D1F072007C13A2 /* rsaerr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rsaerr.h; path = ios/include/openssl/rsaerr.h; sourceTree = "<group>"; };
 		7538BA0F24D1F072007C13A2 /* rand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rand.h; path = ios/include/openssl/rand.h; sourceTree = "<group>"; };
 		7538BA1024D1F072007C13A2 /* ocsp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ocsp.h; path = ios/include/openssl/ocsp.h; sourceTree = "<group>"; };
@@ -350,7 +347,6 @@
 		7538BA8D24D1F164007C13A2 /* buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = buffer.h; path = macos/include/openssl/buffer.h; sourceTree = "<group>"; };
 		7538BA8E24D1F164007C13A2 /* e_os2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = e_os2.h; path = macos/include/openssl/e_os2.h; sourceTree = "<group>"; };
 		7538BA8F24D1F164007C13A2 /* randerr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = randerr.h; path = macos/include/openssl/randerr.h; sourceTree = "<group>"; };
-		7538BA9024D1F164007C13A2 /* asn1_mac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = asn1_mac.h; path = macos/include/openssl/asn1_mac.h; sourceTree = "<group>"; };
 		7538BA9124D1F165007C13A2 /* dsa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dsa.h; path = macos/include/openssl/dsa.h; sourceTree = "<group>"; };
 		7538BA9224D1F165007C13A2 /* dherr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dherr.h; path = macos/include/openssl/dherr.h; sourceTree = "<group>"; };
 		7538BA9324D1F165007C13A2 /* safestack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = safestack.h; path = macos/include/openssl/safestack.h; sourceTree = "<group>"; };
@@ -521,7 +517,6 @@
 			isa = PBXGroup;
 			children = (
 				7538B9F724D1F070007C13A2 /* aes.h */,
-				7538BA0D24D1F072007C13A2 /* asn1_mac.h */,
 				7538BA0324D1F071007C13A2 /* asn1.h */,
 				7538BA1B24D1F073007C13A2 /* asn1err.h */,
 				7538B9BA24D1F06C007C13A2 /* asn1t.h */,
@@ -668,7 +663,6 @@
 			isa = PBXGroup;
 			children = (
 				7538BAAB24D1F166007C13A2 /* aes.h */,
-				7538BA9024D1F164007C13A2 /* asn1_mac.h */,
 				7538BAA524D1F166007C13A2 /* asn1.h */,
 				7538BAB124D1F166007C13A2 /* asn1err.h */,
 				7538BAE624D1F16A007C13A2 /* asn1t.h */,
@@ -895,7 +889,6 @@
 				7538BA8424D1F074007C13A2 /* srtp.h in Headers */,
 				7538BA8224D1F074007C13A2 /* store.h in Headers */,
 				7538BA4124D1F073007C13A2 /* md2.h in Headers */,
-				7538BA7C24D1F074007C13A2 /* asn1_mac.h in Headers */,
 				7538BA3424D1F073007C13A2 /* ui.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -993,7 +986,6 @@
 				7538BB5324D1F16D007C13A2 /* bn.h in Headers */,
 				7538BB4A24D1F16D007C13A2 /* des.h in Headers */,
 				7538BB5724D1F16E007C13A2 /* objects.h in Headers */,
-				7538BAFA24D1F16C007C13A2 /* asn1_mac.h in Headers */,
 				7538BB3224D1F16D007C13A2 /* bioerr.h in Headers */,
 				7538BB3824D1F16D007C13A2 /* whrlpool.h in Headers */,
 				7538BB1C24D1F16C007C13A2 /* comp.h in Headers */,
