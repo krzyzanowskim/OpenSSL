@@ -7,7 +7,7 @@ let package = Package(
         .macOS(.v10_12)
     ],
     dependencies: [
-        .package(url: "https://github.com/krzyzanowskim/OpenSSL.git", .branch("marcin/1.1.1-lts")),
+        .package(url: "https://github.com/krzyzanowskim/OpenSSL.git", .branch("master")),
     ],
     targets: [
         .target(
