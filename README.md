@@ -4,6 +4,10 @@ OpenSSL [CocoaPods](https://cocoapods.org/), [Carthage](https://github.com/Carth
 
 Current version contains binaries build with latest iOS SDK iOS (target 7.0), and latest MacOSX SDK (target 10.10) for all supported architectures.
 
+### Support
+
+It takes some time to keep it all for your convenience, so maybe spare $1, so I can keep working on that. There are more than 8000 clones daily. If I'd get $1/month from each company that uses my work here, I'd say we're even. Hurry up, find the [Sponsorship](https://github.com/users/krzyzanowskim/sponsorship) button, and fulfill your duty.
+
 ### Architectures
 
 - iOS with architectures: armv7, armv7s, arm64 + simulator (x86_64, arm64)
