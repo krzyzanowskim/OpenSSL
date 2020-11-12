@@ -24,10 +24,12 @@ Current version contains binaries build with latest iOS SDK iOS (target 7.0), an
 
 #### Build
 
+You don't have to use pre-build binaries I provider. You can build it locally on your trusted machine.
+
 ```
-git clone https://github.com/krzyzanowskim/OpenSSL.git
-cd OpenSSL
-make
+$ git clone https://github.com/krzyzanowskim/OpenSSL.git
+$ cd OpenSSL
+$ make
 ```
 
 The result of build process is put inside [Frameworks](Frameworks/) directory.
@@ -58,35 +60,10 @@ github "krzyzanowskim/OpenSSL"
 
 [Marcin Krzyżanowski](https://twitter.com/krzyzanowskim)
 
-## Tutorial
-**This tutorial assumes you want to:** <br>
-  - Write a C application.<br>
-  - Use OpenSSL libraries for some crypto operation.<br>
-  - Use a Mac and Xcode 11+.<br>
-  - Use CocoaPods and the OpenSSL-Universal pod as an elegant way to stay updated with the latest libraries and headers.<br>
-
-#### Step 1 - Create your macOS HelloWorld C app
-If you have not done this before with Xcode, select  `File / New Project / macOS / Command Line Tool`.  Hit build and run.  You just successfully build the default Hello World C project.
-
-#### Step 2 - Setup Cocoa Pods
-Make sure your machine is setup for CocoaPods.
-After CocoaPods is setup, open `Terminal` and navigate to your project folder and run `pod init`.
-After that has completed, type `open -a Xcode Podfile`.
-
-#### Step 3 - get the OpenSSL-Universal pod
-Add `pod 'OpenSSL-Universal'` inside the podfile.
-Save the file.
-Return to `Terminal` and run `Pod Install`.
-After that download completes, make sure to close the C project and open the workspace file that was created.
-
-#### Step 4 - What is inside of the OpenSSL-Universal pod?
-Once this successfully completed, you have now got access to a pre-compiled version of the static OpenSSL libraries and the C header files required to call these functions.
-
-
 
 ## FAQ etc.
 #### Where can I use OpenSSL-Universal?
-These libraries work for both iOS and macOS.  There are two OpenSSL static libraries; `libcrypto.a` and `libssl.a` Do NOT expect these OpenSSL files to work on every CPU architecture in the world. It is your prerogative to check.  Ask yourself, are you trying to write an app for old devices? new devices only? all iOS devices? only macOS?, etc ::
+These libraries work for both iOS and macOS. There are two OpenSSL static libraries; `libcrypto.a` and `libssl.a` Do NOT expect these OpenSSL files to work on every CPU architecture in the world. It is your prerogative to check. Ask yourself, are you trying to write an app for old devices? new devices only? all iOS devices? only macOS?, etc ::
 
 #### Fat Binaries
 The OpenSSL-Universal Framework is a Fat Binary. That means it supports multiple CPU architectures in a single file. To understand this, return to `Terminal`.  Navigate to your OpenSSL-Universal macOS files and run the command `file libcrypto.a`  This will tell you architecture the file is compiled against `x86_64`.  If you tried the iOS OpenSSL-Universal files it would have said `armv7`, `armv7s`, `arm64` + Simulators (`x86_64`).
