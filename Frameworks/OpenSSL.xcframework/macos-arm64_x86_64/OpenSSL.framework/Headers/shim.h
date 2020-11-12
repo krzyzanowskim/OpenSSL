@@ -38,14 +38,4 @@ static inline void OpenSSL_add_all_algorithms() {
     #endif
 }
 
-
-// Initialize OpenSSL
-// static inline void OPENSSL_SSL_init(void) {
-//     SSL_library_init();
-//     SSL_load_error_strings();
-//     OPENSSL_config(NULL);
-//     OpenSSL_add_all_ciphers();
-//     OPENSSL_add_all_algorithms_noconf();
-// }
-
 #endif
