@@ -23,32 +23,16 @@ Pod::Spec.new do |s|
                      'Eric A. Young' => 'eay@cryptsoft.com',
                      'Tim Hudson' => 'tjh@cryptsoft.com',
                      'Justin Plouffe' => 'plouffe.justin@gmail.com'}
-
+                   
   s.requires_arc = true
-  s.default_subspec = 'Framework'
+
   s.ios.deployment_target = '9.0'
+  s.ios.vendored_frameworks = 'Frameworks/ios/OpenSSL.framework'
   s.osx.deployment_target = '10.10'
+  s.osx.vendored_frameworks = 'Frameworks/macos/OpenSSL.framework'
 
-  s.subspec 'Static' do |sp|
-    sp.ios.deployment_target = '7.0'
-    sp.ios.source_files        = 'ios/include/openssl/**/*.h'
-    sp.ios.public_header_files = 'ios/include/openssl/**/*.h'
-    sp.ios.header_dir          = 'openssl'
-    sp.ios.preserve_paths      = 'ios/lib/libcrypto.a', 'ios/lib/libssl.a'
-    sp.ios.vendored_libraries  = 'ios/lib/libcrypto.a', 'ios/lib/libssl.a'
-
-    sp.osx.deployment_target = '10.10'
-    sp.osx.source_files        = 'macos/include/openssl/**/*.h'
-    sp.osx.public_header_files = 'macos/include/openssl/**/*.h'
-    sp.osx.header_dir          = 'openssl'
-    sp.osx.preserve_paths      = 'macos/lib/libcrypto.a', 'macos/lib/libssl.a'
-    sp.osx.vendored_libraries  = 'macos/lib/libcrypto.a', 'macos/lib/libssl.a'
-  end
-
-  s.subspec 'Framework' do |sp|
-    sp.ios.deployment_target = '9.0'
-    sp.ios.vendored_frameworks = 'Frameworks/ios/OpenSSL.framework'
-    sp.osx.deployment_target = '10.10'
-    sp.osx.vendored_frameworks = 'Frameworks/macos/OpenSSL.framework'
-  end
+  # Temporary workaround for CocoaPods machinery
+  s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64'}
+  s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64'}
+  
 end
