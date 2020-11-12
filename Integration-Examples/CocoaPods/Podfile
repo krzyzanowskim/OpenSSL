@@ -1,0 +1,7 @@
+platform :ios, '10.0'
+use_frameworks!
+
+target 'Example' do
+
+  pod "OpenSSL-Universal", :git => 'https://github.com/krzyzanowskim/OpenSSL.git', :branch => 'marcin/1.1.1-lts'
+end
