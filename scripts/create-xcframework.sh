@@ -21,7 +21,7 @@ extract_arch()
 }
 
 extract_arch "ios" "iphoneos" "-extract armv7 -extract arm64"
-extract_arch "ios" "iphonesimulator" "-extract i386 -extract x86_64"
+extract_arch "ios" "iphonesimulator" "-extract i386 -extract x86_64 -extract arm64"
 extract_arch "macos" "combined" "-extract arm64 -extract x86_64"
 
 rm -rf "${SCRIPT_DIR}/../Frameworks/OpenSSL.xcframework"

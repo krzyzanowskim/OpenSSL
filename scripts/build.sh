@@ -18,25 +18,16 @@ DEVELOPER=$(xcode-select --print-path)
 
 export IPHONEOS_DEPLOYMENT_VERSION="7.0"
 IPHONEOS_SDK=$(xcrun --sdk iphoneos --show-sdk-path)
-
 IPHONESIMULATOR_SDK=$(xcrun --sdk iphonesimulator --show-sdk-path)
+OSX_SDK=$(xcrun --sdk macosx --show-sdk-path)
 
-OSX_SDK_VERSION=$(xcrun --sdk macosx --show-sdk-version)
-export MACOSX_DEPLOYMENT_TARGET="10.10"
-export OSX_SDK=$(xcrun --sdk macosx --show-sdk-path)
+export MACOSX_DEPLOYMENT_TARGET="10.10" # 
 
 # Turn versions like 1.2.3 into numbers that can be compare by bash.
 version()
 {
    printf "%03d%03d%03d%03d" $(tr '.' ' ' <<<"$1");
 }
-
-BUILD_MACOS_ARM64=
-BUILD_IPHONESIMULATOR_ARM64=
-if [ $(version $OSX_SDK_VERSION) -ge $(version 11.0) ]; then
-   BUILD_MACOS_ARM64=YES
-   # BUILD_IPHONESIMULATOR_ARM64=YES
-fi
 
 configure() {
    local OS=$1
@@ -73,18 +64,16 @@ configure() {
    fi
    
 
-   if [ "$ARCH" == "x86_64" ]; then
-      if [ "$OS" == "MacOSX" ]; then
-         ${SRC_DIR}/Configure darwin64-x86_64-cc no-asm no-shared no-async --prefix="${PREFIX}" &> "${PREFIX}.config.log"
-      else
-         ${SRC_DIR}/Configure ios-sim-cross-$ARCH no-asm no-shared no-async --prefix="${PREFIX}" &> "${PREFIX}.config.log"
+   if [ "$OS" == "MacOSX" ]; then
+      if [ "$ARCH" == "x86_64" ]; then
+         ${SRC_DIR}/Configure macos-$ARCH no-asm no-shared --prefix="${PREFIX}" &> "${PREFIX}.config.log"
+      elif [ "$ARCH" == "arm64" ]; then
+         ${SRC_DIR}/Configure macos-$ARCH no-asm no-shared --prefix="${PREFIX}" &> "${PREFIX}.config.log"
       fi
-   elif [ "$ARCH" == "i386" ]; then
-      ${SRC_DIR}/Configure ios-sim-cross-$ARCH no-asm no-shared no-async --prefix="${PREFIX}" &> "${PREFIX}.config.log"
-   elif [ "$ARCH" == "arm64" -a "$OS" == "MacOSX" ]; then
-      ${SRC_DIR}/Configure darwin64-arm64-cc no-asm no-shared no-async --prefix="${PREFIX}" &> "${PREFIX}.config.log"
-   else
-      ${SRC_DIR}/Configure ios-cross-$ARCH no-asm no-shared no-async --prefix="${PREFIX}" &> "${PREFIX}.config.log"
+   elif [ "$OS" == "iPhoneSimulator" ]; then
+      ${SRC_DIR}/Configure ios-sim-cross-$ARCH no-asm no-shared --prefix="${PREFIX}" &> "${PREFIX}.config.log"
+   elif [ "$OS" == "iPhoneOS" ]; then
+      ${SRC_DIR}/Configure ios-cross-$ARCH no-asm no-shared --prefix="${PREFIX}" &> "${PREFIX}.config.log"
    fi
 }
 
@@ -93,7 +82,7 @@ build()
    local ARCH=$1
    local OS=$2
    local BUILD_DIR=$3
-   local TYPE=$4
+   local TYPE=$4 # iphoneos/iphonesimulator/macos
 
    local SRC_DIR="${BUILD_DIR}/openssl-${OPENSSL_VERSION}-${TYPE}"
    local PREFIX="${BUILD_DIR}/${OPENSSL_VERSION}-${OS}-${ARCH}"
@@ -115,16 +104,7 @@ build()
    # -bundle and -bitcode_bundle (Xcode setting ENABLE_BITCODE=YES) cannot be used together 
    # sed -ie "s/'-bundle'/''/g" ${SRC_DIR}/Configurations/shared-info.pl
 
-   if [ "$OS" == "iPhoneSimulator" ]; then
-      configure "${OS}" $ARCH ${BUILD_DIR} ${SRC_DIR}
-   elif [ "$OS" == "iPhoneOS" ]; then
-   
-      configure "${OS}" $ARCH ${BUILD_DIR} ${SRC_DIR}
-   elif [ "$OS" == "MacOSX" ]; then
-      configure "${OS}" $ARCH ${BUILD_DIR} ${SRC_DIR}
-   else
-      exit 1
-   fi
+   configure "${OS}" $ARCH ${BUILD_DIR} ${SRC_DIR}
 
    LOG_PATH="${PREFIX}.build.log"
    echo "Building ${LOG_PATH}"
@@ -180,34 +160,48 @@ generate_opensslconfh() {
 build_ios() {
    local TMP_BUILD_DIR=$( mktemp -d )
 
-   # Clean up whatever was left from our previous build
-   rm -rf "${SCRIPT_DIR}"/../{ios/include,ios/lib}
-   mkdir -p "${SCRIPT_DIR}"/../{ios/include,ios/lib}
+   # TODO: Becasue arm64 is in iphoneos and iphonesimulator slice, it can't co-exists together in the same static library
+   #       Separate iphoneos and iphonesimulator
 
-   build "i386" "iPhoneSimulator" ${TMP_BUILD_DIR} "ios"
-   build "x86_64" "iPhoneSimulator" ${TMP_BUILD_DIR} "ios"
-   [ -n "$BUILD_IPHONESIMULATOR_ARM64" ] && build "arm64" "iPhoneSimulator" ${TMP_BUILD_DIR} "ios"
-   build "armv7" "iPhoneOS" ${TMP_BUILD_DIR} "ios"
-   build "armv7s" "iPhoneOS" ${TMP_BUILD_DIR} "ios"
-   build "arm64" "iPhoneOS" ${TMP_BUILD_DIR} "ios"
-   build "arm64e" "iPhoneOS" ${TMP_BUILD_DIR} "ios"
+   # Clean up whatever was left from our previous build
+   rm -rf "${SCRIPT_DIR}"/../{iphonesimulator/include,iphonesimulator/lib}
+   mkdir -p "${SCRIPT_DIR}"/../{iphonesimulator/include,iphonesimulator/lib}
+
+   build "i386" "iPhoneSimulator" ${TMP_BUILD_DIR} "iphonesimulator"
+   build "x86_64" "iPhoneSimulator" ${TMP_BUILD_DIR} "iphonesimulator"
+   build "arm64" "iPhoneSimulator" ${TMP_BUILD_DIR} "iphonesimulator"
+
+   rm -rf "${SCRIPT_DIR}"/../{iphoneos/include,iphoneos/lib}
+   mkdir -p "${SCRIPT_DIR}"/../{iphoneos/include,iphoneos/lib}
+
+   build "armv7" "iPhoneOS" ${TMP_BUILD_DIR} "iphoneos"
+   build "armv7s" "iPhoneOS" ${TMP_BUILD_DIR} "iphoneos"
+   build "arm64" "iPhoneOS" ${TMP_BUILD_DIR} "iphoneos"
+   build "arm64e" "iPhoneOS" ${TMP_BUILD_DIR} "iphoneos"
 
    # Copy headers
-   cp -r "${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneOS-arm64/include/openssl" "${SCRIPT_DIR}/../ios/include"
-   cp -f "${SCRIPT_DIR}/../shim/shim.h" "${SCRIPT_DIR}/../ios/include/openssl/shim.h"
+   cp -r "${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneOS-arm64/include/openssl" "${SCRIPT_DIR}/../iphoneos/include"
+   cp -f "${SCRIPT_DIR}/../shim/shim.h" "${SCRIPT_DIR}/../iphoneos/include/openssl/shim.h"
+
+   # Copy headers
+   cp -r "${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneSimulator-arm64/include/openssl" "${SCRIPT_DIR}/../iphonesimulator/include"
+   cp -f "${SCRIPT_DIR}/../shim/shim.h" "${SCRIPT_DIR}/../iphonesimulator/include/openssl/shim.h"
 
    # fix inttypes.h
-   find "${SCRIPT_DIR}/../ios/include/openssl" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <sys\/types\.h>/g" {} \;
+   find "${SCRIPT_DIR}/../iphoneos/include/openssl" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <sys\/types\.h>/g" {} \;
+   find "${SCRIPT_DIR}/../iphonesimulator/include/openssl" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <sys\/types\.h>/g" {} \;
 
-   cp -f ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneSimulator-x86_64/include/openssl/opensslconf-x86_64.h "${SCRIPT_DIR}/../ios/include/openssl"
-   cp -f ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneSimulator-i386/include/openssl/opensslconf-i386.h "${SCRIPT_DIR}/../ios/include/openssl"
-   [ -n "$BUILD_IPHONESIMULATOR_ARM64" ] && cp -f ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneSimulator-arm64/include/openssl/opensslconf-arm64.h "${SCRIPT_DIR}/../ios/include/openssl"
-   cp -f ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneOS-armv7/include/openssl/opensslconf-armv7.h "${SCRIPT_DIR}/../ios/include/openssl"
-   cp -f ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneOS-armv7s/include/openssl/opensslconf-armv7s.h "${SCRIPT_DIR}/../ios/include/openssl"
-   cp -f ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneOS-arm64/include/openssl/opensslconf-arm64.h "${SCRIPT_DIR}/../ios/include/openssl"
-   cp -f ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneOS-arm64e/include/openssl/opensslconf-arm64e.h "${SCRIPT_DIR}/../ios/include/openssl"
+   cp -f ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneSimulator-x86_64/include/openssl/opensslconf-x86_64.h "${SCRIPT_DIR}/../iphonesimulator/include/openssl"
+   cp -f ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneSimulator-i386/include/openssl/opensslconf-i386.h "${SCRIPT_DIR}/../iphonesimulator/include/openssl"
+   cp -f ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneSimulator-arm64/include/openssl/opensslconf-arm64.h "${SCRIPT_DIR}/../iphonesimulator/include/openssl"
+   
+   cp -f ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneOS-armv7/include/openssl/opensslconf-armv7.h "${SCRIPT_DIR}/../iphoneos/include/openssl"
+   cp -f ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneOS-armv7s/include/openssl/opensslconf-armv7s.h "${SCRIPT_DIR}/../iphoneos/include/openssl"
+   cp -f ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneOS-arm64/include/openssl/opensslconf-arm64.h "${SCRIPT_DIR}/../iphoneos/include/openssl"
+   cp -f ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneOS-arm64e/include/openssl/opensslconf-arm64e.h "${SCRIPT_DIR}/../iphoneos/include/openssl"
 
-   generate_opensslconfh "${SCRIPT_DIR}/../ios/include/openssl/opensslconf.h"
+   generate_opensslconfh "${SCRIPT_DIR}/../iphoneos/include/openssl/opensslconf.h"
+   generate_opensslconfh "${SCRIPT_DIR}/../iphonesimulator/include/openssl/opensslconf.h"
 
    rm -rf ${TMP_BUILD_DIR}
 }
@@ -220,7 +214,7 @@ build_macos() {
    mkdir -p "${SCRIPT_DIR}"/../{macos/include,macos/lib}
 
    build "x86_64" "MacOSX" ${TMP_BUILD_DIR} "macos"
-   [ -n "$BUILD_MACOS_ARM64" ] && build "arm64" "MacOSX" ${TMP_BUILD_DIR} "macos"
+   build "arm64" "MacOSX" ${TMP_BUILD_DIR} "macos"
 
    # Copy headers
    cp -r ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-MacOSX-x86_64/include/openssl "${SCRIPT_DIR}/../macos/include"
@@ -230,7 +224,7 @@ build_macos() {
    find "${SCRIPT_DIR}/../macos/include/openssl" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <sys\/types\.h>/g" {} \;
 
    cp -f ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-MacOSX-x86_64/include/openssl/opensslconf-x86_64.h "${SCRIPT_DIR}/../macos/include/openssl"
-   [ -n "$BUILD_MACOS_ARM64" ] && cp -f ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-MacOSX-arm64/include/openssl/opensslconf-arm64.h "${SCRIPT_DIR}/../macos/include/openssl"
+   cp -f ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-MacOSX-arm64/include/openssl/opensslconf-arm64.h "${SCRIPT_DIR}/../macos/include/openssl"
 
    generate_opensslconfh "${SCRIPT_DIR}/../macos/include/openssl/opensslconf.h"
 
