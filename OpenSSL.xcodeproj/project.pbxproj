@@ -336,8 +336,8 @@
 		7594BE0C252683D8006D0FC0 /* opensslconf-arm64.h in Headers */ = {isa = PBXBuildFile; fileRef = 7594BE0B252683D8006D0FC0 /* opensslconf-arm64.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75F170CE25675C9700E7EECB /* opensslconf-i386.h in Headers */ = {isa = PBXBuildFile; fileRef = 7538B9D124D1F06D007C13A2 /* opensslconf-i386.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75F170D525675C9D00E7EECB /* opensslconf-x86_64.h in Headers */ = {isa = PBXBuildFile; fileRef = 7538B9D624D1F06E007C13A2 /* opensslconf-x86_64.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		75F170DC25675CAE00E7EECB /* opensslconf-i386.h in Headers */ = {isa = PBXBuildFile; fileRef = 7538B9D124D1F06D007C13A2 /* opensslconf-i386.h */; };
-		75F170E025675CB100E7EECB /* opensslconf-x86_64.h in Headers */ = {isa = PBXBuildFile; fileRef = 7538B9D624D1F06E007C13A2 /* opensslconf-x86_64.h */; };
+		75F170DC25675CAE00E7EECB /* opensslconf-i386.h in Headers */ = {isa = PBXBuildFile; fileRef = 7538B9D124D1F06D007C13A2 /* opensslconf-i386.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		75F170E025675CB100E7EECB /* opensslconf-x86_64.h in Headers */ = {isa = PBXBuildFile; fileRef = 7538B9D624D1F06E007C13A2 /* opensslconf-x86_64.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9F4A2707223BD900005CB63A /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F4A2705223BD900005CB63A /* libssl.a */; platformFilter = ios; };
 		9F4A2708223BD900005CB63A /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F4A2706223BD900005CB63A /* libcrypto.a */; platformFilter = ios; };
 		9F4A27BE223BE57C005CB63A /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F4A27BC223BE57C005CB63A /* libcrypto.a */; };

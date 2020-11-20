@@ -65,11 +65,7 @@ configure() {
    
 
    if [ "$OS" == "MacOSX" ]; then
-      if [ "$ARCH" == "x86_64" ]; then
-         ${SRC_DIR}/Configure macos-$ARCH no-asm no-shared --prefix="${PREFIX}" &> "${PREFIX}.config.log"
-      elif [ "$ARCH" == "arm64" ]; then
-         ${SRC_DIR}/Configure macos-$ARCH no-asm no-shared --prefix="${PREFIX}" &> "${PREFIX}.config.log"
-      fi
+      ${SRC_DIR}/Configure macos-$ARCH no-asm no-shared --prefix="${PREFIX}" &> "${PREFIX}.config.log"
    elif [ "$OS" == "iPhoneSimulator" ]; then
       ${SRC_DIR}/Configure ios-sim-cross-$ARCH no-asm no-shared --prefix="${PREFIX}" &> "${PREFIX}.config.log"
    elif [ "$OS" == "iPhoneOS" ]; then
@@ -99,7 +95,7 @@ build()
 
    # fix headers for Swift
 
-   sed -ie "s/BIGNUM \*I,/BIGNUM \*i,/g" ${SRC_DIR}/crypto/rsa/rsa_local.h
+   sed -ie "s/BIGNUM \*I,/BIGNUM \*i,/g" ${SRC_DIR}/crypto/rsa/rsa_local.h   
 
    # -bundle and -bitcode_bundle (Xcode setting ENABLE_BITCODE=YES) cannot be used together 
    # sed -ie "s/'-bundle'/''/g" ${SRC_DIR}/Configurations/shared-info.pl
@@ -122,7 +118,6 @@ build()
    fi
 
    mv "${PREFIX}/include/openssl/opensslconf.h" "${PREFIX}/include/openssl/opensslconf-${ARCH}.h"
-
    rm -rf "${SRC_DIR}"
 }
 
@@ -191,6 +186,10 @@ build_ios() {
    find "${SCRIPT_DIR}/../iphoneos/include/openssl" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <sys\/types\.h>/g" {} \;
    find "${SCRIPT_DIR}/../iphonesimulator/include/openssl" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <sys\/types\.h>/g" {} \;
 
+   # fix RC4_INT redefinition
+   find "${SCRIPT_DIR}/../iphoneos/include/openssl" -type f -name "*.h" -exec sed -i "" -e "s/\#define RC4_INT unsigned char/\#if \!defined(RC4_INT)\n#define RC4_INT unsigned char\n\#endif\n/g" {} \;
+   find "${SCRIPT_DIR}/../iphonesimulator/include/openssl" -type f -name "*.h" -exec sed -i "" -e "s/\#define RC4_INT unsigned char/\#if \!defined(RC4_INT)\n#define RC4_INT unsigned char\n\#endif\n/g" {} \;
+
    cp -f ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneSimulator-x86_64/include/openssl/opensslconf-x86_64.h "${SCRIPT_DIR}/../iphonesimulator/include/openssl"
    cp -f ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneSimulator-i386/include/openssl/opensslconf-i386.h "${SCRIPT_DIR}/../iphonesimulator/include/openssl"
    cp -f ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneSimulator-arm64/include/openssl/opensslconf-arm64.h "${SCRIPT_DIR}/../iphonesimulator/include/openssl"
@@ -222,6 +221,9 @@ build_macos() {
 
    # fix inttypes.h
    find "${SCRIPT_DIR}/../macos/include/openssl" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <sys\/types\.h>/g" {} \;
+
+   # fix RC4_INT redefinition
+   find "${SCRIPT_DIR}/../macos/include/openssl" -type f -name "*.h" -exec sed -i "" -e "s/\#define RC4_INT unsigned char/\#if \!defined(RC4_INT)\n#define RC4_INT unsigned char\n\#endif\n/g" {} \;
 
    cp -f ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-MacOSX-x86_64/include/openssl/opensslconf-x86_64.h "${SCRIPT_DIR}/../macos/include/openssl"
    cp -f ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-MacOSX-arm64/include/openssl/opensslconf-arm64.h "${SCRIPT_DIR}/../macos/include/openssl"
