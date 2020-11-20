@@ -66,6 +66,9 @@ extern "C" {
 #ifndef OPENSSL_NO_EGD
 # define OPENSSL_NO_EGD
 #endif
+#ifndef OPENSSL_NO_ENGINE
+# define OPENSSL_NO_ENGINE
+#endif
 #ifndef OPENSSL_NO_EXTERNAL_TESTS
 # define OPENSSL_NO_EXTERNAL_TESTS
 #endif
@@ -202,7 +205,7 @@ extern "C" {
 # undef THIRTY_TWO_BIT
 #endif
 
-#define RC4_INT unsigned int
+#define RC4_INT unsigned char
 
 #ifdef  __cplusplus
 }
