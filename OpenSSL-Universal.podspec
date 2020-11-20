@@ -27,7 +27,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.ios.deployment_target = '9.0'
-  s.ios.vendored_frameworks = 'Frameworks/ios/OpenSSL.framework'
+  s.ios.vendored_frameworks = 'Frameworks/iphoneos/OpenSSL.framework'
   s.osx.deployment_target = '10.10'
   s.osx.vendored_frameworks = 'Frameworks/macos/OpenSSL.framework'
 

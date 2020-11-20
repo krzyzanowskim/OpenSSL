@@ -15,7 +15,7 @@ It takes some time to keep it all for your convenience, so maybe spare $1, so I 
 
 #### Output Formats
 
-- Static library [libcrypto.a, libssl.a](ios/lib/)
+- Static library [libcrypto.a, libssl.a](iphoneos/lib/)
 - [OpenSSL.framework](Frameworks/)
 - [OpenSSL.xcframework](Frameworks/)
 
