@@ -334,6 +334,10 @@
 		758C77FD2526916A0095D6A0 /* OpenSSL.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F4A271F223BE4E6005CB63A /* OpenSSL.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		758C7802252691700095D6A0 /* OpenSSL.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F4A270D223BD9EB005CB63A /* OpenSSL.h */; platformFilter = ios; settings = {ATTRIBUTES = (Public, ); }; };
 		7594BE0C252683D8006D0FC0 /* opensslconf-arm64.h in Headers */ = {isa = PBXBuildFile; fileRef = 7594BE0B252683D8006D0FC0 /* opensslconf-arm64.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		75F170CE25675C9700E7EECB /* opensslconf-i386.h in Headers */ = {isa = PBXBuildFile; fileRef = 7538B9D124D1F06D007C13A2 /* opensslconf-i386.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		75F170D525675C9D00E7EECB /* opensslconf-x86_64.h in Headers */ = {isa = PBXBuildFile; fileRef = 7538B9D624D1F06E007C13A2 /* opensslconf-x86_64.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		75F170DC25675CAE00E7EECB /* opensslconf-i386.h in Headers */ = {isa = PBXBuildFile; fileRef = 7538B9D124D1F06D007C13A2 /* opensslconf-i386.h */; };
+		75F170E025675CB100E7EECB /* opensslconf-x86_64.h in Headers */ = {isa = PBXBuildFile; fileRef = 7538B9D624D1F06E007C13A2 /* opensslconf-x86_64.h */; };
 		9F4A2707223BD900005CB63A /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F4A2705223BD900005CB63A /* libssl.a */; platformFilter = ios; };
 		9F4A2708223BD900005CB63A /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F4A2706223BD900005CB63A /* libcrypto.a */; platformFilter = ios; };
 		9F4A27BE223BE57C005CB63A /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F4A27BC223BE57C005CB63A /* libcrypto.a */; };
@@ -377,12 +381,12 @@
 		7538B9CE24D1F06D007C13A2 /* dsa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dsa.h; path = iphoneos/include/openssl/dsa.h; sourceTree = "<group>"; };
 		7538B9CF24D1F06D007C13A2 /* storeerr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = storeerr.h; path = iphoneos/include/openssl/storeerr.h; sourceTree = "<group>"; };
 		7538B9D024D1F06D007C13A2 /* obj_mac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = obj_mac.h; path = iphoneos/include/openssl/obj_mac.h; sourceTree = "<group>"; };
-		7538B9D124D1F06D007C13A2 /* opensslconf-i386.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "opensslconf-i386.h"; path = "iphoneos/include/openssl/opensslconf-i386.h"; sourceTree = "<group>"; };
+		7538B9D124D1F06D007C13A2 /* opensslconf-i386.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "opensslconf-i386.h"; path = "iphonesimulator/include/openssl/opensslconf-i386.h"; sourceTree = "<group>"; };
 		7538B9D224D1F06D007C13A2 /* md2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = md2.h; path = iphoneos/include/openssl/md2.h; sourceTree = "<group>"; };
 		7538B9D324D1F06E007C13A2 /* conf_api.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = conf_api.h; path = iphoneos/include/openssl/conf_api.h; sourceTree = "<group>"; };
 		7538B9D424D1F06E007C13A2 /* bn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bn.h; path = iphoneos/include/openssl/bn.h; sourceTree = "<group>"; };
 		7538B9D524D1F06E007C13A2 /* blowfish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = blowfish.h; path = iphoneos/include/openssl/blowfish.h; sourceTree = "<group>"; };
-		7538B9D624D1F06E007C13A2 /* opensslconf-x86_64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "opensslconf-x86_64.h"; path = "iphoneos/include/openssl/opensslconf-x86_64.h"; sourceTree = "<group>"; };
+		7538B9D624D1F06E007C13A2 /* opensslconf-x86_64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "opensslconf-x86_64.h"; path = "iphonesimulator/include/openssl/opensslconf-x86_64.h"; sourceTree = "<group>"; };
 		7538B9D724D1F06E007C13A2 /* opensslconf-armv7s.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "opensslconf-armv7s.h"; path = "iphoneos/include/openssl/opensslconf-armv7s.h"; sourceTree = "<group>"; };
 		7538B9D824D1F06E007C13A2 /* ocsperr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ocsperr.h; path = iphoneos/include/openssl/ocsperr.h; sourceTree = "<group>"; };
 		7538B9D924D1F06E007C13A2 /* ec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ec.h; path = iphoneos/include/openssl/ec.h; sourceTree = "<group>"; };
@@ -944,6 +948,7 @@
 				753EF2802567514F008FDE33 /* bio.h in Headers */,
 				753EF2812567514F008FDE33 /* uierr.h in Headers */,
 				753EF2822567514F008FDE33 /* ts.h in Headers */,
+				75F170D525675C9D00E7EECB /* opensslconf-x86_64.h in Headers */,
 				753EF2832567514F008FDE33 /* rand_drbg.h in Headers */,
 				753EF2842567514F008FDE33 /* dh.h in Headers */,
 				753EF2852567514F008FDE33 /* dtls1.h in Headers */,
@@ -986,6 +991,7 @@
 				753EF2AA2567514F008FDE33 /* ocsperr.h in Headers */,
 				753EF2AB2567514F008FDE33 /* camellia.h in Headers */,
 				753EF2AC2567514F008FDE33 /* ecerr.h in Headers */,
+				75F170CE25675C9700E7EECB /* opensslconf-i386.h in Headers */,
 				753EF2AD2567514F008FDE33 /* comperr.h in Headers */,
 				753EF2AE2567514F008FDE33 /* conferr.h in Headers */,
 				753EF2AF2567514F008FDE33 /* cryptoerr.h in Headers */,
@@ -1060,6 +1066,7 @@
 				7538BA5C24D1F073007C13A2 /* bio.h in Headers */,
 				7538BA6A24D1F074007C13A2 /* uierr.h in Headers */,
 				7538BA7324D1F074007C13A2 /* ts.h in Headers */,
+				75F170E025675CB100E7EECB /* opensslconf-x86_64.h in Headers */,
 				7538BA8324D1F074007C13A2 /* rand_drbg.h in Headers */,
 				7538BA6724D1F074007C13A2 /* dh.h in Headers */,
 				7538BA2624D1F073007C13A2 /* dtls1.h in Headers */,
@@ -1102,6 +1109,7 @@
 				7538BA4724D1F073007C13A2 /* ocsperr.h in Headers */,
 				7538BA6224D1F073007C13A2 /* camellia.h in Headers */,
 				7538BA7924D1F074007C13A2 /* ecerr.h in Headers */,
+				75F170DC25675CAE00E7EECB /* opensslconf-i386.h in Headers */,
 				7538BA4A24D1F073007C13A2 /* comperr.h in Headers */,
 				7538BA2524D1F073007C13A2 /* conferr.h in Headers */,
 				7538BA6924D1F074007C13A2 /* cryptoerr.h in Headers */,
