@@ -25,14 +25,12 @@ Pod::Spec.new do |s|
                      'Justin Plouffe' => 'plouffe.justin@gmail.com'}
                    
   s.requires_arc = true
-
+  s.cocoapods_version = '>= 1.9'
   s.ios.deployment_target = '9.0'
-  s.ios.vendored_frameworks = 'Frameworks/iphoneos/OpenSSL.framework'
   s.osx.deployment_target = '10.10'
-  s.osx.vendored_frameworks = 'Frameworks/macos/OpenSSL.framework'
+  s.vendored_frameworks = 'Frameworks/OpenSSL.xcframework'
 
   # Temporary workaround for CocoaPods machinery
-  s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64'}
-  s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64'}
-  
+  # s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64'}
+  # s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64'}
 end
