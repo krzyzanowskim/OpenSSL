@@ -175,11 +175,11 @@ build_ios() {
    build "arm64e" "iPhoneOS" ${TMP_BUILD_DIR} "iphoneos"
 
    # Copy headers
-   cp -r "${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneOS-arm64/include/openssl" "${SCRIPT_DIR}/../iphoneos/include"
+   ditto "${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneOS-arm64/include/openssl" "${SCRIPT_DIR}/../iphoneos/include/openssl"
    cp -f "${SCRIPT_DIR}/../shim/shim.h" "${SCRIPT_DIR}/../iphoneos/include/openssl/shim.h"
 
    # Copy headers
-   cp -r "${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneSimulator-arm64/include/openssl" "${SCRIPT_DIR}/../iphonesimulator/include"
+   ditto "${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneSimulator-arm64/include/openssl" "${SCRIPT_DIR}/../iphonesimulator/include/openssl"
    cp -f "${SCRIPT_DIR}/../shim/shim.h" "${SCRIPT_DIR}/../iphonesimulator/include/openssl/shim.h"
 
    # fix inttypes.h
@@ -216,7 +216,7 @@ build_macos() {
    build "arm64" "MacOSX" ${TMP_BUILD_DIR} "macos"
 
    # Copy headers
-   cp -r ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-MacOSX-x86_64/include/openssl "${SCRIPT_DIR}/../macos/include"
+   ditto ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-MacOSX-x86_64/include/openssl "${SCRIPT_DIR}/../macos/include/openssl"
    cp -f "${SCRIPT_DIR}/../shim/shim.h" "${SCRIPT_DIR}/../macos/include/openssl/shim.h"
 
    # fix inttypes.h

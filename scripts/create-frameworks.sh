@@ -18,7 +18,8 @@ xcrun xcodebuild build \
 	-destination 'generic/platform=macOS'
 
 mkdir -p "${OUTPUT_DIR}/macos"
-cp -r "${DERIVED_DATA_PATH}/Build/Products/Release/${FWNAME}.framework" "${OUTPUT_DIR}/macos"
+rm -rf "${OUTPUT_DIR}/macos/${FWNAME}.framework"
+ditto "${DERIVED_DATA_PATH}/Build/Products/Release/${FWNAME}.framework" "${OUTPUT_DIR}/macos/${FWNAME}.framework"
 rm -rf "${DERIVED_DATA_PATH}"
 
 # iOS
@@ -29,8 +30,9 @@ xcrun xcodebuild build \
 	-derivedDataPath "${DERIVED_DATA_PATH}" \
 	-destination 'generic/platform=iOS'
 
+rm -rf "${OUTPUT_DIR}/iphoneos"
 mkdir -p "${OUTPUT_DIR}/iphoneos"
-cp -r "${DERIVED_DATA_PATH}/Build/Products/Release-iphoneos/${FWNAME}.framework" "${OUTPUT_DIR}/iphoneos"
+ditto "${DERIVED_DATA_PATH}/Build/Products/Release-iphoneos/${FWNAME}.framework" "${OUTPUT_DIR}/iphoneos/${FWNAME}.framework"
 rm -rf "${DERIVED_DATA_PATH}"
 
 # iOS Simulator
@@ -41,18 +43,22 @@ xcrun xcodebuild build \
 	-derivedDataPath "${DERIVED_DATA_PATH}" \
 	-destination 'generic/platform=iOS Simulator'
 
+rm -rf "${OUTPUT_DIR}/iphonesimulator"
 mkdir -p "${OUTPUT_DIR}/iphonesimulator"
-cp -r "${DERIVED_DATA_PATH}/Build/Products/Release-iphonesimulator/${FWNAME}.framework" "${OUTPUT_DIR}/iphonesimulator"
+ditto "${DERIVED_DATA_PATH}/Build/Products/Release-iphonesimulator/${FWNAME}.framework" "${OUTPUT_DIR}/iphonesimulator/${FWNAME}.framework"
 rm -rf "${DERIVED_DATA_PATH}"
 
+rm -rf "${BASE_PWD}/Frameworks/iphoneos"
 mkdir -p "${BASE_PWD}/Frameworks/iphoneos"
-cp -rf "${OUTPUT_DIR}/iphoneos/${FWNAME}.framework" "${BASE_PWD}/Frameworks/iphoneos"
+ditto "${OUTPUT_DIR}/iphoneos/${FWNAME}.framework" "${BASE_PWD}/Frameworks/iphoneos/${FWNAME}.framework"
 
+rm -rf "${BASE_PWD}/Frameworks/iphonesimulator"
 mkdir -p "${BASE_PWD}/Frameworks/iphonesimulator"
-cp -rf "${OUTPUT_DIR}/iphonesimulator/${FWNAME}.framework" "${BASE_PWD}/Frameworks/iphonesimulator"
+ditto "${OUTPUT_DIR}/iphonesimulator/${FWNAME}.framework" "${BASE_PWD}/Frameworks/iphonesimulator/${FWNAME}.framework"
 
+rm -rf "${BASE_PWD}/Frameworks/macos"
 mkdir -p "${BASE_PWD}/Frameworks/macos"
-cp -rf "${OUTPUT_DIR}/macos/${FWNAME}.framework" "${BASE_PWD}/Frameworks/macos"
+ditto "${OUTPUT_DIR}/macos/${FWNAME}.framework" "${BASE_PWD}/Frameworks/macos/${FWNAME}.framework"
 
 # XCFramework
 rm -rf "${BASE_PWD}/Frameworks/${FWNAME}.xcframework"
@@ -64,28 +70,3 @@ xcrun xcodebuild -quiet -create-xcframework \
 	-output "${BASE_PWD}/Frameworks/${FWNAME}.xcframework"
 
 rm -rf ${OUTPUT_DIR}
-
-# # Laverage Carthage to build frameworks
-
-# BUILD_DIR=$( mktemp -d )
-# echo ${BUILD_DIR}
-
-# # Build
-
-# cd ${BUILD_DIR}
-# carthage build --configuration Release --no-use-binaries --no-skip-current --derived-data "${BUILD_DIR}/DerivedData" --project-directory "${SCRIPT_DIR}/.."
-# rm -rf ${BUILD_DIR}
-# cd ${BASE_PWD}
-
-# rm -rf Frameworks/{ios,macos}/${FWNAME}.framework*
-# mkdir -p Frameworks/{ios,macos}
-
-# mv -f Carthage/Build/iOS/${FWNAME}.framework Frameworks/ios
-# mv -f Carthage/Build/iOS/${FWNAME}.framework.dSYM Frameworks/ios
-
-# mv -f Carthage/Build/Mac/${FWNAME}.framework Frameworks/macos
-# mv -f Carthage/Build/Mac/${FWNAME}.framework.dSYM Frameworks/macos
-
-# # Cleanup
-# rm -rf Carthage
-# rm -rf DerivedData

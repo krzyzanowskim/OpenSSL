@@ -205,10 +205,7 @@ extern "C" {
 # define THIRTY_TWO_BIT
 #endif
 
-#if !defined(RC4_INT)
 #define RC4_INT unsigned char
-#endif
-
 
 #ifdef  __cplusplus
 }

@@ -38,7 +38,11 @@ $ make
 
 The result of build process is put inside [Frameworks](Frameworks/) directory.
 
-#### Installation
+### Hardened Runtime (macOS) and Xcode
+
+Binary `OpenSSL.xcframework` (Used by the Swift Package Manager package integration) won't load properly in your app if the app uses **Sign to Run Locally**  Signing Certificate with Hardened Runtime enabled. It is possible to setup Xcode like this. To solve the problem you have two options:
+- Use proper Signing Certificate, eg. *Development* <- this is the proper action
+- Use `Disable Library Validation` aka `com.apple.security.cs.disable-library-validation` entitlement
 
 ### Swift Package Manager
 
@@ -63,7 +67,6 @@ github "krzyzanowskim/OpenSSL"
 ### Authors
 
 [Marcin Krzyżanowski](https://twitter.com/krzyzanowskim)
-
 
 ## FAQ etc.
 #### Where can I use OpenSSL-Universal?
