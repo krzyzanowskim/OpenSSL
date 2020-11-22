@@ -1462,7 +1462,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/iphonesimulator/lib",
 				);
-				MARKETING_VERSION = 1.1.17;
+				MARKETING_VERSION = 1.1.170;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = (
@@ -1548,7 +1548,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/iphonesimulator/lib",
 				);
-				MARKETING_VERSION = 1.1.17;
+				MARKETING_VERSION = 1.1.170;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = (
@@ -1657,7 +1657,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/iphoneos/lib",
 				);
-				MARKETING_VERSION = 1.1.17;
+				MARKETING_VERSION = 1.1.170;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = (
@@ -1743,7 +1743,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/iphoneos/lib",
 				);
-				MARKETING_VERSION = 1.1.17;
+				MARKETING_VERSION = 1.1.170;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = (
@@ -1837,7 +1837,7 @@
 					"$(PROJECT_DIR)/macos/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MARKETING_VERSION = 1.1.17;
+				MARKETING_VERSION = 1.1.170;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = (
@@ -1922,7 +1922,7 @@
 					"$(PROJECT_DIR)/macos/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MARKETING_VERSION = 1.1.17;
+				MARKETING_VERSION = 1.1.170;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = (
