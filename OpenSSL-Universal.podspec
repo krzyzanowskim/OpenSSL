@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "OpenSSL-Universal"
-  s.version      = "1.1.170"
+  s.version      = "1.1.171"
   s.summary      = "OpenSSL for iOS and OS X"
   s.description  = "OpenSSL is an SSL/TLS and Crypto toolkit. Deprecated in Mac OS and gone in iOS, this spec gives your project non-deprecated OpenSSL support. Supports OSX and iOS including Simulator (armv7,armv7s,arm64,x86_64)."
   s.homepage     = "https://github.com/krzyzanowskim/OpenSSL"
@@ -29,8 +29,4 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '9.0'
   s.osx.deployment_target = '10.10'
   s.vendored_frameworks = 'Frameworks/OpenSSL.xcframework'
-
-  # Temporary workaround for CocoaPods machinery
-  # s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64'}
-  # s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64'}
 end

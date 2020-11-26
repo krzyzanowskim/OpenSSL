@@ -155,9 +155,6 @@ generate_opensslconfh() {
 build_ios() {
    local TMP_BUILD_DIR=$( mktemp -d )
 
-   # TODO: Becasue arm64 is in iphoneos and iphonesimulator slice, it can't co-exists together in the same static library
-   #       Separate iphoneos and iphonesimulator
-
    # Clean up whatever was left from our previous build
    rm -rf "${SCRIPT_DIR}"/../{iphonesimulator/include,iphonesimulator/lib}
    mkdir -p "${SCRIPT_DIR}"/../{iphonesimulator/include,iphonesimulator/lib}

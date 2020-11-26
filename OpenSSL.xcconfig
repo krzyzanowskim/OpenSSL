@@ -2,3 +2,5 @@ CODE_SIGN_IDENTITY[sdk=macosx*] = Developer ID Application
 CODE_SIGN_IDENTITY[sdk=iphoneos*] = iPhone Developer
 CODE_SIGN_IDENTITY[sdk=iphonesimulator*] = iPhone Developer
 CODE_SIGN_STYLE = Automatic
+
+MARKETING_VERSION = 1.1.171
