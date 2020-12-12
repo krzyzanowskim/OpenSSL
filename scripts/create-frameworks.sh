@@ -7,7 +7,7 @@ BASE_PWD="$PWD"
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 FWNAME="OpenSSL"
 OUTPUT_DIR=$( mktemp -d )
-COMMON_SETUP="-project ${SCRIPT_DIR}/../${FWNAME}.xcodeproj -configuration Release -quiet SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
+COMMON_SETUP=" -project ${SCRIPT_DIR}/../${FWNAME}.xcodeproj -configuration Release -quiet BUILD_LIBRARY_FOR_DISTRIBUTION=YES "
 
 # macOS
 DERIVED_DATA_PATH=$( mktemp -d )
@@ -20,6 +20,19 @@ xcrun xcodebuild build \
 mkdir -p "${OUTPUT_DIR}/macos"
 rm -rf "${OUTPUT_DIR}/macos/${FWNAME}.framework"
 ditto "${DERIVED_DATA_PATH}/Build/Products/Release/${FWNAME}.framework" "${OUTPUT_DIR}/macos/${FWNAME}.framework"
+rm -rf "${DERIVED_DATA_PATH}"
+
+# macOS Catalyst
+DERIVED_DATA_PATH=$( mktemp -d )
+xcrun xcodebuild build \
+	$COMMON_SETUP \
+    -scheme "${FWNAME} (Catalyst)" \
+	-derivedDataPath "${DERIVED_DATA_PATH}" \
+	-destination 'generic/platform=macOS,variant=Mac Catalyst'
+
+mkdir -p "${OUTPUT_DIR}/macos_catalyst"
+rm -rf "${OUTPUT_DIR}/macos_catalyst/${FWNAME}.framework"
+ditto "${DERIVED_DATA_PATH}/Build/Products/Release/${FWNAME}.framework" "${OUTPUT_DIR}/macos_catalyst/${FWNAME}.framework"
 rm -rf "${DERIVED_DATA_PATH}"
 
 # iOS
@@ -48,6 +61,8 @@ mkdir -p "${OUTPUT_DIR}/iphonesimulator"
 ditto "${DERIVED_DATA_PATH}/Build/Products/Release-iphonesimulator/${FWNAME}.framework" "${OUTPUT_DIR}/iphonesimulator/${FWNAME}.framework"
 rm -rf "${DERIVED_DATA_PATH}"
 
+#
+
 rm -rf "${BASE_PWD}/Frameworks/iphoneos"
 mkdir -p "${BASE_PWD}/Frameworks/iphoneos"
 ditto "${OUTPUT_DIR}/iphoneos/${FWNAME}.framework" "${BASE_PWD}/Frameworks/iphoneos/${FWNAME}.framework"
@@ -60,6 +75,10 @@ rm -rf "${BASE_PWD}/Frameworks/macos"
 mkdir -p "${BASE_PWD}/Frameworks/macos"
 ditto "${OUTPUT_DIR}/macos/${FWNAME}.framework" "${BASE_PWD}/Frameworks/macos/${FWNAME}.framework"
 
+rm -rf "${BASE_PWD}/Frameworks/macos_catalyst"
+mkdir -p "${BASE_PWD}/Frameworks/macos_catalyst"
+ditto "${OUTPUT_DIR}/macos_catalyst/${FWNAME}.framework" "${BASE_PWD}/Frameworks/macos_catalyst/${FWNAME}.framework"
+
 # XCFramework
 rm -rf "${BASE_PWD}/Frameworks/${FWNAME}.xcframework"
 
@@ -67,6 +86,7 @@ xcrun xcodebuild -quiet -create-xcframework \
 	-framework "${OUTPUT_DIR}/iphoneos/${FWNAME}.framework" \
 	-framework "${OUTPUT_DIR}/iphonesimulator/${FWNAME}.framework" \
 	-framework "${OUTPUT_DIR}/macos/${FWNAME}.framework" \
+	-framework "${OUTPUT_DIR}/macos_catalyst/${FWNAME}.framework" \
 	-output "${BASE_PWD}/Frameworks/${FWNAME}.xcframework"
 
 rm -rf ${OUTPUT_DIR}
