@@ -3,5 +3,6 @@ use_frameworks!
 
 target 'Example' do
 
-  pod "OpenSSL-Universal", :git => 'https://github.com/krzyzanowskim/OpenSSL.git', :branch => 'master'
+  # pod "OpenSSL-Universal", :git => 'https://github.com/krzyzanowskim/OpenSSL.git', :branch => 'master'
+  pod "OpenSSL-Universal", :path => '../../'
 end
