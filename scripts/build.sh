@@ -233,7 +233,7 @@ build_catalyst() {
 
    build "x86_64" "MacOSX_Catalyst" ${TMP_BUILD_DIR} "macos_catalyst"
    build "arm64" "MacOSX_Catalyst" ${TMP_BUILD_DIR} "macos_catalyst"
-   build "arm64e" "MacOSX_Catalyst" ${TMP_BUILD_DIR} "macos_catalyst"
+   # build "arm64e" "MacOSX_Catalyst" ${TMP_BUILD_DIR} "macos_catalyst"
 
    # Copy headers
    ditto ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-MacOSX_Catalyst-x86_64/include/openssl "${SCRIPT_DIR}/../macos_catalyst/include/openssl"
@@ -252,7 +252,7 @@ build_catalyst() {
    echo "#elif defined(__APPLE__) && defined (__arm__) && defined (__ARM_ARCH_7A__)" >> ${OPENSSLCONF_PATH}
    echo "#elif defined(__APPLE__) && defined (__arm__) && defined (__ARM_ARCH_7S__)" >> ${OPENSSLCONF_PATH}
    echo "#elif defined(__APPLE__) && defined (__arm64e__)" >> ${OPENSSLCONF_PATH}
-   cat ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-MacOSX_Catalyst-arm64e/include/openssl/opensslconf.h >> ${OPENSSLCONF_PATH}
+   # cat ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-MacOSX_Catalyst-arm64e/include/openssl/opensslconf.h >> ${OPENSSLCONF_PATH}
    echo "#elif defined(__APPLE__) && defined (__arm64__)" >> ${OPENSSLCONF_PATH}
    cat ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-MacOSX_Catalyst-arm64/include/openssl/opensslconf.h >> ${OPENSSLCONF_PATH}
    echo "#endif" >> ${OPENSSLCONF_PATH}

@@ -32,7 +32,7 @@ xcrun xcodebuild build \
 
 mkdir -p "${OUTPUT_DIR}/macos_catalyst"
 rm -rf "${OUTPUT_DIR}/macos_catalyst/${FWNAME}.framework"
-ditto "${DERIVED_DATA_PATH}/Build/Products/Release/${FWNAME}.framework" "${OUTPUT_DIR}/macos_catalyst/${FWNAME}.framework"
+ditto "${DERIVED_DATA_PATH}/Build/Products/Release-maccatalyst/${FWNAME}.framework" "${OUTPUT_DIR}/macos_catalyst/${FWNAME}.framework"
 rm -rf "${DERIVED_DATA_PATH}"
 
 # iOS

@@ -1,9 +1,11 @@
+CODE_SIGN_IDENTITY= Apple Distribution
 CODE_SIGN_IDENTITY[sdk=macosx*] = Developer ID Application
-CODE_SIGN_IDENTITY[sdk=iphoneos*] = iPhone Developer
-CODE_SIGN_IDENTITY[sdk=iphonesimulator*] = iPhone Developer
+CODE_SIGN_IDENTITY[sdk=iphoneos*] = iPhone Distribution
+CODE_SIGN_IDENTITY[sdk=iphonesimulator*] = iPhone Distribution
 CODE_SIGN_STYLE = Automatic
 
 SKIP_INSTALL = NO
+BUILD_LIBRARY_FOR_DISTRIBUTION = YES
 
 BITCODE_GENERATION_MODE[sdk=iphoneos*] = bitcode
 BITCODE_GENERATION_MODE[sdk=iphonesimulator*] = bitcode
