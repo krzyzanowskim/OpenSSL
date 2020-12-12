@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "752D6DA2258471CC00E999E1"
-               BuildableName = "OpenSSL (Catalyst).framework"
+               BuildableName = "OpenSSL.framework"
                BlueprintName = "OpenSSL (Catalyst)"
                ReferencedContainer = "container:OpenSSL.xcodeproj">
             </BuildableReference>
@@ -51,7 +51,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "752D6DA2258471CC00E999E1"
-            BuildableName = "OpenSSL (Catalyst).framework"
+            BuildableName = "OpenSSL.framework"
             BlueprintName = "OpenSSL (Catalyst)"
             ReferencedContainer = "container:OpenSSL.xcodeproj">
          </BuildableReference>

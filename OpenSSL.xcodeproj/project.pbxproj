@@ -90,7 +90,6 @@
 		752D6DF4258471CC00E999E1 /* md4.h in Headers */ = {isa = PBXBuildFile; fileRef = 75B05A28256E7B8F00FB91E0 /* md4.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		752D6DF5258471CC00E999E1 /* engineerr.h in Headers */ = {isa = PBXBuildFile; fileRef = 75B05A00256E7B8E00FB91E0 /* engineerr.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		752D6DF6258471CC00E999E1 /* seed.h in Headers */ = {isa = PBXBuildFile; fileRef = 75B05A1B256E7B8F00FB91E0 /* seed.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		752D6DF7258471CC00E999E1 /* asn1_mac.h in Headers */ = {isa = PBXBuildFile; fileRef = 75B05A58256E7B9100FB91E0 /* asn1_mac.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		752D6DF8258471CC00E999E1 /* cmserr.h in Headers */ = {isa = PBXBuildFile; fileRef = 75B05A20256E7B8F00FB91E0 /* cmserr.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		752D6DF9258471CC00E999E1 /* kdferr.h in Headers */ = {isa = PBXBuildFile; fileRef = 75B05A16256E7B8F00FB91E0 /* kdferr.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		752D6DFA258471CC00E999E1 /* pkcs12err.h in Headers */ = {isa = PBXBuildFile; fileRef = 75B05A19256E7B8F00FB91E0 /* pkcs12err.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -116,7 +115,6 @@
 		752D6E1C2584722900E999E1 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 751BE47925845DB800E66ABE /* libcrypto.a */; platformFilter = maccatalyst; };
 		752D6E1D2584722B00E999E1 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 751BE47B25845DC300E66ABE /* libssl.a */; platformFilter = maccatalyst; };
 		752D6E432584738800E999E1 /* opensslconf.h in Headers */ = {isa = PBXBuildFile; fileRef = 752D6E422584738800E999E1 /* opensslconf.h */; platformFilter = maccatalyst; settings = {ATTRIBUTES = (Public, ); }; };
-		75B0597F256E7AD100FB91E0 /* asn1_mac.h in Headers */ = {isa = PBXBuildFile; fileRef = 75B05913256E7ACE00FB91E0 /* asn1_mac.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75B05980256E7AD100FB91E0 /* bnerr.h in Headers */ = {isa = PBXBuildFile; fileRef = 75B05914256E7ACE00FB91E0 /* bnerr.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75B05981256E7AD100FB91E0 /* x509err.h in Headers */ = {isa = PBXBuildFile; fileRef = 75B05915256E7ACE00FB91E0 /* x509err.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75B05982256E7AD100FB91E0 /* sslerr.h in Headers */ = {isa = PBXBuildFile; fileRef = 75B05916256E7ACE00FB91E0 /* sslerr.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -307,7 +305,6 @@
 		75B05AC2256E7B9600FB91E0 /* ocsp.h in Headers */ = {isa = PBXBuildFile; fileRef = 75B05A55256E7B9100FB91E0 /* ocsp.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75B05AC3256E7B9600FB91E0 /* pem.h in Headers */ = {isa = PBXBuildFile; fileRef = 75B05A56256E7B9100FB91E0 /* pem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75B05AC4256E7B9600FB91E0 /* conf.h in Headers */ = {isa = PBXBuildFile; fileRef = 75B05A57256E7B9100FB91E0 /* conf.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		75B05AC5256E7B9600FB91E0 /* asn1_mac.h in Headers */ = {isa = PBXBuildFile; fileRef = 75B05A58256E7B9100FB91E0 /* asn1_mac.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75B05AC6256E7B9600FB91E0 /* cryptoerr.h in Headers */ = {isa = PBXBuildFile; fileRef = 75B05A59256E7B9100FB91E0 /* cryptoerr.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75B05AC7256E7B9600FB91E0 /* cast.h in Headers */ = {isa = PBXBuildFile; fileRef = 75B05A5A256E7B9100FB91E0 /* cast.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75B05AC8256E7B9600FB91E0 /* dherr.h in Headers */ = {isa = PBXBuildFile; fileRef = 75B05A5B256E7B9100FB91E0 /* dherr.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -353,7 +350,6 @@
 		75B05B63256E7BD300FB91E0 /* whrlpool.h in Headers */ = {isa = PBXBuildFile; fileRef = 75B05AF8256E7BCF00FB91E0 /* whrlpool.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75B05B64256E7BD300FB91E0 /* opensslconf.h in Headers */ = {isa = PBXBuildFile; fileRef = 75B05AF9256E7BCF00FB91E0 /* opensslconf.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75B05B65256E7BD300FB91E0 /* cmac.h in Headers */ = {isa = PBXBuildFile; fileRef = 75B05AFA256E7BCF00FB91E0 /* cmac.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		75B05B66256E7BD300FB91E0 /* asn1_mac.h in Headers */ = {isa = PBXBuildFile; fileRef = 75B05AFB256E7BCF00FB91E0 /* asn1_mac.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75B05B67256E7BD300FB91E0 /* cmserr.h in Headers */ = {isa = PBXBuildFile; fileRef = 75B05AFC256E7BCF00FB91E0 /* cmserr.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75B05B68256E7BD300FB91E0 /* storeerr.h in Headers */ = {isa = PBXBuildFile; fileRef = 75B05AFD256E7BCF00FB91E0 /* storeerr.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75B05B69256E7BD300FB91E0 /* ec.h in Headers */ = {isa = PBXBuildFile; fileRef = 75B05AFE256E7BD000FB91E0 /* ec.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1320,7 +1316,6 @@
 				752D6DF4258471CC00E999E1 /* md4.h in Headers */,
 				752D6DF5258471CC00E999E1 /* engineerr.h in Headers */,
 				752D6DF6258471CC00E999E1 /* seed.h in Headers */,
-				752D6DF7258471CC00E999E1 /* asn1_mac.h in Headers */,
 				752D6DF8258471CC00E999E1 /* cmserr.h in Headers */,
 				752D6DF9258471CC00E999E1 /* kdferr.h in Headers */,
 				752D6DFA258471CC00E999E1 /* pkcs12err.h in Headers */,
@@ -1350,7 +1345,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75B0597F256E7AD100FB91E0 /* asn1_mac.h in Headers */,
 				75B05980256E7AD100FB91E0 /* bnerr.h in Headers */,
 				75B05981256E7AD100FB91E0 /* x509err.h in Headers */,
 				75B05982256E7AD100FB91E0 /* sslerr.h in Headers */,
@@ -1546,7 +1540,6 @@
 				75B05A95256E7B9300FB91E0 /* md4.h in Headers */,
 				75B05A6D256E7B9100FB91E0 /* engineerr.h in Headers */,
 				75B05A88256E7B9300FB91E0 /* seed.h in Headers */,
-				75B05AC5256E7B9600FB91E0 /* asn1_mac.h in Headers */,
 				75B05A8D256E7B9300FB91E0 /* cmserr.h in Headers */,
 				75B05A83256E7B9200FB91E0 /* kdferr.h in Headers */,
 				75B05A86256E7B9300FB91E0 /* pkcs12err.h in Headers */,
@@ -1678,7 +1671,6 @@
 				75B05B9B256E7BD500FB91E0 /* aes.h in Headers */,
 				75B05BA0256E7BD500FB91E0 /* sslerr.h in Headers */,
 				75B05B97256E7BD500FB91E0 /* pkcs7err.h in Headers */,
-				75B05B66256E7BD300FB91E0 /* asn1_mac.h in Headers */,
 				75B05B74256E7BD400FB91E0 /* ocsperr.h in Headers */,
 				75B05B56256E7BD300FB91E0 /* txt_db.h in Headers */,
 				75B05B64256E7BD300FB91E0 /* opensslconf.h in Headers */,
