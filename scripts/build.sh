@@ -83,7 +83,7 @@ build()
    local ARCH=$1
    local OS=$2
    local BUILD_DIR=$3
-   local TYPE=$4 # iphoneos/iphonesimulator/macos/macos_catalyst
+   local TYPE=$4 # iphoneos/iphonesimulator/macosx/macosx_catalyst
 
    local SRC_DIR="${BUILD_DIR}/openssl-${OPENSSL_VERSION}-${TYPE}"
    local PREFIX="${BUILD_DIR}/${OPENSSL_VERSION}-${OS}-${ARCH}"
@@ -192,24 +192,24 @@ build_macos() {
    local TMP_BUILD_DIR=$( mktemp -d )
 
    # Clean up whatever was left from our previous build
-   rm -rf "${SCRIPT_DIR}"/../{macos/include,macos/lib}
-   mkdir -p "${SCRIPT_DIR}"/../{macos/include,macos/lib}
+   rm -rf "${SCRIPT_DIR}"/../{macosx/include,macosx/lib}
+   mkdir -p "${SCRIPT_DIR}"/../{macosx/include,macosx/lib}
 
-   build "x86_64" "MacOSX" ${TMP_BUILD_DIR} "macos"
-   build "arm64" "MacOSX" ${TMP_BUILD_DIR} "macos"
-   build "arm64e" "MacOSX" ${TMP_BUILD_DIR} "macos"
+   build "x86_64" "MacOSX" ${TMP_BUILD_DIR} "macosx"
+   build "arm64" "MacOSX" ${TMP_BUILD_DIR} "macosx"
+   build "arm64e" "MacOSX" ${TMP_BUILD_DIR} "macosx"
 
    # Copy headers
-   ditto ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-MacOSX-x86_64/include/openssl "${SCRIPT_DIR}/../macos/include/openssl"
-   cp -f "${SCRIPT_DIR}/../shim/shim.h" "${SCRIPT_DIR}/../macos/include/openssl/shim.h"
+   ditto ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-MacOSX-x86_64/include/openssl "${SCRIPT_DIR}/../macosx/include/openssl"
+   cp -f "${SCRIPT_DIR}/../shim/shim.h" "${SCRIPT_DIR}/../macosx/include/openssl/shim.h"
 
    # fix inttypes.h
-   find "${SCRIPT_DIR}/../macos/include/openssl" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <sys\/types\.h>/g" {} \;
+   find "${SCRIPT_DIR}/../macosx/include/openssl" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <sys\/types\.h>/g" {} \;
 
    # fix RC4_INT redefinition
-   # find "${SCRIPT_DIR}/../macos/include/openssl" -type f -name "*.h" -exec sed -i "" -e "s/\#define RC4_INT unsigned char/\#if \!defined(RC4_INT)\n#define RC4_INT unsigned char\n\#endif\n/g" {} \;
+   # find "${SCRIPT_DIR}/../macosx/include/openssl" -type f -name "*.h" -exec sed -i "" -e "s/\#define RC4_INT unsigned char/\#if \!defined(RC4_INT)\n#define RC4_INT unsigned char\n\#endif\n/g" {} \;
 
-   local OPENSSLCONF_PATH="${SCRIPT_DIR}/../macos/include/openssl/opensslconf.h"
+   local OPENSSLCONF_PATH="${SCRIPT_DIR}/../macosx/include/openssl/opensslconf.h"
    echo "#if defined(__APPLE__) && defined (__i386__)" > ${OPENSSLCONF_PATH}
    echo "#elif defined(__APPLE__) && defined (__x86_64__)" >> ${OPENSSLCONF_PATH}
    cat ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-MacOSX-x86_64/include/openssl/opensslconf.h >> ${OPENSSLCONF_PATH}
@@ -228,24 +228,24 @@ build_catalyst() {
    local TMP_BUILD_DIR=$( mktemp -d )
 
    # Clean up whatever was left from our previous build
-   rm -rf "${SCRIPT_DIR}"/../{macos_catalyst/include,macos_catalyst/lib}
-   mkdir -p "${SCRIPT_DIR}"/../{macos_catalyst/include,macos_catalyst/lib}
+   rm -rf "${SCRIPT_DIR}"/../{macosx_catalyst/include,macosx_catalyst/lib}
+   mkdir -p "${SCRIPT_DIR}"/../{macosx_catalyst/include,macosx_catalyst/lib}
 
-   build "x86_64" "MacOSX_Catalyst" ${TMP_BUILD_DIR} "macos_catalyst"
-   build "arm64" "MacOSX_Catalyst" ${TMP_BUILD_DIR} "macos_catalyst"
-   # build "arm64e" "MacOSX_Catalyst" ${TMP_BUILD_DIR} "macos_catalyst"
+   build "x86_64" "MacOSX_Catalyst" ${TMP_BUILD_DIR} "macosx_catalyst"
+   build "arm64" "MacOSX_Catalyst" ${TMP_BUILD_DIR} "macosx_catalyst"
+   # build "arm64e" "MacOSX_Catalyst" ${TMP_BUILD_DIR} "macosx_catalyst"
 
    # Copy headers
-   ditto ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-MacOSX_Catalyst-x86_64/include/openssl "${SCRIPT_DIR}/../macos_catalyst/include/openssl"
-   cp -f "${SCRIPT_DIR}/../shim/shim.h" "${SCRIPT_DIR}/../macos_catalyst/include/openssl/shim.h"
+   ditto ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-MacOSX_Catalyst-x86_64/include/openssl "${SCRIPT_DIR}/../macosx_catalyst/include/openssl"
+   cp -f "${SCRIPT_DIR}/../shim/shim.h" "${SCRIPT_DIR}/../macosx_catalyst/include/openssl/shim.h"
 
    # fix inttypes.h
-   find "${SCRIPT_DIR}/../macos_catalyst/include/openssl" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <sys\/types\.h>/g" {} \;
+   find "${SCRIPT_DIR}/../macosx_catalyst/include/openssl" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <sys\/types\.h>/g" {} \;
 
    # fix RC4_INT redefinition
-   # find "${SCRIPT_DIR}/../macos/include/openssl" -type f -name "*.h" -exec sed -i "" -e "s/\#define RC4_INT unsigned char/\#if \!defined(RC4_INT)\n#define RC4_INT unsigned char\n\#endif\n/g" {} \;
+   # find "${SCRIPT_DIR}/../macosx/include/openssl" -type f -name "*.h" -exec sed -i "" -e "s/\#define RC4_INT unsigned char/\#if \!defined(RC4_INT)\n#define RC4_INT unsigned char\n\#endif\n/g" {} \;
 
-   local OPENSSLCONF_PATH="${SCRIPT_DIR}/../macos_catalyst/include/openssl/opensslconf.h"
+   local OPENSSLCONF_PATH="${SCRIPT_DIR}/../macosx_catalyst/include/openssl/opensslconf.h"
    echo "#if defined(__APPLE__) && defined (__i386__)" > ${OPENSSLCONF_PATH}
    echo "#elif defined(__APPLE__) && defined (__x86_64__)" >> ${OPENSSLCONF_PATH}
    cat ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-MacOSX_Catalyst-x86_64/include/openssl/opensslconf.h >> ${OPENSSLCONF_PATH}
