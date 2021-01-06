@@ -439,11 +439,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		751BE47925845DB800E66ABE /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = macos_catalyst/lib/libcrypto.a; sourceTree = "<group>"; };
-		751BE47B25845DC300E66ABE /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = macos_catalyst/lib/libssl.a; sourceTree = "<group>"; };
+		751BE47925845DB800E66ABE /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = macosx_catalyst/lib/libcrypto.a; sourceTree = "<group>"; };
+		751BE47B25845DC300E66ABE /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = macosx_catalyst/lib/libssl.a; sourceTree = "<group>"; };
 		751BE48025845E1F00E66ABE /* opensslconf.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = opensslconf.h; path = macos_catalyst/include/openssl/opensslconf.h; sourceTree = "<group>"; };
 		752D6E16258471CC00E999E1 /* OpenSSL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OpenSSL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		752D6E422584738800E999E1 /* opensslconf.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = opensslconf.h; path = macos_catalyst/include/openssl/opensslconf.h; sourceTree = "<group>"; };
+		752D6E422584738800E999E1 /* opensslconf.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = opensslconf.h; path = macosx_catalyst/include/openssl/opensslconf.h; sourceTree = "<group>"; };
 		753EF2CB2567514F008FDE33 /* OpenSSL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OpenSSL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75B05913256E7ACE00FB91E0 /* asn1_mac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = asn1_mac.h; path = iphonesimulator/include/openssl/asn1_mac.h; sourceTree = "<group>"; };
 		75B05914256E7ACE00FB91E0 /* bnerr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = bnerr.h; path = iphonesimulator/include/openssl/bnerr.h; sourceTree = "<group>"; };
@@ -655,113 +655,113 @@
 		75B05A6A256E7B9100FB91E0 /* rc4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rc4.h; path = iphoneos/include/openssl/rc4.h; sourceTree = "<group>"; };
 		75B05A6B256E7B9100FB91E0 /* rsaerr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rsaerr.h; path = iphoneos/include/openssl/rsaerr.h; sourceTree = "<group>"; };
 		75B05A6C256E7B9100FB91E0 /* cmac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cmac.h; path = iphoneos/include/openssl/cmac.h; sourceTree = "<group>"; };
-		75B05ADF256E7BCE00FB91E0 /* dsaerr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dsaerr.h; path = macos/include/openssl/dsaerr.h; sourceTree = "<group>"; };
-		75B05AE0256E7BCE00FB91E0 /* x509err.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = x509err.h; path = macos/include/openssl/x509err.h; sourceTree = "<group>"; };
-		75B05AE1256E7BCF00FB91E0 /* x509_vfy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = x509_vfy.h; path = macos/include/openssl/x509_vfy.h; sourceTree = "<group>"; };
-		75B05AE2256E7BCF00FB91E0 /* srtp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = srtp.h; path = macos/include/openssl/srtp.h; sourceTree = "<group>"; };
-		75B05AE3256E7BCF00FB91E0 /* pemerr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pemerr.h; path = macos/include/openssl/pemerr.h; sourceTree = "<group>"; };
-		75B05AE4256E7BCF00FB91E0 /* des.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = des.h; path = macos/include/openssl/des.h; sourceTree = "<group>"; };
-		75B05AE5256E7BCF00FB91E0 /* bnerr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bnerr.h; path = macos/include/openssl/bnerr.h; sourceTree = "<group>"; };
-		75B05AE6256E7BCF00FB91E0 /* comp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = comp.h; path = macos/include/openssl/comp.h; sourceTree = "<group>"; };
-		75B05AE7256E7BCF00FB91E0 /* crypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = crypto.h; path = macos/include/openssl/crypto.h; sourceTree = "<group>"; };
-		75B05AE8256E7BCF00FB91E0 /* md4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = md4.h; path = macos/include/openssl/md4.h; sourceTree = "<group>"; };
-		75B05AE9256E7BCF00FB91E0 /* evperr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = evperr.h; path = macos/include/openssl/evperr.h; sourceTree = "<group>"; };
-		75B05AEA256E7BCF00FB91E0 /* dh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dh.h; path = macos/include/openssl/dh.h; sourceTree = "<group>"; };
-		75B05AEB256E7BCF00FB91E0 /* txt_db.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = txt_db.h; path = macos/include/openssl/txt_db.h; sourceTree = "<group>"; };
-		75B05AEC256E7BCF00FB91E0 /* rand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rand.h; path = macos/include/openssl/rand.h; sourceTree = "<group>"; };
-		75B05AEE256E7BCF00FB91E0 /* seed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = seed.h; path = macos/include/openssl/seed.h; sourceTree = "<group>"; };
-		75B05AEF256E7BCF00FB91E0 /* store.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = store.h; path = macos/include/openssl/store.h; sourceTree = "<group>"; };
-		75B05AF0256E7BCF00FB91E0 /* ts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ts.h; path = macos/include/openssl/ts.h; sourceTree = "<group>"; };
-		75B05AF1256E7BCF00FB91E0 /* x509v3err.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = x509v3err.h; path = macos/include/openssl/x509v3err.h; sourceTree = "<group>"; };
-		75B05AF2256E7BCF00FB91E0 /* conf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = conf.h; path = macos/include/openssl/conf.h; sourceTree = "<group>"; };
-		75B05AF3256E7BCF00FB91E0 /* ssl2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ssl2.h; path = macos/include/openssl/ssl2.h; sourceTree = "<group>"; };
-		75B05AF4256E7BCF00FB91E0 /* cterr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cterr.h; path = macos/include/openssl/cterr.h; sourceTree = "<group>"; };
-		75B05AF5256E7BCF00FB91E0 /* cast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cast.h; path = macos/include/openssl/cast.h; sourceTree = "<group>"; };
-		75B05AF6256E7BCF00FB91E0 /* tserr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tserr.h; path = macos/include/openssl/tserr.h; sourceTree = "<group>"; };
-		75B05AF7256E7BCF00FB91E0 /* engineerr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = engineerr.h; path = macos/include/openssl/engineerr.h; sourceTree = "<group>"; };
-		75B05AF8256E7BCF00FB91E0 /* whrlpool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = whrlpool.h; path = macos/include/openssl/whrlpool.h; sourceTree = "<group>"; };
-		75B05AF9256E7BCF00FB91E0 /* opensslconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = opensslconf.h; path = macos/include/openssl/opensslconf.h; sourceTree = "<group>"; };
-		75B05AFA256E7BCF00FB91E0 /* cmac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cmac.h; path = macos/include/openssl/cmac.h; sourceTree = "<group>"; };
-		75B05AFB256E7BCF00FB91E0 /* asn1_mac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = asn1_mac.h; path = macos/include/openssl/asn1_mac.h; sourceTree = "<group>"; };
-		75B05AFC256E7BCF00FB91E0 /* cmserr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cmserr.h; path = macos/include/openssl/cmserr.h; sourceTree = "<group>"; };
-		75B05AFD256E7BCF00FB91E0 /* storeerr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = storeerr.h; path = macos/include/openssl/storeerr.h; sourceTree = "<group>"; };
-		75B05AFE256E7BD000FB91E0 /* ec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ec.h; path = macos/include/openssl/ec.h; sourceTree = "<group>"; };
-		75B05AFF256E7BD000FB91E0 /* blowfish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = blowfish.h; path = macos/include/openssl/blowfish.h; sourceTree = "<group>"; };
-		75B05B00256E7BD000FB91E0 /* dherr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dherr.h; path = macos/include/openssl/dherr.h; sourceTree = "<group>"; };
-		75B05B01256E7BD000FB91E0 /* rsaerr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rsaerr.h; path = macos/include/openssl/rsaerr.h; sourceTree = "<group>"; };
-		75B05B02256E7BD000FB91E0 /* ssl3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ssl3.h; path = macos/include/openssl/ssl3.h; sourceTree = "<group>"; };
-		75B05B03256E7BD000FB91E0 /* srp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = srp.h; path = macos/include/openssl/srp.h; sourceTree = "<group>"; };
-		75B05B04256E7BD000FB91E0 /* uierr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = uierr.h; path = macos/include/openssl/uierr.h; sourceTree = "<group>"; };
-		75B05B05256E7BD000FB91E0 /* buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = buffer.h; path = macos/include/openssl/buffer.h; sourceTree = "<group>"; };
-		75B05B06256E7BD000FB91E0 /* md2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = md2.h; path = macos/include/openssl/md2.h; sourceTree = "<group>"; };
-		75B05B07256E7BD000FB91E0 /* conferr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = conferr.h; path = macos/include/openssl/conferr.h; sourceTree = "<group>"; };
-		75B05B08256E7BD000FB91E0 /* kdf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = kdf.h; path = macos/include/openssl/kdf.h; sourceTree = "<group>"; };
-		75B05B09256E7BD000FB91E0 /* ocsperr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ocsperr.h; path = macos/include/openssl/ocsperr.h; sourceTree = "<group>"; };
-		75B05B0A256E7BD000FB91E0 /* ocsp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ocsp.h; path = macos/include/openssl/ocsp.h; sourceTree = "<group>"; };
-		75B05B0B256E7BD000FB91E0 /* ossl_typ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ossl_typ.h; path = macos/include/openssl/ossl_typ.h; sourceTree = "<group>"; };
-		75B05B0C256E7BD000FB91E0 /* ssl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ssl.h; path = macos/include/openssl/ssl.h; sourceTree = "<group>"; };
-		75B05B0D256E7BD000FB91E0 /* evp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = evp.h; path = macos/include/openssl/evp.h; sourceTree = "<group>"; };
-		75B05B0E256E7BD000FB91E0 /* ct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ct.h; path = macos/include/openssl/ct.h; sourceTree = "<group>"; };
-		75B05B0F256E7BD000FB91E0 /* mdc2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mdc2.h; path = macos/include/openssl/mdc2.h; sourceTree = "<group>"; };
-		75B05B10256E7BD000FB91E0 /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = md5.h; path = macos/include/openssl/md5.h; sourceTree = "<group>"; };
-		75B05B11256E7BD000FB91E0 /* camellia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = camellia.h; path = macos/include/openssl/camellia.h; sourceTree = "<group>"; };
-		75B05B12256E7BD000FB91E0 /* bio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bio.h; path = macos/include/openssl/bio.h; sourceTree = "<group>"; };
-		75B05B13256E7BD000FB91E0 /* objectserr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = objectserr.h; path = macos/include/openssl/objectserr.h; sourceTree = "<group>"; };
-		75B05B14256E7BD000FB91E0 /* cms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cms.h; path = macos/include/openssl/cms.h; sourceTree = "<group>"; };
-		75B05B15256E7BD000FB91E0 /* ecdsa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ecdsa.h; path = macos/include/openssl/ecdsa.h; sourceTree = "<group>"; };
-		75B05B16256E7BD000FB91E0 /* sha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sha.h; path = macos/include/openssl/sha.h; sourceTree = "<group>"; };
-		75B05B17256E7BD100FB91E0 /* rc4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rc4.h; path = macos/include/openssl/rc4.h; sourceTree = "<group>"; };
-		75B05B18256E7BD100FB91E0 /* asn1t.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = asn1t.h; path = macos/include/openssl/asn1t.h; sourceTree = "<group>"; };
-		75B05B19256E7BD100FB91E0 /* bn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bn.h; path = macos/include/openssl/bn.h; sourceTree = "<group>"; };
-		75B05B1A256E7BD100FB91E0 /* ripemd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ripemd.h; path = macos/include/openssl/ripemd.h; sourceTree = "<group>"; };
-		75B05B1B256E7BD100FB91E0 /* ecerr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ecerr.h; path = macos/include/openssl/ecerr.h; sourceTree = "<group>"; };
-		75B05B1C256E7BD100FB91E0 /* conf_api.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = conf_api.h; path = macos/include/openssl/conf_api.h; sourceTree = "<group>"; };
-		75B05B1D256E7BD100FB91E0 /* asn1err.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = asn1err.h; path = macos/include/openssl/asn1err.h; sourceTree = "<group>"; };
-		75B05B1F256E7BD100FB91E0 /* comperr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = comperr.h; path = macos/include/openssl/comperr.h; sourceTree = "<group>"; };
-		75B05B20256E7BD100FB91E0 /* dsa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dsa.h; path = macos/include/openssl/dsa.h; sourceTree = "<group>"; };
-		75B05B21256E7BD100FB91E0 /* engine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = engine.h; path = macos/include/openssl/engine.h; sourceTree = "<group>"; };
-		75B05B22256E7BD100FB91E0 /* x509v3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = x509v3.h; path = macos/include/openssl/x509v3.h; sourceTree = "<group>"; };
-		75B05B23256E7BD100FB91E0 /* opensslv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = opensslv.h; path = macos/include/openssl/opensslv.h; sourceTree = "<group>"; };
-		75B05B24256E7BD100FB91E0 /* e_os2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = e_os2.h; path = macos/include/openssl/e_os2.h; sourceTree = "<group>"; };
-		75B05B25256E7BD100FB91E0 /* rc5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rc5.h; path = macos/include/openssl/rc5.h; sourceTree = "<group>"; };
-		75B05B26256E7BD100FB91E0 /* ui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ui.h; path = macos/include/openssl/ui.h; sourceTree = "<group>"; };
-		75B05B27256E7BD100FB91E0 /* buffererr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = buffererr.h; path = macos/include/openssl/buffererr.h; sourceTree = "<group>"; };
-		75B05B28256E7BD100FB91E0 /* pem2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pem2.h; path = macos/include/openssl/pem2.h; sourceTree = "<group>"; };
-		75B05B29256E7BD100FB91E0 /* rc2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rc2.h; path = macos/include/openssl/rc2.h; sourceTree = "<group>"; };
-		75B05B2A256E7BD100FB91E0 /* rand_drbg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rand_drbg.h; path = macos/include/openssl/rand_drbg.h; sourceTree = "<group>"; };
-		75B05B2B256E7BD100FB91E0 /* rsa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rsa.h; path = macos/include/openssl/rsa.h; sourceTree = "<group>"; };
-		75B05B2C256E7BD100FB91E0 /* pkcs7err.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pkcs7err.h; path = macos/include/openssl/pkcs7err.h; sourceTree = "<group>"; };
-		75B05B2D256E7BD100FB91E0 /* pem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pem.h; path = macos/include/openssl/pem.h; sourceTree = "<group>"; };
-		75B05B2E256E7BD100FB91E0 /* shim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = shim.h; path = macos/include/openssl/shim.h; sourceTree = "<group>"; };
-		75B05B2F256E7BD100FB91E0 /* pkcs12err.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pkcs12err.h; path = macos/include/openssl/pkcs12err.h; sourceTree = "<group>"; };
-		75B05B30256E7BD100FB91E0 /* aes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aes.h; path = macos/include/openssl/aes.h; sourceTree = "<group>"; };
-		75B05B31256E7BD100FB91E0 /* asn1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = asn1.h; path = macos/include/openssl/asn1.h; sourceTree = "<group>"; };
-		75B05B32256E7BD200FB91E0 /* modes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = modes.h; path = macos/include/openssl/modes.h; sourceTree = "<group>"; };
-		75B05B33256E7BD200FB91E0 /* ebcdic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ebcdic.h; path = macos/include/openssl/ebcdic.h; sourceTree = "<group>"; };
-		75B05B34256E7BD200FB91E0 /* tls1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tls1.h; path = macos/include/openssl/tls1.h; sourceTree = "<group>"; };
-		75B05B35256E7BD200FB91E0 /* sslerr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sslerr.h; path = macos/include/openssl/sslerr.h; sourceTree = "<group>"; };
-		75B05B36256E7BD200FB91E0 /* randerr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = randerr.h; path = macos/include/openssl/randerr.h; sourceTree = "<group>"; };
-		75B05B37256E7BD200FB91E0 /* pkcs7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pkcs7.h; path = macos/include/openssl/pkcs7.h; sourceTree = "<group>"; };
-		75B05B38256E7BD200FB91E0 /* kdferr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = kdferr.h; path = macos/include/openssl/kdferr.h; sourceTree = "<group>"; };
-		75B05B39256E7BD200FB91E0 /* async.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = async.h; path = macos/include/openssl/async.h; sourceTree = "<group>"; };
-		75B05B3A256E7BD200FB91E0 /* lhash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lhash.h; path = macos/include/openssl/lhash.h; sourceTree = "<group>"; };
-		75B05B3B256E7BD200FB91E0 /* pkcs12.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pkcs12.h; path = macos/include/openssl/pkcs12.h; sourceTree = "<group>"; };
-		75B05B3C256E7BD200FB91E0 /* objects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = objects.h; path = macos/include/openssl/objects.h; sourceTree = "<group>"; };
-		75B05B3D256E7BD200FB91E0 /* stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = stack.h; path = macos/include/openssl/stack.h; sourceTree = "<group>"; };
-		75B05B3E256E7BD200FB91E0 /* bioerr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bioerr.h; path = macos/include/openssl/bioerr.h; sourceTree = "<group>"; };
-		75B05B3F256E7BD200FB91E0 /* symhacks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = symhacks.h; path = macos/include/openssl/symhacks.h; sourceTree = "<group>"; };
-		75B05B40256E7BD200FB91E0 /* hmac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hmac.h; path = macos/include/openssl/hmac.h; sourceTree = "<group>"; };
-		75B05B41256E7BD200FB91E0 /* err.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = err.h; path = macos/include/openssl/err.h; sourceTree = "<group>"; };
-		75B05B42256E7BD200FB91E0 /* asyncerr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = asyncerr.h; path = macos/include/openssl/asyncerr.h; sourceTree = "<group>"; };
-		75B05B43256E7BD200FB91E0 /* ecdh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ecdh.h; path = macos/include/openssl/ecdh.h; sourceTree = "<group>"; };
-		75B05B44256E7BD200FB91E0 /* cryptoerr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cryptoerr.h; path = macos/include/openssl/cryptoerr.h; sourceTree = "<group>"; };
-		75B05B45256E7BD200FB91E0 /* x509.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = x509.h; path = macos/include/openssl/x509.h; sourceTree = "<group>"; };
-		75B05B46256E7BD200FB91E0 /* obj_mac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = obj_mac.h; path = macos/include/openssl/obj_mac.h; sourceTree = "<group>"; };
-		75B05B47256E7BD200FB91E0 /* dtls1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dtls1.h; path = macos/include/openssl/dtls1.h; sourceTree = "<group>"; };
-		75B05B48256E7BD200FB91E0 /* safestack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = safestack.h; path = macos/include/openssl/safestack.h; sourceTree = "<group>"; };
-		75B05B49256E7BD200FB91E0 /* idea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = idea.h; path = macos/include/openssl/idea.h; sourceTree = "<group>"; };
-		75B05BB9256E7C0000FB91E0 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = macos/lib/libcrypto.a; sourceTree = "<group>"; };
-		75B05BBA256E7C0000FB91E0 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = macos/lib/libssl.a; sourceTree = "<group>"; };
+		75B05ADF256E7BCE00FB91E0 /* dsaerr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dsaerr.h; path = macosx/include/openssl/dsaerr.h; sourceTree = "<group>"; };
+		75B05AE0256E7BCE00FB91E0 /* x509err.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = x509err.h; path = macosx/include/openssl/x509err.h; sourceTree = "<group>"; };
+		75B05AE1256E7BCF00FB91E0 /* x509_vfy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = x509_vfy.h; path = macosx/include/openssl/x509_vfy.h; sourceTree = "<group>"; };
+		75B05AE2256E7BCF00FB91E0 /* srtp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = srtp.h; path = macosx/include/openssl/srtp.h; sourceTree = "<group>"; };
+		75B05AE3256E7BCF00FB91E0 /* pemerr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pemerr.h; path = macosx/include/openssl/pemerr.h; sourceTree = "<group>"; };
+		75B05AE4256E7BCF00FB91E0 /* des.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = des.h; path = macosx/include/openssl/des.h; sourceTree = "<group>"; };
+		75B05AE5256E7BCF00FB91E0 /* bnerr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bnerr.h; path = macosx/include/openssl/bnerr.h; sourceTree = "<group>"; };
+		75B05AE6256E7BCF00FB91E0 /* comp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = comp.h; path = macosx/include/openssl/comp.h; sourceTree = "<group>"; };
+		75B05AE7256E7BCF00FB91E0 /* crypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = crypto.h; path = macosx/include/openssl/crypto.h; sourceTree = "<group>"; };
+		75B05AE8256E7BCF00FB91E0 /* md4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = md4.h; path = macosx/include/openssl/md4.h; sourceTree = "<group>"; };
+		75B05AE9256E7BCF00FB91E0 /* evperr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = evperr.h; path = macosx/include/openssl/evperr.h; sourceTree = "<group>"; };
+		75B05AEA256E7BCF00FB91E0 /* dh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dh.h; path = macosx/include/openssl/dh.h; sourceTree = "<group>"; };
+		75B05AEB256E7BCF00FB91E0 /* txt_db.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = txt_db.h; path = macosx/include/openssl/txt_db.h; sourceTree = "<group>"; };
+		75B05AEC256E7BCF00FB91E0 /* rand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rand.h; path = macosx/include/openssl/rand.h; sourceTree = "<group>"; };
+		75B05AEE256E7BCF00FB91E0 /* seed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = seed.h; path = macosx/include/openssl/seed.h; sourceTree = "<group>"; };
+		75B05AEF256E7BCF00FB91E0 /* store.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = store.h; path = macosx/include/openssl/store.h; sourceTree = "<group>"; };
+		75B05AF0256E7BCF00FB91E0 /* ts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ts.h; path = macosx/include/openssl/ts.h; sourceTree = "<group>"; };
+		75B05AF1256E7BCF00FB91E0 /* x509v3err.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = x509v3err.h; path = macosx/include/openssl/x509v3err.h; sourceTree = "<group>"; };
+		75B05AF2256E7BCF00FB91E0 /* conf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = conf.h; path = macosx/include/openssl/conf.h; sourceTree = "<group>"; };
+		75B05AF3256E7BCF00FB91E0 /* ssl2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ssl2.h; path = macosx/include/openssl/ssl2.h; sourceTree = "<group>"; };
+		75B05AF4256E7BCF00FB91E0 /* cterr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cterr.h; path = macosx/include/openssl/cterr.h; sourceTree = "<group>"; };
+		75B05AF5256E7BCF00FB91E0 /* cast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cast.h; path = macosx/include/openssl/cast.h; sourceTree = "<group>"; };
+		75B05AF6256E7BCF00FB91E0 /* tserr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tserr.h; path = macosx/include/openssl/tserr.h; sourceTree = "<group>"; };
+		75B05AF7256E7BCF00FB91E0 /* engineerr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = engineerr.h; path = macosx/include/openssl/engineerr.h; sourceTree = "<group>"; };
+		75B05AF8256E7BCF00FB91E0 /* whrlpool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = whrlpool.h; path = macosx/include/openssl/whrlpool.h; sourceTree = "<group>"; };
+		75B05AF9256E7BCF00FB91E0 /* opensslconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = opensslconf.h; path = macosx/include/openssl/opensslconf.h; sourceTree = "<group>"; };
+		75B05AFA256E7BCF00FB91E0 /* cmac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cmac.h; path = macosx/include/openssl/cmac.h; sourceTree = "<group>"; };
+		75B05AFB256E7BCF00FB91E0 /* asn1_mac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = asn1_mac.h; path = macosx/include/openssl/asn1_mac.h; sourceTree = "<group>"; };
+		75B05AFC256E7BCF00FB91E0 /* cmserr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cmserr.h; path = macosx/include/openssl/cmserr.h; sourceTree = "<group>"; };
+		75B05AFD256E7BCF00FB91E0 /* storeerr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = storeerr.h; path = macosx/include/openssl/storeerr.h; sourceTree = "<group>"; };
+		75B05AFE256E7BD000FB91E0 /* ec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ec.h; path = macosx/include/openssl/ec.h; sourceTree = "<group>"; };
+		75B05AFF256E7BD000FB91E0 /* blowfish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = blowfish.h; path = macosx/include/openssl/blowfish.h; sourceTree = "<group>"; };
+		75B05B00256E7BD000FB91E0 /* dherr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dherr.h; path = macosx/include/openssl/dherr.h; sourceTree = "<group>"; };
+		75B05B01256E7BD000FB91E0 /* rsaerr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rsaerr.h; path = macosx/include/openssl/rsaerr.h; sourceTree = "<group>"; };
+		75B05B02256E7BD000FB91E0 /* ssl3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ssl3.h; path = macosx/include/openssl/ssl3.h; sourceTree = "<group>"; };
+		75B05B03256E7BD000FB91E0 /* srp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = srp.h; path = macosx/include/openssl/srp.h; sourceTree = "<group>"; };
+		75B05B04256E7BD000FB91E0 /* uierr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = uierr.h; path = macosx/include/openssl/uierr.h; sourceTree = "<group>"; };
+		75B05B05256E7BD000FB91E0 /* buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = buffer.h; path = macosx/include/openssl/buffer.h; sourceTree = "<group>"; };
+		75B05B06256E7BD000FB91E0 /* md2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = md2.h; path = macosx/include/openssl/md2.h; sourceTree = "<group>"; };
+		75B05B07256E7BD000FB91E0 /* conferr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = conferr.h; path = macosx/include/openssl/conferr.h; sourceTree = "<group>"; };
+		75B05B08256E7BD000FB91E0 /* kdf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = kdf.h; path = macosx/include/openssl/kdf.h; sourceTree = "<group>"; };
+		75B05B09256E7BD000FB91E0 /* ocsperr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ocsperr.h; path = macosx/include/openssl/ocsperr.h; sourceTree = "<group>"; };
+		75B05B0A256E7BD000FB91E0 /* ocsp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ocsp.h; path = macosx/include/openssl/ocsp.h; sourceTree = "<group>"; };
+		75B05B0B256E7BD000FB91E0 /* ossl_typ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ossl_typ.h; path = macosx/include/openssl/ossl_typ.h; sourceTree = "<group>"; };
+		75B05B0C256E7BD000FB91E0 /* ssl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ssl.h; path = macosx/include/openssl/ssl.h; sourceTree = "<group>"; };
+		75B05B0D256E7BD000FB91E0 /* evp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = evp.h; path = macosx/include/openssl/evp.h; sourceTree = "<group>"; };
+		75B05B0E256E7BD000FB91E0 /* ct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ct.h; path = macosx/include/openssl/ct.h; sourceTree = "<group>"; };
+		75B05B0F256E7BD000FB91E0 /* mdc2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mdc2.h; path = macosx/include/openssl/mdc2.h; sourceTree = "<group>"; };
+		75B05B10256E7BD000FB91E0 /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = md5.h; path = macosx/include/openssl/md5.h; sourceTree = "<group>"; };
+		75B05B11256E7BD000FB91E0 /* camellia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = camellia.h; path = macosx/include/openssl/camellia.h; sourceTree = "<group>"; };
+		75B05B12256E7BD000FB91E0 /* bio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bio.h; path = macosx/include/openssl/bio.h; sourceTree = "<group>"; };
+		75B05B13256E7BD000FB91E0 /* objectserr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = objectserr.h; path = macosx/include/openssl/objectserr.h; sourceTree = "<group>"; };
+		75B05B14256E7BD000FB91E0 /* cms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cms.h; path = macosx/include/openssl/cms.h; sourceTree = "<group>"; };
+		75B05B15256E7BD000FB91E0 /* ecdsa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ecdsa.h; path = macosx/include/openssl/ecdsa.h; sourceTree = "<group>"; };
+		75B05B16256E7BD000FB91E0 /* sha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sha.h; path = macosx/include/openssl/sha.h; sourceTree = "<group>"; };
+		75B05B17256E7BD100FB91E0 /* rc4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rc4.h; path = macosx/include/openssl/rc4.h; sourceTree = "<group>"; };
+		75B05B18256E7BD100FB91E0 /* asn1t.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = asn1t.h; path = macosx/include/openssl/asn1t.h; sourceTree = "<group>"; };
+		75B05B19256E7BD100FB91E0 /* bn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bn.h; path = macosx/include/openssl/bn.h; sourceTree = "<group>"; };
+		75B05B1A256E7BD100FB91E0 /* ripemd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ripemd.h; path = macosx/include/openssl/ripemd.h; sourceTree = "<group>"; };
+		75B05B1B256E7BD100FB91E0 /* ecerr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ecerr.h; path = macosx/include/openssl/ecerr.h; sourceTree = "<group>"; };
+		75B05B1C256E7BD100FB91E0 /* conf_api.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = conf_api.h; path = macosx/include/openssl/conf_api.h; sourceTree = "<group>"; };
+		75B05B1D256E7BD100FB91E0 /* asn1err.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = asn1err.h; path = macosx/include/openssl/asn1err.h; sourceTree = "<group>"; };
+		75B05B1F256E7BD100FB91E0 /* comperr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = comperr.h; path = macosx/include/openssl/comperr.h; sourceTree = "<group>"; };
+		75B05B20256E7BD100FB91E0 /* dsa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dsa.h; path = macosx/include/openssl/dsa.h; sourceTree = "<group>"; };
+		75B05B21256E7BD100FB91E0 /* engine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = engine.h; path = macosx/include/openssl/engine.h; sourceTree = "<group>"; };
+		75B05B22256E7BD100FB91E0 /* x509v3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = x509v3.h; path = macosx/include/openssl/x509v3.h; sourceTree = "<group>"; };
+		75B05B23256E7BD100FB91E0 /* opensslv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = opensslv.h; path = macosx/include/openssl/opensslv.h; sourceTree = "<group>"; };
+		75B05B24256E7BD100FB91E0 /* e_os2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = e_os2.h; path = macosx/include/openssl/e_os2.h; sourceTree = "<group>"; };
+		75B05B25256E7BD100FB91E0 /* rc5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rc5.h; path = macosx/include/openssl/rc5.h; sourceTree = "<group>"; };
+		75B05B26256E7BD100FB91E0 /* ui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ui.h; path = macosx/include/openssl/ui.h; sourceTree = "<group>"; };
+		75B05B27256E7BD100FB91E0 /* buffererr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = buffererr.h; path = macosx/include/openssl/buffererr.h; sourceTree = "<group>"; };
+		75B05B28256E7BD100FB91E0 /* pem2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pem2.h; path = macosx/include/openssl/pem2.h; sourceTree = "<group>"; };
+		75B05B29256E7BD100FB91E0 /* rc2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rc2.h; path = macosx/include/openssl/rc2.h; sourceTree = "<group>"; };
+		75B05B2A256E7BD100FB91E0 /* rand_drbg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rand_drbg.h; path = macosx/include/openssl/rand_drbg.h; sourceTree = "<group>"; };
+		75B05B2B256E7BD100FB91E0 /* rsa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rsa.h; path = macosx/include/openssl/rsa.h; sourceTree = "<group>"; };
+		75B05B2C256E7BD100FB91E0 /* pkcs7err.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pkcs7err.h; path = macosx/include/openssl/pkcs7err.h; sourceTree = "<group>"; };
+		75B05B2D256E7BD100FB91E0 /* pem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pem.h; path = macosx/include/openssl/pem.h; sourceTree = "<group>"; };
+		75B05B2E256E7BD100FB91E0 /* shim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = shim.h; path = macosx/include/openssl/shim.h; sourceTree = "<group>"; };
+		75B05B2F256E7BD100FB91E0 /* pkcs12err.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pkcs12err.h; path = macosx/include/openssl/pkcs12err.h; sourceTree = "<group>"; };
+		75B05B30256E7BD100FB91E0 /* aes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aes.h; path = macosx/include/openssl/aes.h; sourceTree = "<group>"; };
+		75B05B31256E7BD100FB91E0 /* asn1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = asn1.h; path = macosx/include/openssl/asn1.h; sourceTree = "<group>"; };
+		75B05B32256E7BD200FB91E0 /* modes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = modes.h; path = macosx/include/openssl/modes.h; sourceTree = "<group>"; };
+		75B05B33256E7BD200FB91E0 /* ebcdic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ebcdic.h; path = macosx/include/openssl/ebcdic.h; sourceTree = "<group>"; };
+		75B05B34256E7BD200FB91E0 /* tls1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tls1.h; path = macosx/include/openssl/tls1.h; sourceTree = "<group>"; };
+		75B05B35256E7BD200FB91E0 /* sslerr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sslerr.h; path = macosx/include/openssl/sslerr.h; sourceTree = "<group>"; };
+		75B05B36256E7BD200FB91E0 /* randerr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = randerr.h; path = macosx/include/openssl/randerr.h; sourceTree = "<group>"; };
+		75B05B37256E7BD200FB91E0 /* pkcs7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pkcs7.h; path = macosx/include/openssl/pkcs7.h; sourceTree = "<group>"; };
+		75B05B38256E7BD200FB91E0 /* kdferr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = kdferr.h; path = macosx/include/openssl/kdferr.h; sourceTree = "<group>"; };
+		75B05B39256E7BD200FB91E0 /* async.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = async.h; path = macosx/include/openssl/async.h; sourceTree = "<group>"; };
+		75B05B3A256E7BD200FB91E0 /* lhash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lhash.h; path = macosx/include/openssl/lhash.h; sourceTree = "<group>"; };
+		75B05B3B256E7BD200FB91E0 /* pkcs12.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pkcs12.h; path = macosx/include/openssl/pkcs12.h; sourceTree = "<group>"; };
+		75B05B3C256E7BD200FB91E0 /* objects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = objects.h; path = macosx/include/openssl/objects.h; sourceTree = "<group>"; };
+		75B05B3D256E7BD200FB91E0 /* stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = stack.h; path = macosx/include/openssl/stack.h; sourceTree = "<group>"; };
+		75B05B3E256E7BD200FB91E0 /* bioerr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bioerr.h; path = macosx/include/openssl/bioerr.h; sourceTree = "<group>"; };
+		75B05B3F256E7BD200FB91E0 /* symhacks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = symhacks.h; path = macosx/include/openssl/symhacks.h; sourceTree = "<group>"; };
+		75B05B40256E7BD200FB91E0 /* hmac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hmac.h; path = macosx/include/openssl/hmac.h; sourceTree = "<group>"; };
+		75B05B41256E7BD200FB91E0 /* err.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = err.h; path = macosx/include/openssl/err.h; sourceTree = "<group>"; };
+		75B05B42256E7BD200FB91E0 /* asyncerr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = asyncerr.h; path = macosx/include/openssl/asyncerr.h; sourceTree = "<group>"; };
+		75B05B43256E7BD200FB91E0 /* ecdh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ecdh.h; path = macosx/include/openssl/ecdh.h; sourceTree = "<group>"; };
+		75B05B44256E7BD200FB91E0 /* cryptoerr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cryptoerr.h; path = macosx/include/openssl/cryptoerr.h; sourceTree = "<group>"; };
+		75B05B45256E7BD200FB91E0 /* x509.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = x509.h; path = macosx/include/openssl/x509.h; sourceTree = "<group>"; };
+		75B05B46256E7BD200FB91E0 /* obj_mac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = obj_mac.h; path = macosx/include/openssl/obj_mac.h; sourceTree = "<group>"; };
+		75B05B47256E7BD200FB91E0 /* dtls1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dtls1.h; path = macosx/include/openssl/dtls1.h; sourceTree = "<group>"; };
+		75B05B48256E7BD200FB91E0 /* safestack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = safestack.h; path = macosx/include/openssl/safestack.h; sourceTree = "<group>"; };
+		75B05B49256E7BD200FB91E0 /* idea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = idea.h; path = macosx/include/openssl/idea.h; sourceTree = "<group>"; };
+		75B05BB9256E7C0000FB91E0 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = macosx/lib/libcrypto.a; sourceTree = "<group>"; };
+		75B05BBA256E7C0000FB91E0 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = macosx/lib/libssl.a; sourceTree = "<group>"; };
 		75B05BBD256E7C1E00FB91E0 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = iphonesimulator/lib/libcrypto.a; sourceTree = "<group>"; };
 		75B05BBE256E7C1E00FB91E0 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = iphonesimulator/lib/libssl.a; sourceTree = "<group>"; };
 		75B05BC1256E7C3D00FB91E0 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = iphoneos/lib/libcrypto.a; sourceTree = "<group>"; };
@@ -1919,7 +1919,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/macos_catalyst/lib",
+					"$(PROJECT_DIR)/macosx_catalyst/lib",
 				);
 				OTHER_LDFLAGS = (
 					"-Xlinker",
@@ -1997,7 +1997,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/macos_catalyst/lib",
+					"$(PROJECT_DIR)/macosx_catalyst/lib",
 				);
 				OTHER_LDFLAGS = (
 					"-Xlinker",
@@ -2442,7 +2442,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/macos/lib",
+					"$(PROJECT_DIR)/macosx/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_LDFLAGS = (
@@ -2522,7 +2522,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/macos/lib",
+					"$(PROJECT_DIR)/macosx/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_LDFLAGS = (
