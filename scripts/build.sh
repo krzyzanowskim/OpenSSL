@@ -11,12 +11,13 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
 # Setup paths to stuff we need
 
-OPENSSL_VERSION="1.1.1i"
+OPENSSL_VERSION="1.0.2u"
 export OPENSSL_LOCAL_CONFIG_DIR="${SCRIPT_DIR}/../config"
 
 DEVELOPER=$(xcode-select --print-path)
 
 export IPHONEOS_DEPLOYMENT_VERSION="7.0"
+DEPLOYMENT_VERSION=$IPHONEOS_DEPLOYMENT_VERSION
 IPHONEOS_SDK=$(xcrun --sdk iphoneos --show-sdk-path)
 IPHONESIMULATOR_SDK=$(xcrun --sdk iphonesimulator --show-sdk-path)
 OSX_SDK=$(xcrun --sdk macosx --show-sdk-path)
@@ -65,16 +66,31 @@ configure() {
       echo "Failed to parse SDK path '${SDK}'!" >&1
       exit 2
    fi
-   
 
    if [ "$OS" == "MacOSX" ]; then
       ${SRC_DIR}/Configure macos-$ARCH no-asm no-shared --prefix="${PREFIX}" &> "${PREFIX}.config.log"
+      sed -ie "s!^CFLAG=!CFLAG=-isysroot ${CROSS_TOP}/SDKs/${CROSS_SDK} -fembed-bitcode -arch $ARCH -mios-simulator-version-min=${DEPLOYMENT_VERSION} -mios-version-min=10.15=${DEPLOYMENT_VERSION} !" "${SRC_DIR}/Makefile"
+      sed -ie "s!^CFLAGS=!CFLAGS=-isysroot ${CROSS_TOP}/SDKs/${CROSS_SDK} -fembed-bitcode -arch $ARCH -mios-simulator-version-min=${DEPLOYMENT_VERSION} -mios-version-min=10.15=${DEPLOYMENT_VERSION} !" "${SRC_DIR}/Makefile"
    elif [ "$OS" == "MacOSX_Catalyst" ]; then
       ${SRC_DIR}/Configure mac-catalyst-$ARCH no-asm no-shared --prefix="${PREFIX}" &> "${PREFIX}.config.log"
+      
+      if [ "$ARCH" == "x86_64" ]; then
+         sed -ie "s!^CFLAG=!CFLAG=-isysroot ${CROSS_TOP}/SDKs/${CROSS_SDK} -fembed-bitcode -arch $ARCH -mios-version-min=10.15 -target x86_64-apple-ios13.0-macabi !" "${SRC_DIR}/Makefile"
+         sed -ie "s!^CFLAGS=!CFLAGS=-isysroot ${CROSS_TOP}/SDKs/${CROSS_SDK} -fembed-bitcode -arch $ARCH -mios-version-min=10.15 -target x86_64-apple-ios13.0-macabi !" "${SRC_DIR}/Makefile"
+      elif [ "$ARCH" == "arm64" ]; then
+         sed -ie "s!^CFLAG=!CFLAG=-isysroot ${CROSS_TOP}/SDKs/${CROSS_SDK} -fembed-bitcode -arch $ARCH -mios-version-min=10.15=${DEPLOYMENT_VERSION} -target arm64-apple-ios14.0-macabi !" "${SRC_DIR}/Makefile"
+         sed -ie "s!^CFLAGS=!CFLAGS=-isysroot ${CROSS_TOP}/SDKs/${CROSS_SDK} -fembed-bitcode -arch $ARCH -mios-version-min=10.15=${DEPLOYMENT_VERSION} -target arm64-apple-ios14.0-macabi !" "${SRC_DIR}/Makefile"
+      fi
    elif [ "$OS" == "iPhoneSimulator" ]; then
-      ${SRC_DIR}/Configure ios-sim-cross-$ARCH no-asm no-shared --prefix="${PREFIX}" &> "${PREFIX}.config.log"
+      ${SRC_DIR}/Configure iphoneos-cross -no-asm --prefix="${PREFIX}" &> "${PREFIX}.config.log"
+      sed -ie "s!^CFLAG=!CFLAG=-mios-simulator-version-min=${IPHONEOS_DEPLOYMENT_VERSION} -fembed-bitcode -miphoneos-version-min=${DEPLOYMENT_VERSION} -arch ${ARCH} !" "${SRC_DIR}/Makefile"
+      sed -ie "s!^CFLAGS=!CFLAGS=-mios-simulator-version-min=${IPHONEOS_DEPLOYMENT_VERSION} -fembed-bitcode -miphoneos-version-min=${DEPLOYMENT_VERSION} -arch ${ARCH} !" "${SRC_DIR}/Makefile"
+      perl -i -pe 's|static volatile sig_atomic_t intr_signal|static volatile int intr_signal|' ${SRC_DIR}/crypto/ui/ui_openssl.c
    elif [ "$OS" == "iPhoneOS" ]; then
-      ${SRC_DIR}/Configure ios-cross-$ARCH no-asm no-shared --prefix="${PREFIX}" &> "${PREFIX}.config.log"
+      ${SRC_DIR}/Configure iphoneos-cross -no-asm --prefix="${PREFIX}" &> "${PREFIX}.config.log"
+      sed -ie "s!^CFLAG=!CFLAG=-mios-simulator-version-min=${IPHONEOS_DEPLOYMENT_VERSION} -fembed-bitcode -miphoneos-version-min=${DEPLOYMENT_VERSION} -arch ${ARCH} !" "${SRC_DIR}/Makefile"
+      sed -ie "s!^CFLAGS=!CFLAGS=-mios-simulator-version-min=${IPHONEOS_DEPLOYMENT_VERSION} -fembed-bitcode -miphoneos-version-min=${DEPLOYMENT_VERSION} -arch ${ARCH} !" "${SRC_DIR}/Makefile"
+      perl -i -pe 's|static volatile sig_atomic_t intr_signal|static volatile int intr_signal|' ${SRC_DIR}/crypto/ui/ui_openssl.c
    fi
 }
 
@@ -98,7 +114,7 @@ build()
 
    # fix headers for Swift
 
-   sed -ie "s/BIGNUM \*I,/BIGNUM \*i,/g" ${SRC_DIR}/crypto/rsa/rsa_local.h   
+   sed -ie "s/BIGNUM \*I,/BIGNUM \*i,/g" ${SRC_DIR}/crypto/rsa/rsa.h
 
    # -bundle and -bitcode_bundle (Xcode setting ENABLE_BITCODE=YES) cannot be used together 
    # sed -ie "s/'-bundle'/''/g" ${SRC_DIR}/Configurations/shared-info.pl
@@ -263,16 +279,11 @@ build_catalyst() {
 # Start
 
 if [ ! -f "${SCRIPT_DIR}/../openssl-${OPENSSL_VERSION}.tar.gz" ]; then
-   curl -fL "https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz" -o "${SCRIPT_DIR}/../openssl-${OPENSSL_VERSION}.tar.gz"
-   curl -fL "https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz.sha256" -o "${SCRIPT_DIR}/../openssl-${OPENSSL_VERSION}.tar.gz.sha256"
+   curl -fL "https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz" -o ${SCRIPT_DIR}/../openssl-${OPENSSL_VERSION}.tar.gz
+   curl -fL "https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz.sha256" -o ${SCRIPT_DIR}/../openssl-${OPENSSL_VERSION}.tar.gz.sha256
    DIGEST=$( cat ${SCRIPT_DIR}/../openssl-${OPENSSL_VERSION}.tar.gz.sha256 )
-
-   if [[ "$(shasum -a 256 "openssl-${OPENSSL_VERSION}.tar.gz" | awk '{print $1}')" != "${DIGEST}" ]]
-   then
-      echo "openssl-${OPENSSL_VERSION}.tar.gz: checksum mismatch"
-      exit 1
-   fi
-   rm -f "${SCRIPT_DIR}/../openssl-${OPENSSL_VERSION}.tar.gz.sha256"
+   echo "${DIGEST} ${SCRIPT_DIR}/../openssl-${OPENSSL_VERSION}.tar.gz" | sha256sum --check --strict
+   rm -f ${SCRIPT_DIR}/../openssl-${OPENSSL_VERSION}.tar.gz.sha256
 fi
 
 build_ios
