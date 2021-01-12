@@ -1,12 +1,3 @@
-/*
- * Copyright 1999-2020 The OpenSSL Project Authors. All Rights Reserved.
- *
- * Licensed under the OpenSSL license (the "License").  You may not use
- * this file except in compliance with the License.  You can obtain a copy
- * in the file LICENSE in the source distribution or at
- * https://www.openssl.org/source/license.html
- */
-
 #ifndef HEADER_OPENSSLV_H
 # define HEADER_OPENSSLV_H
 
@@ -39,8 +30,13 @@ extern "C" {
  * (Prior to 0.9.5a beta1, a different scheme was used: MMNNFFRBB for
  *  major minor fix final patch/beta)
  */
-# define OPENSSL_VERSION_NUMBER  0x1010109fL
-# define OPENSSL_VERSION_TEXT    "OpenSSL 1.1.1i  8 Dec 2020"
+# define OPENSSL_VERSION_NUMBER  0x1000215fL
+# ifdef OPENSSL_FIPS
+#  define OPENSSL_VERSION_TEXT    "OpenSSL 1.0.2u-fips  20 Dec 2019"
+# else
+#  define OPENSSL_VERSION_TEXT    "OpenSSL 1.0.2u  20 Dec 2019"
+# endif
+# define OPENSSL_VERSION_PTEXT   " part of " OPENSSL_VERSION_TEXT
 
 /*-
  * The macros below are to be used for shared library (.so, .dll, ...)
@@ -53,7 +49,7 @@ extern "C" {
  *
  *      libcrypto.so.0.9
  *
- * Some unixen also make a softlink with the major version number only:
+ * Some unixen also make a softlink with the major verson number only:
  *
  *      libcrypto.so.0
  *
@@ -92,7 +88,7 @@ extern "C" {
  * should only keep the versions that are binary compatible with the current.
  */
 # define SHLIB_VERSION_HISTORY ""
-# define SHLIB_VERSION_NUMBER "1.1"
+# define SHLIB_VERSION_NUMBER "1.0.0"
 
 
 #ifdef  __cplusplus
