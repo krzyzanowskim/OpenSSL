@@ -1,9 +1,6 @@
 // Include before others:
 #include <OpenSSL/ssl.h>
 
-#include <OpenSSL/ssl2.h>
-#include <OpenSSL/ssl3.h>
-
 #include <OpenSSL/aes.h>
 #include <OpenSSL/asn1_mac.h>
 #include <OpenSSL/asn1.h>
@@ -63,6 +60,8 @@
 #include <OpenSSL/sha.h>
 #include <OpenSSL/srp.h>
 #include <OpenSSL/srtp.h>
+#include <OpenSSL/ssl2.h>
+#include <OpenSSL/ssl3.h>
 #include <OpenSSL/ssl23.h>
 #include <OpenSSL/stack.h>
 #include <OpenSSL/symhacks.h>
