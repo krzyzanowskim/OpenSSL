@@ -300,6 +300,18 @@
 		<data>
 		CbR/DYCIRXfMk8ijFeLyV/hm9x4=
 		</data>
+		<key>Headers/x509.h</key>
+		<data>
+		RFM8Cmny97NtPLf0tZiPbN3h3fE=
+		</data>
+		<key>Headers/x509_vfy.h</key>
+		<data>
+		kf0zYnlCPY4Mz80/4j35tIADSIk=
+		</data>
+		<key>Headers/x509v3.h</key>
+		<data>
+		+xWgdsHrCFj+CeaBCthuOomRqc4=
+		</data>
 		<key>Info.plist</key>
 		<data>
 		z3P4/kQpxz6OTMRPoIQ6FcwsMAg=
@@ -1123,6 +1135,39 @@
 			<key>hash2</key>
 			<data>
 			6YF0Ag9TDIyfuciM/Nc3w7KXtV0bSEw7wH2/2XrcIfM=
+			</data>
+		</dict>
+		<key>Headers/x509.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			RFM8Cmny97NtPLf0tZiPbN3h3fE=
+			</data>
+			<key>hash2</key>
+			<data>
+			XSfbMn5/5moJ19+P9LBe1chvfCaUn1S12EclOzAv940=
+			</data>
+		</dict>
+		<key>Headers/x509_vfy.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			kf0zYnlCPY4Mz80/4j35tIADSIk=
+			</data>
+			<key>hash2</key>
+			<data>
+			U5siLUNT71uijGtqH8p2JmC/tLWOe8E0woRVktseDdw=
+			</data>
+		</dict>
+		<key>Headers/x509v3.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			+xWgdsHrCFj+CeaBCthuOomRqc4=
+			</data>
+			<key>hash2</key>
+			<data>
+			S0bnUoEBToDHEbeHY4IQzxW0nibnw7JkFAubl3s+0hk=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

@@ -241,6 +241,9 @@
 		9A67D50A25ADCED90096F6A6 /* aes.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A67D39F25ADCA120096F6A6 /* aes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9A67D50B25ADCED90096F6A6 /* kssl.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A67D3A325ADCA120096F6A6 /* kssl.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9A67D50C25ADCED90096F6A6 /* symhacks.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A67D3A925ADCA120096F6A6 /* symhacks.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9A67D52B25ADD2D50096F6A6 /* x509v3.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A67D51725ADD2B10096F6A6 /* x509v3.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9A67D52C25ADD2D50096F6A6 /* x509.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A67D51625ADD2B10096F6A6 /* x509.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9A67D52D25ADD2D50096F6A6 /* x509_vfy.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A67D51525ADD2B10096F6A6 /* x509_vfy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -481,6 +484,9 @@
 		9A67D3B525ADCA130096F6A6 /* seed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = seed.h; path = macosx/include/openssl/seed.h; sourceTree = "<group>"; };
 		9A67D3B625ADCA130096F6A6 /* ocsp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ocsp.h; path = macosx/include/openssl/ocsp.h; sourceTree = "<group>"; };
 		9A67D3B725ADCA130096F6A6 /* pkcs7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pkcs7.h; path = macosx/include/openssl/pkcs7.h; sourceTree = "<group>"; };
+		9A67D51525ADD2B10096F6A6 /* x509_vfy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = x509_vfy.h; path = iphonesimulator/include/openssl/x509_vfy.h; sourceTree = "<group>"; };
+		9A67D51625ADD2B10096F6A6 /* x509.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = x509.h; path = iphonesimulator/include/openssl/x509.h; sourceTree = "<group>"; };
+		9A67D51725ADD2B10096F6A6 /* x509v3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = x509v3.h; path = iphonesimulator/include/openssl/x509v3.h; sourceTree = "<group>"; };
 		9F4A265C223BD82B005CB63A /* OpenSSL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OpenSSL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F4A2716223BE476005CB63A /* OpenSSL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OpenSSL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -586,6 +592,7 @@
 				9A67D30A25ADC9640096F6A6 /* obj_mac.h */,
 				9A67D2DC25ADC9610096F6A6 /* objects.h */,
 				9A67D30F25ADC9640096F6A6 /* ocsp.h */,
+				75B05C16256E826800FB91E0 /* OpenSSL.h */,
 				9A67D30325ADC9640096F6A6 /* opensslconf.h */,
 				9A67D2F525ADC9630096F6A6 /* opensslv.h */,
 				9A67D30E25ADC9640096F6A6 /* ossl_typ.h */,
@@ -617,7 +624,9 @@
 				9A67D31825ADC9650096F6A6 /* ui_compat.h */,
 				9A67D2E625ADC9620096F6A6 /* ui.h */,
 				9A67D31925ADC9650096F6A6 /* whrlpool.h */,
-				75B05C16256E826800FB91E0 /* OpenSSL.h */,
+				9A67D51525ADD2B10096F6A6 /* x509_vfy.h */,
+				9A67D51625ADD2B10096F6A6 /* x509.h */,
+				9A67D51725ADD2B10096F6A6 /* x509v3.h */,
 			);
 			name = Headers;
 			sourceTree = "<group>";
@@ -903,6 +912,7 @@
 				9A67D44E25ADCEA30096F6A6 /* des.h in Headers */,
 				9A67D42325ADCEA30096F6A6 /* kssl.h in Headers */,
 				9A67D43425ADCEA30096F6A6 /* dsa.h in Headers */,
+				9A67D52D25ADD2D50096F6A6 /* x509_vfy.h in Headers */,
 				9A67D42425ADCEA30096F6A6 /* comp.h in Headers */,
 				9A67D43525ADCEA30096F6A6 /* modes.h in Headers */,
 				9A67D44725ADCEA30096F6A6 /* hmac.h in Headers */,
@@ -918,10 +928,12 @@
 				9A67D45025ADCEA30096F6A6 /* symhacks.h in Headers */,
 				9A67D45B25ADCEA30096F6A6 /* objects.h in Headers */,
 				9A67D45C25ADCEA30096F6A6 /* txt_db.h in Headers */,
+				9A67D52B25ADD2D50096F6A6 /* x509v3.h in Headers */,
 				75B05C17256E826800FB91E0 /* OpenSSL.h in Headers */,
 				9A67D42525ADCEA30096F6A6 /* md4.h in Headers */,
 				9A67D43C25ADCEA30096F6A6 /* ts.h in Headers */,
 				9A67D45E25ADCEA30096F6A6 /* cms.h in Headers */,
+				9A67D52C25ADD2D50096F6A6 /* x509.h in Headers */,
 				9A67D41825ADCEA30096F6A6 /* pkcs12.h in Headers */,
 				9A67D42C25ADCEA30096F6A6 /* e_os2.h in Headers */,
 				9A67D41925ADCEA30096F6A6 /* whrlpool.h in Headers */,
