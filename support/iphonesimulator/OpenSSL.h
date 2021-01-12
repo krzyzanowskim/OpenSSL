@@ -20,7 +20,6 @@
 #include <OpenSSL/conf_api.h>
 #include <OpenSSL/conf.h>
 #include <OpenSSL/crypto.h>
-#include <OpenSSL/des_old.h>
 #include <OpenSSL/des.h>
 #include <OpenSSL/dh.h>
 #include <OpenSSL/dsa.h>
