@@ -45,10 +45,6 @@
 #include <OpenSSL/obj_mac.h>
 #include <OpenSSL/objects.h>
 #include <OpenSSL/ocsp.h>
-// #include <OpenSSL/opensslconf-arm64.h>
-// #include <OpenSSL/opensslconf-arm64e.h>
-// #include <OpenSSL/opensslconf-armv7.h>
-// #include <OpenSSL/opensslconf-armv7s.h>
 #include <OpenSSL/opensslconf.h>
 #include <OpenSSL/opensslv.h>
 #include <OpenSSL/ossl_typ.h>
@@ -65,7 +61,6 @@
 #include <OpenSSL/safestack.h>
 #include <OpenSSL/seed.h>
 #include <OpenSSL/sha.h>
-#include <OpenSSL/shim.h>
 #include <OpenSSL/srp.h>
 #include <OpenSSL/srtp.h>
 #include <OpenSSL/ssl23.h>
@@ -80,3 +75,4 @@
 #include <OpenSSL/x509_vfy.h>
 #include <OpenSSL/x509.h>
 #include <OpenSSL/x509v3.h>
+#include <OpenSSL/shim.h>
