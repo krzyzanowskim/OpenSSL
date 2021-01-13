@@ -69,9 +69,9 @@ configure() {
       sed -ie "s!^CFLAG=!CFLAG=-mmacosx-version-min=${MACOSX_DEPLOYMENT_TARGET} -isysroot ${CROSS_TOP}/SDKs/${CROSS_SDK} -fno-common -fembed-bitcode -arch $ARCH !" "${SRC_DIR}/Makefile"
       sed -ie "s!^CFLAGS=!CFLAGS=-mmacosx-version-min=${MACOSX_DEPLOYMENT_TARGET} -isysroot ${CROSS_TOP}/SDKs/${CROSS_SDK} -fno-common -fembed-bitcode -arch $ARCH !" "${SRC_DIR}/Makefile"
    elif [ "$OS" == "iPhoneSimulator" ]; then
-      ${SRC_DIR}/Configure iphoneos-cross -no-asm --prefix="${PREFIX}" &> "${PREFIX}.config.log"
-      sed -ie "s!^CFLAG=!CFLAG=-mios-simulator-version-min=${IPHONEOS_DEPLOYMENT_VERSION} -fno-common -fembed-bitcode -arch ${ARCH} !" "${SRC_DIR}/Makefile"
-      sed -ie "s!^CFLAGS=!CFLAGS=-mios-simulator-version-min=${IPHONEOS_DEPLOYMENT_VERSION} -fno-common -fembed-bitcode -arch ${ARCH} !" "${SRC_DIR}/Makefile"
+      ${SRC_DIR}/Configure iphoneos-cross no-asm --prefix="${PREFIX}" &> "${PREFIX}.config.log"
+      sed -ie "s!^CFLAG=!CFLAG=-isysroot ${CROSS_TOP}/SDKs/${CROSS_SDK} -mios-simulator-version-min=${IPHONEOS_DEPLOYMENT_VERSION} -fno-common -fembed-bitcode -arch ${ARCH} !" "${SRC_DIR}/Makefile"
+      sed -ie "s!^CFLAGS=!CFLAGS=-isysroot ${CROSS_TOP}/SDKs/${CROSS_SDK} -mios-simulator-version-min=${IPHONEOS_DEPLOYMENT_VERSION} -fno-common -fembed-bitcode -arch ${ARCH} !" "${SRC_DIR}/Makefile"
       perl -i -pe 's|static volatile sig_atomic_t intr_signal|static volatile int intr_signal|' ${SRC_DIR}/crypto/ui/ui_openssl.c
    elif [ "$OS" == "iPhoneOS" ]; then
       ${SRC_DIR}/Configure iphoneos-cross -no-asm --prefix="${PREFIX}" &> "${PREFIX}.config.log"
@@ -143,10 +143,9 @@ build_ios() {
    build "armv7" "iPhoneOS" ${TMP_BUILD_DIR} "iphoneos"
    build "armv7s" "iPhoneOS" ${TMP_BUILD_DIR} "iphoneos"
    build "arm64" "iPhoneOS" ${TMP_BUILD_DIR} "iphoneos"
-   build "arm64e" "iPhoneOS" ${TMP_BUILD_DIR} "iphoneos"
 
    # Copy headers
-   ditto "${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneOS-arm64e/include/openssl" "${SCRIPT_DIR}/../iphoneos/include/openssl"
+   ditto "${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneOS-arm64/include/openssl" "${SCRIPT_DIR}/../iphoneos/include/openssl"
    cp -f "${SCRIPT_DIR}/../shim/shim.h" "${SCRIPT_DIR}/../iphoneos/include/openssl/shim.h"
 
    # Copy headers
@@ -175,8 +174,6 @@ build_ios() {
    cat ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneOS-armv7/include/openssl/opensslconf.h >> ${OPENSSLCONF_PATH}
    echo "#elif defined(__APPLE__) && defined (__arm__) && defined (__ARM_ARCH_7S__)" >> ${OPENSSLCONF_PATH}
    cat ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneOS-armv7s/include/openssl/opensslconf.h >> ${OPENSSLCONF_PATH}
-   echo "#elif defined(__APPLE__) && defined (__arm64e__)" >> ${OPENSSLCONF_PATH}
-   cat ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneOS-arm64e/include/openssl/opensslconf.h >> ${OPENSSLCONF_PATH}
    echo "#elif defined(__APPLE__) && defined (__arm64__)" >> ${OPENSSLCONF_PATH}
    cat ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneOS-arm64/include/openssl/opensslconf.h >> ${OPENSSLCONF_PATH}
    echo "#endif" >> ${OPENSSLCONF_PATH}
