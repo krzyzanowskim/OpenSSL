@@ -1454,7 +1454,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = (
 					x86_64,
-					i386,
+					arm64,
+					arm64e,
 				);
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -1525,7 +1526,6 @@
 				OTHER_LDFLAGS = (
 					"-Xlinker",
 					"-all_load",
-					"-Wl,-no_compact_unwind",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.krzyzanowskim.OpenSSL;
 				SDKROOT = iphoneos;
@@ -1544,7 +1544,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = (
 					x86_64,
-					i386,
+					arm64,
+					arm64e,
 				);
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -1609,7 +1610,6 @@
 				OTHER_LDFLAGS = (
 					"-Xlinker",
 					"-all_load",
-					"-Wl,-no_compact_unwind",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.krzyzanowskim.OpenSSL;
 				SDKROOT = iphoneos;
@@ -1646,6 +1646,7 @@
 				ARCHS = (
 					"$(ARCHS_STANDARD)",
 					armv7s,
+					arm64e,
 				);
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -1735,6 +1736,7 @@
 				ARCHS = (
 					"$(ARCHS_STANDARD)",
 					armv7s,
+					arm64e,
 				);
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
