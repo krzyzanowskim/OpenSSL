@@ -1,3 +1,4 @@
+#if defined(__APPLE__) && defined (__i386__)
 /* opensslconf.h */
 /* WARNING: Generated automatically from opensslconf.h.in by Configure. */
 
@@ -122,8 +123,8 @@ extern "C" {
 
 #if !(defined(VMS) || defined(__VMS)) /* VMS uses logical names instead */
 #if defined(HEADER_CRYPTLIB_H) && !defined(OPENSSLDIR)
-#define ENGINESDIR "/Users/tos/Desktop/hg_repo/OpenSSL/scripts/../build//1.0.2u-iPhoneSimulator-arm64e/lib/engines"
-#define OPENSSLDIR "/Users/tos/Desktop/hg_repo/OpenSSL/scripts/../build//1.0.2u-iPhoneSimulator-arm64e/ssl"
+#define ENGINESDIR "/Users/tos/Desktop/hg_repo/OpenSSL/scripts/../build//1.0.2u-iPhoneSimulator-i386/lib/engines"
+#define OPENSSLDIR "/Users/tos/Desktop/hg_repo/OpenSSL/scripts/../build//1.0.2u-iPhoneSimulator-i386/ssl"
 #endif
 #endif
 
@@ -272,7 +273,7 @@ extern "C" {
 #ifdef  __cplusplus
 }
 #endif
-#if defined(__APPLE__) && defined (__x86_64__)
+#elif defined(__APPLE__) && defined (__x86_64__)
 /* opensslconf.h */
 /* WARNING: Generated automatically from opensslconf.h.in by Configure. */
 

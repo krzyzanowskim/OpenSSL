@@ -1456,6 +1456,7 @@
 					x86_64,
 					arm64,
 					arm64e,
+					i386,
 				);
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -1546,6 +1547,7 @@
 					x86_64,
 					arm64,
 					arm64e,
+					i386,
 				);
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -1627,6 +1629,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 863B6DD424B83C2D002E03CC /* OpenSSL.xcconfig */;
 			buildSettings = {
+				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
 				PRODUCT_NAME = OpenSSL;
 			};
 			name = Debug;
@@ -1635,6 +1638,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 863B6DD424B83C2D002E03CC /* OpenSSL.xcconfig */;
 			buildSettings = {
+				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
 				PRODUCT_NAME = OpenSSL;
 			};
 			name = Release;

@@ -66,17 +66,22 @@ configure() {
 
    if [ "$OS" == "MacOSX" ]; then
       ${SRC_DIR}/Configure darwin64-x86_64-cc no-asm no-shared --prefix="${PREFIX}" &> "${PREFIX}.config.log"
-      sed -ie "s!^CFLAG=!CFLAG=-mmacosx-version-min=${MACOSX_DEPLOYMENT_TARGET} -isysroot ${CROSS_TOP}/SDKs/${CROSS_SDK} -fno-common -fembed-bitcode -arch $ARCH !" "${SRC_DIR}/Makefile"
-      sed -ie "s!^CFLAGS=!CFLAGS=-mmacosx-version-min=${MACOSX_DEPLOYMENT_TARGET} -isysroot ${CROSS_TOP}/SDKs/${CROSS_SDK} -fno-common -fembed-bitcode -arch $ARCH !" "${SRC_DIR}/Makefile"
+      sed -ie "s!^CFLAG=!CFLAG=-mmacosx-version-min=${MACOSX_DEPLOYMENT_TARGET} -isysroot ${CROSS_TOP}/SDKs/${CROSS_SDK} -fembed-bitcode -arch $ARCH !" "${SRC_DIR}/Makefile"
+      sed -ie "s!^CFLAGS=!CFLAGS=-mmacosx-version-min=${MACOSX_DEPLOYMENT_TARGET} -isysroot ${CROSS_TOP}/SDKs/${CROSS_SDK} -fembed-bitcode -arch $ARCH !" "${SRC_DIR}/Makefile"
    elif [ "$OS" == "iPhoneSimulator" ]; then
-      ${SRC_DIR}/Configure iphoneos-cross no-asm no-shared --prefix="${PREFIX}" &> "${PREFIX}.config.log"
-      sed -ie "s!^CFLAG=!CFLAG=-isysroot ${CROSS_TOP}/SDKs/${CROSS_SDK} -mios-simulator-version-min=${IPHONEOS_DEPLOYMENT_VERSION} -fno-common -fembed-bitcode -arch ${ARCH} !" "${SRC_DIR}/Makefile"
-      sed -ie "s!^CFLAGS=!CFLAGS=-isysroot ${CROSS_TOP}/SDKs/${CROSS_SDK} -mios-simulator-version-min=${IPHONEOS_DEPLOYMENT_VERSION} -fno-common -fembed-bitcode -arch ${ARCH} !" "${SRC_DIR}/Makefile"
+      if [ "$ARCH" == "i386" ]; then
+         ${SRC_DIR}/Configure iphoneos-cross no-asm no-shared --prefix="${PREFIX}" &> "${PREFIX}.config.log"
+      else
+         ${SRC_DIR}/Configure iphoneos-cross no-asm no-shared --prefix="${PREFIX}" &> "${PREFIX}.config.log"
+      fi
+
+      sed -ie "s!^CFLAG=!CFLAG=-isysroot ${CROSS_TOP}/SDKs/${CROSS_SDK} -mios-simulator-version-min=${IPHONEOS_DEPLOYMENT_VERSION} -fembed-bitcode -arch ${ARCH} !" "${SRC_DIR}/Makefile"
+      sed -ie "s!^CFLAGS=!CFLAGS=-isysroot ${CROSS_TOP}/SDKs/${CROSS_SDK} -mios-simulator-version-min=${IPHONEOS_DEPLOYMENT_VERSION} -fembed-bitcode -arch ${ARCH} !" "${SRC_DIR}/Makefile"
       perl -i -pe 's|static volatile sig_atomic_t intr_signal|static volatile int intr_signal|' ${SRC_DIR}/crypto/ui/ui_openssl.c
    elif [ "$OS" == "iPhoneOS" ]; then
       ${SRC_DIR}/Configure iphoneos-cross no-asm no-shared --prefix="${PREFIX}" &> "${PREFIX}.config.log"
-      sed -ie "s!^CFLAG=!CFLAG=-miphoneos-version-min=${DEPLOYMENT_VERSION} -fno-common -fembed-bitcode -arch ${ARCH} !" "${SRC_DIR}/Makefile"
-      sed -ie "s!^CFLAGS=!CFLAGS=-miphoneos-version-min=${DEPLOYMENT_VERSION} -fno-common -fembed-bitcode -arch ${ARCH} !" "${SRC_DIR}/Makefile"
+      sed -ie "s!^CFLAG=!CFLAG=-miphoneos-version-min=${DEPLOYMENT_VERSION} -fembed-bitcode -arch ${ARCH} !" "${SRC_DIR}/Makefile"
+      sed -ie "s!^CFLAGS=!CFLAGS=-miphoneos-version-min=${DEPLOYMENT_VERSION} -fembed-bitcode -arch ${ARCH} !" "${SRC_DIR}/Makefile"
       perl -i -pe 's|static volatile sig_atomic_t intr_signal|static volatile int intr_signal|' ${SRC_DIR}/crypto/ui/ui_openssl.c
    fi
 }
@@ -134,6 +139,7 @@ build_ios() {
    rm -rf "${SCRIPT_DIR}"/../{iphonesimulator/include,iphonesimulator/lib}
    mkdir -p "${SCRIPT_DIR}"/../{iphonesimulator/include,iphonesimulator/lib}
 
+   build "i386" "iPhoneSimulator" ${TMP_BUILD_DIR} "iphonesimulator"
    build "x86_64" "iPhoneSimulator" ${TMP_BUILD_DIR} "iphonesimulator"
    build "arm64" "iPhoneSimulator" ${TMP_BUILD_DIR} "iphonesimulator"
    build "arm64e" "iPhoneSimulator" ${TMP_BUILD_DIR} "iphonesimulator"
@@ -163,7 +169,9 @@ build_ios() {
    # find "${SCRIPT_DIR}/../iphonesimulator/include/openssl" -type f -name "*.h" -exec sed -i "" -e "s/\#define RC4_INT unsigned char/\#if \!defined(RC4_INT)\n#define RC4_INT unsigned char\n\#endif\n/g" {} \;
 
    local OPENSSLCONF_PATH="${SCRIPT_DIR}/../iphonesimulator/include/openssl/opensslconf.h"
-   echo "#if defined(__APPLE__) && defined (__x86_64__)" >> ${OPENSSLCONF_PATH}
+   echo "#if defined(__APPLE__) && defined (__i386__)" > ${OPENSSLCONF_PATH}
+   cat ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneSimulator-i386/include/openssl/opensslconf.h >> ${OPENSSLCONF_PATH}
+   echo "#elif defined(__APPLE__) && defined (__x86_64__)" >> ${OPENSSLCONF_PATH}
    cat ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneSimulator-x86_64/include/openssl/opensslconf.h >> ${OPENSSLCONF_PATH}
    echo "#elif defined(__APPLE__) && defined (__arm__) && defined (__ARM_ARCH_7A__)" >> ${OPENSSLCONF_PATH}
    echo "#elif defined(__APPLE__) && defined (__arm__) && defined (__ARM_ARCH_7S__)" >> ${OPENSSLCONF_PATH}
