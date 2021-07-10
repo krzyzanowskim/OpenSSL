@@ -1,10 +1,12 @@
 .PHONY: build
 .PHONY: frameworks
 
+CWD := $(abspath $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST))))))
+
 build:
-	./scripts/build.sh
+	$(CWD)/scripts/build.sh
 
 frameworks:
-	./scripts/create-frameworks.sh
+	$(CWD)/scripts/create-frameworks.sh
 
 all: build frameworks
