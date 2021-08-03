@@ -8,6 +8,7 @@ set -e
 
 BASE_PWD="$PWD"
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+CORE="$(sysctl -n hw.ncpu)"
 
 # Setup paths to stuff we need
 
@@ -104,7 +105,7 @@ build()
 
    LOG_PATH="${PREFIX}.build.log"
    echo "Building ${LOG_PATH}"
-   make &> ${LOG_PATH}
+   make -j${CORE} &> ${LOG_PATH}
    make install &> ${LOG_PATH}
    cd ${BASE_PWD}
 
