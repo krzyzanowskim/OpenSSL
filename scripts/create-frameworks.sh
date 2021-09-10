@@ -89,4 +89,7 @@ xcrun xcodebuild -quiet -create-xcframework \
 	-framework "${OUTPUT_DIR}/macosx_catalyst/${FWNAME}.framework" \
 	-output "${BASE_PWD}/Frameworks/${FWNAME}.xcframework"
 
+# Zip archive
+zip --symlinks -r "${BASE_PWD}/Frameworks/${FWNAME}.xcframework.zip" "${BASE_PWD}/Frameworks/${FWNAME}.xcframework"
+
 rm -rf ${OUTPUT_DIR}
