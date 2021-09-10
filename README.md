@@ -60,8 +60,16 @@ pod 'OpenSSL-Universal'
 
 ### Carthage
 
+* If building from source is preferred:
+
 ```
 github "krzyzanowskim/OpenSSL"
+```
+
+* If using a prebuilt framework is preferred:
+
+```
+binary "https://raw.githubusercontent.com/krzyzanowskim/OpenSSL/master/OpenSSL.json"
 ```
 
 ### Authors
