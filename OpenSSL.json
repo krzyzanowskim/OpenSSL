@@ -1,4 +1,5 @@
 {
+  "1.1.1400": "https://github.com/krzyzanowskim/OpenSSL/releases/download/1.1.1400/OpenSSL.xcframework.zip",
   "1.1.1300": "https://github.com/krzyzanowskim/OpenSSL/releases/download/1.1.1300/OpenSSL.xcframework.zip",
   "1.1.1200": "https://github.com/krzyzanowskim/OpenSSL/releases/download/1.1.1200/OpenSSL.xcframework.zip",
   "1.1.180": "https://github.com/krzyzanowskim/OpenSSL/releases/download/1.1.180/OpenSSL.xcframework.zip"
