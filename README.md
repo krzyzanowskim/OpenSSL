@@ -11,7 +11,7 @@ It takes some time to keep it all for your convenience, so maybe spare $1, so I 
 ### Architectures
 
 - iOS with architectures: armv7, armv7s, arm64 + simulator (x86_64, arm64)
-- macOS with architectures: x86_64, arm64
+- macOS with architectures: x86_64, arm64 (including Catalyst target)
 
 #### Output Formats
 
@@ -48,7 +48,7 @@ Binary `OpenSSL.xcframework` (Used by the Swift Package Manager package integrat
 
 ```
 dependencies: [
-    .package(url: "https://github.com/krzyzanowskim/OpenSSL.git", .upToNextMinor(from: "1.1.180"))
+    .package(url: "https://github.com/krzyzanowskim/OpenSSL.git", .upToNextMinor(from: "1.1.1700"))
 ]
 ```
 
@@ -78,14 +78,9 @@ binary "https://raw.githubusercontent.com/krzyzanowskim/OpenSSL/master/OpenSSL.j
 
 ## FAQ etc.
 #### Where can I use OpenSSL-Universal?
-These libraries work for both iOS and macOS. There are two OpenSSL static libraries; `libcrypto.a` and `libssl.a` Do NOT expect these OpenSSL files to work on every CPU architecture in the world. It is your prerogative to check. Ask yourself, are you trying to write an app for old devices? new devices only? all iOS devices? only macOS?, etc ::
+These libraries work for both iOS and macOS. It is your prerogative to check. Ask yourself, are you trying to write an app for old devices? new devices only? all iOS devices? only macOS?, etc ::
 
-#### Fat Binaries
-The OpenSSL-Universal Framework is a Fat Binary. That means it supports multiple CPU architectures in a single file. To understand this, return to `Terminal`.  Navigate to your OpenSSL-Universal macOS files and run the command `file libcrypto.a`  This will tell you architecture the file is compiled against `x86_64`.  If you tried the iOS OpenSSL-Universal files it would have said `armv7`, `armv7s`, `arm64` + Simulators (`x86_64`).
+#### What is XCFramework?
 
-#### Xcode Setup
-You want to ensure Xcode knows;
+OpenSSL.xcframework is distributed as a multiplatform XCFramework bundle, for mor information chekout the documentation [Distributing Binary Frameworks as Swift Packages](https://developer.apple.com/documentation/xcode/distributing-binary-frameworks-as-swift-packages)
 
-1. Where the OpenSSL static libraries are located.
-2. Where the OpenSSL header files are located for the C include statements.
-Inside your workspace, go to the Target (not the Project).  The Target is the C app that is produced after a successful build. Select `Build Phases` and `Link Binary With Libraries`.  Select `+` and navigate to the static OpenSSL libraries that was included in the framework.  The magical result was, your `Target` and `Building Settings` `Library Search Paths` were populated without you typing anything. Now go to the  Target.  In `Build Settings` set the `Always Search User Paths` to `Yes`. Then add a new entry to the `User Header Search Paths`. This should be the location of the OpenSSL header files that were included in OpenSSLUniversal.

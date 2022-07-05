@@ -11,8 +11,13 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
 # Setup paths to stuff we need
 
-OPENSSL_VERSION="1.1.1o"
+if [[ -z $OPENSSL_VERSION ]]; then
+ echo "OPENSSL_VERSION not set"
+ exit 1
+fi
+
 export OPENSSL_LOCAL_CONFIG_DIR="${SCRIPT_DIR}/../config"
+
 
 DEVELOPER=$(xcode-select --print-path)
 
@@ -90,6 +95,12 @@ build()
 
    mkdir -p "${SRC_DIR}"
    tar xzf "${SCRIPT_DIR}/../openssl-${OPENSSL_VERSION}.tar.gz" -C "${SRC_DIR}" --strip-components=1
+
+   # Apply patches if needed
+   local PATCH_FILE="${SCRIPT_DIR}/../patches/openssl-${OPENSSL_VERSION}.patch"
+   if [ -f "$PATCH_FILE" ]; then
+      patch -d "${SRC_DIR}" -p1 < $PATCH_FILE
+   fi
 
    echo "Building for ${OS} ${ARCH}"
 
