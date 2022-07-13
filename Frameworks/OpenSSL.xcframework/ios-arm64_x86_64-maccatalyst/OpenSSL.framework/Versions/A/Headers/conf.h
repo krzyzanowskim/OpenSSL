@@ -10,12 +10,12 @@
 #ifndef  HEADER_CONF_H
 # define HEADER_CONF_H
 
-# include <openssl/bio.h>
-# include <openssl/lhash.h>
-# include <openssl/safestack.h>
-# include <openssl/e_os2.h>
-# include <openssl/ossl_typ.h>
-# include <openssl/conferr.h>
+# include <OpenSSL/bio.h>
+# include <OpenSSL/lhash.h>
+# include <OpenSSL/safestack.h>
+# include <OpenSSL/e_os2.h>
+# include <OpenSSL/ossl_typ.h>
+# include <OpenSSL/conferr.h>
 
 #ifdef  __cplusplus
 extern "C" {

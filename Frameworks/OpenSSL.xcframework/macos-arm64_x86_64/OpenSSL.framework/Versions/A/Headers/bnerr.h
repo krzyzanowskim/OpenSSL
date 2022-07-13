@@ -12,7 +12,7 @@
 # define HEADER_BNERR_H
 
 # ifndef HEADER_SYMHACKS_H
-#  include <openssl/symhacks.h>
+#  include <OpenSSL/symhacks.h>
 # endif
 
 # ifdef  __cplusplus

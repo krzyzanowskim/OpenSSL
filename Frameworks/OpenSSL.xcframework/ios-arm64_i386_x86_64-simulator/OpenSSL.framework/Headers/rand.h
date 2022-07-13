@@ -11,9 +11,9 @@
 # define HEADER_RAND_H
 
 # include <stdlib.h>
-# include <openssl/ossl_typ.h>
-# include <openssl/e_os2.h>
-# include <openssl/randerr.h>
+# include <OpenSSL/ossl_typ.h>
+# include <OpenSSL/e_os2.h>
+# include <OpenSSL/randerr.h>
 
 #ifdef  __cplusplus
 extern "C" {

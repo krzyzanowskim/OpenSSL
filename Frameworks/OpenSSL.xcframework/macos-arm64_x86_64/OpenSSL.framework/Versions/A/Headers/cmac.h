@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-# include <openssl/evp.h>
+# include <OpenSSL/evp.h>
 
 /* Opaque */
 typedef struct CMAC_CTX_st CMAC_CTX;

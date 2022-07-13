@@ -10,11 +10,11 @@
 #ifndef HEADER_MDC2_H
 # define HEADER_MDC2_H
 
-# include <openssl/opensslconf.h>
+# include <OpenSSL/opensslconf.h>
 
 #ifndef OPENSSL_NO_MDC2
 # include <stdlib.h>
-# include <openssl/des.h>
+# include <OpenSSL/des.h>
 # ifdef  __cplusplus
 extern "C" {
 # endif

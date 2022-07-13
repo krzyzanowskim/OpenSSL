@@ -12,10 +12,10 @@
 # define HEADER_DSAERR_H
 
 # ifndef HEADER_SYMHACKS_H
-#  include <openssl/symhacks.h>
+#  include <OpenSSL/symhacks.h>
 # endif
 
-# include <openssl/opensslconf.h>
+# include <OpenSSL/opensslconf.h>
 
 # ifndef OPENSSL_NO_DSA
 

@@ -11,10 +11,10 @@
 #ifndef HEADER_SSL3_H
 # define HEADER_SSL3_H
 
-# include <openssl/comp.h>
-# include <openssl/buffer.h>
-# include <openssl/evp.h>
-# include <openssl/ssl.h>
+# include <OpenSSL/comp.h>
+# include <OpenSSL/buffer.h>
+# include <OpenSSL/evp.h>
+# include <OpenSSL/ssl.h>
 
 #ifdef  __cplusplus
 extern "C" {

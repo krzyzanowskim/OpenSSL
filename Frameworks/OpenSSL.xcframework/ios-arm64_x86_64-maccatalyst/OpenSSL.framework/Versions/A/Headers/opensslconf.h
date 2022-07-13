@@ -12,7 +12,7 @@
  * https://www.openssl.org/source/license.html
  */
 
-#include <openssl/opensslv.h>
+#include <OpenSSL/opensslv.h>
 
 #ifdef  __cplusplus
 extern "C" {
@@ -227,7 +227,7 @@ extern "C" {
  * https://www.openssl.org/source/license.html
  */
 
-#include <openssl/opensslv.h>
+#include <OpenSSL/opensslv.h>
 
 #ifdef  __cplusplus
 extern "C" {

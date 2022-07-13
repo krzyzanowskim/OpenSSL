@@ -5,6 +5,6 @@
  
  #include <stdio.h>
 +#include <strings.h>
- #include <openssl/x509.h>
- #include <openssl/x509v3.h>
- #include <openssl/pem.h>
+ #include <OpenSSL/x509.h>
+ #include <OpenSSL/x509v3.h>
+ #include <OpenSSL/pem.h>

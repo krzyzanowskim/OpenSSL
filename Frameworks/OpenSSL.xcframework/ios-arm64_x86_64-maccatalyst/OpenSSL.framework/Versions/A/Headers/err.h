@@ -10,16 +10,16 @@
 #ifndef HEADER_ERR_H
 # define HEADER_ERR_H
 
-# include <openssl/e_os2.h>
+# include <OpenSSL/e_os2.h>
 
 # ifndef OPENSSL_NO_STDIO
 #  include <stdio.h>
 #  include <stdlib.h>
 # endif
 
-# include <openssl/ossl_typ.h>
-# include <openssl/bio.h>
-# include <openssl/lhash.h>
+# include <OpenSSL/ossl_typ.h>
+# include <OpenSSL/bio.h>
+# include <OpenSSL/lhash.h>
 
 #ifdef  __cplusplus
 extern "C" {

@@ -10,13 +10,13 @@
 #ifndef HEADER_DES_H
 # define HEADER_DES_H
 
-# include <openssl/opensslconf.h>
+# include <OpenSSL/opensslconf.h>
 
 # ifndef OPENSSL_NO_DES
 # ifdef  __cplusplus
 extern "C" {
 # endif
-# include <openssl/e_os2.h>
+# include <OpenSSL/e_os2.h>
 
 typedef unsigned int DES_LONG;
 

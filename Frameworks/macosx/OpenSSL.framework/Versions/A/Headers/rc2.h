@@ -10,7 +10,7 @@
 #ifndef HEADER_RC2_H
 # define HEADER_RC2_H
 
-# include <openssl/opensslconf.h>
+# include <OpenSSL/opensslconf.h>
 
 # ifndef OPENSSL_NO_RC2
 # ifdef  __cplusplus
