@@ -8,6 +8,8 @@ set -e
 
 BASE_PWD="$PWD"
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+FWNAME="OpenSSL"
+OPENSSL_FILE_TAR="openssl-${OPENSSL_VERSION}.tar.gz"
 
 # Setup paths to stuff we need
 
@@ -94,7 +96,7 @@ build()
    local PREFIX="${BUILD_DIR}/${OPENSSL_VERSION}-${OS}-${ARCH}"
 
    mkdir -p "${SRC_DIR}"
-   tar xzf "${SCRIPT_DIR}/../openssl-${OPENSSL_VERSION}.tar.gz" -C "${SRC_DIR}" --strip-components=1
+   tar xzf "${SCRIPT_DIR}/../${OPENSSL_FILE_TAR}" -C "${SRC_DIR}" --strip-components=1
 
    # Apply patches if needed
    local PATCH_FILE="${SCRIPT_DIR}/../patches/openssl-${OPENSSL_VERSION}.patch"
@@ -155,18 +157,18 @@ build_ios() {
    # The World is not ready for arm64e!
    # build "arm64e" "iPhoneOS" ${TMP_BUILD_DIR} "iphoneos"
 
-   ditto "${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneOS-arm64/include/openssl" "${SCRIPT_DIR}/../iphoneos/include/openssl"
-   cp -f "${SCRIPT_DIR}/../shim/shim.h" "${SCRIPT_DIR}/../iphoneos/include/openssl/shim.h"
+   ditto "${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneOS-arm64/include/openssl" "${SCRIPT_DIR}/../iphoneos/include/${FWNAME}"
+   cp -f "${SCRIPT_DIR}/../shim/shim.h" "${SCRIPT_DIR}/../iphoneos/include/${FWNAME}/shim.h"
 
    # Copy headers
-   ditto "${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneSimulator-arm64/include/openssl" "${SCRIPT_DIR}/../iphonesimulator/include/openssl"
-   cp -f "${SCRIPT_DIR}/../shim/shim.h" "${SCRIPT_DIR}/../iphonesimulator/include/openssl/shim.h"
+   ditto "${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneSimulator-arm64/include/openssl" "${SCRIPT_DIR}/../iphonesimulator/include/${FWNAME}"
+   cp -f "${SCRIPT_DIR}/../shim/shim.h" "${SCRIPT_DIR}/../iphonesimulator/include/${FWNAME}/shim.h"
 
    # fix inttypes.h
-   find "${SCRIPT_DIR}/../iphoneos/include/openssl" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <sys\/types\.h>/g" {} \;
-   find "${SCRIPT_DIR}/../iphonesimulator/include/openssl" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <sys\/types\.h>/g" {} \;
+   find "${SCRIPT_DIR}/../iphoneos/include/${FWNAME}" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <sys\/types\.h>/g" {} \;
+   find "${SCRIPT_DIR}/../iphonesimulator/include/${FWNAME}" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <sys\/types\.h>/g" {} \;
 
-   local OPENSSLCONF_PATH="${SCRIPT_DIR}/../iphonesimulator/include/openssl/opensslconf.h"
+   local OPENSSLCONF_PATH="${SCRIPT_DIR}/../iphonesimulator/include/${FWNAME}/opensslconf.h"
    echo "#if defined(__APPLE__) && defined (__i386__)" > ${OPENSSLCONF_PATH}
    cat ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneSimulator-i386/include/openssl/opensslconf.h >> ${OPENSSLCONF_PATH}
    echo "#elif defined(__APPLE__) && defined (__x86_64__)" >> ${OPENSSLCONF_PATH}
@@ -180,7 +182,7 @@ build_ios() {
    cat ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneSimulator-arm64/include/openssl/opensslconf.h >> ${OPENSSLCONF_PATH}
    echo "#endif" >> ${OPENSSLCONF_PATH}
 
-   OPENSSLCONF_PATH="${SCRIPT_DIR}/../iphoneos/include/openssl/opensslconf.h"
+   OPENSSLCONF_PATH="${SCRIPT_DIR}/../iphoneos/include/${FWNAME}/opensslconf.h"
    echo "#if defined(__APPLE__) && defined (__i386__)" > ${OPENSSLCONF_PATH}
    echo "#elif defined(__APPLE__) && defined (__x86_64__)" >> ${OPENSSLCONF_PATH}
    echo "#elif defined(__APPLE__) && defined (__arm__) && defined (__ARM_ARCH_7A__)" >> ${OPENSSLCONF_PATH}
@@ -210,13 +212,13 @@ build_macos() {
    # build "arm64e" "MacOSX" ${TMP_BUILD_DIR} "macosx"
 
    # Copy headers
-   ditto ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-MacOSX-x86_64/include/openssl "${SCRIPT_DIR}/../macosx/include/openssl"
-   cp -f "${SCRIPT_DIR}/../shim/shim.h" "${SCRIPT_DIR}/../macosx/include/openssl/shim.h"
+   ditto ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-MacOSX-x86_64/include/openssl "${SCRIPT_DIR}/../macosx/include/${FWNAME}"
+   cp -f "${SCRIPT_DIR}/../shim/shim.h" "${SCRIPT_DIR}/../macosx/include/${FWNAME}/shim.h"
 
    # fix inttypes.h
-   find "${SCRIPT_DIR}/../macosx/include/openssl" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <sys\/types\.h>/g" {} \;
+   find "${SCRIPT_DIR}/../macosx/include/${FWNAME}" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <sys\/types\.h>/g" {} \;
 
-   local OPENSSLCONF_PATH="${SCRIPT_DIR}/../macosx/include/openssl/opensslconf.h"
+   local OPENSSLCONF_PATH="${SCRIPT_DIR}/../macosx/include/${FWNAME}/opensslconf.h"
    echo "#if defined(__APPLE__) && defined (__i386__)" > ${OPENSSLCONF_PATH}
    echo "#elif defined(__APPLE__) && defined (__x86_64__)" >> ${OPENSSLCONF_PATH}
    cat ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-MacOSX-x86_64/include/openssl/opensslconf.h >> ${OPENSSLCONF_PATH}
@@ -244,16 +246,16 @@ build_catalyst() {
    # build "arm64e" "MacOSX_Catalyst" ${TMP_BUILD_DIR} "macosx_catalyst"
 
    # Copy headers
-   ditto ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-MacOSX_Catalyst-x86_64/include/openssl "${SCRIPT_DIR}/../macosx_catalyst/include/openssl"
-   cp -f "${SCRIPT_DIR}/../shim/shim.h" "${SCRIPT_DIR}/../macosx_catalyst/include/openssl/shim.h"
+   ditto ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-MacOSX_Catalyst-x86_64/include/openssl "${SCRIPT_DIR}/../macosx_catalyst/include/${FWNAME}"
+   cp -f "${SCRIPT_DIR}/../shim/shim.h" "${SCRIPT_DIR}/../macosx_catalyst/include/${FWNAME}/shim.h"
 
    # fix inttypes.h
-   find "${SCRIPT_DIR}/../macosx_catalyst/include/openssl" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <sys\/types\.h>/g" {} \;
+   find "${SCRIPT_DIR}/../macosx_catalyst/include/${FWNAME}" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <sys\/types\.h>/g" {} \;
 
    # fix RC4_INT redefinition
-   # find "${SCRIPT_DIR}/../macosx/include/openssl" -type f -name "*.h" -exec sed -i "" -e "s/\#define RC4_INT unsigned char/\#if \!defined(RC4_INT)\n#define RC4_INT unsigned char\n\#endif\n/g" {} \;
+   # find "${SCRIPT_DIR}/../macosx/include/${FWNAME}" -type f -name "*.h" -exec sed -i "" -e "s/\#define RC4_INT unsigned char/\#if \!defined(RC4_INT)\n#define RC4_INT unsigned char\n\#endif\n/g" {} \;
 
-   local OPENSSLCONF_PATH="${SCRIPT_DIR}/../macosx_catalyst/include/openssl/opensslconf.h"
+   local OPENSSLCONF_PATH="${SCRIPT_DIR}/../macosx_catalyst/include/${FWNAME}/opensslconf.h"
    echo "#if defined(__APPLE__) && defined (__i386__)" > ${OPENSSLCONF_PATH}
    echo "#elif defined(__APPLE__) && defined (__x86_64__)" >> ${OPENSSLCONF_PATH}
    cat ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-MacOSX_Catalyst-x86_64/include/openssl/opensslconf.h >> ${OPENSSLCONF_PATH}
@@ -268,17 +270,17 @@ build_catalyst() {
 
 # Start
 
-if [ ! -f "${SCRIPT_DIR}/../openssl-${OPENSSL_VERSION}.tar.gz" ]; then
-   curl -fL "https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz" -o "${SCRIPT_DIR}/../openssl-${OPENSSL_VERSION}.tar.gz"
-   curl -fL "https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz.sha256" -o "${SCRIPT_DIR}/../openssl-${OPENSSL_VERSION}.tar.gz.sha256"
-   DIGEST=$( cat ${SCRIPT_DIR}/../openssl-${OPENSSL_VERSION}.tar.gz.sha256 )
+if [ ! -f "${SCRIPT_DIR}/../${OPENSSL_FILE_TAR}" ]; then
+   curl -fL "https://www.openssl.org/source/${OPENSSL_FILE_TAR}" -o "${SCRIPT_DIR}/../${OPENSSL_FILE_TAR}"
+   curl -fL "https://www.openssl.org/source/${OPENSSL_FILE_TAR}.sha256" -o "${SCRIPT_DIR}/../${OPENSSL_FILE_TAR}.sha256"
+   DIGEST=$( cat ${SCRIPT_DIR}/../${OPENSSL_FILE_TAR}.sha256 )
 
-   if [[ "$(shasum -a 256 "openssl-${OPENSSL_VERSION}.tar.gz" | awk '{print $1}')" != "${DIGEST}" ]]
+   if [[ "$(shasum -a 256 "${OPENSSL_FILE_TAR}" | awk '{print $1}')" != "${DIGEST}" ]]
    then
-      echo "openssl-${OPENSSL_VERSION}.tar.gz: checksum mismatch"
+      echo "${OPENSSL_FILE_TAR}: checksum mismatch"
       exit 1
    fi
-   rm -f "${SCRIPT_DIR}/../openssl-${OPENSSL_VERSION}.tar.gz.sha256"
+   rm -f "${SCRIPT_DIR}/../${OPENSSL_FILE_TAR}.sha256"
 fi
 
 build_ios
