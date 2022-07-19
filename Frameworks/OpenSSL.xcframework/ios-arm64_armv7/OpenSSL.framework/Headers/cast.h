@@ -10,7 +10,7 @@
 #ifndef HEADER_CAST_H
 # define HEADER_CAST_H
 
-# include <OpenSSL/opensslconf.h>
+# include <openssl/opensslconf.h>
 
 # ifndef OPENSSL_NO_CAST
 # ifdef  __cplusplus

@@ -10,10 +10,10 @@
 #ifndef HEADER_BLOWFISH_H
 # define HEADER_BLOWFISH_H
 
-# include <OpenSSL/opensslconf.h>
+# include <openssl/opensslconf.h>
 
 # ifndef OPENSSL_NO_BF
-# include <OpenSSL/e_os2.h>
+# include <openssl/e_os2.h>
 # ifdef  __cplusplus
 extern "C" {
 # endif

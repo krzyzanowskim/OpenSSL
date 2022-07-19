@@ -10,8 +10,8 @@
 #ifndef HEADER_SAFESTACK_H
 # define HEADER_SAFESTACK_H
 
-# include <OpenSSL/stack.h>
-# include <OpenSSL/e_os2.h>
+# include <openssl/stack.h>
+# include <openssl/e_os2.h>
 
 #ifdef __cplusplus
 extern "C" {

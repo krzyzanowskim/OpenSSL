@@ -11,24 +11,24 @@
 #ifndef HEADER_X509_H
 # define HEADER_X509_H
 
-# include <OpenSSL/e_os2.h>
-# include <OpenSSL/ossl_typ.h>
-# include <OpenSSL/symhacks.h>
-# include <OpenSSL/buffer.h>
-# include <OpenSSL/evp.h>
-# include <OpenSSL/bio.h>
-# include <OpenSSL/asn1.h>
-# include <OpenSSL/safestack.h>
-# include <OpenSSL/ec.h>
+# include <openssl/e_os2.h>
+# include <openssl/ossl_typ.h>
+# include <openssl/symhacks.h>
+# include <openssl/buffer.h>
+# include <openssl/evp.h>
+# include <openssl/bio.h>
+# include <openssl/asn1.h>
+# include <openssl/safestack.h>
+# include <openssl/ec.h>
 
 # if OPENSSL_API_COMPAT < 0x10100000L
-#  include <OpenSSL/rsa.h>
-#  include <OpenSSL/dsa.h>
-#  include <OpenSSL/dh.h>
+#  include <openssl/rsa.h>
+#  include <openssl/dsa.h>
+#  include <openssl/dh.h>
 # endif
 
-# include <OpenSSL/sha.h>
-# include <OpenSSL/x509err.h>
+# include <openssl/sha.h>
+# include <openssl/x509err.h>
 
 #ifdef  __cplusplus
 extern "C" {
@@ -317,8 +317,8 @@ typedef struct SCRYPT_PARAMS_st {
 }
 #endif
 
-# include <OpenSSL/x509_vfy.h>
-# include <OpenSSL/pkcs7.h>
+# include <openssl/x509_vfy.h>
+# include <openssl/pkcs7.h>
 
 #ifdef  __cplusplus
 extern "C" {

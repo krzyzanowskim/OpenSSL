@@ -10,7 +10,7 @@
 #ifndef HEADER_SYMHACKS_H
 # define HEADER_SYMHACKS_H
 
-# include <OpenSSL/e_os2.h>
+# include <openssl/e_os2.h>
 
 /* Case insensitive linking causes problems.... */
 # if defined(OPENSSL_SYS_VMS)

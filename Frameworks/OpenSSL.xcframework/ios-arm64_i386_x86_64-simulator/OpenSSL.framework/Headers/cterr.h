@@ -12,10 +12,10 @@
 # define HEADER_CTERR_H
 
 # ifndef HEADER_SYMHACKS_H
-#  include <OpenSSL/symhacks.h>
+#  include <openssl/symhacks.h>
 # endif
 
-# include <OpenSSL/opensslconf.h>
+# include <openssl/opensslconf.h>
 
 # ifndef OPENSSL_NO_CT
 

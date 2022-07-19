@@ -11,23 +11,23 @@
 #ifndef HEADER_ENGINE_H
 # define HEADER_ENGINE_H
 
-# include <OpenSSL/opensslconf.h>
+# include <openssl/opensslconf.h>
 
 # ifndef OPENSSL_NO_ENGINE
 # if OPENSSL_API_COMPAT < 0x10100000L
-#  include <OpenSSL/bn.h>
-#  include <OpenSSL/rsa.h>
-#  include <OpenSSL/dsa.h>
-#  include <OpenSSL/dh.h>
-#  include <OpenSSL/ec.h>
-#  include <OpenSSL/rand.h>
-#  include <OpenSSL/ui.h>
-#  include <OpenSSL/err.h>
+#  include <openssl/bn.h>
+#  include <openssl/rsa.h>
+#  include <openssl/dsa.h>
+#  include <openssl/dh.h>
+#  include <openssl/ec.h>
+#  include <openssl/rand.h>
+#  include <openssl/ui.h>
+#  include <openssl/err.h>
 # endif
-# include <OpenSSL/ossl_typ.h>
-# include <OpenSSL/symhacks.h>
-# include <OpenSSL/x509.h>
-# include <OpenSSL/engineerr.h>
+# include <openssl/ossl_typ.h>
+# include <openssl/symhacks.h>
+# include <openssl/x509.h>
+# include <openssl/engineerr.h>
 # ifdef  __cplusplus
 extern "C" {
 # endif

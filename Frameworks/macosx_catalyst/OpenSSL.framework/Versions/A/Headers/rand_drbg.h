@@ -11,8 +11,8 @@
 # define HEADER_DRBG_RAND_H
 
 # include <time.h>
-# include <OpenSSL/ossl_typ.h>
-# include <OpenSSL/obj_mac.h>
+# include <openssl/ossl_typ.h>
+# include <openssl/obj_mac.h>
 
 /*
  * RAND_DRBG  flags

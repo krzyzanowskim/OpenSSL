@@ -10,7 +10,7 @@
 #ifndef HEADER_IDEA_H
 # define HEADER_IDEA_H
 
-# include <OpenSSL/opensslconf.h>
+# include <openssl/opensslconf.h>
 
 # ifndef OPENSSL_NO_IDEA
 # ifdef  __cplusplus

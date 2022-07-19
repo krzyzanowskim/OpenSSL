@@ -10,7 +10,7 @@
 #ifndef HEADER_MD2_H
 # define HEADER_MD2_H
 
-# include <OpenSSL/opensslconf.h>
+# include <openssl/opensslconf.h>
 
 # ifndef OPENSSL_NO_MD2
 # include <stddef.h>

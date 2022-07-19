@@ -11,7 +11,7 @@
 #ifndef HEADER_X509ERR_H
 # define HEADER_X509ERR_H
 
-# include <OpenSSL/symhacks.h>
+# include <openssl/symhacks.h>
 
 # ifdef  __cplusplus
 extern "C"

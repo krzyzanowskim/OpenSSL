@@ -11,9 +11,9 @@
 # define HEADER_OSSL_STORE_H
 
 # include <stdarg.h>
-# include <OpenSSL/ossl_typ.h>
-# include <OpenSSL/pem.h>
-# include <OpenSSL/storeerr.h>
+# include <openssl/ossl_typ.h>
+# include <openssl/pem.h>
+# include <openssl/storeerr.h>
 
 # ifdef  __cplusplus
 extern "C" {

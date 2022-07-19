@@ -10,15 +10,15 @@
 #ifndef HEADER_BIO_H
 # define HEADER_BIO_H
 
-# include <OpenSSL/e_os2.h>
+# include <openssl/e_os2.h>
 
 # ifndef OPENSSL_NO_STDIO
 #  include <stdio.h>
 # endif
 # include <stdarg.h>
 
-# include <OpenSSL/crypto.h>
-# include <OpenSSL/bioerr.h>
+# include <openssl/crypto.h>
+# include <openssl/bioerr.h>
 
 #ifdef  __cplusplus
 extern "C" {

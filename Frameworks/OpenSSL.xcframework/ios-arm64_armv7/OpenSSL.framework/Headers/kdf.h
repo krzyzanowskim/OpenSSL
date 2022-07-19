@@ -10,7 +10,7 @@
 #ifndef HEADER_KDF_H
 # define HEADER_KDF_H
 
-# include <OpenSSL/kdferr.h>
+# include <openssl/kdferr.h>
 #ifdef __cplusplus
 extern "C" {
 #endif

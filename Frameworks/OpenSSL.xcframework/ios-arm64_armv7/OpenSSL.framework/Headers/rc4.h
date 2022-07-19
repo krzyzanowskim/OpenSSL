@@ -10,7 +10,7 @@
 #ifndef HEADER_RC4_H
 # define HEADER_RC4_H
 
-# include <OpenSSL/opensslconf.h>
+# include <openssl/opensslconf.h>
 
 # ifndef OPENSSL_NO_RC4
 # include <stddef.h>

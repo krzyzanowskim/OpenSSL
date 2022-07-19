@@ -12,7 +12,7 @@
 # define HEADER_OSSL_STOREERR_H
 
 # ifndef HEADER_SYMHACKS_H
-#  include <OpenSSL/symhacks.h>
+#  include <openssl/symhacks.h>
 # endif
 
 # ifdef  __cplusplus

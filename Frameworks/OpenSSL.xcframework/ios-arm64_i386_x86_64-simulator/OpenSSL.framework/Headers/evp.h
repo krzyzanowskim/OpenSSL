@@ -10,11 +10,11 @@
 #ifndef HEADER_ENVELOPE_H
 # define HEADER_ENVELOPE_H
 
-# include <OpenSSL/opensslconf.h>
-# include <OpenSSL/ossl_typ.h>
-# include <OpenSSL/symhacks.h>
-# include <OpenSSL/bio.h>
-# include <OpenSSL/evperr.h>
+# include <openssl/opensslconf.h>
+# include <openssl/ossl_typ.h>
+# include <openssl/symhacks.h>
+# include <openssl/bio.h>
+# include <openssl/evperr.h>
 
 # define EVP_MAX_MD_SIZE                 64/* longest known is SHA512 */
 # define EVP_MAX_KEY_LENGTH              64
@@ -25,7 +25,7 @@
 /* Default PKCS#5 iteration count */
 # define PKCS5_DEFAULT_ITER              2048
 
-# include <OpenSSL/objects.h>
+# include <openssl/objects.h>
 
 # define EVP_PK_RSA      0x0001
 # define EVP_PK_DSA      0x0002

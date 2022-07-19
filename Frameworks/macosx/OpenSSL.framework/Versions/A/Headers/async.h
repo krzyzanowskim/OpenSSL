@@ -22,7 +22,7 @@
 #define OSSL_ASYNC_FD       int
 #define OSSL_BAD_ASYNC_FD   -1
 #endif
-# include <OpenSSL/asyncerr.h>
+# include <openssl/asyncerr.h>
 
 
 # ifdef  __cplusplus

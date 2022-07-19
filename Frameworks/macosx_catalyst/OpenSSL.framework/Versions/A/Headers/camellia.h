@@ -10,7 +10,7 @@
 #ifndef HEADER_CAMELLIA_H
 # define HEADER_CAMELLIA_H
 
-# include <OpenSSL/opensslconf.h>
+# include <openssl/opensslconf.h>
 
 # ifndef OPENSSL_NO_CAMELLIA
 # include <stddef.h>

@@ -11,14 +11,14 @@
 #ifndef HEADER_BN_H
 # define HEADER_BN_H
 
-# include <OpenSSL/e_os2.h>
+# include <openssl/e_os2.h>
 # ifndef OPENSSL_NO_STDIO
 #  include <stdio.h>
 # endif
-# include <OpenSSL/opensslconf.h>
-# include <OpenSSL/ossl_typ.h>
-# include <OpenSSL/crypto.h>
-# include <OpenSSL/bnerr.h>
+# include <openssl/opensslconf.h>
+# include <openssl/ossl_typ.h>
+# include <openssl/crypto.h>
+# include <openssl/bnerr.h>
 
 #ifdef  __cplusplus
 extern "C" {

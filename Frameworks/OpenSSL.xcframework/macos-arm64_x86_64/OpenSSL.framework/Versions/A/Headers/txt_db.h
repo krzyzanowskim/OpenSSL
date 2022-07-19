@@ -10,10 +10,10 @@
 #ifndef HEADER_TXT_DB_H
 # define HEADER_TXT_DB_H
 
-# include <OpenSSL/opensslconf.h>
-# include <OpenSSL/bio.h>
-# include <OpenSSL/safestack.h>
-# include <OpenSSL/lhash.h>
+# include <openssl/opensslconf.h>
+# include <openssl/bio.h>
+# include <openssl/safestack.h>
+# include <openssl/lhash.h>
 
 # define DB_ERROR_OK                     0
 # define DB_ERROR_MALLOC                 1

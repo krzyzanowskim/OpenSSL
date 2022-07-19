@@ -10,8 +10,8 @@
 #ifndef  HEADER_CONF_API_H
 # define HEADER_CONF_API_H
 
-# include <OpenSSL/lhash.h>
-# include <OpenSSL/conf.h>
+# include <openssl/lhash.h>
+# include <openssl/conf.h>
 
 #ifdef  __cplusplus
 extern "C" {

@@ -11,7 +11,7 @@
 #ifndef HEADER_EVPERR_H
 # define HEADER_EVPERR_H
 
-# include <OpenSSL/symhacks.h>
+# include <openssl/symhacks.h>
 
 # ifdef  __cplusplus
 extern "C"
