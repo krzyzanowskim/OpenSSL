@@ -99,6 +99,8 @@ xcrun xcodebuild -quiet -create-xcframework \
 	-output "${BASE_PWD}/Frameworks/${FWNAME}.xcframework"
 
 # Zip archive
-zip --symlinks -r "${BASE_PWD}/Frameworks/${FWNAME}.xcframework.zip" "${BASE_PWD}/Frameworks/${FWNAME}.xcframework"
+pushd "${BASE_PWD}/Frameworks"
+zip --symlinks -r "./${FWNAME}.xcframework.zip" "./${FWNAME}.xcframework"
+popd
 
-rm -rf ${OUTPUT_DIR}
+rm -rf "${OUTPUT_DIR}"
