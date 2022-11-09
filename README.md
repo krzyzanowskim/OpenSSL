@@ -10,7 +10,7 @@ It takes some time to keep it all for your convenience, so maybe spare $1, so I 
 
 ### Architectures
 
-- iOS with architectures: armv7, armv7s, arm64 + simulator (x86_64, arm64)
+- iOS with architectures: arm64 + simulator (x86_64, arm64)
 - macOS with architectures: x86_64, arm64 (including Catalyst target)
 
 #### Output Formats
