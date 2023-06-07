@@ -21,12 +21,12 @@ export OPENSSL_LOCAL_CONFIG_DIR="${SCRIPT_DIR}/../config"
 
 DEVELOPER=$(xcode-select --print-path)
 
-export IPHONEOS_DEPLOYMENT_VERSION="7.0"
+export IPHONEOS_DEPLOYMENT_VERSION="9.0"
 IPHONEOS_SDK=$(xcrun --sdk iphoneos --show-sdk-path)
 IPHONESIMULATOR_SDK=$(xcrun --sdk iphonesimulator --show-sdk-path)
 OSX_SDK=$(xcrun --sdk macosx --show-sdk-path)
 
-export MACOSX_DEPLOYMENT_TARGET="10.10" # 
+export MACOSX_DEPLOYMENT_TARGET="10.13" # 
 
 # Turn versions like 1.2.3 into numbers that can be compare by bash.
 version()
@@ -255,7 +255,7 @@ if [ ! -f "${SCRIPT_DIR}/../openssl-${OPENSSL_VERSION}.tar.gz" ]; then
    curl -fL "https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz.sha256" -o "${SCRIPT_DIR}/../openssl-${OPENSSL_VERSION}.tar.gz.sha256"
    DIGEST=$( cat ${SCRIPT_DIR}/../openssl-${OPENSSL_VERSION}.tar.gz.sha256 )
 
-   if [[ "$(shasum -a 256 "openssl-${OPENSSL_VERSION}.tar.gz" | awk '{print $1}')" != "${DIGEST}" ]]
+   if [[ "$(shasum -a 256 "openssl-${OPENSSL_VERSION}.tar.gz" | awk '{print \" $1\"}')" != "${DIGEST}" ]]
    then
       echo "openssl-${OPENSSL_VERSION}.tar.gz: checksum mismatch"
       exit 1

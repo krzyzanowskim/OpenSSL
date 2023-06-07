@@ -2,7 +2,7 @@
 
 OpenSSL [CocoaPods](https://cocoapods.org/), [Carthage](https://github.com/Carthage/Carthage) and [Swift Package Manager](https://swift.org/package-manager/) package for iOS and macOS. Complete solution to OpenSSL on iOS and macOS. Package comes with precompiled libraries, and includes a script to build newer versions if necessary.
 
-Current version contains binaries built with latest iOS SDK (target 7.0), and latest macOS SDK (target 10.10) for all supported architectures (including macOS Catalyst).
+Current version contains binaries built with latest iOS SDK (target 9.0), and latest macOS SDK (target 3) for all supported architectures (including macOS Catalyst).
 
 ### Support
 

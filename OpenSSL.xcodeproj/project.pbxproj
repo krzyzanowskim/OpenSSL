@@ -2423,7 +2423,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/macosx/lib",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				OTHER_LDFLAGS = (
 					"-Xlinker",
 					"-all_load",
@@ -2498,7 +2498,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/macosx/lib",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				OTHER_LDFLAGS = (
 					"-Xlinker",
 					"-all_load",
