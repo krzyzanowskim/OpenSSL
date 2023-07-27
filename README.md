@@ -1,12 +1,18 @@
 # OpenSSL-Universal
 
-OpenSSL [CocoaPods](https://cocoapods.org/), [Carthage](https://github.com/Carthage/Carthage) and [Swift Package Manager](https://swift.org/package-manager/) package for iOS and macOS. Complete solution to OpenSSL on iOS and macOS. Package comes with precompiled libraries, and includes a script to build newer versions if necessary.
+OpenSSL [CocoaPods](https://cocoapods.org/), [Carthage](https://github.com/Carthage/Carthage) and [Swift Package Manager](https://swift.org/package-manager/) package for iOS and macOS. A complete solution to OpenSSL on iOS and macOS. The package comes with precompiled libraries and includes a script to build newer versions if necessary.
 
-Current version contains binaries built with latest iOS SDK (target 9.0), and latest macOS SDK (target 3) for all supported architectures (including macOS Catalyst).
+The current version contains binaries built with the latest iOS SDK (target 9.0), and the latest macOS SDK (target 3) for all supported architectures (including macOS Catalyst).
 
-### Support
+### Support & Sponsors
 
-It takes some time to keep it all for your convenience, so maybe spare $1, so I can keep working on that. There are more than 8000 clones daily. If I'd get $1/month from each company that uses my work here, I'd say we're even. Hurry up, find the [Sponsorship](https://github.com/users/krzyzanowskim/sponsorship) button, and fulfill your duty.
+The financial sustainability of the project is possible thanks to the ongoing contributions from our [GitHub Sponsors](https://github.com/sponsors/krzyzanowskim)
+
+### Premium Sponsors
+
+  [Emerge Tools](https://www.emergetools.com/) is a suite of revolutionary products designed to supercharge mobile apps and the teams that build them.
+
+  ![emerge-tools-black](https://github.com/krzyzanowskim/OpenSSL/assets/758033/a21f5ac1-ef39-4b56-a8d2-575adeb7fe55)
 
 ### Architectures
 
@@ -28,7 +34,7 @@ It takes some time to keep it all for your convenience, so maybe spare $1, so I 
 
 #### Build
 
-You don't have to use pre-built binaries I provide. You can build it locally on your trusted machine.
+You don't have to use the pre-built binaries I provide. You can build it locally on your trusted machine.
 
 ```
 $ git clone https://github.com/krzyzanowskim/OpenSSL.git
@@ -82,5 +88,5 @@ These libraries work for both iOS and macOS. It is your prerogative to check. As
 
 #### What is XCFramework?
 
-OpenSSL.xcframework is distributed as a multiplatform XCFramework bundle, for mor information chekout the documentation [Distributing Binary Frameworks as Swift Packages](https://developer.apple.com/documentation/xcode/distributing-binary-frameworks-as-swift-packages)
+OpenSSL.xcframework is distributed as a multiplatform XCFramework bundle, for more information checkout the documentation [Distributing Binary Frameworks as Swift Packages](https://developer.apple.com/documentation/xcode/distributing-binary-frameworks-as-swift-packages)
 
