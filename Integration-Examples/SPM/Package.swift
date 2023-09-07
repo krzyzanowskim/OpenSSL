@@ -1,17 +1,17 @@
-// swift-tools-version:5.3
+// swift-tools-version:5.8
 import PackageDescription
 
 let package = Package(
     name: "OpenSSL-test",
     platforms: [
-        .macOS(.v10_12)
+        .macOS(.v10_15)
     ],
     dependencies: [
-        // .package(url: "https://github.com/krzyzanowskim/OpenSSL.git", .branch("master")),
+        // .package(url: "https://github.com/krzyzanowskim/OpenSSL.git", .branch("main")),
         .package(path: "../../")
     ],
     targets: [
-        .target(
+        .executableTarget(
             name: "OpenSSL-test",
             dependencies: ["OpenSSL"])
     ]

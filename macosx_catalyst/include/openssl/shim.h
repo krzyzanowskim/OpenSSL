@@ -1,12 +1,12 @@
 #ifndef OpenSSLShim_h
 #define OpenSSLShim_h
 
-#include <openssl/conf.h>
-#include <openssl/evp.h>
-#include <openssl/err.h>
-#include <openssl/bio.h>
-#include <openssl/x509.h>
-#include <openssl/cms.h>
+#include <OpenSSL/conf.h>
+#include <OpenSSL/evp.h>
+#include <OpenSSL/err.h>
+#include <OpenSSL/bio.h>
+#include <OpenSSL/x509.h>
+#include <OpenSSL/cms.h>
 
 #undef SSL_library_init
 static inline void SSL_library_init() {
