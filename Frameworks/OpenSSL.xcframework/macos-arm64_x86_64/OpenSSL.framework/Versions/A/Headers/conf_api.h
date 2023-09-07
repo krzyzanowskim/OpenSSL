@@ -1,17 +1,23 @@
 /*
  * Copyright 1995-2016 The OpenSSL Project Authors. All Rights Reserved.
  *
- * Licensed under the OpenSSL license (the "License").  You may not use
+ * Licensed under the Apache License 2.0 (the "License").  You may not use
  * this file except in compliance with the License.  You can obtain a copy
  * in the file LICENSE in the source distribution or at
  * https://www.openssl.org/source/license.html
  */
 
-#ifndef  HEADER_CONF_API_H
-# define HEADER_CONF_API_H
+#ifndef  OPENSSL_CONF_API_H
+# define OPENSSL_CONF_API_H
+# pragma once
 
-# include <openssl/lhash.h>
-# include <openssl/conf.h>
+#include <OpenSSL/macros.h>
+# ifndef OPENSSL_NO_DEPRECATED_3_0
+#  define HEADER_CONF_API_H
+# endif
+
+#include <OpenSSL/lhash.h>
+#include <OpenSSL/conf.h>
 
 #ifdef  __cplusplus
 extern "C" {
