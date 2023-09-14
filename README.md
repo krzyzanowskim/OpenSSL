@@ -75,7 +75,7 @@ github "krzyzanowskim/OpenSSL"
 * If using a prebuilt framework is preferred:
 
 ```
-binary "https://raw.githubusercontent.com/krzyzanowskim/OpenSSL/master/OpenSSL.json"
+binary "https://raw.githubusercontent.com/krzyzanowskim/OpenSSL/main/OpenSSL.json"
 ```
 
 ### Authors
