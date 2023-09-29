@@ -92,6 +92,7 @@ ditto "${OUTPUT_DIR}/macosx_catalyst/${FWNAME}.framework" "${BASE_PWD}/Framework
 rm -rf "${BASE_PWD}/Frameworks/${FWNAME}.xcframework"
 
 xcrun xcodebuild -create-xcframework \
+	-framework "${BASE_PWD}/Frameworks/iphoneos/${FWNAME}.framework" \
 	-framework "${BASE_PWD}/Frameworks/iphonesimulator/${FWNAME}.framework" \
 	-framework "${BASE_PWD}/Frameworks/macosx/${FWNAME}.framework" \
 	-framework "${BASE_PWD}/Frameworks/macosx_catalyst/${FWNAME}.framework" \
