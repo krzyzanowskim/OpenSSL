@@ -560,6 +560,10 @@
 		75F312C62AA90EBD00AFF335 /* ui.h in Headers */ = {isa = PBXBuildFile; fileRef = 75F3123E2AA90EBD00AFF335 /* ui.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75F312C72AA90EBD00AFF335 /* x509.h in Headers */ = {isa = PBXBuildFile; fileRef = 75F3123F2AA90EBD00AFF335 /* x509.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75F312C82AA90EBD00AFF335 /* rsaerr.h in Headers */ = {isa = PBXBuildFile; fileRef = 75F312402AA90EBD00AFF335 /* rsaerr.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D6059BA62BAD42FA00D675DB /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = D6059BA52BAD42FA00D675DB /* PrivacyInfo.xcprivacy */; };
+		D6059BA72BAD42FA00D675DB /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = D6059BA52BAD42FA00D675DB /* PrivacyInfo.xcprivacy */; };
+		D6059BA82BAD42FA00D675DB /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = D6059BA52BAD42FA00D675DB /* PrivacyInfo.xcprivacy */; };
+		D6059BA92BAD42FA00D675DB /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = D6059BA52BAD42FA00D675DB /* PrivacyInfo.xcprivacy */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1123,6 +1127,7 @@
 		863B6DD424B83C2D002E03CC /* OpenSSL.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = OpenSSL.xcconfig; sourceTree = "<group>"; };
 		9F4A265C223BD82B005CB63A /* OpenSSL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OpenSSL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F4A2716223BE476005CB63A /* OpenSSL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OpenSSL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6059BA52BAD42FA00D675DB /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1782,6 +1787,7 @@
 		9F4A2626223BCE31005CB63A = {
 			isa = PBXGroup;
 			children = (
+				D6059BA52BAD42FA00D675DB /* PrivacyInfo.xcprivacy */,
 				752D6E4C258473AF00E999E1 /* catalyst */,
 				75B05ADD256E7BB900FB91E0 /* macosx */,
 				75B059FE256E7B5F00FB91E0 /* iphoneos */,
@@ -2495,6 +2501,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6059BA92BAD42FA00D675DB /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2502,6 +2509,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6059BA72BAD42FA00D675DB /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2509,6 +2517,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6059BA62BAD42FA00D675DB /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2516,6 +2525,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6059BA82BAD42FA00D675DB /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
