@@ -10,6 +10,10 @@
 		752D6DF3258471CC00E999E1 /* OpenSSL.h in Headers */ = {isa = PBXBuildFile; fileRef = 75B05BFF256E801D00FB91E0 /* OpenSSL.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		752D6E1C2584722900E999E1 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 751BE47925845DB800E66ABE /* libcrypto.a */; platformFilter = maccatalyst; };
 		752D6E1D2584722B00E999E1 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 751BE47B25845DC300E66ABE /* libssl.a */; platformFilter = maccatalyst; };
+		755D81352BB0798800F207B0 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 755D81342BB0798800F207B0 /* PrivacyInfo.xcprivacy */; };
+		755D81392BB079AE00F207B0 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 755D81382BB079AE00F207B0 /* PrivacyInfo.xcprivacy */; };
+		755D813B2BB079B600F207B0 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 755D813A2BB079B600F207B0 /* PrivacyInfo.xcprivacy */; };
+		755D813D2BB079BF00F207B0 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 755D813C2BB079BF00F207B0 /* PrivacyInfo.xcprivacy */; platformFilter = maccatalyst; };
 		75B05BBB256E7C0000FB91E0 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75B05BB9256E7C0000FB91E0 /* libcrypto.a */; };
 		75B05BBC256E7C0000FB91E0 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75B05BBA256E7C0000FB91E0 /* libssl.a */; };
 		75B05BBF256E7C2900FB91E0 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75B05BBD256E7C1E00FB91E0 /* libcrypto.a */; };
@@ -567,6 +571,10 @@
 		751BE47B25845DC300E66ABE /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = macosx_catalyst/lib/libssl.a; sourceTree = "<group>"; };
 		752D6E16258471CC00E999E1 /* OpenSSL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OpenSSL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		753EF2CB2567514F008FDE33 /* OpenSSL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OpenSSL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		755D81342BB0798800F207B0 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = support/ios/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		755D81382BB079AE00F207B0 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = support/iphonesimulator/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		755D813A2BB079B600F207B0 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = support/macos/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		755D813C2BB079BF00F207B0 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = support/macos_catalyst/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		75B05BB9256E7C0000FB91E0 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = macosx/lib/libcrypto.a; sourceTree = "<group>"; };
 		75B05BBA256E7C0000FB91E0 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = macosx/lib/libssl.a; sourceTree = "<group>"; };
 		75B05BBD256E7C1E00FB91E0 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = iphonesimulator/lib/libcrypto.a; sourceTree = "<group>"; };
@@ -1782,6 +1790,10 @@
 		9F4A2626223BCE31005CB63A = {
 			isa = PBXGroup;
 			children = (
+				755D81342BB0798800F207B0 /* PrivacyInfo.xcprivacy */,
+				755D81382BB079AE00F207B0 /* PrivacyInfo.xcprivacy */,
+				755D813A2BB079B600F207B0 /* PrivacyInfo.xcprivacy */,
+				755D813C2BB079BF00F207B0 /* PrivacyInfo.xcprivacy */,
 				752D6E4C258473AF00E999E1 /* catalyst */,
 				75B05ADD256E7BB900FB91E0 /* macosx */,
 				75B059FE256E7B5F00FB91E0 /* iphoneos */,
@@ -2495,6 +2507,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				755D813D2BB079BF00F207B0 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2502,6 +2515,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				755D81392BB079AE00F207B0 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2509,6 +2523,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				755D81352BB0798800F207B0 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2516,6 +2531,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				755D813B2BB079B600F207B0 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2611,7 +2627,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/support/macos_catalyst/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2687,7 +2703,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/support/macos_catalyst/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2770,7 +2786,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/support/iphonesimulator/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2847,7 +2863,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/support/iphonesimulator/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2921,6 +2937,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Distribution";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
@@ -2947,7 +2964,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/support/ios/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3004,6 +3021,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Distribution";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
@@ -3024,7 +3042,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/support/ios/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3119,7 +3137,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/macosx/lib",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				OTHER_LDFLAGS = (
 					"-Xlinker",
 					"-all_load",
@@ -3194,7 +3212,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/macosx/lib",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				OTHER_LDFLAGS = (
 					"-Xlinker",
 					"-all_load",

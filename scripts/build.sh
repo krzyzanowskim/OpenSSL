@@ -23,12 +23,12 @@ export OPENSSL_LOCAL_CONFIG_DIR="${SCRIPT_DIR}/../config"
 
 DEVELOPER=$(xcode-select --print-path)
 
-export IPHONEOS_DEPLOYMENT_VERSION="11.0"
+export IPHONEOS_DEPLOYMENT_VERSION="12.0"
 IPHONEOS_SDK=$(xcrun --sdk iphoneos --show-sdk-path)
 IPHONESIMULATOR_SDK=$(xcrun --sdk iphonesimulator --show-sdk-path)
 OSX_SDK=$(xcrun --sdk macosx --show-sdk-path)
 
-export MACOSX_DEPLOYMENT_TARGET="10.14" # 
+export MACOSX_DEPLOYMENT_TARGET="10.15" #
 
 # Turn versions like 1.2.3 into numbers that can be compare by bash.
 version()
@@ -72,7 +72,7 @@ configure() {
       echo "Failed to parse SDK path '${SDK}'!" >&1
       exit 2
    fi
-   
+
 
    if [ "$OS" == "MacOSX" ]; then
       ${SRC_DIR}/Configure macos-$ARCH no-asm no-shared --prefix="${PREFIX}" &> "${PREFIX}.config.log"
@@ -111,7 +111,7 @@ build()
 
    # fix headers for Swift
 
-   sed -ie "s/BIGNUM \*I,/BIGNUM \*i,/g" ${SRC_DIR}/crypto/rsa/rsa_local.h   
+   sed -ie "s/BIGNUM \*I,/BIGNUM \*i,/g" ${SRC_DIR}/crypto/rsa/rsa_local.h
 
    configure "${OS}" $ARCH ${BUILD_DIR} ${SRC_DIR}
 
@@ -183,7 +183,7 @@ build_ios() {
    echo "#elif defined(__APPLE__) && defined (__arm64__)" >> ${OPENSSLCONF_PATH}
    cat ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneOS-arm64/include/openssl/opensslconf.h >> ${OPENSSLCONF_PATH}
    echo "#endif" >> ${OPENSSLCONF_PATH}
-   
+
    # Update include "openssl/" to "OpenSSL/"
    grep -rl '#\s*include\s*<openssl' --include \*.h ${SCRIPT_DIR}/../iphoneos/include | xargs -I@ sed -i '' -e 's/#[[:space:]]*include[[:space:]]*<openssl/#include <OpenSSL/gi' @
    grep -rl '#\s*include\s*<openssl' --include \*.h ${SCRIPT_DIR}/../iphonesimulator/include | xargs -I@ sed -i '' -e 's/#[[:space:]]*include[[:space:]]*<openssl/#include <OpenSSL/gi' @
@@ -219,7 +219,7 @@ build_macos() {
    echo "#elif defined(__APPLE__) && defined (__arm64__)" >> ${OPENSSLCONF_PATH}
    cat ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-MacOSX-arm64/include/openssl/opensslconf.h >> ${OPENSSLCONF_PATH}
    echo "#endif" >> ${OPENSSLCONF_PATH}
-   
+
    # Update include "openssl/" to "OpenSSL/"
    grep -rl '#\s*include\s*<openssl' --include \*.h ${SCRIPT_DIR}/../macosx/include | xargs -I@ sed -i '' -e 's/#[[:space:]]*include[[:space:]]*<openssl/#include <OpenSSL/gi' @
 

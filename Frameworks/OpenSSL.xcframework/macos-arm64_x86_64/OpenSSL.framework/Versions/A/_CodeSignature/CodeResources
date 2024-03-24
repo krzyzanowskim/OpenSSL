@@ -6,7 +6,11 @@
 	<dict>
 		<key>Resources/Info.plist</key>
 		<data>
-		aABuBsDYPes/1YKRWPT+i4JDbzg=
+		EBlHIjWb4ti331BtjYhBoAKX6Rg=
+		</data>
+		<key>Resources/PrivacyInfo.xcprivacy</key>
+		<data>
+		fttNLi9el5evvvPiyn6fZ232uiU=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -64,7 +68,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			nzYt/ZRQqLRvdxi3nb1uZG242zWkGasiabCKhQSk3ro=
+			4r87+8Un7mn7ex8yHqY+0fnESADWbzuJzpjQCa7+f8k=
 			</data>
 		</dict>
 		<key>Headers/bioerr.h</key>
@@ -197,7 +201,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			UXSWnIg/VBXYSMe6IFtjEhG+Gga7VmapEyouHK3Ikkg=
+			Jtj/8meykU8fOPRq7mY9oLodc6bEQQeSrkj8Kh8XOh0=
 			</data>
 		</dict>
 		<key>Headers/configuration.h</key>
@@ -316,14 +320,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Zi5evsuK2SEe1rvcjjO5m/zs4mMF6/63BHTTt/6T67s=
+			DYD5Oy3aWijGe/9exmBzUQjsRviV+WOwk+W6d3+ymbg=
 			</data>
 		</dict>
 		<key>Headers/dherr.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Bfc9Y17HQJwuRoGVm1vq9InPCI7hshTNkqNMcAi9o+4=
+			qmAlWlIThWxywBh5zo8Nf7I/LaVHShheiz3J6rQhsMM=
 			</data>
 		</dict>
 		<key>Headers/dsa.h</key>
@@ -603,7 +607,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			cNLcoaCKtgrxuI9cj2AdsbXldNyLqpydGtlXkDtjd3k=
+			RccEsBQzzO7+wTPLx5hA5e2/qn4mDYZUVTKR+ZjBlm4=
 			</data>
 		</dict>
 		<key>Headers/ossl_typ.h</key>
@@ -974,7 +978,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			TzH4LBGxGaSqL0MXKhlj2I4fJX5tAeFS3cGjKUYdPGQ=
+			nQZOyN61FIEn/yB/aHcti8NRnXgNIUDynN/ZEEUwIck=
+			</data>
+		</dict>
+		<key>Resources/PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			UnJS+q0FeMmPQrwT3gvAKxRPjG0o4i/uvQuiVjDMXb0=
 			</data>
 		</dict>
 	</dict>
