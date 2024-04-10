@@ -1,3 +1,5 @@
+PRODUCT_NAME=OpenSSL
+
 CODE_SIGN_IDENTITY =
 CODE_SIGN_IDENTITY[sdk=macosx*] = Developer ID Application
 CODE_SIGN_IDENTITY[sdk=iphoneos*] = Apple Distribution
