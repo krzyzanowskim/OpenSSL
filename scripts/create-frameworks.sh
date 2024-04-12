@@ -14,6 +14,7 @@ done
 
 BASE_PWD="$PWD"
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+IDENTITY=$1
 FWNAME="OpenSSL"
 OUTPUT_DIR=$( mktemp -d )
 COMMON_SETUP=" -project ${SCRIPT_DIR}/../${FWNAME}.xcodeproj -configuration Release BUILD_LIBRARY_FOR_DISTRIBUTION=YES $XC_USER_DEFINED_VARS"
@@ -97,6 +98,8 @@ xcrun xcodebuild -create-xcframework \
 	-framework "${BASE_PWD}/Frameworks/macosx/${FWNAME}.framework" \
 	-framework "${BASE_PWD}/Frameworks/macosx_catalyst/${FWNAME}.framework" \
 	-output "${BASE_PWD}/Frameworks/${FWNAME}.xcframework"
+ 
+ xcrun codesign --timestamp -s ${IDENTITY} ${FWNAME}.xcframework
 
 # Zip archive
 pushd "${BASE_PWD}/Frameworks"
