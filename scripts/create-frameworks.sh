@@ -99,7 +99,7 @@ xcrun xcodebuild -create-xcframework \
 	-framework "${BASE_PWD}/Frameworks/macosx_catalyst/${FWNAME}.framework" \
 	-output "${BASE_PWD}/Frameworks/${FWNAME}.xcframework"
  
- xcrun codesign --timestamp -s ${IDENTITY} ${BASE_PWD}/Frameworks/${FWNAME}.xcframework
+ xcrun codesign --timestamp -s "${IDENTITY}" "${BASE_PWD}/Frameworks/${FWNAME}.xcframework"
 
 # Zip archive
 pushd "${BASE_PWD}/Frameworks"
