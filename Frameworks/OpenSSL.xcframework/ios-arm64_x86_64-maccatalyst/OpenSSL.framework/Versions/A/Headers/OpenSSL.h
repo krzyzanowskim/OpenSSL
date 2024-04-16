@@ -1,4 +1,3 @@
-// ls -1 ../../iphoneos/include/openssl | sed 's/\(.*\)/\#include \<OpenSSL\/\1\>/'
 // Include before others:
 #include <OpenSSL/ssl.h>
 
@@ -138,3 +137,4 @@
 #include <OpenSSL/x509err.h>
 #include <OpenSSL/x509v3.h>
 #include <OpenSSL/x509v3err.h>
+

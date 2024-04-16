@@ -2750,7 +2750,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/iphoneos/lib",
 				);
-				MARKETING_VERSION = 3.1.5000;
+				MARKETING_VERSION = 3.1.5001;
 				OTHER_LDFLAGS = "-Xlinker -all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.krzyzanowskim.OpenSSL;
 				PRODUCT_NAME = OpenSSL;
@@ -2806,7 +2806,7 @@
 					"$(SRCROOT)/macosx/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 3.1.5000;
+				MARKETING_VERSION = 3.1.5001;
 				OTHER_LDFLAGS = "-Xlinker -all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.krzyzanowskim.OpenSSL;
 				PRODUCT_NAME = OpenSSL;
@@ -2972,7 +2972,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/macosx_catalyst/lib",
 				);
-				MARKETING_VERSION = 3.1.5000;
+				MARKETING_VERSION = 3.1.5001;
 				OTHER_LDFLAGS = "-Xlinker -all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.krzyzanowskim.OpenSSL;
 				PRODUCT_NAME = OpenSSL;
@@ -3030,7 +3030,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/macosx_catalyst/lib",
 				);
-				MARKETING_VERSION = 3.1.5000;
+				MARKETING_VERSION = 3.1.5001;
 				OTHER_LDFLAGS = "-Xlinker -all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.krzyzanowskim.OpenSSL;
 				PRODUCT_NAME = OpenSSL;
@@ -3083,7 +3083,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/iphonesimulator/lib",
 				);
-				MARKETING_VERSION = 3.1.5000;
+				MARKETING_VERSION = 3.1.5001;
 				OTHER_LDFLAGS = "-Xlinker -all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.krzyzanowskim.OpenSSL;
 				PRODUCT_NAME = OpenSSL;
@@ -3139,7 +3139,7 @@
 					"$(SRCROOT)/macosx/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 3.1.5000;
+				MARKETING_VERSION = 3.1.5001;
 				OTHER_LDFLAGS = "-Xlinker -all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.krzyzanowskim.OpenSSL;
 				PRODUCT_NAME = OpenSSL;
@@ -3188,7 +3188,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/iphoneos/lib",
 				);
-				MARKETING_VERSION = 3.1.5000;
+				MARKETING_VERSION = 3.1.5001;
 				OTHER_LDFLAGS = "-Xlinker -all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.krzyzanowskim.OpenSSL;
 				PRODUCT_NAME = OpenSSL;
@@ -3246,7 +3246,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/iphonesimulator/lib",
 				);
-				MARKETING_VERSION = 3.1.5000;
+				MARKETING_VERSION = 3.1.5001;
 				OTHER_LDFLAGS = "-Xlinker -all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.krzyzanowskim.OpenSSL;
 				PRODUCT_NAME = OpenSSL;
