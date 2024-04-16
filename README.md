@@ -23,7 +23,7 @@ The financial sustainability of the project is possible thanks to the ongoing co
 
 - Static library [libcrypto.a, libssl.a](iphoneos/lib/)
 - [OpenSSL.framework](Frameworks/)
-- [OpenSSL.xcframework](Frameworks/)
+- [OpenSSL.xcframework](Frameworks/OpenSSL.xcframework)
 
 ### Why?
 
@@ -80,7 +80,7 @@ binary "https://raw.githubusercontent.com/krzyzanowskim/OpenSSL/main/OpenSSL.jso
 
 ### Authors
 
-[Marcin Krzyżanowski](https://twitter.com/krzyzanowskim)
+[Marcin Krzyżanowski](https://x.com/krzyzanowskim)
 
 ## FAQ etc.
 #### Where can I use OpenSSL-Universal?
