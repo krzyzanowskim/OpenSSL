@@ -45,7 +45,6 @@
 		10A8A880CBCB8CB369D2AFBF /* opensslv.h in Headers */ = {isa = PBXBuildFile; fileRef = AF9155B2FB190A4204C5DCA3 /* opensslv.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		11BD4BA974D48F64EF0716DE /* trace.h in Headers */ = {isa = PBXBuildFile; fileRef = E18FD332B3618F00EEDF35F4 /* trace.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		11E70D7C133ECFFD13E693F2 /* decoder.h in Headers */ = {isa = PBXBuildFile; fileRef = A7743B31A7F7AAEDF69F849A /* decoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		12FA3D07B88D24116E356627 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 6DD8135CD9D9A0C10CA380B4 /* PrivacyInfo.xcprivacy */; };
 		13E9C9CF9D4A630FB421A88D /* rc4.h in Headers */ = {isa = PBXBuildFile; fileRef = 7282D5CE854449D4123EE759 /* rc4.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1480CAC2163261BD3AC9013D /* crypto.h in Headers */ = {isa = PBXBuildFile; fileRef = AC88D15B56BF192CF3A1F21B /* crypto.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		14CC454D2A8531B68F111F0C /* ecerr.h in Headers */ = {isa = PBXBuildFile; fileRef = 5CBFB2272AC445C46FE99937 /* ecerr.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -134,7 +133,6 @@
 		356EC3E23F55272AB85316F3 /* macros.h in Headers */ = {isa = PBXBuildFile; fileRef = 1BEF5E164472D88A16A1A492 /* macros.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		35C0042AE5755908877827B8 /* pkcs7err.h in Headers */ = {isa = PBXBuildFile; fileRef = 809151820BF0741B0A6CB19A /* pkcs7err.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		368535BCE5117FA8829330D8 /* uierr.h in Headers */ = {isa = PBXBuildFile; fileRef = BA38FB664ED7A83F5D389475 /* uierr.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		36B3B1A1BF4F2CE990E99F58 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 86BD578BA7B90E6F32FDB6F3 /* PrivacyInfo.xcprivacy */; };
 		37B4CDA8EE28757A4C34AC19 /* async.h in Headers */ = {isa = PBXBuildFile; fileRef = 31AFAA6C20ADA19B4E5A4421 /* async.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		38636E9E2E0D1ACEAEE073AC /* opensslconf.h in Headers */ = {isa = PBXBuildFile; fileRef = BE7D19F416894D6D843CF392 /* opensslconf.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		388F2DA02D6B81AF2A229576 /* crmf.h in Headers */ = {isa = PBXBuildFile; fileRef = 332B323274323B0C8EF8C25F /* crmf.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -196,7 +194,6 @@
 		5112CD4F34B858D02B9F445D /* decoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 524E9F0E9B834C3623385589 /* decoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5180F916D1AAF428E6EAEE95 /* cmac.h in Headers */ = {isa = PBXBuildFile; fileRef = 1BCD659471E26B25EEF422A2 /* cmac.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		520507D549191A9416C81173 /* rsaerr.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B408FA42294A0B891AC8B4E /* rsaerr.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		524EB54B54252E7C9275E689 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 45B3B3A1BF4B55D7F977ECCC /* PrivacyInfo.xcprivacy */; };
 		53963D40A380D69B71D1A247 /* fips_names.h in Headers */ = {isa = PBXBuildFile; fileRef = BAB5C005D8B35F273E075D8D /* fips_names.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		53EE9FC4283701C05AC5731F /* core.h in Headers */ = {isa = PBXBuildFile; fileRef = 17D9463DC1949A78C1EC1BB8 /* core.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		54323BA4F85E2F928699F5CD /* e_os2.h in Headers */ = {isa = PBXBuildFile; fileRef = 8076B580BB3CB71396662E9E /* e_os2.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -286,6 +283,7 @@
 		7F2298D98C063520897509F5 /* aes.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C43D47453C6634DF0CD464F /* aes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7F8A0AD31DA7F0EC49EAF8AD /* cterr.h in Headers */ = {isa = PBXBuildFile; fileRef = D6F9F3868AC68ABC5F105E2B /* cterr.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7F981840D39EE6A47FB015B0 /* evperr.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A64ECCD1225A7E0C97B5511 /* evperr.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7FE0D8901C09CEFF1767DAF9 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = CD20DE50707AD73FB57BFCD5 /* PrivacyInfo.xcprivacy */; };
 		8053AB297E04FB75669E5A4A /* store.h in Headers */ = {isa = PBXBuildFile; fileRef = 7BD721C3BB0F0C4DD22FC2D5 /* store.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		808AA28B91DE3B60E72DC6F1 /* x509v3err.h in Headers */ = {isa = PBXBuildFile; fileRef = 98169DC51BF03D7C765F7397 /* x509v3err.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		80BBF2A7AD88C754EE738EFB /* rsaerr.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CFBF1631DB5C4B42D6E9770 /* rsaerr.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -340,6 +338,7 @@
 		967324153E14F6AD2D73DF83 /* hmac.h in Headers */ = {isa = PBXBuildFile; fileRef = 1458E347AEE235FA4C201689 /* hmac.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9760E4797B334B3FF2E573D6 /* objects.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC858177387067A6F850861 /* objects.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		979C6CFE39068F0D286B1F6D /* randerr.h in Headers */ = {isa = PBXBuildFile; fileRef = 43D078BEA90850DDCB59D79C /* randerr.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		981800C04D49667E52AA97EE /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = CD20DE50707AD73FB57BFCD5 /* PrivacyInfo.xcprivacy */; };
 		985B5C1FDBF6B740E2198A1C /* ecerr.h in Headers */ = {isa = PBXBuildFile; fileRef = 525BAF8ACD4A9676E2441BCF /* ecerr.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9963E81CD274B0B979EB856C /* prov_ssl.h in Headers */ = {isa = PBXBuildFile; fileRef = FF7999F7E93BAEDE93A49369 /* prov_ssl.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9A25373B3899E81CECD67D27 /* x509_vfy.h in Headers */ = {isa = PBXBuildFile; fileRef = CA023A1C88F666ACFA4E29E6 /* x509_vfy.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -385,7 +384,6 @@
 		ADD4DA5FE28E0118779698EA /* lhash.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F23E46F3552299745DDB8A3 /* lhash.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AE339B3D08E36201425B04DE /* trace.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BCFD2A6E75D17F1EA6D8151 /* trace.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AE571AFBC45396473B55A68F /* configuration.h in Headers */ = {isa = PBXBuildFile; fileRef = DC3FE993C90D644E4DE1F2F3 /* configuration.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AEAFFC0F06725FCAA7FF9407 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = A1796B9D9607A8B51630CE5D /* PrivacyInfo.xcprivacy */; };
 		AF711CAEA722BF36ED042243 /* err.h in Headers */ = {isa = PBXBuildFile; fileRef = FE9D9071ABAB35F7E3087330 /* err.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AF91A982F9419A4FF6701C60 /* ssl2.h in Headers */ = {isa = PBXBuildFile; fileRef = 53202B03C4CA39DBF37ECED9 /* ssl2.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B0C86E07F7748BBA49864ECF /* http.h in Headers */ = {isa = PBXBuildFile; fileRef = F5FAE188B215569E45E397A6 /* http.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -407,6 +405,7 @@
 		B641C7531B8E99BFCFE18E8E /* ts.h in Headers */ = {isa = PBXBuildFile; fileRef = FE0514559D66CA387809E1DB /* ts.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B67BA9F1DE3064242E7BAE98 /* sha.h in Headers */ = {isa = PBXBuildFile; fileRef = 70847FD5BF8FA248A33C0B9E /* sha.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B706534B0BBB9DE6F4FDC88A /* ssl3.h in Headers */ = {isa = PBXBuildFile; fileRef = 9028795B245B5F398FB054D1 /* ssl3.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B74F80B983FF77A3B2D600DC /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = CD20DE50707AD73FB57BFCD5 /* PrivacyInfo.xcprivacy */; };
 		B75B836826DB6F94EBD53628 /* conf_api.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AF313A2730E8408116F7E0D /* conf_api.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B8439A81C6695DE0EA973CEC /* conftypes.h in Headers */ = {isa = PBXBuildFile; fileRef = CAF1307DF83C1293FEA1E71D /* conftypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B8454D7F35BA6C12A26C0C30 /* proverr.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AD35CEF8DA55B59FB3A8BCE /* proverr.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -475,6 +474,7 @@
 		D540BCA089B5B6D8D72FA456 /* dh.h in Headers */ = {isa = PBXBuildFile; fileRef = E13E3A989CEA487EC83B8AD2 /* dh.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D567B0B19EF3A6AFE36AE5DA /* rsaerr.h in Headers */ = {isa = PBXBuildFile; fileRef = AB8D6D98C9E9ACEA555DDC5E /* rsaerr.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D5923BCB47C8C1D3170B286D /* decodererr.h in Headers */ = {isa = PBXBuildFile; fileRef = E9E6A66DCF9D45F12B7518F4 /* decodererr.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D61638AD993A38BB14016692 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = CD20DE50707AD73FB57BFCD5 /* PrivacyInfo.xcprivacy */; };
 		D730886F77EAB610D288F1A1 /* bio.h in Headers */ = {isa = PBXBuildFile; fileRef = A61D4B304C6740C59524023E /* bio.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D734438A71FDCD0A5B777369 /* opensslconf.h in Headers */ = {isa = PBXBuildFile; fileRef = 639E043189F11167CAA6631B /* opensslconf.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D797F747AC08C02A0E3C743B /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F4556CBE512391FDCC9A16F9 /* libssl.a */; };
@@ -757,7 +757,6 @@
 		447D71DA6D1F440822C32A2F /* ssl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ssl.h; sourceTree = "<group>"; };
 		44A6562F79EB5E040EA18ABF /* core_object.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = core_object.h; sourceTree = "<group>"; };
 		4585BA7A2F39B8E321A91D5D /* core_object.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = core_object.h; sourceTree = "<group>"; };
-		45B3B3A1BF4B55D7F977ECCC /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		460C7F3707A823624D89ADBB /* camellia.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = camellia.h; sourceTree = "<group>"; };
 		4720C60814745A8B3EAE4CFD /* ocsperr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ocsperr.h; sourceTree = "<group>"; };
 		475F7FD9F0B09B834492FF6A /* ocsperr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ocsperr.h; sourceTree = "<group>"; };
@@ -850,7 +849,6 @@
 		6CFBF1631DB5C4B42D6E9770 /* rsaerr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rsaerr.h; sourceTree = "<group>"; };
 		6D65AF8401CDC07CC4867DAB /* idea.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = idea.h; sourceTree = "<group>"; };
 		6D9B8FA276A85DA11704A536 /* aes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = aes.h; sourceTree = "<group>"; };
-		6DD8135CD9D9A0C10CA380B4 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		6E60EC6358276371BDFB85A8 /* md2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = md2.h; sourceTree = "<group>"; };
 		6EEDC8D98914144FAE534546 /* encodererr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = encodererr.h; sourceTree = "<group>"; };
 		6F1BCF41A8F28992EB6D33E1 /* cms.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cms.h; sourceTree = "<group>"; };
@@ -899,7 +897,6 @@
 		84D9C419BA7D2ABFFCF12324 /* cmp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cmp.h; sourceTree = "<group>"; };
 		85B99BCE2CC8015F5806F7AA /* txt_db.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = txt_db.h; sourceTree = "<group>"; };
 		85BB057ADCBACBBA6C81C925 /* lhash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lhash.h; sourceTree = "<group>"; };
-		86BD578BA7B90E6F32FDB6F3 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		86DCD9F25B78D6C8D53A6C85 /* ecdsa.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ecdsa.h; sourceTree = "<group>"; };
 		875432C55B5D29E178700DE3 /* err.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = err.h; sourceTree = "<group>"; };
 		87B5A00220F996BB4C5500FA /* ts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ts.h; sourceTree = "<group>"; };
@@ -969,7 +966,6 @@
 		9F8B4D404C8DADE8E4EFE8D6 /* modes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = modes.h; sourceTree = "<group>"; };
 		9FC062C4CD4AE20F9A95AF2D /* sslerr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = sslerr.h; sourceTree = "<group>"; };
 		A02D90DE832190CF4B3ABCE8 /* dsa.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dsa.h; sourceTree = "<group>"; };
-		A1796B9D9607A8B51630CE5D /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		A1B7EC54CC5976E7A36164BE /* whrlpool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = whrlpool.h; sourceTree = "<group>"; };
 		A1DA4E56EB0909EE5E889FD2 /* param_build.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = param_build.h; sourceTree = "<group>"; };
 		A1F0E307FFA6F440B828DFF3 /* stack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stack.h; sourceTree = "<group>"; };
@@ -1051,6 +1047,7 @@
 		CC55DE770C1590432F656A99 /* cast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cast.h; sourceTree = "<group>"; };
 		CC9528D1F6EE1AF0189E7CD6 /* dherr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dherr.h; sourceTree = "<group>"; };
 		CC9AC969DFF12B644D99DF65 /* cmperr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cmperr.h; sourceTree = "<group>"; };
+		CD20DE50707AD73FB57BFCD5 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		CD2EEF8595EFF83472FB4B4D /* des.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = des.h; sourceTree = "<group>"; };
 		CDB30360A15CBF0F2B68C766 /* ct.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ct.h; sourceTree = "<group>"; };
 		CDD1CD3F51AC94FEE98715C4 /* kdferr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = kdferr.h; sourceTree = "<group>"; };
@@ -1228,7 +1225,6 @@
 			children = (
 				23FF668F739297749EC722EE /* Info.plist */,
 				91B68290DE49015488EB39C2 /* OpenSSL.h */,
-				6DD8135CD9D9A0C10CA380B4 /* PrivacyInfo.xcprivacy */,
 			);
 			path = macos_catalyst;
 			sourceTree = "<group>";
@@ -1693,7 +1689,6 @@
 			children = (
 				0BBC589E93F68C127358DB22 /* Info.plist */,
 				C8D2F44803471457A6692DDB /* OpenSSL.h */,
-				86BD578BA7B90E6F32FDB6F3 /* PrivacyInfo.xcprivacy */,
 			);
 			path = iphoneos;
 			sourceTree = "<group>";
@@ -1705,6 +1700,7 @@
 				E5E0FE56B44119B77CD2C38C /* iphonesimulator */,
 				50D2950B403313FBBB21563E /* macos */,
 				02A3FF04C740BCA51BB0D730 /* macos_catalyst */,
+				CD20DE50707AD73FB57BFCD5 /* PrivacyInfo.xcprivacy */,
 			);
 			path = support;
 			sourceTree = "<group>";
@@ -1741,7 +1737,6 @@
 			children = (
 				3C4C72E573F84414019406FF /* Info.plist */,
 				9C5825B655693C39829EC716 /* OpenSSL.h */,
-				45B3B3A1BF4B55D7F977ECCC /* PrivacyInfo.xcprivacy */,
 			);
 			path = macos;
 			sourceTree = "<group>";
@@ -1956,7 +1951,6 @@
 			children = (
 				1745C97FD0AF99C6F619112B /* Info.plist */,
 				DE418C7E56A68380E0665553 /* OpenSSL.h */,
-				A1796B9D9607A8B51630CE5D /* PrivacyInfo.xcprivacy */,
 			);
 			path = iphonesimulator;
 			sourceTree = "<group>";
@@ -2659,7 +2653,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				36B3B1A1BF4F2CE990E99F58 /* PrivacyInfo.xcprivacy in Resources */,
+				B74F80B983FF77A3B2D600DC /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2667,7 +2661,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				524EB54B54252E7C9275E689 /* PrivacyInfo.xcprivacy in Resources */,
+				D61638AD993A38BB14016692 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2675,7 +2669,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AEAFFC0F06725FCAA7FF9407 /* PrivacyInfo.xcprivacy in Resources */,
+				981800C04D49667E52AA97EE /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2683,7 +2677,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				12FA3D07B88D24116E356627 /* PrivacyInfo.xcprivacy in Resources */,
+				7FE0D8901C09CEFF1767DAF9 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

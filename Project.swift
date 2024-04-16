@@ -15,7 +15,7 @@ let project = Project(
             infoPlist: .file(path: .relativeToRoot("support/iphoneos/Info.plist")),
             sources: [],
             resources: [
-                "support/iphoneos/PrivacyInfo.xcprivacy"
+                "support/PrivacyInfo.xcprivacy"
             ],
             headers: .headers(
                 public: .list(
@@ -62,7 +62,7 @@ let project = Project(
             infoPlist: .file(path: .relativeToRoot("support/iphonesimulator/Info.plist")),
             sources: [],
             resources: [
-                "support/iphonesimulator/PrivacyInfo.xcprivacy"
+                "support/PrivacyInfo.xcprivacy"
             ],
             headers: .headers(
                 public: .list([.glob("iphonesimulator/include/OpenSSL/*.h", excluding: "**/asn1_mac.h"), "support/iphonesimulator/OpenSSL.h"])
@@ -104,7 +104,7 @@ let project = Project(
             infoPlist: .file(path: .relativeToRoot("support/macos/Info.plist")),
             sources: [],
             resources: [
-                "support/macos/PrivacyInfo.xcprivacy"
+                "support/PrivacyInfo.xcprivacy"
             ],
             headers: .headers(
                 public: .list([.glob("macosx/include/OpenSSL/*.h", excluding: "**/asn1_mac.h"), "support/macos/OpenSSL.h"])
@@ -144,7 +144,7 @@ let project = Project(
             infoPlist: .file(path: .relativeToRoot("support/macos_catalyst/Info.plist")),
             sources: [],
             resources: [
-                "support/macos_catalyst/PrivacyInfo.xcprivacy"
+                "support/PrivacyInfo.xcprivacy"
             ],
             headers: .headers(
                 public: .list([.glob("macosx_catalyst/include/OpenSSL/*.h", excluding: "**/asn1_mac.h"), "support/macos_catalyst/OpenSSL.h"])
