@@ -1,6 +1,7 @@
 import ProjectDescription
 
 private let developmentTeam: SettingValue = "67RAULRX93"
+private let marketingVersion: String = "3.1.5000"
 
 let project = Project(
     name: "OpenSSL",
@@ -18,19 +19,14 @@ let project = Project(
                 "support/PrivacyInfo.xcprivacy"
             ],
             headers: .headers(
-                public: .list(
-                    [
-                        .glob("iphoneos/include/OpenSSL/*.h", excluding: "**/asn1_mac.h"),
-                        "support/iphoneos/OpenSSL.h"
-                    ]
-                )
+                public: .list([.glob("iphoneos/include/OpenSSL/*.h", excluding: "**/asn1_mac.h"), "support/iphoneos/OpenSSL.h"])
             ),
             dependencies: [
                 .library(path: .relativeToRoot("iphoneos/lib/libcrypto.a"), publicHeaders: .relativeToRoot("iphoneos/include/OpenSSL"), swiftModuleMap: nil, condition: nil),
                 .library(path: .relativeToRoot("iphoneos/lib/libssl.a"), publicHeaders: .relativeToRoot("iphoneos/include/OpenSSL"), swiftModuleMap: nil, condition: nil)
             ],
             settings: .settings(base: SettingsDictionary()
-                .marketingVersion("3.1.5000")
+                .marketingVersion(marketingVersion)
                 .currentProjectVersion("1")
                 .bitcodeEnabled(false)
                 .otherLinkerFlags([
@@ -72,7 +68,7 @@ let project = Project(
                 .library(path: .relativeToRoot("iphonesimulator/lib/libssl.a"), publicHeaders:  .relativeToRoot("iphonesimulator/include/OpenSSL"), swiftModuleMap: nil, condition: nil)
             ],
             settings: .settings(base: SettingsDictionary()
-                .marketingVersion("3.1.5000")
+                .marketingVersion(marketingVersion)
                 .currentProjectVersion("1")
                 .bitcodeEnabled(false)
                 .otherLinkerFlags([
@@ -114,7 +110,7 @@ let project = Project(
                 .library(path: .relativeToRoot("macosx/lib/libssl.a"), publicHeaders:  .relativeToRoot("macosx/include/OpenSSL"), swiftModuleMap: nil, condition: nil)
             ],
             settings: .settings(base: SettingsDictionary()
-                .marketingVersion("3.1.5000")
+                .marketingVersion(marketingVersion)
                 .currentProjectVersion("1")
                 .bitcodeEnabled(false)
                 .otherLinkerFlags([
@@ -154,7 +150,7 @@ let project = Project(
                 .library(path: .relativeToRoot("macosx_catalyst/lib/libssl.a"), publicHeaders:  .relativeToRoot("macosx_catalyst/include/OpenSSL"), swiftModuleMap: nil, condition: nil)
             ],
             settings: .settings(base: SettingsDictionary()
-                .marketingVersion("3.1.5000")
+                .marketingVersion(marketingVersion)
                 .currentProjectVersion("1")
                 .bitcodeEnabled(false)
                 .otherLinkerFlags([
