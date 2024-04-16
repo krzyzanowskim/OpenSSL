@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1160"
+   LastUpgradeVersion = "1010"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9F4A265B223BD82B005CB63A"
+               BlueprintIdentifier = "8DA5D2B5F6C6BE40A7FC67A9"
                BuildableName = "OpenSSL.framework"
                BlueprintName = "OpenSSL (iOS)"
                ReferencedContainer = "container:OpenSSL.xcodeproj">
@@ -26,7 +26,8 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      disableMainThreadChecker = "YES">
       <Testables>
       </Testables>
    </TestAction>
@@ -43,7 +44,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9F4A265B223BD82B005CB63A"
+            BlueprintIdentifier = "8DA5D2B5F6C6BE40A7FC67A9"
             BuildableName = "OpenSSL.framework"
             BlueprintName = "OpenSSL (iOS)"
             ReferencedContainer = "container:OpenSSL.xcodeproj">
@@ -59,7 +60,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9F4A265B223BD82B005CB63A"
+            BlueprintIdentifier = "8DA5D2B5F6C6BE40A7FC67A9"
             BuildableName = "OpenSSL.framework"
             BlueprintName = "OpenSSL (iOS)"
             ReferencedContainer = "container:OpenSSL.xcodeproj">

@@ -1,5 +1,7 @@
 *.DS_Store
 
+OpenSSL.xcworkspace
+
 .vscode/
 .build/
 .swiftpm/

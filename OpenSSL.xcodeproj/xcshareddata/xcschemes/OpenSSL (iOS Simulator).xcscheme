@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1220"
+   LastUpgradeVersion = "1010"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "753EF2542567514F008FDE33"
+               BlueprintIdentifier = "554767E6035E71E9927E6A7B"
                BuildableName = "OpenSSL.framework"
                BlueprintName = "OpenSSL (iOS Simulator)"
                ReferencedContainer = "container:OpenSSL.xcodeproj">
@@ -26,7 +26,8 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      disableMainThreadChecker = "YES">
       <Testables>
       </Testables>
    </TestAction>
@@ -40,6 +41,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "554767E6035E71E9927E6A7B"
+            BuildableName = "OpenSSL.framework"
+            BlueprintName = "OpenSSL (iOS Simulator)"
+            ReferencedContainer = "container:OpenSSL.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -50,7 +60,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "753EF2542567514F008FDE33"
+            BlueprintIdentifier = "554767E6035E71E9927E6A7B"
             BuildableName = "OpenSSL.framework"
             BlueprintName = "OpenSSL (iOS Simulator)"
             ReferencedContainer = "container:OpenSSL.xcodeproj">
