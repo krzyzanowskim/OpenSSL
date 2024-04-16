@@ -15,4 +15,4 @@ build:
 	$(CWD)/scripts/build.sh
 
 frameworks:
-	$(CWD)/scripts/create-frameworks.sh
+	$(CWD)/scripts/create-frameworks.sh "Apple Distribution"
