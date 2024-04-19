@@ -1,4 +1,4 @@
-// swift-tools-version:5.5
+// swift-tools-version:5.10
 
 import PackageDescription
 
@@ -6,7 +6,8 @@ let package = Package(
     name: "OpenSSL",
     platforms: [
         .iOS(.v12),
-        .macOS(.v10_15)
+        .macOS(.v10_15),
+        .visionOS(.v1)
     ],
     products: [
         .library(

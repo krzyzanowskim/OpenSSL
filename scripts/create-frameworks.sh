@@ -71,6 +71,32 @@ mkdir -p "${OUTPUT_DIR}/iphonesimulator"
 ditto "${DERIVED_DATA_PATH}/Build/Products/Release-iphonesimulator/${FWNAME}.framework" "${OUTPUT_DIR}/iphonesimulator/${FWNAME}.framework"
 rm -rf "${DERIVED_DATA_PATH}"
 
+# visionOS
+DERIVED_DATA_PATH=$( mktemp -d )
+xcrun xcodebuild build \
+    $COMMON_SETUP \
+    -scheme "${FWNAME} (visionOS)" \
+    -derivedDataPath "${DERIVED_DATA_PATH}" \
+    -destination 'generic/platform=XROS'
+
+rm -rf "${OUTPUT_DIR}/visionos"
+mkdir -p "${OUTPUT_DIR}/visionos"
+ditto "${DERIVED_DATA_PATH}/Build/Products/Release-visionos/${FWNAME}.framework" "${OUTPUT_DIR}/visionos/${FWNAME}.framework"
+rm -rf "${DERIVED_DATA_PATH}"
+
+# visionOS Simulator
+DERIVED_DATA_PATH=$( mktemp -d )
+xcrun xcodebuild build \
+    $COMMON_SETUP \
+    -scheme "${FWNAME} (visionOS Simulator)" \
+    -derivedDataPath "${DERIVED_DATA_PATH}" \
+    -destination 'generic/platform=XROS Simulator'
+
+rm -rf "${OUTPUT_DIR}/visionsimulator"
+mkdir -p "${OUTPUT_DIR}/visionsimulator"
+ditto "${DERIVED_DATA_PATH}/Build/Products/Release-visionsimulator/${FWNAME}.framework" "${OUTPUT_DIR}/visionsimulator/${FWNAME}.framework"
+rm -rf "${DERIVED_DATA_PATH}"
+
 #
 
 rm -rf "${BASE_PWD}/Frameworks/iphoneos"
@@ -80,6 +106,14 @@ ditto "${OUTPUT_DIR}/iphoneos/${FWNAME}.framework" "${BASE_PWD}/Frameworks/iphon
 rm -rf "${BASE_PWD}/Frameworks/iphonesimulator"
 mkdir -p "${BASE_PWD}/Frameworks/iphonesimulator"
 ditto "${OUTPUT_DIR}/iphonesimulator/${FWNAME}.framework" "${BASE_PWD}/Frameworks/iphonesimulator/${FWNAME}.framework"
+
+rm -rf "${BASE_PWD}/Frameworks/visionos"
+mkdir -p "${BASE_PWD}/Frameworks/visionos"
+ditto "${OUTPUT_DIR}/visionos/${FWNAME}.framework" "${BASE_PWD}/Frameworks/visionos/${FWNAME}.framework"
+
+rm -rf "${BASE_PWD}/Frameworks/visionsimulator"
+mkdir -p "${BASE_PWD}/Frameworks/visionsimulator"
+ditto "${OUTPUT_DIR}/visionsimulator/${FWNAME}.framework" "${BASE_PWD}/Frameworks/visionsimulator/${FWNAME}.framework"
 
 rm -rf "${BASE_PWD}/Frameworks/macosx"
 mkdir -p "${BASE_PWD}/Frameworks/macosx"
@@ -95,6 +129,8 @@ rm -rf "${BASE_PWD}/Frameworks/${FWNAME}.xcframework"
 xcrun xcodebuild -create-xcframework \
 	-framework "${BASE_PWD}/Frameworks/iphoneos/${FWNAME}.framework" \
 	-framework "${BASE_PWD}/Frameworks/iphonesimulator/${FWNAME}.framework" \
+     -framework "${BASE_PWD}/Frameworks/visionos/${FWNAME}.framework" \
+    -framework "${BASE_PWD}/Frameworks/visionsimulator/${FWNAME}.framework" \
 	-framework "${BASE_PWD}/Frameworks/macosx/${FWNAME}.framework" \
 	-framework "${BASE_PWD}/Frameworks/macosx_catalyst/${FWNAME}.framework" \
 	-output "${BASE_PWD}/Frameworks/${FWNAME}.xcframework"
