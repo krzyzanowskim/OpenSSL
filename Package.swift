@@ -1,4 +1,4 @@
-// swift-tools-version:5.10
+// swift-tools-version:5.5
 
 import PackageDescription
 
@@ -7,7 +7,7 @@ let package = Package(
     platforms: [
         .iOS(.v12),
         .macOS(.v10_15),
-        .visionOS(.v1)
+        .custom("xros", versionString: “1.0”)
     ],
     products: [
         .library(

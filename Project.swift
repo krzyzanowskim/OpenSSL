@@ -198,7 +198,7 @@ let project = Project(
                     "-Xlinker -all_load"
                 ])
                 .merging([
-                    "SUPPORTED_PLATFORMS": "visionos",
+                    "SUPPORTED_PLATFORMS": "xros",
 
                     "BUILD_LIBRARY_FOR_DISTRIBUTION": "YES",
                     "APPLICATION_EXTENSION_API_ONLY": "YES",
@@ -240,7 +240,7 @@ let project = Project(
                     "-Xlinker -all_load"
                 ])
                 .merging([
-                    "SUPPORTED_PLATFORMS": "visionsimulator",
+                    "SUPPORTED_PLATFORMS": "xrsimulator",
 
                     "BUILD_LIBRARY_FOR_DISTRIBUTION": "YES",
                     "APPLICATION_EXTENSION_API_ONLY": "YES",
