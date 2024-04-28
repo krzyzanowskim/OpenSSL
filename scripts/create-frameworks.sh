@@ -94,7 +94,7 @@ xcrun xcodebuild build \
 
 rm -rf "${OUTPUT_DIR}/visionsimulator"
 mkdir -p "${OUTPUT_DIR}/visionsimulator"
-ditto "${DERIVED_DATA_PATH}/Build/Products/Release-visionsimulator/${FWNAME}.framework" "${OUTPUT_DIR}/visionsimulator/${FWNAME}.framework"
+ditto "${DERIVED_DATA_PATH}/Build/Products/Release-xrsimulator/${FWNAME}.framework" "${OUTPUT_DIR}/visionsimulator/${FWNAME}.framework"
 rm -rf "${DERIVED_DATA_PATH}"
 
 #
