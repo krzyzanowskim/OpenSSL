@@ -81,7 +81,7 @@ xcrun xcodebuild build \
 
 rm -rf "${OUTPUT_DIR}/visionos"
 mkdir -p "${OUTPUT_DIR}/visionos"
-ditto "${DERIVED_DATA_PATH}/Build/Products/Release-visionos/${FWNAME}.framework" "${OUTPUT_DIR}/visionos/${FWNAME}.framework"
+ditto "${DERIVED_DATA_PATH}/Build/Products/Release-xros/${FWNAME}.framework" "${OUTPUT_DIR}/visionos/${FWNAME}.framework"
 rm -rf "${DERIVED_DATA_PATH}"
 
 # visionOS Simulator
