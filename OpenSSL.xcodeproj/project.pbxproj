@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -1571,7 +1571,7 @@
 		CC9528D1F6EE1AF0189E7CD6 /* dherr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dherr.h; sourceTree = "<group>"; };
 		CC9AC969DFF12B644D99DF65 /* cmperr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cmperr.h; sourceTree = "<group>"; };
 		CD14ABDF7A3E1941042F3943 /* pem2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pem2.h; sourceTree = "<group>"; };
-		CD20DE50707AD73FB57BFCD5 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		CD20DE50707AD73FB57BFCD5 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		CD2EEF8595EFF83472FB4B4D /* des.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = des.h; sourceTree = "<group>"; };
 		CDB30360A15CBF0F2B68C766 /* ct.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ct.h; sourceTree = "<group>"; };
 		CDD1CD3F51AC94FEE98715C4 /* kdferr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = kdferr.h; sourceTree = "<group>"; };
@@ -3904,6 +3904,8 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = 834B0D8F905FE8AA8A9ED555 /* Build configuration list for PBXProject "OpenSSL" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -4054,11 +4056,8 @@
 					"$(inherited)",
 					"$(SRCROOT)/visionsimulator/lib",
 				);
-				MARKETING_VERSION = 3.1.5001;
-				OTHER_LDFLAGS = (
-					"-Xlinker",
-					"-all_load",
-				);
+				MARKETING_VERSION = 3.1.5002;
+				OTHER_LDFLAGS = "-Xlinker -all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.krzyzanowskim.OpenSSL;
 				PRODUCT_NAME = OpenSSL;
 				SDKROOT = xros;
@@ -4109,11 +4108,8 @@
 					"$(inherited)",
 					"$(SRCROOT)/iphoneos/lib",
 				);
-				MARKETING_VERSION = 3.1.5001;
-				OTHER_LDFLAGS = (
-					"-Xlinker",
-					"-all_load",
-				);
+				MARKETING_VERSION = 3.1.5002;
+				OTHER_LDFLAGS = "-Xlinker -all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.krzyzanowskim.OpenSSL;
 				PRODUCT_NAME = OpenSSL;
 				SDKROOT = iphoneos;
@@ -4168,16 +4164,16 @@
 					"$(SRCROOT)/macosx/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 3.1.5001;
-				OTHER_LDFLAGS = (
-					"-Xlinker",
-					"-all_load",
-				);
+				MARKETING_VERSION = 3.1.5002;
+				OTHER_LDFLAGS = "-Xlinker -all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.krzyzanowskim.OpenSSL;
 				PRODUCT_NAME = OpenSSL;
 				SDKROOT = macosx;
 				SKIP_INSTALL = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -4274,11 +4270,8 @@
 					"$(inherited)",
 					"$(SRCROOT)/visionos/lib",
 				);
-				MARKETING_VERSION = 3.1.5001;
-				OTHER_LDFLAGS = (
-					"-Xlinker",
-					"-all_load",
-				);
+				MARKETING_VERSION = 3.1.5002;
+				OTHER_LDFLAGS = "-Xlinker -all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.krzyzanowskim.OpenSSL;
 				PRODUCT_NAME = OpenSSL;
 				SDKROOT = xros;
@@ -4376,17 +4369,17 @@
 					"$(inherited)",
 					"$(SRCROOT)/visionsimulator/lib",
 				);
-				MARKETING_VERSION = 3.1.5001;
-				OTHER_LDFLAGS = (
-					"-Xlinker",
-					"-all_load",
-				);
+				MARKETING_VERSION = 3.1.5002;
+				OTHER_LDFLAGS = "-Xlinker -all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.krzyzanowskim.OpenSSL;
 				PRODUCT_NAME = OpenSSL;
 				SDKROOT = xros;
 				SKIP_INSTALL = NO;
 				SUPPORTED_PLATFORMS = xrsimulator;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -4433,11 +4426,8 @@
 					"$(inherited)",
 					"$(SRCROOT)/macosx_catalyst/lib",
 				);
-				MARKETING_VERSION = 3.1.5001;
-				OTHER_LDFLAGS = (
-					"-Xlinker",
-					"-all_load",
-				);
+				MARKETING_VERSION = 3.1.5002;
+				OTHER_LDFLAGS = "-Xlinker -all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.krzyzanowskim.OpenSSL;
 				PRODUCT_NAME = OpenSSL;
 				SDKROOT = iphoneos;
@@ -4445,7 +4435,10 @@
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -4491,11 +4484,8 @@
 					"$(inherited)",
 					"$(SRCROOT)/macosx_catalyst/lib",
 				);
-				MARKETING_VERSION = 3.1.5001;
-				OTHER_LDFLAGS = (
-					"-Xlinker",
-					"-all_load",
-				);
+				MARKETING_VERSION = 3.1.5002;
+				OTHER_LDFLAGS = "-Xlinker -all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.krzyzanowskim.OpenSSL;
 				PRODUCT_NAME = OpenSSL;
 				SDKROOT = iphoneos;
@@ -4547,11 +4537,8 @@
 					"$(inherited)",
 					"$(SRCROOT)/iphonesimulator/lib",
 				);
-				MARKETING_VERSION = 3.1.5001;
-				OTHER_LDFLAGS = (
-					"-Xlinker",
-					"-all_load",
-				);
+				MARKETING_VERSION = 3.1.5002;
+				OTHER_LDFLAGS = "-Xlinker -all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.krzyzanowskim.OpenSSL;
 				PRODUCT_NAME = OpenSSL;
 				SDKROOT = iphoneos;
@@ -4598,17 +4585,17 @@
 					"$(inherited)",
 					"$(SRCROOT)/visionos/lib",
 				);
-				MARKETING_VERSION = 3.1.5001;
-				OTHER_LDFLAGS = (
-					"-Xlinker",
-					"-all_load",
-				);
+				MARKETING_VERSION = 3.1.5002;
+				OTHER_LDFLAGS = "-Xlinker -all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.krzyzanowskim.OpenSSL;
 				PRODUCT_NAME = OpenSSL;
 				SDKROOT = xros;
 				SKIP_INSTALL = NO;
 				SUPPORTED_PLATFORMS = xros;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -4656,11 +4643,8 @@
 					"$(SRCROOT)/macosx/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 3.1.5001;
-				OTHER_LDFLAGS = (
-					"-Xlinker",
-					"-all_load",
-				);
+				MARKETING_VERSION = 3.1.5002;
+				OTHER_LDFLAGS = "-Xlinker -all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.krzyzanowskim.OpenSSL;
 				PRODUCT_NAME = OpenSSL;
 				SDKROOT = macosx;
@@ -4708,11 +4692,8 @@
 					"$(inherited)",
 					"$(SRCROOT)/iphoneos/lib",
 				);
-				MARKETING_VERSION = 3.1.5001;
-				OTHER_LDFLAGS = (
-					"-Xlinker",
-					"-all_load",
-				);
+				MARKETING_VERSION = 3.1.5002;
+				OTHER_LDFLAGS = "-Xlinker -all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.krzyzanowskim.OpenSSL;
 				PRODUCT_NAME = OpenSSL;
 				SDKROOT = iphoneos;
@@ -4721,7 +4702,10 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -4766,11 +4750,8 @@
 					"$(inherited)",
 					"$(SRCROOT)/iphonesimulator/lib",
 				);
-				MARKETING_VERSION = 3.1.5001;
-				OTHER_LDFLAGS = (
-					"-Xlinker",
-					"-all_load",
-				);
+				MARKETING_VERSION = 3.1.5002;
+				OTHER_LDFLAGS = "-Xlinker -all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.krzyzanowskim.OpenSSL;
 				PRODUCT_NAME = OpenSSL;
 				SDKROOT = iphoneos;
@@ -4779,7 +4760,10 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
