@@ -18,12 +18,13 @@ The financial sustainability of the project is possible thanks to the ongoing co
 
 - iOS with architectures: arm64 + simulator (x86_64, arm64)
 - macOS with architectures: x86_64, arm64 (including Catalyst target)
+- visionOS with archtectures: arm64
 
 #### Output Formats
 
 - Static library [libcrypto.a, libssl.a](iphoneos/lib/)
-- [OpenSSL.framework](Frameworks/)
-- [OpenSSL.xcframework](Frameworks/OpenSSL.xcframework)
+- Frameworks [OpenSSL.framework](Frameworks/)
+- XCFramework [OpenSSL.xcframework](https://github.com/krzyzanowskim/OpenSSL/releases/latest/download/OpenSSL.xcframework.zip)
 
 ### Why?
 
@@ -52,17 +53,28 @@ Binary `OpenSSL.xcframework` (Used by the Swift Package Manager package integrat
 
 ### Swift Package Manager
 
-```
+```swift
 dependencies: [
-    .package(url: "https://github.com/krzyzanowskim/OpenSSL.git", .upToNextMinor(from: "3.1.5003"))
+    .package(url: "https://github.com/krzyzanowskim/OpenSSL.git", from: "3.1.5003")
 ]
+```
+
+and then as a dependency for the Package target utilizing OpenSSL:
+
+```swift
+.target(
+    name: "MyApp",
+    dependencies: [
+        .product(name: "OpenSSL", package: "OpenSSL")
+    ]
+),
 ```
 
 ### CocoaPods
 
-````
+```
 pod 'OpenSSL-Universal'
-````
+```
 
 ### Carthage
 
