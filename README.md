@@ -1,8 +1,8 @@
 # OpenSSL-Universal
 
-OpenSSL [CocoaPods](https://cocoapods.org/), [Carthage](https://github.com/Carthage/Carthage) and [Swift Package Manager](https://swift.org/package-manager/) package for iOS and macOS. A complete solution to OpenSSL on iOS and macOS. The package comes with precompiled libraries and includes a script to build newer versions if necessary.
+OpenSSL [CocoaPods](https://cocoapods.org/), [Carthage](https://github.com/Carthage/Carthage) and [Swift Package Manager](https://swift.org/package-manager/) package for iOS, macOS, tvOS, visionOS. A complete solution to OpenSSL. The package comes with precompiled libraries and includes a script to build newer versions if necessary.
 
-The current version contains binaries built with the latest iOS SDK (target 11.0), and the latest macOS SDK (target 13) for all supported architectures (including macOS Catalyst).
+The current version contains binaries built with the latest iOS SDK, and the latest macOS SDK for all supported architectures (including macOS Catalyst).
 
 ### Support & Sponsors
 
@@ -18,6 +18,7 @@ The financial sustainability of the project is possible thanks to the ongoing co
 
 - iOS with architectures: arm64 + simulator (x86_64, arm64)
 - macOS with architectures: x86_64, arm64 (including Catalyst target)
+- tvOS with architectures: arm64
 - visionOS with archtectures: arm64
 
 #### Output Formats
@@ -55,7 +56,7 @@ Binary `OpenSSL.xcframework` (Used by the Swift Package Manager package integrat
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/krzyzanowskim/OpenSSL.git", from: "3.1.5003")
+    .package(url: "https://github.com/krzyzanowskim/OpenSSL-Package.git", from: "3.1.5003")
 ]
 ```
 
