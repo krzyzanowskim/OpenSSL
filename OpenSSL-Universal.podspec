@@ -28,5 +28,6 @@ Pod::Spec.new do |s|
   s.cocoapods_version = '>= 1.9'
   s.ios.deployment_target = '12.0'
   s.osx.deployment_target = '10.15'
+  s.visionos.deployment_target = '1.0'
   s.vendored_frameworks = 'Frameworks/OpenSSL.xcframework'
 end
