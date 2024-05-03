@@ -257,7 +257,7 @@ let project = Project(
         ),
         .target(
             name: "OpenSSL (tvOS)",
-            destinations: [.tvOS],
+            destinations: [.appleTv],
             product: .framework,
             productName: "OpenSSL",
             bundleId: "com.github.krzyzanowskim.OpenSSL",
@@ -299,7 +299,7 @@ let project = Project(
         ),
         .target(
             name: "OpenSSL (tvOS Simulator)",
-            destinations: [.tvOS],
+            destinations: [.appleTv],
             product: .framework,
             productName: "OpenSSL",
             bundleId: "com.github.krzyzanowskim.OpenSSL",
