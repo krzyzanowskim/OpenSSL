@@ -56,7 +56,7 @@ Binary `OpenSSL.xcframework` (Used by the Swift Package Manager package integrat
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/krzyzanowskim/OpenSSL-Package.git", from: "3.1.5003")
+    .package(url: "https://github.com/krzyzanowskim/OpenSSL-Package.git", from: "3.1.5004")
 ]
 ```
 
