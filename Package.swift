@@ -7,6 +7,7 @@ let package = Package(
     platforms: [
         .iOS(.v12),
         .macOS(.v10_15),
+        .tvOS(.v12),
         .custom("xros", versionString: "1.0")
     ],
     products: [

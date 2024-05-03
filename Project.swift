@@ -254,6 +254,90 @@ let project = Project(
                     "CODE_SIGN_STYLE": "Manual"
                 ])
             )
+        ),
+        .target(
+            name: "OpenSSL (tvOS)",
+            destinations: [.tvOS],
+            product: .framework,
+            productName: "OpenSSL",
+            bundleId: "com.github.krzyzanowskim.OpenSSL",
+            deploymentTargets: .tvOS("12.0"),
+            infoPlist: .file(path: .relativeToRoot("support/appletvos/Info.plist")),
+            sources: [],
+            resources: [
+                "support/PrivacyInfo.xcprivacy"
+            ],
+            headers: .headers(
+                public: .list([.glob("appletvos/include/OpenSSL/*.h", excluding: "**/asn1_mac.h"), "support/appletvos/OpenSSL.h"])
+            ),
+            dependencies: [
+                .library(path: .relativeToRoot("appletvos/lib/libcrypto.a"), publicHeaders: .relativeToRoot("appletvos/include/OpenSSL"), swiftModuleMap: nil, condition: nil),
+                .library(path: .relativeToRoot("appletvos/lib/libssl.a"), publicHeaders: .relativeToRoot("appletvos/include/OpenSSL"), swiftModuleMap: nil, condition: nil)
+            ],
+            settings: .settings(base: SettingsDictionary()
+                .marketingVersion(marketingVersion)
+                .currentProjectVersion("1")
+                .bitcodeEnabled(false)
+                .otherLinkerFlags([
+                    "-Xlinker -all_load"
+                ])
+                .merging([
+                    "SUPPORTED_PLATFORMS": "appletvos",
+
+                    "BUILD_LIBRARY_FOR_DISTRIBUTION": "YES",
+                    "APPLICATION_EXTENSION_API_ONLY": "YES",
+                    "DEFINES_MODULE": "YES",
+
+                    "SKIP_INSTALL": "NO",
+                    "COPY_PHASE_STRIP": "NO",
+
+                    "DEVELOPMENT_TEAM": developmentTeam,
+                    "CODE_SIGN_IDENTITY": "Apple Distribution",
+                    "CODE_SIGN_STYLE": "Manual"
+                ])
+            )
+        ),
+        .target(
+            name: "OpenSSL (tvOS Simulator)",
+            destinations: [.tvOS],
+            product: .framework,
+            productName: "OpenSSL",
+            bundleId: "com.github.krzyzanowskim.OpenSSL",
+            deploymentTargets: .tvOS("12.0"),
+            infoPlist: .file(path: .relativeToRoot("support/appletvsimulator/Info.plist")),
+            sources: [],
+            resources: [
+                "support/PrivacyInfo.xcprivacy"
+            ],
+            headers: .headers(
+                public: .list([.glob("appletvsimulator/include/OpenSSL/*.h", excluding: "**/asn1_mac.h"), "support/appletvsimulator/OpenSSL.h"])
+            ),
+            dependencies: [
+                .library(path: .relativeToRoot("appletvsimulator/lib/libcrypto.a"), publicHeaders: .relativeToRoot("appletvsimulator/include/OpenSSL"), swiftModuleMap: nil, condition: nil),
+                .library(path: .relativeToRoot("appletvsimulator/lib/libssl.a"), publicHeaders: .relativeToRoot("appletvsimulator/include/OpenSSL"), swiftModuleMap: nil, condition: nil)
+            ],
+            settings: .settings(base: SettingsDictionary()
+                .marketingVersion(marketingVersion)
+                .currentProjectVersion("1")
+                .bitcodeEnabled(false)
+                .otherLinkerFlags([
+                    "-Xlinker -all_load"
+                ])
+                .merging([
+                    "SUPPORTED_PLATFORMS": "appletvsimulator",
+
+                    "BUILD_LIBRARY_FOR_DISTRIBUTION": "YES",
+                    "APPLICATION_EXTENSION_API_ONLY": "YES",
+                    "DEFINES_MODULE": "YES",
+
+                    "SKIP_INSTALL": "NO",
+                    "COPY_PHASE_STRIP": "NO",
+
+                    "DEVELOPMENT_TEAM": developmentTeam,
+                    "CODE_SIGN_IDENTITY": "Apple Distribution",
+                    "CODE_SIGN_STYLE": "Manual"
+                ])
+            )
         )
     ]
 )
