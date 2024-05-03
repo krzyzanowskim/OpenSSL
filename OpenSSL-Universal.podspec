@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
   s.name         = "OpenSSL-Universal"
   s.version      = "3.1.5003" # 3.1.5
   s.summary      = "OpenSSL for iOS and OS X"
-  s.description  = "OpenSSL is an SSL/TLS and Crypto toolkit. Deprecated in Mac OS and gone in iOS, this spec gives your project non-deprecated OpenSSL support. Supports OSX and iOS including Simulator (armv7,armv7s,arm64,x86_64)."
+  s.description  = "OpenSSL is an SSL/TLS and Crypto toolkit. Deprecated in macOS and gone in iOS, this spec gives your project non-deprecated OpenSSL support. Supports macOS, iOS, tvOS, visionOS including Simulator (armv7,armv7s,arm64,x86_64)."
   s.homepage     = "https://github.com/krzyzanowskim/OpenSSL"
   s.license	     = { :type => 'Apache License, Version 2.0', :file => 'LICENSE.txt' }
   s.source       = { :http => "https://github.com/krzyzanowskim/OpenSSL/archive/#{s.version}.zip", :type => "zip", :flatten => true }
@@ -28,6 +28,7 @@ Pod::Spec.new do |s|
   s.cocoapods_version = '>= 1.9'
   s.ios.deployment_target = '12.0'
   s.osx.deployment_target = '10.15'
+  s.tvos.deploytmnet_target = '12.0'
   s.visionos.deployment_target = '1.0'
   s.vendored_frameworks = 'Frameworks/OpenSSL.xcframework'
 end
