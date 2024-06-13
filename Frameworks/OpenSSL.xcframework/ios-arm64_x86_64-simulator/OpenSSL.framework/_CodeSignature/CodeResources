@@ -250,7 +250,7 @@
 		</data>
 		<key>Headers/opensslv.h</key>
 		<data>
-		s97vJrymjyoCPk8+0INGAxZyyVM=
+		RV0inZj+UfBzOwFBUF97hvsSAjg=
 		</data>
 		<key>Headers/ossl_typ.h</key>
 		<data>
@@ -426,11 +426,15 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		+IqKAHF4jS/WWJdSmgaY0il0RwI=
+		UXhdhTQToK50eK4rmRIBXuJEnY8=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
-		QGRjLncNDta0wfAG7k3xikcKjTc=
+		wSMjVnQJnXCQkrl0p+m5ijRHe3c=
+		</data>
+		<key>PrivacyInfo.xcprivacy</key>
+		<data>
+		AL1dh5ctObXBjoBiabSJ86M3HQs=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -1110,11 +1114,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			s97vJrymjyoCPk8+0INGAxZyyVM=
+			RV0inZj+UfBzOwFBUF97hvsSAjg=
 			</data>
 			<key>hash2</key>
 			<data>
-			0PfuD6wHUjzIGtxiFptMOyOCL5TkY7QpYgteCfL2Akg=
+			DKEsKrqL++JMTAaGHp1XuTnF5y0cCPN5ikQtaY3rdZk=
 			</data>
 		</dict>
 		<key>Headers/ossl_typ.h</key>
@@ -1594,11 +1598,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			QGRjLncNDta0wfAG7k3xikcKjTc=
+			wSMjVnQJnXCQkrl0p+m5ijRHe3c=
 			</data>
 			<key>hash2</key>
 			<data>
-			uYLfMx9MVaDkDRzLb4iDSgMnBd0/Lofbg3kPaGqRxP0=
+			Iyk3YE2iKlYEZnIdRRtNf4piXHBV2iLaIdaHtxJFxL8=
+			</data>
+		</dict>
+		<key>PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			AL1dh5ctObXBjoBiabSJ86M3HQs=
+			</data>
+			<key>hash2</key>
+			<data>
+			WpuPwM3bECAbtHzCgEs/AExyUUdmItJb/E61TtRuEIQ=
 			</data>
 		</dict>
 	</dict>

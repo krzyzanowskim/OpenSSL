@@ -3,10 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		752910AB2C1AF039007D1ED7 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 752910AA2C1AF039007D1ED7 /* PrivacyInfo.xcprivacy */; };
+		752910AC2C1AF039007D1ED7 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 752910AA2C1AF039007D1ED7 /* PrivacyInfo.xcprivacy */; };
+		752910AD2C1AF039007D1ED7 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 752910AA2C1AF039007D1ED7 /* PrivacyInfo.xcprivacy */; };
+		752910AE2C1AF039007D1ED7 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 752910AA2C1AF039007D1ED7 /* PrivacyInfo.xcprivacy */; };
 		752D6DA4258471CC00E999E1 /* err.h in Headers */ = {isa = PBXBuildFile; fileRef = 75B05A62256E7B9100FB91E0 /* err.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		752D6DA5258471CC00E999E1 /* pkcs7err.h in Headers */ = {isa = PBXBuildFile; fileRef = 75B05A3C256E7B9000FB91E0 /* pkcs7err.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		752D6DA6258471CC00E999E1 /* dh.h in Headers */ = {isa = PBXBuildFile; fileRef = 75B05A21256E7B8F00FB91E0 /* dh.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -442,6 +446,7 @@
 		751BE47925845DB800E66ABE /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = macosx_catalyst/lib/libcrypto.a; sourceTree = "<group>"; };
 		751BE47B25845DC300E66ABE /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = macosx_catalyst/lib/libssl.a; sourceTree = "<group>"; };
 		751BE48025845E1F00E66ABE /* opensslconf.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = opensslconf.h; path = macos_catalyst/include/openssl/opensslconf.h; sourceTree = "<group>"; };
+		752910AA2C1AF039007D1ED7 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = support/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		752D6E16258471CC00E999E1 /* OpenSSL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OpenSSL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		752D6E422584738800E999E1 /* opensslconf.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = opensslconf.h; path = macosx_catalyst/include/openssl/opensslconf.h; sourceTree = "<group>"; };
 		753EF2CB2567514F008FDE33 /* OpenSSL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OpenSSL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1204,6 +1209,7 @@
 		9F4A2626223BCE31005CB63A = {
 			isa = PBXGroup;
 			children = (
+				752910AA2C1AF039007D1ED7 /* PrivacyInfo.xcprivacy */,
 				752D6E4C258473AF00E999E1 /* catalyst */,
 				75B05ADD256E7BB900FB91E0 /* macosx */,
 				75B059FE256E7B5F00FB91E0 /* iphoneos */,
@@ -1793,6 +1799,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				752910AE2C1AF039007D1ED7 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1800,6 +1807,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				752910AC2C1AF039007D1ED7 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1807,6 +1815,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				752910AB2C1AF039007D1ED7 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1814,6 +1823,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				752910AD2C1AF039007D1ED7 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
