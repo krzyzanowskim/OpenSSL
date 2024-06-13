@@ -26,7 +26,9 @@ xcuserdata/
 /*.gcno
 **/xcshareddata/WorkspaceSettings.xcsettings
 
-Carthage/
+/Carthage/
+Integration-Examples/Carthage/Carthage/
+Integration-Examples/Carthage/Cartfile.resolved
 
 Frameworks/OpenSSL.xcframework.zip
 *.tar.gz
