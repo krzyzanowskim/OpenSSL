@@ -1,8 +1,6 @@
 # OpenSSL-Universal
 
-OpenSSL [CocoaPods](https://cocoapods.org/), [Carthage](https://github.com/Carthage/Carthage) and [Swift Package Manager](https://swift.org/package-manager/) package for iOS, macOS, tvOS, visionOS. A complete solution to OpenSSL. The package comes with precompiled libraries and includes a script to build newer versions if necessary.
-
-The current version contains binaries built with the latest iOS SDK, and the latest macOS SDK for all supported architectures (including macOS Catalyst).
+OpenSSL [CocoaPods](https://cocoapods.org/), [Carthage](https://github.com/Carthage/Carthage) and [Swift Package Manager](https://swift.org/package-manager/) package for iOS, macOS, Catalyst, tvOS, visionOS. A complete solution to OpenSSL. The package comes with precompiled libraries and includes a script to build newer versions if necessary.
 
 ### Support & Sponsors
 
@@ -41,16 +39,10 @@ You don't have to use the pre-built binaries I provide. You can build it locally
 ```
 $ git clone https://github.com/krzyzanowskim/OpenSSL.git
 $ cd OpenSSL
-$ make
+$ make SIGNING_IDENTITY="Apple Distribution"
 ```
 
 The result of a build process is put inside [Frameworks](Frameworks/) directory.
-
-### Hardened Runtime (macOS) and Xcode
-
-Binary `OpenSSL.xcframework` (Used by the Swift Package Manager package integration) won't load properly in your app if the app uses **Sign to Run Locally**  Signing Certificate with Hardened Runtime enabled. It is possible to setup Xcode like this. To solve the problem you have two options:
-- Use proper Signing Certificate, eg. *Development* <- this is the proper action
-- Use `Disable Library Validation` aka `com.apple.security.cs.disable-library-validation` entitlement
 
 ### Swift Package Manager
 
@@ -102,4 +94,3 @@ These libraries work for both iOS and macOS. It is your prerogative to check. As
 #### What is XCFramework?
 
 OpenSSL.xcframework is distributed as a multiplatform XCFramework bundle, for more information checkout the documentation [Distributing Binary Frameworks as Swift Packages](https://developer.apple.com/documentation/xcode/distributing-binary-frameworks-as-swift-packages)
-
