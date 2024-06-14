@@ -338,6 +338,90 @@ let project = Project(
                     "CODE_SIGN_STYLE": "Manual"
                 ])
             )
+        ),
+        .target(
+            name: "OpenSSL (watchOS)",
+            destinations: [.watch],
+            product: .framework,
+            productName: "OpenSSL",
+            bundleId: "com.github.krzyzanowskim.OpenSSL",
+            deploymentTargets: .watchOS("8.0"),
+            infoPlist: .file(path: .relativeToRoot("support/watchos/Info.plist")),
+            sources: [],
+            resources: [
+                "support/PrivacyInfo.xcprivacy"
+            ],
+            headers: .headers(
+                public: .list([.glob("watchos/include/OpenSSL/*.h", excluding: "**/asn1_mac.h"), "support/watchos/OpenSSL.h"])
+            ),
+            dependencies: [
+                .library(path: .relativeToRoot("watchos/lib/libcrypto.a"), publicHeaders: .relativeToRoot("watchos/include/OpenSSL"), swiftModuleMap: nil, condition: nil),
+                .library(path: .relativeToRoot("watchos/lib/libssl.a"), publicHeaders: .relativeToRoot("watchos/include/OpenSSL"), swiftModuleMap: nil, condition: nil)
+            ],
+            settings: .settings(base: SettingsDictionary()
+                .marketingVersion(marketingVersion)
+                .currentProjectVersion("1")
+                .bitcodeEnabled(false)
+                .otherLinkerFlags([
+                    "-Xlinker -all_load"
+                ])
+                .merging([
+                    "SUPPORTED_PLATFORMS": "watchos",
+
+                    "BUILD_LIBRARY_FOR_DISTRIBUTION": "YES",
+                    "APPLICATION_EXTENSION_API_ONLY": "YES",
+                    "DEFINES_MODULE": "YES",
+
+                    "SKIP_INSTALL": "NO",
+                    "COPY_PHASE_STRIP": "NO",
+
+                    "DEVELOPMENT_TEAM": developmentTeam,
+                    "CODE_SIGN_IDENTITY": "Apple Distribution",
+                    "CODE_SIGN_STYLE": "Manual"
+                ])
+            )
+        ),
+        .target(
+            name: "OpenSSL (tvOS Simulator)",
+            destinations: [.watch],
+            product: .framework,
+            productName: "OpenSSL",
+            bundleId: "com.github.krzyzanowskim.OpenSSL",
+            deploymentTargets: .tvOS("12.0"),
+            infoPlist: .file(path: .relativeToRoot("support/watchsimulator/Info.plist")),
+            sources: [],
+            resources: [
+                "support/PrivacyInfo.xcprivacy"
+            ],
+            headers: .headers(
+                public: .list([.glob("watchsimulator/include/OpenSSL/*.h", excluding: "**/asn1_mac.h"), "support/watchsimulator/OpenSSL.h"])
+            ),
+            dependencies: [
+                .library(path: .relativeToRoot("watchsimulator/lib/libcrypto.a"), publicHeaders: .relativeToRoot("watchsimulator/include/OpenSSL"), swiftModuleMap: nil, condition: nil),
+                .library(path: .relativeToRoot("watchsimulator/lib/libssl.a"), publicHeaders: .relativeToRoot("watchsimulator/include/OpenSSL"), swiftModuleMap: nil, condition: nil)
+            ],
+            settings: .settings(base: SettingsDictionary()
+                .marketingVersion(marketingVersion)
+                .currentProjectVersion("1")
+                .bitcodeEnabled(false)
+                .otherLinkerFlags([
+                    "-Xlinker -all_load"
+                ])
+                .merging([
+                    "SUPPORTED_PLATFORMS": "watchsimulator",
+
+                    "BUILD_LIBRARY_FOR_DISTRIBUTION": "YES",
+                    "APPLICATION_EXTENSION_API_ONLY": "YES",
+                    "DEFINES_MODULE": "YES",
+
+                    "SKIP_INSTALL": "NO",
+                    "COPY_PHASE_STRIP": "NO",
+
+                    "DEVELOPMENT_TEAM": developmentTeam,
+                    "CODE_SIGN_IDENTITY": "Apple Distribution",
+                    "CODE_SIGN_STYLE": "Manual"
+                ])
+            )
         )
     ]
 )
