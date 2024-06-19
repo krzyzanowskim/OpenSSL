@@ -1,3 +1,6 @@
+// Because build problem with Xcode 16.0 Beta
+#include <_types/_uint64_t.h>
+
 // Include before others:
 #include <OpenSSL/ssl.h>
 
