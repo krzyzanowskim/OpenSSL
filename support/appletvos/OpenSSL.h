@@ -1,3 +1,6 @@
+// Because build problem with Xcode 16.0 Beta
+#include <_types/_uint64_t.h>
+
 // ls -1 ../../appletvsimulator/include/openssl | sed 's/\(.*\)/\#include \<OpenSSL\/\1\>/'
 // Include before others:
 #include <OpenSSL/ssl.h>
