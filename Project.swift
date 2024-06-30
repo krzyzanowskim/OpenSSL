@@ -341,7 +341,7 @@ let project = Project(
         ),
         .target(
             name: "OpenSSL (watchOS)",
-            destinations: [.watch],
+            destinations: [.appleWatch],
             product: .framework,
             productName: "OpenSSL",
             bundleId: "com.github.krzyzanowskim.OpenSSL",
@@ -382,12 +382,12 @@ let project = Project(
             )
         ),
         .target(
-            name: "OpenSSL (tvOS Simulator)",
-            destinations: [.watch],
+            name: "OpenSSL (watchOS Simulator)",
+            destinations: [.appleWatch],
             product: .framework,
             productName: "OpenSSL",
             bundleId: "com.github.krzyzanowskim.OpenSSL",
-            deploymentTargets: .tvOS("12.0"),
+            deploymentTargets: .watchOS("8.0"),
             infoPlist: .file(path: .relativeToRoot("support/watchsimulator/Info.plist")),
             sources: [],
             resources: [
