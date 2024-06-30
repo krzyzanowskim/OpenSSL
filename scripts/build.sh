@@ -353,9 +353,6 @@ build_watchos() {
    build "x86_64" "watchSimulator" ${TMP_BUILD_DIR} "watchsimulator"
    build "arm64" "watchSimulator" ${TMP_BUILD_DIR} "watchsimulator"
 
-   # The World is not ready for arm64e!
-   # build "arm64e" "AppleTVSimulator" ${TMP_BUILD_DIR} "watchsimulator"
-
    rm -rf "${SCRIPT_DIR}"/../{watchos/include,watchos/lib}
    mkdir -p "${SCRIPT_DIR}"/../{watchos/include,watchos/lib}
 
