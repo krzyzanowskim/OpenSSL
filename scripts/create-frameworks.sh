@@ -123,6 +123,32 @@ mkdir -p "${OUTPUT_DIR}/appletvsimulator"
 ditto "${DERIVED_DATA_PATH}/Build/Products/Release-appletvsimulator/${FWNAME}.framework" "${OUTPUT_DIR}/appletvsimulator/${FWNAME}.framework"
 rm -rf "${DERIVED_DATA_PATH}"
 
+# watchOS
+DERIVED_DATA_PATH=$( mktemp -d )
+xcrun xcodebuild build \
+	$COMMON_SETUP \
+    -scheme "${FWNAME} (watchOS)" \
+	-derivedDataPath "${DERIVED_DATA_PATH}" \
+	-destination 'generic/platform=watchOS'
+
+rm -rf "${OUTPUT_DIR}/watchos"
+mkdir -p "${OUTPUT_DIR}/watchos"
+ditto "${DERIVED_DATA_PATH}/Build/Products/Release-watchos/${FWNAME}.framework" "${OUTPUT_DIR}/watchos/${FWNAME}.framework"
+rm -rf "${DERIVED_DATA_PATH}"
+
+# watchOS Simulator
+DERIVED_DATA_PATH=$( mktemp -d )
+xcrun xcodebuild build \
+	$COMMON_SETUP \
+    -scheme "${FWNAME} (watchOS Simulator)" \
+	-derivedDataPath "${DERIVED_DATA_PATH}" \
+	-destination 'generic/platform=watchOS Simulator'
+
+rm -rf "${OUTPUT_DIR}/watchsimulator"
+mkdir -p "${OUTPUT_DIR}/watchsimulator"
+ditto "${DERIVED_DATA_PATH}/Build/Products/Release-watchsimulator/${FWNAME}.framework" "${OUTPUT_DIR}/watchsimulator/${FWNAME}.framework"
+rm -rf "${DERIVED_DATA_PATH}"
+
 #
 
 rm -rf "${BASE_PWD}/Frameworks/iphoneos"
@@ -149,6 +175,14 @@ rm -rf "${BASE_PWD}/Frameworks/appletvsimulator"
 mkdir -p "${BASE_PWD}/Frameworks/appletvsimulator"
 ditto "${OUTPUT_DIR}/appletvsimulator/${FWNAME}.framework" "${BASE_PWD}/Frameworks/appletvsimulator/${FWNAME}.framework"
 
+rm -rf "${BASE_PWD}/Frameworks/watchos"
+mkdir -p "${BASE_PWD}/Frameworks/watchos"
+ditto "${OUTPUT_DIR}/watchos/${FWNAME}.framework" "${BASE_PWD}/Frameworks/watchos/${FWNAME}.framework"
+
+rm -rf "${BASE_PWD}/Frameworks/watchsimulator"
+mkdir -p "${BASE_PWD}/Frameworks/watchsimulator"
+ditto "${OUTPUT_DIR}/watchsimulator/${FWNAME}.framework" "${BASE_PWD}/Frameworks/watchsimulator/${FWNAME}.framework"
+
 rm -rf "${BASE_PWD}/Frameworks/macosx"
 mkdir -p "${BASE_PWD}/Frameworks/macosx"
 ditto "${OUTPUT_DIR}/macosx/${FWNAME}.framework" "${BASE_PWD}/Frameworks/macosx/${FWNAME}.framework"
@@ -167,6 +201,8 @@ xcrun xcodebuild -create-xcframework \
     -framework "${BASE_PWD}/Frameworks/visionsimulator/${FWNAME}.framework" \
 	-framework "${BASE_PWD}/Frameworks/appletvos/${FWNAME}.framework" \
 	-framework "${BASE_PWD}/Frameworks/appletvsimulator/${FWNAME}.framework" \
+	-framework "${BASE_PWD}/Frameworks/watchos/${FWNAME}.framework" \
+	-framework "${BASE_PWD}/Frameworks/watchsimulator/${FWNAME}.framework" \
 	-framework "${BASE_PWD}/Frameworks/macosx/${FWNAME}.framework" \
 	-framework "${BASE_PWD}/Frameworks/macosx_catalyst/${FWNAME}.framework" \
 	-output "${BASE_PWD}/Frameworks/${FWNAME}.xcframework"
