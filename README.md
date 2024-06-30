@@ -1,6 +1,6 @@
 # OpenSSL-Universal
 
-OpenSSL [CocoaPods](https://cocoapods.org/), [Carthage](https://github.com/Carthage/Carthage) and [Swift Package Manager](https://swift.org/package-manager/) package for iOS, macOS, Catalyst, tvOS, visionOS. A complete solution to OpenSSL. The package comes with precompiled libraries and includes a script to build newer versions if necessary.
+OpenSSL [CocoaPods](https://cocoapods.org/), [Carthage](https://github.com/Carthage/Carthage) and [Swift Package Manager](https://swift.org/package-manager/) package for iOS, macOS, Catalyst, tvOS, visionOS, watchOS. A complete solution to OpenSSL. The package comes with precompiled libraries and includes a script to build newer versions if necessary.
 
 ### Support & Sponsors
 
@@ -18,6 +18,7 @@ The financial sustainability of the project is possible thanks to the ongoing co
 - macOS with architectures: x86_64, arm64 (including Catalyst target)
 - tvOS with architectures: arm64
 - visionOS with archtectures: arm64
+- watchOS with architectures: arm64, arm64_32
 
 #### Output Formats
 
@@ -46,9 +47,11 @@ The result of a build process is put inside [Frameworks](Frameworks/) directory.
 
 ### Swift Package Manager
 
+I advised you to use [OpenSSL-Package](https://github.com/krzyzanowskim/OpenSSL-Package) which is a pure binary distribution that distribute the very same binary but avoid fetching this git repository which is significant in size.
+
 ```swift
 dependencies: [
-    .package(url: "https://github.com/krzyzanowskim/OpenSSL-Package.git", from: "3.1.5004")
+    .package(url: "https://github.com/krzyzanowskim/OpenSSL-Package.git", from: "3.1.5005")
 ]
 ```
 
@@ -58,7 +61,7 @@ and then as a dependency for the Package target utilizing OpenSSL:
 .target(
     name: "MyApp",
     dependencies: [
-        .product(name: "OpenSSL", package: "OpenSSL")
+        .product(name: "OpenSSL", package: "OpenSSL-Package")
     ]
 ),
 ```
@@ -83,7 +86,7 @@ binary "https://raw.githubusercontent.com/krzyzanowskim/OpenSSL/main/OpenSSL.jso
 
 ## FAQ etc.
 #### Where can I use OpenSSL-Universal?
-These libraries work for both iOS and macOS. It is your prerogative to check. Ask yourself, are you trying to write an app for old devices? new devices only? all iOS devices? only macOS?, etc ::
+These libraries work for iOS, macOS, appleTV, visionOS, watchOS. It is your prerogative to check. Ask yourself, are you trying to write an app for old devices? new devices only? all iOS devices? only macOS?, etc ::
 
 #### What is XCFramework?
 
