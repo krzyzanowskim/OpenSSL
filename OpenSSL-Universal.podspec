@@ -1,11 +1,11 @@
 Pod::Spec.new do |s|
   s.name         = "OpenSSL-Universal"
   s.version      = "3.1.5006" # 3.1.5
-  s.summary      = "OpenSSL for iOS, macOS, tvOS, visionOS"
-  s.description  = "OpenSSL is an SSL/TLS and Crypto toolkit. Deprecated in macOS and gone in iOS, this spec gives your project non-deprecated OpenSSL support. Supports macOS, iOS, tvOS, visionOS including Simulator (armv7,armv7s,arm64,x86_64)."
+  s.summary      = "OpenSSL for iOS, macOS, tvOS, visionOS, watchOS"
+  s.description  = "OpenSSL is an SSL/TLS and Crypto toolkit. Deprecated in macOS and gone in iOS, this spec gives your project non-deprecated OpenSSL support. Supports macOS, iOS, tvOS, visionOS, watchOS including Simulator (armv7s, arm64, x86_64)."
   s.homepage     = "https://github.com/krzyzanowskim/OpenSSL"
-  s.license	     = { :type => 'Apache License, Version 2.0', :file => 'LICENSE.txt' }
-  s.source       = { :http => "https://github.com/krzyzanowskim/OpenSSL/archive/00c7a4195a7006bf9426c74f15c4a88a661d353d.zip", :type => "zip", :flatten => true }
+  s.license	     = { :type => 'Apache License, Version 2.0' }
+  s.source       = { :http => "https://github.com/krzyzanowskim/OpenSSL/releases/download/#{s.version}/OpenSSL.xcframework.zip", :type => "zip", :flatten => false }
 
   s.authors       =  {'Mark J. Cox' => 'mark@openssl.org',
                      'Ralf S. Engelschall' => 'rse@openssl.org',
@@ -31,5 +31,5 @@ Pod::Spec.new do |s|
   s.tvos.deployment_target = "12.0"
   s.visionos.deployment_target = "1.0"
   s.watchos.deployment_target = "8.0"
-  s.vendored_frameworks = "Frameworks/OpenSSL.xcframework"
+  s.vendored_frameworks = "OpenSSL.xcframework"
 end
