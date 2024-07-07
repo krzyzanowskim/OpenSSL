@@ -205,6 +205,7 @@ extern "C" {
 # undef THIRTY_TWO_BIT
 #endif
 
+#undef RC4_INT
 #define RC4_INT unsigned char
 
 #ifdef  __cplusplus
@@ -418,6 +419,7 @@ extern "C" {
 # undef THIRTY_TWO_BIT
 #endif
 
+#undef RC4_INT
 #define RC4_INT unsigned int
 
 #ifdef  __cplusplus
@@ -631,6 +633,7 @@ extern "C" {
 # undef THIRTY_TWO_BIT
 #endif
 
+#undef RC4_INT
 #define RC4_INT unsigned char
 
 #ifdef  __cplusplus
