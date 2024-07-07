@@ -197,8 +197,8 @@ build_ios() {
    cp -f "${SCRIPT_DIR}/../shim/shim.h" "${SCRIPT_DIR}/../iphonesimulator/include/${FWNAME}/shim.h"
 
    # fix inttypes.h
-   find "${SCRIPT_DIR}/../iphoneos/include/${FWNAME}" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <sys\/types\.h>/g" {} \;
-   find "${SCRIPT_DIR}/../iphonesimulator/include/${FWNAME}" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <sys\/types\.h>/g" {} \;
+   find "${SCRIPT_DIR}/../iphoneos/include/${FWNAME}" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <stdint\.h>/g" {} \;
+   find "${SCRIPT_DIR}/../iphonesimulator/include/${FWNAME}" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <stdint\.h>/g" {} \;
 
    local OPENSSLCONF_PATH="${SCRIPT_DIR}/../iphonesimulator/include/${FWNAME}/opensslconf.h"
    echo "#if defined(__APPLE__) && defined (__x86_64__)" >> ${OPENSSLCONF_PATH}
@@ -255,8 +255,8 @@ build_visionos() {
    cp -f "${SCRIPT_DIR}/../shim/shim.h" "${SCRIPT_DIR}/../visionsimulator/include/${FWNAME}/shim.h"
 
    # fix inttypes.h
-   find "${SCRIPT_DIR}/../visionos/include/${FWNAME}" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <sys\/types\.h>/g" {} \;
-   find "${SCRIPT_DIR}/../visionsimulator/include/${FWNAME}" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <sys\/types\.h>/g" {} \;
+   find "${SCRIPT_DIR}/../visionos/include/${FWNAME}" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <stdint\.h>/g" {} \;
+   find "${SCRIPT_DIR}/../visionsimulator/include/${FWNAME}" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <stdint\.h>/g" {} \;
 
    local OPENSSLCONF_PATH="${SCRIPT_DIR}/../visionsimulator/include/${FWNAME}/opensslconf.h"
    echo "#if defined(__APPLE__) && defined (__x86_64__)" >> ${OPENSSLCONF_PATH}
@@ -313,8 +313,8 @@ build_appletvos() {
    cp -f "${SCRIPT_DIR}/../shim/shim.h" "${SCRIPT_DIR}/../appletvsimulator/include/${FWNAME}/shim.h"
 
    # fix inttypes.h
-   find "${SCRIPT_DIR}/../appletvos/include/${FWNAME}" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <sys\/types\.h>/g" {} \;
-   find "${SCRIPT_DIR}/../appletvsimulator/include/${FWNAME}" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <sys\/types\.h>/g" {} \;
+   find "${SCRIPT_DIR}/../appletvos/include/${FWNAME}" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <stdint\.h>/g" {} \;
+   find "${SCRIPT_DIR}/../appletvsimulator/include/${FWNAME}" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <stdint\.h>/g" {} \;
 
    local OPENSSLCONF_PATH="${SCRIPT_DIR}/../appletvsimulator/include/${FWNAME}/opensslconf.h"
    echo "#if defined(__APPLE__) && defined (__x86_64__)" >> ${OPENSSLCONF_PATH}
@@ -368,8 +368,8 @@ build_watchos() {
    cp -f "${SCRIPT_DIR}/../shim/shim.h" "${SCRIPT_DIR}/../watchsimulator/include/${FWNAME}/shim.h"
 
    # fix inttypes.h
-   find "${SCRIPT_DIR}/../watchos/include/${FWNAME}" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <sys\/types\.h>/g" {} \;
-   find "${SCRIPT_DIR}/../watchsimulator/include/${FWNAME}" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <sys\/types\.h>/g" {} \;
+   find "${SCRIPT_DIR}/../watchos/include/${FWNAME}" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <stdint\.h>/g" {} \;
+   find "${SCRIPT_DIR}/../watchsimulator/include/${FWNAME}" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <stdint\.h>/g" {} \;
 
    local OPENSSLCONF_PATH="${SCRIPT_DIR}/../watchsimulator/include/${FWNAME}/opensslconf.h"
    echo "#if defined(__APPLE__) && defined (__x86_64__)" >> ${OPENSSLCONF_PATH}
@@ -416,7 +416,7 @@ build_macos() {
    cp -f "${SCRIPT_DIR}/../shim/shim.h" "${SCRIPT_DIR}/../macosx/include/${FWNAME}/shim.h"
 
    # fix inttypes.h
-   find "${SCRIPT_DIR}/../macosx/include/${FWNAME}" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <sys\/types\.h>/g" {} \;
+   find "${SCRIPT_DIR}/../macosx/include/${FWNAME}" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <stdint\.h>/g" {} \;
 
    local OPENSSLCONF_PATH="${SCRIPT_DIR}/../macosx/include/${FWNAME}/opensslconf.h"
    echo "#if defined(__APPLE__) && defined (__x86_64__)" >> ${OPENSSLCONF_PATH}
@@ -450,10 +450,7 @@ build_catalyst() {
    cp -f "${SCRIPT_DIR}/../shim/shim.h" "${SCRIPT_DIR}/../macosx_catalyst/include/${FWNAME}/shim.h"
 
    # fix inttypes.h
-   find "${SCRIPT_DIR}/../macosx_catalyst/include/${FWNAME}" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <sys\/types\.h>/g" {} \;
-
-   # fix RC4_INT redefinition
-   # find "${SCRIPT_DIR}/../macosx/include/${FWNAME}" -type f -name "*.h" -exec sed -i "" -e "s/\#define RC4_INT unsigned char/\#if \!defined(RC4_INT)\n#define RC4_INT unsigned char\n\#endif\n/g" {} \;
+   find "${SCRIPT_DIR}/../macosx_catalyst/include/${FWNAME}" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <stdint\.h>/g" {} \;
 
    local OPENSSLCONF_PATH="${SCRIPT_DIR}/../macosx_catalyst/include/${FWNAME}/opensslconf.h"
    echo "#if defined(__APPLE__) && defined (__x86_64__)" >> ${OPENSSLCONF_PATH}
