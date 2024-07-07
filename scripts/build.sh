@@ -196,6 +196,10 @@ build_ios() {
    ditto "${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneSimulator-arm64/include/openssl" "${SCRIPT_DIR}/../iphonesimulator/include/${FWNAME}"
    cp -f "${SCRIPT_DIR}/../shim/shim.h" "${SCRIPT_DIR}/../iphonesimulator/include/${FWNAME}/shim.h"
 
+   # fix inttypes.h
+   find "${SCRIPT_DIR}/../iphoneos/include/${FWNAME}" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <sys\/types\.h>/g" {} \;
+   find "${SCRIPT_DIR}/../iphonesimulator/include/${FWNAME}" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <sys\/types\.h>/g" {} \;
+
    local OPENSSLCONF_PATH="${SCRIPT_DIR}/../iphonesimulator/include/${FWNAME}/opensslconf.h"
    echo "#if defined(__APPLE__) && defined (__x86_64__)" >> ${OPENSSLCONF_PATH}
    cat ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-iPhoneSimulator-x86_64/include/openssl/opensslconf.h >> ${OPENSSLCONF_PATH}
@@ -249,6 +253,10 @@ build_visionos() {
    # Copy headers
    ditto "${TMP_BUILD_DIR}/${OPENSSL_VERSION}-visionSimulator-arm64/include/openssl" "${SCRIPT_DIR}/../visionsimulator/include/${FWNAME}"
    cp -f "${SCRIPT_DIR}/../shim/shim.h" "${SCRIPT_DIR}/../visionsimulator/include/${FWNAME}/shim.h"
+
+   # fix inttypes.h
+   find "${SCRIPT_DIR}/../visionos/include/${FWNAME}" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <sys\/types\.h>/g" {} \;
+   find "${SCRIPT_DIR}/../visionsimulator/include/${FWNAME}" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <sys\/types\.h>/g" {} \;
 
    local OPENSSLCONF_PATH="${SCRIPT_DIR}/../visionsimulator/include/${FWNAME}/opensslconf.h"
    echo "#if defined(__APPLE__) && defined (__x86_64__)" >> ${OPENSSLCONF_PATH}
@@ -304,6 +312,10 @@ build_appletvos() {
    ditto "${TMP_BUILD_DIR}/${OPENSSL_VERSION}-AppleTVSimulator-arm64/include/openssl" "${SCRIPT_DIR}/../appletvsimulator/include/${FWNAME}"
    cp -f "${SCRIPT_DIR}/../shim/shim.h" "${SCRIPT_DIR}/../appletvsimulator/include/${FWNAME}/shim.h"
 
+   # fix inttypes.h
+   find "${SCRIPT_DIR}/../appletvos/include/${FWNAME}" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <sys\/types\.h>/g" {} \;
+   find "${SCRIPT_DIR}/../appletvsimulator/include/${FWNAME}" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <sys\/types\.h>/g" {} \;
+
    local OPENSSLCONF_PATH="${SCRIPT_DIR}/../appletvsimulator/include/${FWNAME}/opensslconf.h"
    echo "#if defined(__APPLE__) && defined (__x86_64__)" >> ${OPENSSLCONF_PATH}
    cat ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-AppleTVSimulator-x86_64/include/openssl/opensslconf.h >> ${OPENSSLCONF_PATH}
@@ -355,6 +367,10 @@ build_watchos() {
    ditto "${TMP_BUILD_DIR}/${OPENSSL_VERSION}-watchSimulator-arm64/include/openssl" "${SCRIPT_DIR}/../watchsimulator/include/${FWNAME}"
    cp -f "${SCRIPT_DIR}/../shim/shim.h" "${SCRIPT_DIR}/../watchsimulator/include/${FWNAME}/shim.h"
 
+   # fix inttypes.h
+   find "${SCRIPT_DIR}/../watchos/include/${FWNAME}" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <sys\/types\.h>/g" {} \;
+   find "${SCRIPT_DIR}/../watchsimulator/include/${FWNAME}" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <sys\/types\.h>/g" {} \;
+
    local OPENSSLCONF_PATH="${SCRIPT_DIR}/../watchsimulator/include/${FWNAME}/opensslconf.h"
    echo "#if defined(__APPLE__) && defined (__x86_64__)" >> ${OPENSSLCONF_PATH}
    cat ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-watchSimulator-x86_64/include/openssl/opensslconf.h >> ${OPENSSLCONF_PATH}
@@ -399,6 +415,9 @@ build_macos() {
    ditto ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-MacOSX-x86_64/include/openssl "${SCRIPT_DIR}/../macosx/include/${FWNAME}"
    cp -f "${SCRIPT_DIR}/../shim/shim.h" "${SCRIPT_DIR}/../macosx/include/${FWNAME}/shim.h"
 
+   # fix inttypes.h
+   find "${SCRIPT_DIR}/../macosx/include/${FWNAME}" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <sys\/types\.h>/g" {} \;
+
    local OPENSSLCONF_PATH="${SCRIPT_DIR}/../macosx/include/${FWNAME}/opensslconf.h"
    echo "#if defined(__APPLE__) && defined (__x86_64__)" >> ${OPENSSLCONF_PATH}
    cat ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-MacOSX-x86_64/include/openssl/opensslconf.h >> ${OPENSSLCONF_PATH}
@@ -429,6 +448,12 @@ build_catalyst() {
    # Copy headers
    ditto ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-MacOSX_Catalyst-x86_64/include/openssl "${SCRIPT_DIR}/../macosx_catalyst/include/${FWNAME}"
    cp -f "${SCRIPT_DIR}/../shim/shim.h" "${SCRIPT_DIR}/../macosx_catalyst/include/${FWNAME}/shim.h"
+
+   # fix inttypes.h
+   find "${SCRIPT_DIR}/../macosx_catalyst/include/${FWNAME}" -type f -name "*.h" -exec sed -i "" -e "s/include <inttypes\.h>/include <sys\/types\.h>/g" {} \;
+
+   # fix RC4_INT redefinition
+   # find "${SCRIPT_DIR}/../macosx/include/${FWNAME}" -type f -name "*.h" -exec sed -i "" -e "s/\#define RC4_INT unsigned char/\#if \!defined(RC4_INT)\n#define RC4_INT unsigned char\n\#endif\n/g" {} \;
 
    local OPENSSLCONF_PATH="${SCRIPT_DIR}/../macosx_catalyst/include/${FWNAME}/opensslconf.h"
    echo "#if defined(__APPLE__) && defined (__x86_64__)" >> ${OPENSSLCONF_PATH}
