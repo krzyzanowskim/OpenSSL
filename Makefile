@@ -1,5 +1,6 @@
 .PHONY: build
 .PHONY: frameworks
+.PHONY: project
 
 .EXPORT_ALL_VARIABLES:
 
@@ -14,7 +15,10 @@ SIGNING_IDENTITY ?= "Apple Distribution: Marcin Krzyzanowski (67RAULRX93)"
 
 CWD := $(abspath $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST))))))
 
-all: build frameworks
+all: project build frameworks
+
+project:
+	tuist generate --no-open --no-binary-cach -p $(CWD)
 
 build:
 	$(CWD)/scripts/build.sh

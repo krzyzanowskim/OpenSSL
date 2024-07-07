@@ -276,7 +276,7 @@ build_visionos() {
    echo "#elif defined(__APPLE__) && defined (__arm64__)" >> ${OPENSSLCONF_PATH}
    cat ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-visionOS-arm64/include/openssl/opensslconf.h >> ${OPENSSLCONF_PATH}
    echo "#endif" >> ${OPENSSLCONF_PATH}
-   
+
    # Update include "openssl/" to "OpenSSL/"
    grep -rl '#\s*include\s*<openssl' --include \*.h ${SCRIPT_DIR}/../visionos/include | xargs -I@ sed -i '' -e 's/#[[:space:]]*include[[:space:]]*<openssl/#include <OpenSSL/gi' @
    grep -rl '#\s*include\s*<openssl' --include \*.h ${SCRIPT_DIR}/../visionsimulator/include | xargs -I@ sed -i '' -e 's/#[[:space:]]*include[[:space:]]*<openssl/#include <OpenSSL/gi' @
@@ -334,7 +334,7 @@ build_appletvos() {
    echo "#elif defined(__APPLE__) && defined (__arm64__)" >> ${OPENSSLCONF_PATH}
    cat ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-AppleTVOS-arm64/include/openssl/opensslconf.h >> ${OPENSSLCONF_PATH}
    echo "#endif" >> ${OPENSSLCONF_PATH}
-   
+
    # Update include "openssl/" to "OpenSSL/"
    grep -rl '#\s*include\s*<openssl' --include \*.h ${SCRIPT_DIR}/../appletvos/include | xargs -I@ sed -i '' -e 's/#[[:space:]]*include[[:space:]]*<openssl/#include <OpenSSL/gi' @
    grep -rl '#\s*include\s*<openssl' --include \*.h ${SCRIPT_DIR}/../appletvsimulator/include | xargs -I@ sed -i '' -e 's/#[[:space:]]*include[[:space:]]*<openssl/#include <OpenSSL/gi' @
@@ -391,7 +391,7 @@ build_watchos() {
    echo "#elif defined(__APPLE__) && defined (__arm64_32__)" >> ${OPENSSLCONF_PATH}
    cat ${TMP_BUILD_DIR}/${OPENSSL_VERSION}-watchOS-arm64_32/include/openssl/opensslconf.h >> ${OPENSSLCONF_PATH}
    echo "#endif" >> ${OPENSSLCONF_PATH}
-   
+
    # Update include "openssl/" to "OpenSSL/"
    grep -rl '#\s*include\s*<openssl' --include \*.h ${SCRIPT_DIR}/../watchos/include | xargs -I@ sed -i '' -e 's/#[[:space:]]*include[[:space:]]*<openssl/#include <OpenSSL/gi' @
    grep -rl '#\s*include\s*<openssl' --include \*.h ${SCRIPT_DIR}/../watchsimulator/include | xargs -I@ sed -i '' -e 's/#[[:space:]]*include[[:space:]]*<openssl/#include <OpenSSL/gi' @
