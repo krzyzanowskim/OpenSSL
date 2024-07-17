@@ -6,7 +6,7 @@
 	<dict>
 		<key>Resources/Info.plist</key>
 		<data>
-		habIFmLWkzRBEdGK2p565+sJh7c=
+		OJvQ7pX3wlgZRJKyNUDPz1Nh/6c=
 		</data>
 		<key>Resources/PrivacyInfo.xcprivacy</key>
 		<data>
@@ -607,7 +607,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			RccEsBQzzO7+wTPLx5hA5e2/qn4mDYZUVTKR+ZjBlm4=
+			YFed6P1zRimGXTIi2FRHsc1/mdyxYTCZ18xlzll2Li0=
 			</data>
 		</dict>
 		<key>Headers/ossl_typ.h</key>
@@ -831,7 +831,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			03u4zciSkm7mpU5glOSkvfH1DA5ICAG519dy2tMqsUA=
+			iZ93plHgLFnyrZZZokUDOJT625SkPjqUmmHj+XBCoVY=
 			</data>
 		</dict>
 		<key>Headers/sslerr_legacy.h</key>
@@ -978,7 +978,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			zRE4Aoqnw7YZv4vaQ1zrcwC4GgvCLWSQCPQfP9geVNE=
+			yczszjXaMdNjkzN8QAh3+KJb8CT9PUta8R5wlU3Sjmk=
 			</data>
 		</dict>
 		<key>Resources/PrivacyInfo.xcprivacy</key>

@@ -4,7 +4,7 @@
 
 .EXPORT_ALL_VARIABLES:
 
-OPENSSL_VERSION=3.1.5
+OPENSSL_VERSION=3.1.6
 IPHONEOS_DEPLOYMENT_VERSION=12.0
 MACOSX_DEPLOYMENT_TARGET=10.15
 XROS_DEPLOYMENT_VERSION=1.0
@@ -18,7 +18,7 @@ CWD := $(abspath $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
 all: project build frameworks
 
 project:
-	tuist generate --no-open --no-binary-cach -p $(CWD)
+	tuist generate --no-open --no-binary-cache -p $(CWD)
 
 build:
 	$(CWD)/scripts/build.sh
