@@ -1,7 +1,7 @@
 import ProjectDescription
 
 private let developmentTeam: SettingValue = "67RAULRX93"
-private let marketingVersion: String = "3.1.6000"
+private let marketingVersion: String = "3.2.2000"
 
 let project = Project(
     name: "OpenSSL",
@@ -19,7 +19,7 @@ let project = Project(
                 "support/PrivacyInfo.xcprivacy"
             ],
             headers: .headers(
-                public: .list([.glob("iphoneos/include/OpenSSL/*.h", excluding: "**/asn1_mac.h"), "support/iphoneos/OpenSSL.h"])
+                public: .list([.glob("iphoneos/include/OpenSSL/*.h", excluding: "**/asn1_mac.h"), "support/OpenSSL.h"])
             ),
             dependencies: [
                 .library(path: .relativeToRoot("iphoneos/lib/libcrypto.a"), publicHeaders: .relativeToRoot("iphoneos/include/OpenSSL"), swiftModuleMap: nil, condition: nil),
@@ -61,7 +61,7 @@ let project = Project(
                 "support/PrivacyInfo.xcprivacy"
             ],
             headers: .headers(
-                public: .list([.glob("iphonesimulator/include/OpenSSL/*.h", excluding: "**/asn1_mac.h"), "support/iphonesimulator/OpenSSL.h"])
+                public: .list([.glob("iphonesimulator/include/OpenSSL/*.h", excluding: "**/asn1_mac.h"), "support/OpenSSL.h"])
             ),
             dependencies: [
                 .library(path: .relativeToRoot("iphonesimulator/lib/libcrypto.a"), publicHeaders:  .relativeToRoot("iphonesimulator/include/OpenSSL"), swiftModuleMap: nil, condition: nil),
@@ -103,7 +103,7 @@ let project = Project(
                 "support/PrivacyInfo.xcprivacy"
             ],
             headers: .headers(
-                public: .list([.glob("macosx/include/OpenSSL/*.h", excluding: "**/asn1_mac.h"), "support/macos/OpenSSL.h"])
+                public: .list([.glob("macosx/include/OpenSSL/*.h", excluding: "**/asn1_mac.h"), "support/OpenSSL.h"])
             ),
             dependencies: [
                 .library(path: .relativeToRoot("macosx/lib/libcrypto.a"), publicHeaders:  .relativeToRoot("macosx/include/OpenSSL"), swiftModuleMap: nil, condition: nil),
@@ -143,7 +143,7 @@ let project = Project(
                 "support/PrivacyInfo.xcprivacy"
             ],
             headers: .headers(
-                public: .list([.glob("macosx_catalyst/include/OpenSSL/*.h", excluding: "**/asn1_mac.h"), "support/macos_catalyst/OpenSSL.h"])
+                public: .list([.glob("macosx_catalyst/include/OpenSSL/*.h", excluding: "**/asn1_mac.h"), "support/OpenSSL.h"])
             ),
             dependencies: [
                 .library(path: .relativeToRoot("macosx_catalyst/lib/libcrypto.a"), publicHeaders:  .relativeToRoot("macosx_catalyst/include/OpenSSL"), swiftModuleMap: nil, condition: nil),
@@ -184,7 +184,7 @@ let project = Project(
                 "support/PrivacyInfo.xcprivacy"
             ],
             headers: .headers(
-                public: .list([.glob("visionos/include/OpenSSL/*.h", excluding: "**/asn1_mac.h"), "support/visionos/OpenSSL.h"])
+                public: .list([.glob("visionos/include/OpenSSL/*.h", excluding: "**/asn1_mac.h"), "support/OpenSSL.h"])
             ),
             dependencies: [
                 .library(path: .relativeToRoot("visionos/lib/libcrypto.a"), publicHeaders: .relativeToRoot("visionos/include/OpenSSL"), swiftModuleMap: nil, condition: nil),
@@ -226,7 +226,7 @@ let project = Project(
                 "support/PrivacyInfo.xcprivacy"
             ],
             headers: .headers(
-                public: .list([.glob("visionsimulator/include/OpenSSL/*.h", excluding: "**/asn1_mac.h"), "support/visionsimulator/OpenSSL.h"])
+                public: .list([.glob("visionsimulator/include/OpenSSL/*.h", excluding: "**/asn1_mac.h"), "support/OpenSSL.h"])
             ),
             dependencies: [
                 .library(path: .relativeToRoot("visionsimulator/lib/libcrypto.a"), publicHeaders: .relativeToRoot("visionsimulator/include/OpenSSL"), swiftModuleMap: nil, condition: nil),
@@ -268,7 +268,7 @@ let project = Project(
                 "support/PrivacyInfo.xcprivacy"
             ],
             headers: .headers(
-                public: .list([.glob("appletvos/include/OpenSSL/*.h", excluding: "**/asn1_mac.h"), "support/appletvos/OpenSSL.h"])
+                public: .list([.glob("appletvos/include/OpenSSL/*.h", excluding: "**/asn1_mac.h"), "support/OpenSSL.h"])
             ),
             dependencies: [
                 .library(path: .relativeToRoot("appletvos/lib/libcrypto.a"), publicHeaders: .relativeToRoot("appletvos/include/OpenSSL"), swiftModuleMap: nil, condition: nil),
@@ -310,7 +310,7 @@ let project = Project(
                 "support/PrivacyInfo.xcprivacy"
             ],
             headers: .headers(
-                public: .list([.glob("appletvsimulator/include/OpenSSL/*.h", excluding: "**/asn1_mac.h"), "support/appletvsimulator/OpenSSL.h"])
+                public: .list([.glob("appletvsimulator/include/OpenSSL/*.h", excluding: "**/asn1_mac.h"), "support/OpenSSL.h"])
             ),
             dependencies: [
                 .library(path: .relativeToRoot("appletvsimulator/lib/libcrypto.a"), publicHeaders: .relativeToRoot("appletvsimulator/include/OpenSSL"), swiftModuleMap: nil, condition: nil),
@@ -352,7 +352,7 @@ let project = Project(
                 "support/PrivacyInfo.xcprivacy"
             ],
             headers: .headers(
-                public: .list([.glob("watchos/include/OpenSSL/*.h", excluding: "**/asn1_mac.h"), "support/watchos/OpenSSL.h"])
+                public: .list([.glob("watchos/include/OpenSSL/*.h", excluding: "**/asn1_mac.h"), "support/OpenSSL.h"])
             ),
             dependencies: [
                 .library(path: .relativeToRoot("watchos/lib/libcrypto.a"), publicHeaders: .relativeToRoot("watchos/include/OpenSSL"), swiftModuleMap: nil, condition: nil),
@@ -394,7 +394,7 @@ let project = Project(
                 "support/PrivacyInfo.xcprivacy"
             ],
             headers: .headers(
-                public: .list([.glob("watchsimulator/include/OpenSSL/*.h", excluding: "**/asn1_mac.h"), "support/watchsimulator/OpenSSL.h"])
+                public: .list([.glob("watchsimulator/include/OpenSSL/*.h", excluding: "**/asn1_mac.h"), "support/OpenSSL.h"])
             ),
             dependencies: [
                 .library(path: .relativeToRoot("watchsimulator/lib/libcrypto.a"), publicHeaders: .relativeToRoot("watchsimulator/include/OpenSSL"), swiftModuleMap: nil, condition: nil),
