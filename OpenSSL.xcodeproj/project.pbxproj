@@ -6827,7 +6827,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/watchos/lib",
 				);
-				MARKETING_VERSION = 3.2.2000;
+				MARKETING_VERSION = 3.3.1000;
 				OTHER_LDFLAGS = "-Xlinker -all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.krzyzanowskim.OpenSSL;
 				PRODUCT_NAME = OpenSSL;
@@ -6882,7 +6882,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/watchsimulator/lib",
 				);
-				MARKETING_VERSION = 3.2.2000;
+				MARKETING_VERSION = 3.3.1000;
 				OTHER_LDFLAGS = "-Xlinker -all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.krzyzanowskim.OpenSSL;
 				PRODUCT_NAME = OpenSSL;
@@ -6932,7 +6932,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/visionsimulator/lib",
 				);
-				MARKETING_VERSION = 3.2.2000;
+				MARKETING_VERSION = 3.3.1000;
 				OTHER_LDFLAGS = "-Xlinker -all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.krzyzanowskim.OpenSSL;
 				PRODUCT_NAME = OpenSSL;
@@ -6983,7 +6983,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/appletvsimulator/lib",
 				);
-				MARKETING_VERSION = 3.2.2000;
+				MARKETING_VERSION = 3.3.1000;
 				OTHER_LDFLAGS = "-Xlinker -all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.krzyzanowskim.OpenSSL;
 				PRODUCT_NAME = OpenSSL;
@@ -7034,7 +7034,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/watchos/lib",
 				);
-				MARKETING_VERSION = 3.2.2000;
+				MARKETING_VERSION = 3.3.1000;
 				OTHER_LDFLAGS = "-Xlinker -all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.krzyzanowskim.OpenSSL;
 				PRODUCT_NAME = OpenSSL;
@@ -7086,7 +7086,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/iphoneos/lib",
 				);
-				MARKETING_VERSION = 3.2.2000;
+				MARKETING_VERSION = 3.3.1000;
 				OTHER_LDFLAGS = "-Xlinker -all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.krzyzanowskim.OpenSSL;
 				PRODUCT_NAME = OpenSSL;
@@ -7139,7 +7139,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/appletvsimulator/lib",
 				);
-				MARKETING_VERSION = 3.2.2000;
+				MARKETING_VERSION = 3.3.1000;
 				OTHER_LDFLAGS = "-Xlinker -all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.krzyzanowskim.OpenSSL;
 				PRODUCT_NAME = OpenSSL;
@@ -7197,7 +7197,7 @@
 					"$(SRCROOT)/macosx/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 3.2.2000;
+				MARKETING_VERSION = 3.3.1000;
 				OTHER_LDFLAGS = "-Xlinker -all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.krzyzanowskim.OpenSSL;
 				PRODUCT_NAME = OpenSSL;
@@ -7303,7 +7303,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/visionos/lib",
 				);
-				MARKETING_VERSION = 3.2.2000;
+				MARKETING_VERSION = 3.3.1000;
 				OTHER_LDFLAGS = "-Xlinker -all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.krzyzanowskim.OpenSSL;
 				PRODUCT_NAME = OpenSSL;
@@ -7402,7 +7402,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/visionsimulator/lib",
 				);
-				MARKETING_VERSION = 3.2.2000;
+				MARKETING_VERSION = 3.3.1000;
 				OTHER_LDFLAGS = "-Xlinker -all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.krzyzanowskim.OpenSSL;
 				PRODUCT_NAME = OpenSSL;
@@ -7459,7 +7459,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/macosx_catalyst/lib",
 				);
-				MARKETING_VERSION = 3.2.2000;
+				MARKETING_VERSION = 3.3.1000;
 				OTHER_LDFLAGS = "-Xlinker -all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.krzyzanowskim.OpenSSL;
 				PRODUCT_NAME = OpenSSL;
@@ -7517,7 +7517,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/macosx_catalyst/lib",
 				);
-				MARKETING_VERSION = 3.2.2000;
+				MARKETING_VERSION = 3.3.1000;
 				OTHER_LDFLAGS = "-Xlinker -all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.krzyzanowskim.OpenSSL;
 				PRODUCT_NAME = OpenSSL;
@@ -7570,7 +7570,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/iphonesimulator/lib",
 				);
-				MARKETING_VERSION = 3.2.2000;
+				MARKETING_VERSION = 3.3.1000;
 				OTHER_LDFLAGS = "-Xlinker -all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.krzyzanowskim.OpenSSL;
 				PRODUCT_NAME = OpenSSL;
@@ -7618,7 +7618,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/visionos/lib",
 				);
-				MARKETING_VERSION = 3.2.2000;
+				MARKETING_VERSION = 3.3.1000;
 				OTHER_LDFLAGS = "-Xlinker -all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.krzyzanowskim.OpenSSL;
 				PRODUCT_NAME = OpenSSL;
@@ -7673,7 +7673,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/appletvos/lib",
 				);
-				MARKETING_VERSION = 3.2.2000;
+				MARKETING_VERSION = 3.3.1000;
 				OTHER_LDFLAGS = "-Xlinker -all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.krzyzanowskim.OpenSSL;
 				PRODUCT_NAME = OpenSSL;
@@ -7728,7 +7728,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/watchsimulator/lib",
 				);
-				MARKETING_VERSION = 3.2.2000;
+				MARKETING_VERSION = 3.3.1000;
 				OTHER_LDFLAGS = "-Xlinker -all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.krzyzanowskim.OpenSSL;
 				PRODUCT_NAME = OpenSSL;
@@ -7782,7 +7782,7 @@
 					"$(SRCROOT)/macosx/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 3.2.2000;
+				MARKETING_VERSION = 3.3.1000;
 				OTHER_LDFLAGS = "-Xlinker -all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.krzyzanowskim.OpenSSL;
 				PRODUCT_NAME = OpenSSL;
@@ -7831,7 +7831,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/iphoneos/lib",
 				);
-				MARKETING_VERSION = 3.2.2000;
+				MARKETING_VERSION = 3.3.1000;
 				OTHER_LDFLAGS = "-Xlinker -all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.krzyzanowskim.OpenSSL;
 				PRODUCT_NAME = OpenSSL;
@@ -7889,7 +7889,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/iphonesimulator/lib",
 				);
-				MARKETING_VERSION = 3.2.2000;
+				MARKETING_VERSION = 3.3.1000;
 				OTHER_LDFLAGS = "-Xlinker -all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.krzyzanowskim.OpenSSL;
 				PRODUCT_NAME = OpenSSL;
@@ -7946,7 +7946,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/appletvos/lib",
 				);
-				MARKETING_VERSION = 3.2.2000;
+				MARKETING_VERSION = 3.3.1000;
 				OTHER_LDFLAGS = "-Xlinker -all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.krzyzanowskim.OpenSSL;
 				PRODUCT_NAME = OpenSSL;
