@@ -1,7 +1,7 @@
 import ProjectDescription
 
 private let developmentTeam: SettingValue = "67RAULRX93"
-private let marketingVersion: String = "3.3.1000"
+private let marketingVersion: String = "3.3.2000"
 
 let project = Project(
     name: "OpenSSL",
@@ -177,7 +177,7 @@ let project = Project(
             product: .framework,
             productName: "OpenSSL",
             bundleId: "com.github.krzyzanowskim.OpenSSL",
-            deploymentTargets: .visionOS("1.0"),
+            deploymentTargets: .visionOS("1.3"),
             infoPlist: .file(path: .relativeToRoot("support/visionos/Info.plist")),
             sources: [],
             resources: [

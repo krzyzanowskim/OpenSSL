@@ -77,7 +77,7 @@ xcrun xcodebuild build \
     $COMMON_SETUP \
     -scheme "${FWNAME} (visionOS)" \
     -derivedDataPath "${DERIVED_DATA_PATH}" \
-    -destination 'generic/platform=XROS'
+    -destination 'generic/platform=visionOS'
 
 rm -rf "${OUTPUT_DIR}/visionos"
 mkdir -p "${OUTPUT_DIR}/visionos"
@@ -90,7 +90,7 @@ xcrun xcodebuild build \
     $COMMON_SETUP \
     -scheme "${FWNAME} (visionOS Simulator)" \
     -derivedDataPath "${DERIVED_DATA_PATH}" \
-    -destination 'generic/platform=XROS Simulator'
+    -destination 'generic/platform=visionOS Simulator'
 
 rm -rf "${OUTPUT_DIR}/visionsimulator"
 mkdir -p "${OUTPUT_DIR}/visionsimulator"
