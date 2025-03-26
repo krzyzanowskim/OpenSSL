@@ -40,6 +40,7 @@ let project = Project(
                     "BUILD_LIBRARY_FOR_DISTRIBUTION": "YES",
                     "APPLICATION_EXTENSION_API_ONLY": "YES",
                     "DEFINES_MODULE": "YES",
+                    "CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES": "YES",
 
                     "SKIP_INSTALL": "NO",
                     "COPY_PHASE_STRIP": "NO",
@@ -82,6 +83,7 @@ let project = Project(
                     "BUILD_LIBRARY_FOR_DISTRIBUTION": "YES",
                     "APPLICATION_EXTENSION_API_ONLY": "YES",
                     "DEFINES_MODULE": "YES",
+                    "CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES": "YES",
 
                     "SKIP_INSTALL": "NO",
                     "COPY_PHASE_STRIP": "NO",
@@ -122,6 +124,7 @@ let project = Project(
                     "BUILD_LIBRARY_FOR_DISTRIBUTION": "YES",
                     "APPLICATION_EXTENSION_API_ONLY": "YES",
                     "DEFINES_MODULE": "YES",
+                    "CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES": "YES",
 
                     "SKIP_INSTALL": "NO",
                     "COPY_PHASE_STRIP": "NO",
@@ -163,6 +166,7 @@ let project = Project(
                     "BUILD_LIBRARY_FOR_DISTRIBUTION": "YES",
                     "APPLICATION_EXTENSION_API_ONLY": "YES",
                     "DEFINES_MODULE": "YES",
+                    "CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES": "YES",
 
                     "SKIP_INSTALL": "NO",
                     "COPY_PHASE_STRIP": "NO",
@@ -205,6 +209,7 @@ let project = Project(
                     "BUILD_LIBRARY_FOR_DISTRIBUTION": "YES",
                     "APPLICATION_EXTENSION_API_ONLY": "YES",
                     "DEFINES_MODULE": "YES",
+                    "CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES": "YES",
 
                     "SKIP_INSTALL": "NO",
                     "COPY_PHASE_STRIP": "NO",
@@ -247,6 +252,7 @@ let project = Project(
                     "BUILD_LIBRARY_FOR_DISTRIBUTION": "YES",
                     "APPLICATION_EXTENSION_API_ONLY": "YES",
                     "DEFINES_MODULE": "YES",
+                    "CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES": "YES",
 
                     "SKIP_INSTALL": "NO",
                     "COPY_PHASE_STRIP": "NO",
@@ -289,6 +295,7 @@ let project = Project(
                     "BUILD_LIBRARY_FOR_DISTRIBUTION": "YES",
                     "APPLICATION_EXTENSION_API_ONLY": "YES",
                     "DEFINES_MODULE": "YES",
+                    "CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES": "YES",
 
                     "SKIP_INSTALL": "NO",
                     "COPY_PHASE_STRIP": "NO",
@@ -331,6 +338,7 @@ let project = Project(
                     "BUILD_LIBRARY_FOR_DISTRIBUTION": "YES",
                     "APPLICATION_EXTENSION_API_ONLY": "YES",
                     "DEFINES_MODULE": "YES",
+                    "CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES": "YES",
 
                     "SKIP_INSTALL": "NO",
                     "COPY_PHASE_STRIP": "NO",
@@ -373,6 +381,7 @@ let project = Project(
                     "BUILD_LIBRARY_FOR_DISTRIBUTION": "YES",
                     "APPLICATION_EXTENSION_API_ONLY": "YES",
                     "DEFINES_MODULE": "YES",
+                    "CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES": "YES",
 
                     "SKIP_INSTALL": "NO",
                     "COPY_PHASE_STRIP": "NO",
@@ -415,6 +424,7 @@ let project = Project(
                     "BUILD_LIBRARY_FOR_DISTRIBUTION": "YES",
                     "APPLICATION_EXTENSION_API_ONLY": "YES",
                     "DEFINES_MODULE": "YES",
+                    "CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES": "YES",
 
                     "SKIP_INSTALL": "NO",
                     "COPY_PHASE_STRIP": "NO",

@@ -118,6 +118,9 @@ extern "C" {
 # ifndef OPENSSL_NO_SSL3_METHOD
 #  define OPENSSL_NO_SSL3_METHOD
 # endif
+# ifndef OPENSSL_NO_TESTS
+#  define OPENSSL_NO_TESTS
+# endif
 # ifndef OPENSSL_NO_TFO
 #  define OPENSSL_NO_TFO
 # endif
@@ -132,9 +135,6 @@ extern "C" {
 # endif
 # ifndef OPENSSL_NO_UPLINK
 #  define OPENSSL_NO_UPLINK
-# endif
-# ifndef OPENSSL_NO_WEAK_SSL_CIPHERS
-#  define OPENSSL_NO_WEAK_SSL_CIPHERS
 # endif
 # ifndef OPENSSL_NO_WINSTORE
 #  define OPENSSL_NO_WINSTORE
