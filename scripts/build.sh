@@ -472,9 +472,12 @@ if [ ! -f "${SCRIPT_DIR}/../openssl-${OPENSSL_VERSION}.tar.gz" ]; then
    curl -fL "https://github.com/openssl/openssl/releases/download/openssl-${OPENSSL_VERSION}/openssl-${OPENSSL_VERSION}.tar.gz.sha256" -o "${SCRIPT_DIR}/../openssl-${OPENSSL_VERSION}.tar.gz.sha256"
    DIGEST=$( cat ${SCRIPT_DIR}/../openssl-${OPENSSL_VERSION}.tar.gz.sha256 )
 
-   if [[ "$(shasum -a 256 "openssl-${OPENSSL_VERSION}.tar.gz" | awk '{ print " "$1}')" != "${DIGEST}" ]]
+   CALCULATED_DIGEST=$(shasum -a 256 "openssl-${OPENSSL_VERSION}.tar.gz")
+   if [[ "${CALCULATED_DIGEST}" != "${DIGEST}" ]]
    then
-      echo "openssl-${OPENSSL_VERSION}.tar.gz: checksum mismatch"
+      echo "openssl-${OPENSSL_VERSION}.tar.gz: checksum mismatch. Calculated \"${CALCULATED_DIGEST}\". Received: \"${DIGEST}\""
+      rm -f "${SCRIPT_DIR}/../openssl-${OPENSSL_VERSION}.tar.gz"
+      rm -f "${SCRIPT_DIR}/../openssl-${OPENSSL_VERSION}.tar.gz.sha256"
       exit 1
    fi
    rm -f "${SCRIPT_DIR}/../openssl-${OPENSSL_VERSION}.tar.gz.sha256"

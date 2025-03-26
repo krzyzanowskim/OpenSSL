@@ -1,7 +1,7 @@
 import ProjectDescription
 
-private let developmentTeam: SettingValue = "67RAULRX93"
-private let marketingVersion: String = "3.3.2000"
+private let developmentTeam: SettingValue = ""
+private let marketingVersion: String = ""
 
 let project = Project(
     name: "OpenSSL",
