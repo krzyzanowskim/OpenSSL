@@ -56,7 +56,7 @@ build:
 	$(CWD)/scripts/build.sh
 
 frameworks:
-	$(CWD)/scripts/create-frameworks.sh $(SIGNING_IDENTITY)
+	$(CWD)/scripts/create-frameworks.sh "$(SIGNING_IDENTITY)"
 
 # Validation target to check signing identity
 check-signing-identity:
