@@ -1,6 +1,7 @@
 *.DS_Store
 
 OpenSSL.xcworkspace
+OpenSSL.xcodeproj
 
 .vscode/
 .build/
