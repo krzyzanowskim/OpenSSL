@@ -4,7 +4,6 @@
 .PHONY: check-signing-identity
 .PHONY: debug-signing
 .PHONY: all
-.PHONY: update-project-swift
 
 .EXPORT_ALL_VARIABLES:
 
@@ -34,45 +33,30 @@ endif
 CWD := $(abspath $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST))))))
 
 # Make check-signing-identity the first task for 'all' only
-all: check-signing-identity update-project-swift project build frameworks
+all: check-signing-identity project build frameworks
 
 project:
-	tuist generate --no-open --no-binary-cache -p $(CWD)
-
-build:
-	$(CWD)/scripts/build.sh
-
-frameworks:
-	$(CWD)/scripts/create-frameworks.sh $(SIGNING_IDENTITY)
-
-# Update Project.swift with values from Makefile
-update-project-swift:
 ifdef SIGNING_IDENTITY
     # Extract team ID from signing identity
 	$(eval TEAM_ID := $(shell echo "$(SIGNING_IDENTITY)" | grep -o '([A-Z0-9]\+)' | tr -d '()'))
-    
     # Verify team ID was extracted
 	@if [ -z "$(TEAM_ID)" ]; then \
 		echo "Error: Could not extract Team ID from signing identity: $(SIGNING_IDENTITY)"; \
 		echo "The signing identity must be in the format 'Apple Distribution: Name (TEAMID)'"; \
 		exit 1; \
 	fi
-    
-	@echo "Updating Project.swift with MARKETING_VERSION=$(MARKETING_VERSION)"
-	@echo "Updating Project.swift with TEAM_ID=$(TEAM_ID)"
-    
-	@if [ -f "$(CWD)/Project.swift" ]; then \
-		sed -i '' 's/private let marketingVersion: String = "[^"]*"/private let marketingVersion: String = "$(MARKETING_VERSION)"/' "$(CWD)/Project.swift"; \
-		sed -i '' 's/private let developmentTeam: SettingValue = "[^"]*"/private let developmentTeam: SettingValue = "$(TEAM_ID)"/' "$(CWD)/Project.swift"; \
-		echo "Project.swift updated successfully"; \
-	else \
-		echo "Error: Project.swift not found at $(CWD)/Project.swift"; \
-		exit 1; \
-	fi
+
+	TUIST_DEVELOPMENT_TEAM="$(TEAM_ID)" TUIST_MARKETING_VERSION="$(MARKETING_VERSION)" tuist generate --no-open --no-binary-cache -p $(CWD)
 else
 	@echo "Error: SIGNING_IDENTITY is not set. Cannot update Project.swift."
 	@exit 1
 endif
+
+build:
+	$(CWD)/scripts/build.sh
+
+frameworks:
+	$(CWD)/scripts/create-frameworks.sh $(SIGNING_IDENTITY)
 
 # Validation target to check signing identity
 check-signing-identity:

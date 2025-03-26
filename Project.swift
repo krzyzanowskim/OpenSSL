@@ -1,7 +1,9 @@
 import ProjectDescription
 
-private let developmentTeam: SettingValue = ""
-private let marketingVersion: String = ""
+// TUIST_DEVELOPMENT_TEAM
+private let developmentTeam = SettingValue(stringLiteral: Environment.developmentTeam.getString(default: ""))
+// TUIST_MARKETING_VERSION
+private let marketingVersion: String = Environment.marketingVersion.getString(default: "")
 
 let project = Project(
     name: "OpenSSL",
