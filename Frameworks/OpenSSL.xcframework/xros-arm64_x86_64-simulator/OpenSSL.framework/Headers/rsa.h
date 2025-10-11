@@ -27,9 +27,6 @@
 # endif
 #include <OpenSSL/rsaerr.h>
 #include <OpenSSL/safestack.h>
-# ifndef OPENSSL_NO_STDIO
-#  include <stdio.h>
-# endif
 
 # ifdef  __cplusplus
 extern "C" {
@@ -140,9 +137,6 @@ int EVP_PKEY_CTX_set_rsa_keygen_pubexp(EVP_PKEY_CTX *ctx, BIGNUM *pubexp);
 # define RSA_PSS_SALTLEN_AUTO   -2
 /* Set salt length to maximum possible */
 # define RSA_PSS_SALTLEN_MAX    -3
-/* Auto-detect on verify, set salt length to min(maximum possible, digest
- * length) on sign */
-# define RSA_PSS_SALTLEN_AUTO_DIGEST_MAX  -4
 /* Old compatible max salt length for sign only */
 # define RSA_PSS_SALTLEN_MAX_SIGN    -2
 
@@ -189,8 +183,6 @@ int EVP_PKEY_CTX_get0_rsa_oaep_label(EVP_PKEY_CTX *ctx, unsigned char **label);
 
 # define EVP_PKEY_CTRL_RSA_KEYGEN_PRIMES  (EVP_PKEY_ALG_CTRL + 13)
 
-# define EVP_PKEY_CTRL_RSA_IMPLICIT_REJECTION (EVP_PKEY_ALG_CTRL + 14)
-
 # define RSA_PKCS1_PADDING          1
 # define RSA_NO_PADDING             3
 # define RSA_PKCS1_OAEP_PADDING     4
@@ -199,9 +191,6 @@ int EVP_PKEY_CTX_get0_rsa_oaep_label(EVP_PKEY_CTX *ctx, unsigned char **label);
 /* EVP_PKEY_ only */
 # define RSA_PKCS1_PSS_PADDING      6
 # define RSA_PKCS1_WITH_TLS_PADDING 7
-
-/* internal RSA_ only */
-# define RSA_PKCS1_NO_IMPLICIT_REJECT_PADDING 8
 
 # define RSA_PKCS1_PADDING_SIZE    11
 

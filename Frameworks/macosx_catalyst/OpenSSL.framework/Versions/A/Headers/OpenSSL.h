@@ -20,7 +20,6 @@
 #include <OpenSSL/bnerr.h>
 #include <OpenSSL/buffer.h>
 #include <OpenSSL/buffererr.h>
-#include <OpenSSL/byteorder.h>
 #include <OpenSSL/camellia.h>
 #include <OpenSSL/cast.h>
 #include <OpenSSL/cmac.h>
@@ -56,7 +55,6 @@
 #include <OpenSSL/dsaerr.h>
 #include <OpenSSL/dtls1.h>
 #include <OpenSSL/e_os2.h>
-#include <OpenSSL/e_ostime.h>
 #include <OpenSSL/ebcdic.h>
 #include <OpenSSL/ec.h>
 #include <OpenSSL/ecdh.h>
@@ -74,11 +72,9 @@
 #include <OpenSSL/fips_names.h>
 #include <OpenSSL/fipskey.h>
 #include <OpenSSL/hmac.h>
-#include <OpenSSL/hpke.h>
 #include <OpenSSL/http.h>
 #include <OpenSSL/httperr.h>
 #include <OpenSSL/idea.h>
-#include <OpenSSL/indicator.h>
 #include <OpenSSL/kdf.h>
 #include <OpenSSL/kdferr.h>
 #include <OpenSSL/lhash.h>
@@ -87,7 +83,6 @@
 #include <OpenSSL/md4.h>
 #include <OpenSSL/md5.h>
 #include <OpenSSL/mdc2.h>
-#include <OpenSSL/ml_kem.h>
 #include <OpenSSL/modes.h>
 #include <OpenSSL/obj_mac.h>
 #include <OpenSSL/objects.h>
@@ -109,7 +104,6 @@
 #include <OpenSSL/prov_ssl.h>
 #include <OpenSSL/proverr.h>
 #include <OpenSSL/provider.h>
-#include <OpenSSL/quic.h>
 #include <OpenSSL/rand.h>
 #include <OpenSSL/randerr.h>
 #include <OpenSSL/rc2.h>
@@ -130,7 +124,6 @@
 #include <OpenSSL/store.h>
 #include <OpenSSL/storeerr.h>
 #include <OpenSSL/symhacks.h>
-#include <OpenSSL/thread.h>
 #include <OpenSSL/tls1.h>
 #include <OpenSSL/trace.h>
 #include <OpenSSL/ts.h>
@@ -140,7 +133,6 @@
 #include <OpenSSL/ui.h>
 #include <OpenSSL/uierr.h>
 #include <OpenSSL/whrlpool.h>
-#include <OpenSSL/x509_acert.h>
 #include <OpenSSL/x509_vfy.h>
 #include <OpenSSL/x509.h>
 #include <OpenSSL/x509err.h>

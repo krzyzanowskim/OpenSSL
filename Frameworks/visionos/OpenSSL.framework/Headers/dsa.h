@@ -19,26 +19,11 @@
 #include <OpenSSL/opensslconf.h>
 #include <OpenSSL/types.h>
 
-# include <stdlib.h>
-
-# ifndef OPENSSL_NO_DSA
-#include <OpenSSL/e_os2.h>
-#include <OpenSSL/asn1.h>
-#include <OpenSSL/bio.h>
-#include <OpenSSL/crypto.h>
-#include <OpenSSL/bn.h>
-#  ifndef OPENSSL_NO_DEPRECATED_1_1_0
-#include <OpenSSL/dh.h>
-#  endif
-#include <OpenSSL/dsaerr.h>
-#  ifndef OPENSSL_NO_STDIO
-#   include <stdio.h>
-#  endif
-# endif
-
 # ifdef  __cplusplus
 extern "C" {
 # endif
+
+# include <stdlib.h>
 
 int EVP_PKEY_CTX_set_dsa_paramgen_bits(EVP_PKEY_CTX *ctx, int nbits);
 int EVP_PKEY_CTX_set_dsa_paramgen_q_bits(EVP_PKEY_CTX *ctx, int qbits);
@@ -57,6 +42,16 @@ int EVP_PKEY_CTX_set_dsa_paramgen_md(EVP_PKEY_CTX *ctx, const EVP_MD *md);
 # define EVP_PKEY_CTRL_DSA_PARAMGEN_MD           (EVP_PKEY_ALG_CTRL + 3)
 
 # ifndef OPENSSL_NO_DSA
+#include <OpenSSL/e_os2.h>
+#include <OpenSSL/asn1.h>
+#include <OpenSSL/bio.h>
+#include <OpenSSL/crypto.h>
+#include <OpenSSL/bn.h>
+#  ifndef OPENSSL_NO_DEPRECATED_1_1_0
+#include <OpenSSL/dh.h>
+#  endif
+#include <OpenSSL/dsaerr.h>
+
 #  ifndef OPENSSL_DSA_MAX_MODULUS_BITS
 #   define OPENSSL_DSA_MAX_MODULUS_BITS   10000
 #  endif

@@ -54,7 +54,7 @@ SKM_DEFINE_STACK_OF_INTERNAL(SCT, SCT, SCT)
 #define sk_SCT_unshift(sk, ptr) OPENSSL_sk_unshift(ossl_check_SCT_sk_type(sk), ossl_check_SCT_type(ptr))
 #define sk_SCT_pop(sk) ((SCT *)OPENSSL_sk_pop(ossl_check_SCT_sk_type(sk)))
 #define sk_SCT_shift(sk) ((SCT *)OPENSSL_sk_shift(ossl_check_SCT_sk_type(sk)))
-#define sk_SCT_pop_free(sk, freefunc) OPENSSL_sk_pop_free(ossl_check_SCT_sk_type(sk), ossl_check_SCT_freefunc_type(freefunc))
+#define sk_SCT_pop_free(sk, freefunc) OPENSSL_sk_pop_free(ossl_check_SCT_sk_type(sk),ossl_check_SCT_freefunc_type(freefunc))
 #define sk_SCT_insert(sk, ptr, idx) OPENSSL_sk_insert(ossl_check_SCT_sk_type(sk), ossl_check_SCT_type(ptr), (idx))
 #define sk_SCT_set(sk, idx, ptr) ((SCT *)OPENSSL_sk_set(ossl_check_SCT_sk_type(sk), (idx), ossl_check_SCT_type(ptr)))
 #define sk_SCT_find(sk, ptr) OPENSSL_sk_find(ossl_check_SCT_sk_type(sk), ossl_check_SCT_type(ptr))
@@ -80,7 +80,7 @@ SKM_DEFINE_STACK_OF_INTERNAL(CTLOG, CTLOG, CTLOG)
 #define sk_CTLOG_unshift(sk, ptr) OPENSSL_sk_unshift(ossl_check_CTLOG_sk_type(sk), ossl_check_CTLOG_type(ptr))
 #define sk_CTLOG_pop(sk) ((CTLOG *)OPENSSL_sk_pop(ossl_check_CTLOG_sk_type(sk)))
 #define sk_CTLOG_shift(sk) ((CTLOG *)OPENSSL_sk_shift(ossl_check_CTLOG_sk_type(sk)))
-#define sk_CTLOG_pop_free(sk, freefunc) OPENSSL_sk_pop_free(ossl_check_CTLOG_sk_type(sk), ossl_check_CTLOG_freefunc_type(freefunc))
+#define sk_CTLOG_pop_free(sk, freefunc) OPENSSL_sk_pop_free(ossl_check_CTLOG_sk_type(sk),ossl_check_CTLOG_freefunc_type(freefunc))
 #define sk_CTLOG_insert(sk, ptr, idx) OPENSSL_sk_insert(ossl_check_CTLOG_sk_type(sk), ossl_check_CTLOG_type(ptr), (idx))
 #define sk_CTLOG_set(sk, idx, ptr) ((CTLOG *)OPENSSL_sk_set(ossl_check_CTLOG_sk_type(sk), (idx), ossl_check_CTLOG_type(ptr)))
 #define sk_CTLOG_find(sk, ptr) OPENSSL_sk_find(ossl_check_CTLOG_sk_type(sk), ossl_check_CTLOG_type(ptr))
@@ -133,7 +133,7 @@ typedef enum {
  */
 CT_POLICY_EVAL_CTX *CT_POLICY_EVAL_CTX_new_ex(OSSL_LIB_CTX *libctx,
                                               const char *propq);
-
+                                                       
 /*
  * The same as CT_POLICY_EVAL_CTX_new_ex() but the default library
  * context and property query string is used.
