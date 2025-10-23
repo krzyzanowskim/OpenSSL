@@ -208,8 +208,20 @@ xcrun xcodebuild -create-xcframework \
 	-output "${BASE_PWD}/Frameworks/${FWNAME}.xcframework"
 	
 # Sign
+# Using --deep to recursively sign all nested frameworks within the XCFramework bundle.
+# This is necessary for Swift Package Manager to validate the distributed artifact.
+#
+# NOTE: --deep is deprecated for signing since macOS 13.0. Apple recommends signing
+# each nested framework individually from inside-out instead. However, for pre-built
+# XCFramework distribution (as opposed to Xcode build integration), this remains
+# the most practical approach.
+#
+# Future solution when --deep is removed:
+#   find "${BASE_PWD}/Frameworks/${FWNAME}.xcframework" -depth -type d -name "*.framework" \
+#     -exec codesign --timestamp -s "${IDENTITY}" {} \;
+#   codesign --timestamp -s "${IDENTITY}" "${BASE_PWD}/Frameworks/${FWNAME}.xcframework"
 echo "Signing xcframework as ${IDENTITY}"
-xcrun codesign --timestamp -s "${IDENTITY}" "${BASE_PWD}/Frameworks/${FWNAME}.xcframework"
+xcrun codesign --timestamp --deep -s "${IDENTITY}" "${BASE_PWD}/Frameworks/${FWNAME}.xcframework"
 
 # Zip archive
 pushd "${BASE_PWD}/Frameworks"
