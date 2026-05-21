@@ -1,7 +1,7 @@
 ---
 triple:          'armv7k-apple-darwin'
-binary-path:     '/var/folders/0v/_zk80bwj0235pdr_012qdpgc0000gn/T/tmp.ZSuRnQOQB2/Build/Products/Release-watchos/OpenSSL.framework/OpenSSL'
+binary-path:     '/var/folders/0v/_zk80bwj0235pdr_012qdpgc0000gn/T/tmp.1UGzx7D2Co/Build/Products/Release-watchos/OpenSSL.framework/OpenSSL'
 relocations:
-  - { offset: 0x33, size: 0x4, addend: 0x0, symName: _OpenSSLVersionString, symObjAddr: 0x0, symBinAddr: 0x21D9D0, symSize: 0x0 }
-  - { offset: 0x63, size: 0x4, addend: 0x0, symName: _OpenSSLVersionNumber, symObjAddr: 0x28, symBinAddr: 0x21D9F8, symSize: 0x0 }
+  - { offset: 0x33, size: 0x4, addend: 0x0, symName: _OpenSSLVersionString, symObjAddr: 0x0, symBinAddr: 0x223550, symSize: 0x0 }
+  - { offset: 0x63, size: 0x4, addend: 0x0, symName: _OpenSSLVersionNumber, symObjAddr: 0x28, symBinAddr: 0x223578, symSize: 0x0 }
 ...

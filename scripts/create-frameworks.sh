@@ -17,7 +17,7 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 IDENTITY=$1
 FWNAME="OpenSSL"
 OUTPUT_DIR=$( mktemp -d )
-COMMON_SETUP=" -project ${SCRIPT_DIR}/../${FWNAME}.xcodeproj -configuration Release BUILD_LIBRARY_FOR_DISTRIBUTION=YES $XC_USER_DEFINED_VARS"
+COMMON_SETUP=" -project ${SCRIPT_DIR}/../${FWNAME}.xcodeproj -configuration Release BUILD_LIBRARY_FOR_DISTRIBUTION=YES CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY= $XC_USER_DEFINED_VARS"
 
 # macOS
 DERIVED_DATA_PATH=$( mktemp -d )
@@ -237,21 +237,13 @@ xcrun xcodebuild -create-xcframework \
 	-debug-symbols "${BASE_PWD}/Frameworks/macosx_catalyst/${FWNAME}.framework.dSYM" \
 	-output "${BASE_PWD}/Frameworks/${FWNAME}.xcframework"
 	
-# Sign
-# Using --deep to recursively sign all nested frameworks within the XCFramework bundle.
-# This is necessary for Swift Package Manager to validate the distributed artifact.
-#
-# NOTE: --deep is deprecated for signing since macOS 13.0. Apple recommends signing
-# each nested framework individually from inside-out instead. However, for pre-built
-# XCFramework distribution (as opposed to Xcode build integration), this remains
-# the most practical approach.
-#
-# Future solution when --deep is removed:
-#   find "${BASE_PWD}/Frameworks/${FWNAME}.xcframework" -depth -type d -name "*.framework" \
-#     -exec codesign --timestamp -s "${IDENTITY}" {} \;
-#   codesign --timestamp -s "${IDENTITY}" "${BASE_PWD}/Frameworks/${FWNAME}.xcframework"
-echo "Signing xcframework as ${IDENTITY}"
-xcrun codesign --timestamp --deep -s "${IDENTITY}" "${BASE_PWD}/Frameworks/${FWNAME}.xcframework"
+# Sign nested frameworks first, then the XCFramework bundle. Xcode builds the
+# intermediate frameworks unsigned so local target identity mismatches do not
+# block packaging.
+echo "Signing nested frameworks and xcframework as ${IDENTITY}"
+find "${BASE_PWD}/Frameworks/${FWNAME}.xcframework" -depth -type d -name "*.framework" \
+	-exec xcrun codesign --timestamp -s "${IDENTITY}" {} \;
+xcrun codesign --timestamp -s "${IDENTITY}" "${BASE_PWD}/Frameworks/${FWNAME}.xcframework"
 
 # Zip archive
 pushd "${BASE_PWD}/Frameworks"
