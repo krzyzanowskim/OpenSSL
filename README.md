@@ -46,7 +46,7 @@ I advised you to use [OpenSSL-Package](https://github.com/krzyzanowskim/OpenSSL-
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/krzyzanowskim/OpenSSL-Package.git", from: "3.6.2000")
+    .package(url: "https://github.com/krzyzanowskim/OpenSSL-Package.git", from: "3.6.3000")
 ]
 ```
 
