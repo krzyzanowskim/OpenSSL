@@ -1,7 +1,7 @@
 ---
 triple:          'arm64-apple-darwin'
-binary-path:     '/var/folders/lj/8xlv_cdx5h19dhjw5rd7ymth0000gn/T/tmp.fR4S5Z1XcV/Build/Products/Release-xrsimulator/OpenSSL.framework/OpenSSL'
+binary-path:     '/var/folders/lj/8xlv_cdx5h19dhjw5rd7ymth0000gn/T/tmp.Lrk3MttrLJ/Build/Products/Release-xrsimulator/OpenSSL.framework/OpenSSL'
 relocations:
-  - { offset: 0x33, size: 0x8, addend: 0x0, symName: _OpenSSLVersionString, symObjAddr: 0x0, symBinAddr: 0x2C5700, symSize: 0x0 }
-  - { offset: 0x67, size: 0x8, addend: 0x0, symName: _OpenSSLVersionNumber, symObjAddr: 0x28, symBinAddr: 0x2C5728, symSize: 0x0 }
+  - { offset: 0x33, size: 0x8, addend: 0x0, symName: _OpenSSLVersionString, symObjAddr: 0x0, symBinAddr: 0x2C86D0, symSize: 0x0 }
+  - { offset: 0x67, size: 0x8, addend: 0x0, symName: _OpenSSLVersionNumber, symObjAddr: 0x28, symBinAddr: 0x2C86F8, symSize: 0x0 }
 ...
