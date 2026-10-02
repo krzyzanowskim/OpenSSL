@@ -340,7 +340,8 @@ build_watchos() {
    rm -rf "${SCRIPT_DIR}"/../{watchsimulator/include,watchsimulator/lib}
    mkdir -p "${SCRIPT_DIR}"/../{watchsimulator/include,watchsimulator/lib}
 
-   build "i386" "watchSimulator" ${TMP_BUILD_DIR} "watchsimulator"
+   # i386 linking is no longer supported by the Xcode 27 toolchain.
+   # build "i386" "watchSimulator" ${TMP_BUILD_DIR} "watchsimulator"
    build "x86_64" "watchSimulator" ${TMP_BUILD_DIR} "watchsimulator"
    build "arm64" "watchSimulator" ${TMP_BUILD_DIR} "watchsimulator"
 
